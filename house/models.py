@@ -10,7 +10,7 @@ class House(models.Model):
     address = models.CharField(max_length=255)
     street_nr = models.CharField(max_length=10, blank=True)
     price = models.SmallIntegerField()
-    p_code = models.ForeignKey(PostalCodes, on_delete=models.SET_NULL)
+    p_code = models.ForeignKey(PostalCodes, on_delete=models.CASCADE)
     seller = models.ForeignKey('profiles.user', on_delete=models.CASCADE)
     on_sale = models.BooleanField(default=False)
 
@@ -23,8 +23,8 @@ class HouseInfo(models.Model):
     house_id = models.ForeignKey(House, on_delete=models.CASCADE)
     description = models.CharField(max_length=999)
     rooms = models.SmallIntegerField()
-    size = models.CharField()
-    type = models.ForeignKey(HouseType, on_delete=models.SET_NULL)
+    size = models.CharField(max_length=200)
+    type = models.ForeignKey(HouseType, on_delete=models.CASCADE)
     garage = models.BooleanField(default=False)
     extra_apartment = models.BooleanField(default=False)
     new_building = models.BooleanField(default=False)
@@ -52,8 +52,8 @@ class History(models.Model):
 
 
 class Offers(models.Model):
-    user_id = models.ForeignKey('profiles.user', on_delete=models.CASCADE)
-    seller_id = models.ForeignKey('profiles.user', on_delete=models.CASCADE)
+    user_id = models.ForeignKey('profiles.user', on_delete=models.CASCADE, related_name="buyer")
+    seller_id = models.ForeignKey('profiles.user', on_delete=models.CASCADE, related_name="seller")
     price = models.SmallIntegerField()
     date = models.DateTimeField(auto_now_add=True, blank=True)
     state = models.BooleanField(default=None)

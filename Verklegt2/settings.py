@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'house.apps.HouseConfig',
+    'profiles.apps.ProfilesConfig',
+    'login.apps.LoginConfig',
+    'map.apps.MapConfig',
 ]
 
 MIDDLEWARE = [
@@ -76,8 +80,12 @@ WSGI_APPLICATION = 'Verklegt2.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'lcfryboi',
+        'USER': 'lcfryboi',
+        'PASSWORD': 'TzgtYyEcyGEHcL5KFo0-i4a5CgktMuLA',
+        'HOST': 'balarama.db.elephantsql.com',
+        'PORT': '5432'
     }
 }
 

@@ -18,7 +18,7 @@ from django.urls import path, include
 from login import views
 
 urlpatterns = [
-    path('', include('house.urls'), name="index"),
+    path('', include('house.urls'), name="index-logo"),
     path('house/', include('house.urls')),
     path('map/', include('map.urls')),
     path('profile/', include('profiles.urls')),

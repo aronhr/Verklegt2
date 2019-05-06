@@ -12,7 +12,7 @@ class User(models.Model):
     user_name = models.CharField(max_length=55)
     profile_pic = models.CharField(max_length=500)
     password = models.CharField(max_length=55)
-    adddress = models.CharField(max_length=70)
+    address = models.CharField(max_length=70)
 
 
 class UserBankInfo(models.Model):
@@ -23,4 +23,4 @@ class UserBankInfo(models.Model):
 
 
 class Admin(models.Model):
-    admin_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
