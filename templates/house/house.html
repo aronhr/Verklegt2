@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ house.address }}</h1>
-    {% if house.address %} Yee {% endif %}
+<h1>{{ house.address }} {{ house.street_nr }}, {{ house.p_code }}</h1>
+    <hr>
+
 {% endblock %}
