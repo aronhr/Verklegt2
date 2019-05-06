@@ -4,6 +4,9 @@ from django.db import models
 class PostalCodes(models.Model):
     town = models.CharField(max_length=70)
 
+    def __str__(self):
+        return f"{self.id} {self.town}"
+
 
 # Create your models here.
 class House(models.Model):
@@ -54,6 +57,7 @@ class History(models.Model):
 class Offers(models.Model):
     user = models.ForeignKey('profiles.user', on_delete=models.CASCADE, related_name="buyer")
     seller = models.ForeignKey('profiles.user', on_delete=models.CASCADE, related_name="seller")
+    house = models.ForeignKey(House, on_delete=models.CASCADE, default=None)
     price = models.SmallIntegerField()
     date = models.DateTimeField(auto_now_add=True, blank=True)
     state = models.BooleanField(default=None)

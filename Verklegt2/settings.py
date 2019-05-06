@@ -83,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'defaultdb',
-        'USER': 'verk2',
-        'PASSWORD': 'uli3k4rr6m77n6gg',
+        'USER': 'doadmin',
+        'PASSWORD': 'ih2p7wii5vw8tuzh',
         'HOST': 'db-postgresql-lon1-78188-do-user-6012327-0.db.ondigitalocean.com',
         'PORT': '25060'
     }
@@ -128,3 +128,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]

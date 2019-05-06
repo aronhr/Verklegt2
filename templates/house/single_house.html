@@ -2,12 +2,13 @@
     <div class="col s12 m7 l3">
       <div class="card">
         <div class="card-image">
-          <img alt="{{ house.address }} {{ house.house_nr }}" src="{{ house.houseimage_set.first.image }}">
-          <span class="card-title">{{ house.address }} {{ house.house_nr }}</span>
+          <img alt="{{ house.address }} {{ house.street_nr }}" src="{{ house.houseimage_set.first.image }}">
+          <span class="card-title">{{ house.address }} {{ house.street_nr }}</span>
         </div>
         <div class="card-content">
             <article>
-                <p>{{ house.description }}</p>
+                <small>{{ house.p_code }}</small>
+                <p>{{ house.description_set.first.description }}</p>
             </article>
         </div>
         <div class="card-action">
