@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+  <nav class="blue darken-4">
+    <div class="nav-wrapper">
+      <a href="{% url 'house-index' %}" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Selja fasteign</a></li>
+        <li><a href="sass.html">Kort</a></li>
+        <li><a href="badges.html">Óskalisti</a></li>
+      </ul>
+    </div>
+  </nav>
+<main>
+    <div class="container">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</main>
+</body>
+</html>
