@@ -44,6 +44,9 @@ class HouseImage(models.Model):
     image = models.CharField(max_length=500)
     house = models.ForeignKey(House, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.image}"
+
 
 class OnHold(models.Model):
     house = models.ForeignKey(House, on_delete=models.CASCADE)

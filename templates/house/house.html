@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 <h1>{{ house.address }} {{ house.street_nr }}, {{ house.p_code }}</h1>
     <hr>
-
+    {% for image in house.houseimage_set.all %}
+        <img width="200" src="{{ image }}" alt="{{ house.address }}">
+    {% endfor %}
 {% endblock %}
