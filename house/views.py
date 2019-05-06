@@ -9,5 +9,5 @@ def index(request):
 
 def get_house_by_id(request, id):
     return render(request, 'house/house.html', {
-        'house': 'this is house with id: ' + str(id)
+        'house': get_object_or_404(House, pk=id)
     })

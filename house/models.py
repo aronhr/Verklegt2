@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 
 
@@ -16,10 +17,14 @@ class House(models.Model):
     p_code = models.ForeignKey(PostalCodes, on_delete=models.CASCADE)
     seller = models.ForeignKey('profiles.user', on_delete=models.CASCADE)
     on_sale = models.BooleanField(default=False)
+    sellingdate = models.DateField("Date", default=datetime.date.today)
 
 
 class HouseType(models.Model):
     type = models.CharField(max_length=70)
+
+    def __str__(self):
+        return f"{self.type}"
 
 
 class HouseInfo(models.Model):
