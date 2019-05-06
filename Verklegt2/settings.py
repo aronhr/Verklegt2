@@ -78,14 +78,15 @@ WSGI_APPLICATION = 'Verklegt2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'lcfryboi',
-        'USER': 'lcfryboi',
-        'PASSWORD': 'TzgtYyEcyGEHcL5KFo0-i4a5CgktMuLA',
-        'HOST': 'balarama.db.elephantsql.com',
-        'PORT': '5432'
+        'NAME': 'defaultdb',
+        'USER': 'verk2',
+        'PASSWORD': 'uli3k4rr6m77n6gg',
+        'HOST': 'db-postgresql-lon1-78188-do-user-6012327-0.db.ondigitalocean.com',
+        'PORT': '25060'
     }
 }
 

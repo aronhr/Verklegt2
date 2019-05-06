@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Verk2" uuid="7c54342a-5f79-4b73-8130-1cd6911c55b8">
+    <data-source source="LOCAL" name="digi" uuid="1869c708-5ea9-4fe2-adb3-f415f2b71c82">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://balarama.db.elephantsql.com:5432/lcfryboi</jdbc-url>
+      <jdbc-url>jdbc:postgresql://db-postgresql-lon1-78188-do-user-6012327-0.db.ondigitalocean.com:25060/defaultdb</jdbc-url>
     </data-source>
   </component>
 </project>
