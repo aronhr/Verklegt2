@@ -16,11 +16,11 @@ class User(models.Model):
 
 
 class UserBankInfo(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     bank_nr = models.CharField(max_length=4)
     ledger = models.CharField(max_length=2)
     account_number = models.CharField(max_length=6)
 
 
 class Admin(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)

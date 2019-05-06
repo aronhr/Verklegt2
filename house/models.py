@@ -20,7 +20,7 @@ class HouseType(models.Model):
 
 
 class HouseInfo(models.Model):
-    house_id = models.ForeignKey(House, on_delete=models.CASCADE)
+    house = models.ForeignKey(House, on_delete=models.CASCADE)
     description = models.CharField(max_length=999)
     rooms = models.SmallIntegerField()
     size = models.CharField(max_length=200)
@@ -32,28 +32,31 @@ class HouseInfo(models.Model):
     entrance = models.BooleanField(default=False)
 
 
-class HouseImages(models.Model):
-    house_id = models.ForeignKey(House, on_delete=models.CASCADE)
+class HouseImage(models.Model):
     image = models.CharField(max_length=500)
+    house = models.ForeignKey(House, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.image
 
 
 class OnHold(models.Model):
-    house_id = models.ForeignKey(House, on_delete=models.CASCADE)
+    house = models.ForeignKey(House, on_delete=models.CASCADE)
 
 
 class WishList(models.Model):
-    user_id = models.ForeignKey('profiles.user', on_delete=models.CASCADE)
-    house_id = models.ForeignKey(House, on_delete=models.CASCADE)
+    user = models.ForeignKey('profiles.user', on_delete=models.CASCADE)
+    house = models.ForeignKey(House, on_delete=models.CASCADE)
 
 
 class History(models.Model):
-    user_id = models.ForeignKey('profiles.user', on_delete=models.CASCADE)
-    house_id = models.ForeignKey(House, on_delete=models.CASCADE)
+    user = models.ForeignKey('profiles.user', on_delete=models.CASCADE)
+    house = models.ForeignKey(House, on_delete=models.CASCADE)
 
 
 class Offers(models.Model):
-    user_id = models.ForeignKey('profiles.user', on_delete=models.CASCADE, related_name="buyer")
-    seller_id = models.ForeignKey('profiles.user', on_delete=models.CASCADE, related_name="seller")
+    user = models.ForeignKey('profiles.user', on_delete=models.CASCADE, related_name="buyer")
+    seller = models.ForeignKey('profiles.user', on_delete=models.CASCADE, related_name="seller")
     price = models.SmallIntegerField()
     date = models.DateTimeField(auto_now_add=True, blank=True)
     state = models.BooleanField(default=None)

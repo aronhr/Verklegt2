@@ -1,11 +1,10 @@
 from django.shortcuts import render, get_object_or_404
+from house.models import *
 
 
-# Create your views here.
 def index(request):
-    return render(request, 'house/index.html', {
-        'houses': 'this is all houses'
-    })
+    context = {'houses': House.objects.all()}
+    return render(request, 'house/index.html', context)
 
 
 def get_house_by_id(request, id):

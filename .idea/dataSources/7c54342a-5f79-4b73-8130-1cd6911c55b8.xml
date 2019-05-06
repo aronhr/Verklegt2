@@ -1658,7 +1658,7 @@
       <ObjectId>1820958</ObjectId>
       <StateNumber>7469260</StateNumber>
       <Owner>lcfryboi</Owner>
-      <IntrospectionStateNumber>7473943</IntrospectionStateNumber>
+      <IntrospectionStateNumber>7476315</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
       <Relations>sequence|table|1821063|1821065|1
@@ -8094,7 +8094,7 @@ sequence|table|1821330|1821332|1
       <Comment>standard public schema</Comment>
       <StateNumber>359</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>7473948</IntrospectionStateNumber>
+      <IntrospectionStateNumber>7476325</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -19449,8 +19449,7 @@ model</ColNames>
     <column id="2634" parent="1559" name="profile_pic">
       <Position>7</Position>
       <DataType>varchar(500)|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>7473702</StateNumber>
+      <StateNumber>7476301</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="2635" parent="1559" name="password">
