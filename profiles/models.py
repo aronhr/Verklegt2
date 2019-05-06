@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 
@@ -23,6 +24,3 @@ class UserBankInfo(models.Model):
 
 class Admin(models.Model):
     admin_id = models.ForeignKey(User, on_delete=models.CASCADE)
-
-
-
