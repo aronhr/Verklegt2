@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>registerpage</h1>
+    <div class="row">
+        <form class="col s12 m6 l6" method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">Sign up</button>
+        </form>
+    </div>
     <a href="{% url 'login-index' %}">login</a>
 {% endblock %}

@@ -1,9 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from house.models import *
 
-# Create your views here.
 
 
+@login_required
 def index(request):
     return render(request, 'profile/index.html', {
         'profile': 'This is a profile'
