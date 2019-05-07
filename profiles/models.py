@@ -15,6 +15,9 @@ class User(models.Model):
     password = models.CharField(max_length=55)
     address = models.CharField(max_length=70)
 
+    def __str__(self):
+        return f"{self.kt}, {self.dob}, {self.email}, {self.phone}, {self.name}"
+
 
 class UserBankInfo(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
