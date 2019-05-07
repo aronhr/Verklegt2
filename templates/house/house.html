@@ -1,9 +1,25 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load humanize %}
 {% block content %}
 <h1>{{ house.address }} {{ house.street_nr }}, {{ house.p_code }}</h1>
     <hr>
+    <img width="900" src="{{ house.houseimage_set.first.image }}" alt="{{ house.address }}">
+    <br>
     {% for image in house.houseimage_set.all %}
         <img width="200" src="{{ image }}" alt="{{ house.address }}">
     {% endfor %}
+    <p>Herbergi: {{ house.houseinfo_set.first.rooms }}</p>
+    <p>Fasteignamat: {{ house.price|intcomma }}</p>
+    <p>Byggt: {{ house.houseinfo_set.first.buildyear }}</p>
+    <p>Fermetrar: {{ house.houseinfo_set.first.size|intcomma }}</p>
+    <p>Skráð: {{ house.sellingdate }}</p>
+    <h3>Lýsing</h3>
+    <blockquote>
+        {{ house.houseinfo_set.first.description }}
+    </blockquote>
+    <h1>Name: {{ house.seller.name }}</h1>
+    <img width="200" src="{{ house.seller.profile_pic }}" alt="{{ house.seller.name }}">
+    <p><a href="tel: {{ house.seller.phone }}">{{ house.seller.phone }}</a></p>
+    <p><a href="mailto: {{ house.seller.email }}">{{ house.seller.email }}</a></p>
+
 {% endblock %}

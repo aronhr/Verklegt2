@@ -38,6 +38,7 @@ class HouseInfo(models.Model):
     new_building = models.BooleanField(default=False)
     elevator = models.BooleanField(default=False)
     entrance = models.BooleanField(default=False)
+    buildyear = models.CharField(max_length=4, blank=True)
 
 
 class HouseImage(models.Model):

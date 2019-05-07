@@ -8,6 +8,7 @@ class User(models.Model):
     kt = models.CharField(max_length=10)
     dob = models.DateField()
     email = models.CharField(max_length=55)
+    phone = models.CharField(max_length=9, blank=True)
     name = models.CharField(max_length=70)
     user_name = models.CharField(max_length=55)
     profile_pic = models.CharField(max_length=500)
