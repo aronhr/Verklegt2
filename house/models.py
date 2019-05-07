@@ -1,7 +1,6 @@
 import datetime
 from django.db import models
 
-
 class PostalCodes(models.Model):
     town = models.CharField(max_length=70)
 
@@ -70,3 +69,4 @@ class Offers(models.Model):
     price = models.SmallIntegerField()
     date = models.DateTimeField(auto_now_add=True, blank=True)
     state = models.BooleanField(default=None)
+
