@@ -3,11 +3,16 @@
 {% block content %}
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="profile.css" />
-<h1>{{ profile }}</h1>
-
-<div id="ProfilePage">
-    <img src="" alt="Profile photo">
-<form action="/submitEval.php" target="_blank" method="POST">
+    <br>
+    <div class="row">
+      <div class="col s6">
+        <img src="" alt="Profile photo">
+          <br><br>
+          <a class="waves-effect waves-light btn">Leitarsaga</a>
+          <a class="waves-effect waves-light btn">Mínar fasteignir</a>
+      </div>
+      <div class="col s6">
+          <form action="/submitEval.php" target="_blank" method="POST">
     <fieldset style="width:450px">
         <legend>Persónupplýsingar</legend>
         <label for="name">Nafn:</label>
@@ -32,6 +37,13 @@
     </fieldset>
 
 </form>
+      </div>
+    </div>
+
+
+
+
+
 
 
 </div>
