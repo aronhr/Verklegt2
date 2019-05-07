@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 from house.models import *
-from profiles.models import User
 
 
 def index(request):
@@ -23,7 +22,6 @@ def index(request):
 
     print("get", request.GET)
     print("body", request.body)
-
     return render(request, 'house/index.html', context)
 
 
