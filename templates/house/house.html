@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% block content %}
-<h1>{{ house.address }} {{ house.street_nr }}, {{ house.p_code }}</h1>
+    <h1>{{ house.address }} {{ house.street_nr }}, {{ house.p_code }}</h1>
     <hr>
     <img width="900" src="{{ house.houseimage_set.first.image }}" alt="{{ house.address }}">
     <br>
