@@ -1,10 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from house.models import *
-from profiles.models import User
 
 
 def index(request):
-    context = {'houses': House.objects.all()}
+    context = {'houses': House.objects.all(), 'types': HouseType.objects.all(), 'towns': PostalCodes.objects.all()}
     return render(request, 'house/index.html', context)
 
 

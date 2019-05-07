@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>These are all my offers</h1><br>
+    {% for offer in offers %}
+        {{ offer.price }}
+        {{ offer.house.address }}
+        {{ offer.seller }}
+        {{ offer.user }}
+    {% endfor %}
+{% endblock %}

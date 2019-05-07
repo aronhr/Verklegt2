@@ -7,7 +7,7 @@ from login.forms.forms import SignUpForm
 
 def index(request):
     return render(request, 'login/index.html', {
-        'login': 'loginpage'
+        'login': 'Innskráning'
     })
 
 
