@@ -6,44 +6,34 @@
 <h1>{{ profile }}</h1>
 
 <div id="ProfilePage">
-    <div class="myndir">
     <img src="" alt="Profile photo">
+<form action="/submitEval.php" target="_blank" method="POST">
+    <fieldset style="width:450px">
+        <legend>Persónupplýsingar</legend>
+        <label for="name">Nafn:</label>
+        <input type="text" id="name" name="Nafn" value="Jón Jónsson"><br>
+        <label for="username">Notendanafn:</label>
+        <input type="text" id="username" name="Notendanafn" value="jjonsson"><br>
+        <label for="mail">Netfang:</label>
+        <input type="text" id="mail" name="Netfang" value="johnny@email.net"><br>
+        <label for="number">Símanúmer:</label>
+        <input type="text" id="number" name="Símanúmer" value="581 2345"><br>
+        <label for="password">Lykilorð:</label>
+        <input type="text" id="password" name="Lykilorð" value="********" ><br>
+        <input type="submit" value="Breyta">
+    </fieldset>
+    <fieldset style="width:450px">
+        <legend>Reikningsupplýsingar</legend>
+        <label for="kennitala">Kennitala:</label>
+        <input type="text" id="kennitala" name="Kennitala" value="230458-6969"><br>
+        <label for="bank">Bankanúmer:</label>
+        <input type="text" id="bank" name="Bankanúmer" value="0536-26-230458"><br>
+        <input type="submit" value="Breyta">
+    </fieldset>
 
+</form>
 
-    <div id="Info">
-        <h5>Breyta upplýsingum</h5>
-        <p>
-            <strong>Nafn:</strong>
-            <span>Karl Vignir Þorsteinsson</span>
-        </p>
-        <p>
-            <strong>Notendanafn:</strong>
-            <span>hvarerukrakkarnir</span>
-        </p>
-        <p>
-            <strong>Netfang:</strong>
-            <span>hækrakkar@perrar.is</span>
-        </p>
-        <p>
-            <strong>Símanúmer:</strong>
-            <span>564 6969</span>
-        </p>
-        <p>
-            <strong>Lykilorð:</strong>
-            <span>*******</span>
-        </p>
-
-        <h5>Reikningsupplýsingar</h5>
-         <p>
-
-            <strong>Kennitala:</strong>
-            <span>2304586969</span>
-        </p>
-        <p>
-            <strong>Bankanúmer: </strong>
-            <span>0536 - 26 - 230458</span>
-        </p>
-    </div>
 
 </div>
+
 {% endblock %}
