@@ -1,20 +1,27 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from house.models import *
 from profiles.models import Profile
+#from profiles.forms.profile_form import ProfileForm
+from django.contrib.auth.models import User
+
 
 @login_required
 def index(request):
-    return render(request, 'profile/index.html', {
-        'profile': 'This is a profile'
-    })
-
-
-def profile(request):
-    profile = Profile.objects.filter(user=request.user).first()
+    """profile = Profile.objects.filter(user=request.user).first()
+    user = User.objects.filter(user=request.user).first()
     if request.method == 'POST':
-        pass
-
+        form = ProfileForm(instance=profile, data=request.POST)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = request.user
+            profile.save()
+            return redirect('profile-index')
+    return render(request, 'profile/index.html', {
+        'form': ProfileForm(instance={profile, user})
+    })
+"""
+    pass
 
 @login_required
 def sell_property(request):
