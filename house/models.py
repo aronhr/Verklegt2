@@ -1,6 +1,7 @@
 import datetime
 from django.db import models
 
+
 class PostalCodes(models.Model):
     town = models.CharField(max_length=70)
 

@@ -23,7 +23,7 @@ def register(request):
             return redirect('login-index')
     else:
         form = SignUpForm()
-    return render(request, 'login/register.html', {'form': form})
+    return render(request, 'login/register.html', {'forms': form})
 
 
 def forgot(request):
