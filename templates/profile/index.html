@@ -1,51 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="profile.css" />
-    <br>
-    <div class="row">
-      <div class="col s6">
-        <img src="" alt="Profile photo">
-          <br><br>
-          <a class="waves-effect waves-light btn" href="{% url 'profile-history' %}">Leitarsaga</a>
-          <a class="waves-effect waves-light btn" href="{% url 'profile-myProps' %}">Mínar fasteignir</a>
-      </div>
-      <div class="col s6">
-          <form action="/submitEval.php" target="_blank" method="POST">
-    <fieldset style="width:450px">
-        <legend>Persónupplýsingar</legend>
-        <label for="name">Nafn:</label>
-        <input type="text" id="name" name="Nafn" value="Jón Jónsson"><br>
-        <label for="username">Notendanafn:</label>
-        <input type="text" id="username" name="Notendanafn" value="jjonsson"><br>
-        <label for="mail">Netfang:</label>
-        <input type="text" id="mail" name="Netfang" value="johnny@email.net"><br>
-        <label for="number">Símanúmer:</label>
-        <input type="text" id="number" name="Símanúmer" value="581 2345"><br>
-        <label for="password">Lykilorð:</label>
-        <input type="text" id="password" name="Lykilorð" value="********" ><br>
-        <input type="submit" value="Breyta">
-    </fieldset>
-    <fieldset style="width:450px">
-        <legend>Reikningsupplýsingar</legend>
-        <label for="kennitala">Kennitala:</label>
-        <input type="text" id="kennitala" name="Kennitala" value="230458-6969"><br>
-        <label for="bank">Bankanúmer:</label>
-        <input type="text" id="bank" name="Bankanúmer" value="0536-26-230458"><br>
-        <input type="submit" value="Breyta">
-    </fieldset>
-
-</form>
-      </div>
-    </div>
-
-
-
-
-
-
-
-</div>
-
+    <h1>Profile</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Breyta</button>
+    </form>
 {% endblock %}

@@ -59,8 +59,8 @@
 
    <div class="col s1">
       <h5 class="center">{{ house.seller.name }}</h5>
-      <img class="center" width="110" src="{{ house.seller.profile_pic }}" alt="{{ house.seller.name }}">
-      <div class="center"><a href="tel: {{ house.seller.phone }}">{{ house.seller.phone }}</a></div>
+      <img class="center" width="110" src="{{ house.seller.profile.profile_pic }}" alt="{{ house.seller.profile.name }}">
+      <div class="center"><a href="tel: {{ house.seller.profile.phone }}">{{ house.seller.profile.phone }}</a></div>
       <div class="center"><a href="mailto: {{ house.seller.email }}">{{ house.seller.email }}</a></div>
    </div>
 </div>
