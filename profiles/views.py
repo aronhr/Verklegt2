@@ -31,6 +31,7 @@ def sell_property(request):
         if form.is_valid():
             house = form.save(commit=False)
             house.seller = request.user
+            house.on_sale = False
             house.save()
             house_image = HouseImage(image=request.POST['image'], house=house)
             house_image.save()
