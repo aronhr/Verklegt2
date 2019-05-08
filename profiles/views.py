@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-from profiles.forms.profile_form import ProfileForm
+from profiles.forms.profile_form import ProfileForm, UserForm
 from house.views import *
 from profiles.forms.prop_form import *
 from django.core.files.storage import FileSystemStorage
@@ -9,20 +9,26 @@ from django.core.files.storage import FileSystemStorage
 @login_required
 def index(request):
     profile = Profile.objects.filter(user=request.user).first()
+    user = User.objects.filter(id=profile.user.id).first()
     if request.method == 'POST':
         form = ProfileForm(instance=profile, data=request.POST)
+        userform = UserForm(instance=user, data=request.POST)
         if form.is_valid():
             profile = form.save(commit=False)
+            user = userform.save(commit=False)
             if len(request.FILES) != 0:
                 myfile = request.FILES['myfile']
                 fs = FileSystemStorage()
                 filename = fs.save(myfile.name, myfile)
                 profile.profile_pic = fs.url(filename)
             profile.user = request.user
+            user.user = request.user
             profile.save()
+            user.save()
             return redirect('profile-index')
     return render(request, 'profile/index.html', {
         'form': ProfileForm(instance=profile),
+        'userform': UserForm(instance=user),
         'profile': profile
     })
 
