@@ -18,7 +18,7 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="{% url 'profile-sell-property' %}">Selja fasteign</a></li>
         <li><a href="{% url 'map-index' %}">Kort</a></li>
-        <li><a href="badges.html">Óskalisti</a></li>
+        <li><a href="{% url 'profile-wishList' %}">Óskalisti</a></li>
           {% if user.is_authenticated %}
               <li><a href="{% url 'profile-index' %}">Profíll</a></li>
               <li><a href="{% url 'logout' %}">Útskráning</a></li>

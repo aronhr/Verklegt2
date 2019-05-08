@@ -8,8 +8,8 @@
       <div class="col s6">
         <img src="" alt="Profile photo">
           <br><br>
-          <a class="waves-effect waves-light btn">Leitarsaga</a>
-          <a class="waves-effect waves-light btn">Mínar fasteignir</a>
+          <a class="waves-effect waves-light btn" href="{% url 'profile-history' %}">Leitarsaga</a>
+          <a class="waves-effect waves-light btn" href="{% url 'profile-myProps' %}">Mínar fasteignir</a>
       </div>
       <div class="col s6">
           <form action="/submitEval.php" target="_blank" method="POST">

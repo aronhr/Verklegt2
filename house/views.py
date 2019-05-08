@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from house.models import *
+from house.forms.prop_form import PropCreateForm
 
 
 def index(request):
@@ -30,3 +31,17 @@ def get_house_by_id(request, id):
         'house': get_object_or_404(House, pk=id),
     })
 
+
+def create_prop(request):
+    if request.method == 'post':
+        form = PropCreateForm(data=request.POST)
+        if form.is_valid():
+            house = form.save()
+            house_image = HouseImage(image=request.POST['image'], house=house)
+            house_image.save()
+            return redirect('house-index')
+    else:
+        form = PropCreateForm()
+    return render(request, 'house/create_prop.html', {
+        'form': form
+    })

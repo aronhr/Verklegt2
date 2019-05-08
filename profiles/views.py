@@ -3,7 +3,6 @@ from django.shortcuts import render, get_object_or_404
 from house.models import *
 from profiles.models import Profile
 
-
 @login_required
 def index(request):
     return render(request, 'profile/index.html', {
