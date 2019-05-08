@@ -3,7 +3,6 @@ from django.db import models
 from profiles.models import Profile
 from django.contrib.auth.models import User
 
-
 class PostalCodes(models.Model):
     town = models.CharField(max_length=70)
 

@@ -4,7 +4,8 @@ from house.models import *
 from profiles.models import Profile
 #from profiles.forms.profile_form import ProfileForm
 from django.contrib.auth.models import User
-
+from house.views import *
+from profiles.forms.prop_form import *
 
 @login_required
 def index(request):
@@ -25,8 +26,19 @@ def index(request):
 
 @login_required
 def sell_property(request):
-    return render(request, 'profile/sell_property.html', {
-        'sell_property': 'This is where you sell a property'
+    if request.method == 'POST':
+        form = PropCreateForm(data=request.POST)
+        if form.is_valid():
+            house = form.save(commit=False)
+            house.seller = request.user
+            house.save()
+            house_image = HouseImage(image=request.POST['image'], house=house)
+            house_image.save()
+            return redirect('house-index')
+    else:
+        form = PropCreateForm()
+    return render(request, 'house/create_prop.html', {
+        'form': form
     })
 
 
