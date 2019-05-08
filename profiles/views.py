@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from house.models import *
-
+from profiles.models import Profile
 
 
 @login_required
@@ -9,6 +9,12 @@ def index(request):
     return render(request, 'profile/index.html', {
         'profile': 'This is a profile'
     })
+
+
+def profile(request):
+    profile = Profile.objects.filter(user=request.user).first()
+    if request.method == 'POST':
+        pass
 
 
 @login_required
