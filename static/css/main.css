@@ -7,3 +7,8 @@
 .marginnull{
     margin: auto;
 }
+
+.profile-img{
+    width: 100%;
+    max-width: 500px;
+}

@@ -9,17 +9,15 @@ from django.core.files.storage import FileSystemStorage
 @login_required
 def index(request):
     profile = Profile.objects.filter(user=request.user).first()
-    if request.method == 'POST' and request.FILES['myfile']:
-        myfile = request.FILES['myfile']
-        fs = FileSystemStorage()
-        filename = fs.save(myfile.name, myfile)
-        profile.profile_pic = fs.url(filename)
-        profile.save()
-        return redirect('profile-index')
-    elif request.method == 'POST':
+    if request.method == 'POST':
         form = ProfileForm(instance=profile, data=request.POST)
         if form.is_valid():
             profile = form.save(commit=False)
+            if len(request.FILES) != 0:
+                myfile = request.FILES['myfile']
+                fs = FileSystemStorage()
+                filename = fs.save(myfile.name, myfile)
+                profile.profile_pic = fs.url(filename)
             profile.user = request.user
             profile.save()
             return redirect('profile-index')
