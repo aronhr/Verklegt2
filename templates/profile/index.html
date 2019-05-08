@@ -1,10 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Profile</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Breyta</button>
-    </form>
+    <div class="row">
+        <div class="col l4 m6 s12">
+            <div class="container">
+                <h4 class="center">{{ user.first_name }} {{ user.last_name }}</h4>
+                <img src="{{ profile.profile_pic }}" alt="{{ user.first_name }}">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="myfile">
+                    <button type="submit">Upload</button>
+                </form>
+                {% if uploaded_file_url %}
+                    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col l4 m6 s12">
+            <h4 class="center">Breyta upplýsingum</h4>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" class="btn green">Breyta</button>
+            </form>
+        </div>
+        <div class="col l4 m6 s12">
+            <div class="container">
+                <a href="{% url 'profile-history' %}"><button class="row col l12 m12 s12 btn blue darken-4">Leitarsaga</button></a>
+                <a href="{% url 'profile-myProps' %}"><button class="row col l12 m12 s12  btn blue darken-4">Mínar fasteignir</button></a>
+                <a href="{% url 'profile-offers' %}"><button class="row col l12 m12 s12  btn blue darken-4">Óskalisti</button></a>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

@@ -1,17 +1,22 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-from house.models import *
-from profiles.models import Profile
-#from profiles.forms.profile_form import ProfileForm
-from django.contrib.auth.models import User
+from profiles.forms.profile_form import ProfileForm
 from house.views import *
 from profiles.forms.prop_form import *
+from django.core.files.storage import FileSystemStorage
+
 
 @login_required
 def index(request):
-    """profile = Profile.objects.filter(user=request.user).first()
-    user = User.objects.filter(user=request.user).first()
-    if request.method == 'POST':
+    profile = Profile.objects.filter(user=request.user).first()
+    if request.method == 'POST' and request.FILES['myfile']:
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        profile.profile_pic = fs.url(filename)
+        profile.save()
+        return redirect('profile-index')
+    elif request.method == 'POST':
         form = ProfileForm(instance=profile, data=request.POST)
         if form.is_valid():
             profile = form.save(commit=False)
@@ -19,10 +24,10 @@ def index(request):
             profile.save()
             return redirect('profile-index')
     return render(request, 'profile/index.html', {
-        'form': ProfileForm(instance={profile, user})
+        'form': ProfileForm(instance=profile),
+        'profile': profile
     })
-"""
-    pass
+
 
 @login_required
 def sell_property(request):
