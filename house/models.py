@@ -1,5 +1,7 @@
 import datetime
 from django.db import models
+from profiles.models import Profile
+
 
 class PostalCodes(models.Model):
     town = models.CharField(max_length=70)
@@ -14,7 +16,7 @@ class House(models.Model):
     street_nr = models.CharField(max_length=10, blank=True)
     price = models.SmallIntegerField()
     p_code = models.ForeignKey(PostalCodes, on_delete=models.CASCADE)
-    seller = models.ForeignKey('profiles.user', on_delete=models.CASCADE)
+    seller = models.ForeignKey('profiles.Profile', on_delete=models.CASCADE)
     on_sale = models.BooleanField(default=False)
     sellingdate = models.DateField("Date", default=datetime.date.today)
 
@@ -53,18 +55,18 @@ class OnHold(models.Model):
 
 
 class WishList(models.Model):
-    user = models.ForeignKey('profiles.user', on_delete=models.CASCADE)
+    user = models.ForeignKey('profiles.Profile', on_delete=models.CASCADE)
     house = models.ForeignKey(House, on_delete=models.CASCADE)
 
 
 class History(models.Model):
-    user = models.ForeignKey('profiles.user', on_delete=models.CASCADE)
+    user = models.ForeignKey('profiles.Profile', on_delete=models.CASCADE)
     house = models.ForeignKey(House, on_delete=models.CASCADE)
 
 
 class Offers(models.Model):
-    user = models.ForeignKey('profiles.user', on_delete=models.CASCADE, related_name="buyer")
-    seller = models.ForeignKey('profiles.user', on_delete=models.CASCADE, related_name="seller")
+    user = models.ForeignKey('profiles.Profile', on_delete=models.CASCADE, related_name="buyer")
+    seller = models.ForeignKey('profiles.Profile', on_delete=models.CASCADE, related_name="seller")
     house = models.ForeignKey(House, on_delete=models.CASCADE, default=None)
     price = models.SmallIntegerField()
     date = models.DateTimeField(auto_now_add=True, blank=True)
