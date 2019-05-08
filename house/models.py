@@ -14,7 +14,7 @@ class PostalCodes(models.Model):
 class House(models.Model):
     address = models.CharField(max_length=255)
     street_nr = models.CharField(max_length=10, blank=True)
-    price = models.SmallIntegerField()
+    price = models.BigIntegerField()
     p_code = models.ForeignKey(PostalCodes, on_delete=models.CASCADE)
     seller = models.ForeignKey('profiles.Profile', on_delete=models.CASCADE)
     on_sale = models.BooleanField(default=False)
@@ -68,7 +68,7 @@ class Offers(models.Model):
     user = models.ForeignKey('profiles.Profile', on_delete=models.CASCADE, related_name="buyer")
     seller = models.ForeignKey('profiles.Profile', on_delete=models.CASCADE, related_name="seller")
     house = models.ForeignKey(House, on_delete=models.CASCADE, default=None)
-    price = models.SmallIntegerField()
+    price = models.BigIntegerField()
     date = models.DateTimeField(auto_now_add=True, blank=True)
     state = models.BooleanField(default=None)
 
