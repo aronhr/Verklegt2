@@ -1,90 +1,80 @@
 {% extends 'base.html' %}
 {%  load static %}
 {% block content %}
-<div class="row">
-   <div class="col s12 l3 m12">
-      <form method="POST">
-         {% csrf_token %}
-         <div class="card">
-            <div class="dropdowns">
-               <div class="input-field col s12">
-                  <select name="types" multiple>
-                     <option value="" disabled selected>Týpa</option>
-                     {% for type in types %}
-                     <option>{{ type }}</option>
-                     {% endfor %}
-                  </select>
-               </div>
-               <div class="input-field col s12">
-                  <select name="postal_codes" multiple>
-                     <option value="" disabled selected>Póstnúmer</option>
-                     <optgroup label="Reykjavik t.d">
-                        {% for town in towns %}
-                            {% if town.id|stringformat:"i" in filter.postal_codes %}
-                                <option value="{{ town.id }}" selected>{{ town.id }} - {{ town.town }}</option>
-                            {% else %}
-                                <option value="{{ town.id }}">{{ town.id }} - {{ town.town }}</option>
-                            {% endif %}
-                        {% endfor %}
-                     </optgroup>
-                  </select>
-               </div>
-               <div class="input-field col s12">
-                  <select name="rooms">
-                      <option value="" disabled selected>Herbergi</option>
+    <div class="row">
+        <div class="col s12 l3 m12">
+            <div class="card">
+                <div class="dropdowns">
+                    <div class="input-field col s12">
+                        <select id="type_choice" name="types" multiple>
+                            <option value="" disabled selected>Týpa</option>
+                            {% for type in types %}
+                                <option>{{ type }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="input-field col s12">
+                        <select id="postal_codes" name="postal_codes" multiple>
+                            <option value="" disabled selected>Póstnúmer</option>
+                            <optgroup label="Reykjavik t.d">
+                                {% for town in towns %}
+                                    <option value="{{ town.id }}">{{ town.id }} - {{ town.town }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="input-field col s12">
+                        <select id="rooms" name="rooms">
+                            <option value="" disabled selected>Herbergi</option>
+                            {% for i in rooms %}
+                                <option value="{{ i }}">{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="check_boxes">
+                    <div class="left_boxes">
+                        <p>
+                            <label>
+                                <input name="garage" type="checkbox" />
+                                <span>Bílskúr</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="new_house" type="checkbox" />
+                                <span>Nýtt hús</span>
+                            </label>
+                        </p><p>
+                        <label>
+                            <input name="entrance" type="checkbox" />
+                            <span>Sér inngangar</span>
+                        </label>
+                    </p>
+                        <p>
+                            <label>
+                                <input name="lift" type="checkbox"/>
+                                <span>Lyfta</span>
+                            </label>
+                        </p>
+                    </div>
+                </div>
 
-                      {% for i in i|rjust:8 %}
-                           {% if forloop.counter|stringformat:"i" == filter.rooms %}
-                              <option value="{{ forloop.counter }}" selected >{{ forloop.counter }}</option>
-                               {% else %}
-                               <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+                <button id="submit_button" class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
 
-                          {% endif %}
-                      {% endfor %}
-                        {% if "9" == filter.rooms %}
-                              <option value="9" selected>9 + </option>
-                               {% else %}
-                               <option value="9">9 + </option>
-                          {% endif %}
-
-                  </select>
-               </div>
             </div>
-            <div class="all_check_boxes">
-               <div class="left_boxes">
-                  <p>
-                     <label>
-                     <input name="red" type="checkbox" />
-                     <span>Red</span>
-                     </label>
-                  </p>
-                  <p>
-                     <label>
-                     {% if filter.lyfta == 'on' %}
-                        <input name="lyfta" type="checkbox" checked="checked" />
-                     {% else %}
-                        <input name="lyfta" type="checkbox"/>
-                     {% endif %}
-                     <span>Lyfta</span>
-                     </label>
-                  </p>
-               </div>
-            </div>
-            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-            <i class="material-icons right">send</i>
-            </button>
-         </div>
-      </form>
-   </div>
-   <div class="col l9">
-      {% for house in houses %}
-      {% if filter.postal_codes|length == 0 %}
-      {% include 'house/single_house.html' with house=house %}
-      {% elif house.p_code.id|stringformat:"i" in filter.postal_codes %}
-      {% include 'house/single_house.html' with house=house %}
-      {% endif %}
-      {% endfor %}
-   </div>
-</div>
-<script src="{% static 'javascript/side_bar.js' %}"></script>
+        </div>
+
+        <div class="housess col l9">
+            {% for house in houses %}
+                {% include 'house/single_house.html' with house=house %}
+            {% endfor %}
+        </div>
+
+    </div>
+    <script src="{% static 'javascript/side_bar.js' %}"></script>
+    <script src="{% static 'javascript/houses.js' %}"></script>
+
 {% endblock %}
