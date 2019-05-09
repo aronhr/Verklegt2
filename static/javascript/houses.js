@@ -1,24 +1,50 @@
 $(document).ready(function() {
-    const url_builder = () =>{
+    const checkbox_url_param = (selector, name) => {
+        const is_selected = $(selector).is(":checked");
+        if(is_selected){
+            return `&${name}=${true}`
+        }
+        return ""
+    }
+    const url_builder = () => {
+
         let url = '/?ajax'
         const selected_rooms = $('#rooms option:selected');
-        $.each(selected_rooms,(ix,el) => {
+        $.each(selected_rooms, (ix, el) => {
             const selected_rooms = $(el).val()
-            if (selected_rooms !== ''){
+            if (selected_rooms !== '') {
                 url += `&rooms=${selected_rooms}`
             }
         });
 
+
         const selected_postal = $('#postal_codes option:selected')
-        $.each(selected_postal,(ix,el) => {
+        $.each(selected_postal, (ix, el) => {
             const p_code = $(el).val();
-            if(p_code !== ''){
+            if (p_code !== '') {
                 url += `&p_code=${p_code}`
             }
         });
 
-        return url
+        const selected_types = $('#types option:selected');
+        $.each(selected_types, (ix, el) => {
+            const selected_types = $(el).val()
+            if (selected_types !== '') {
+                url += `&types=${selected_types}`
+            }
+        });
 
+        url += checkbox_url_param('#garage', 'garage')
+        url += checkbox_url_param('#new_house', 'elevator')
+        url += checkbox_url_param('#extra_apart', 'extra_apartment')
+        url += checkbox_url_param('#special_eterance', 'new_building')
+        url += checkbox_url_param('#lift', 'entrance')
+
+
+
+
+
+        return url
     }
     $('#submit_button').on('click', function(e) {
         const url = url_builder();
