@@ -1,29 +1,56 @@
 from django.http import JsonResponse
+from django.contrib.humanize.templatetags.humanize import intcomma, date
 from django.shortcuts import render, get_object_or_404
 from house.models import *
+
 from profiles.models import User
 
 
 def index(request):
     p = HouseInfo.objects.all()
-    if 'search_filter' in request.GET:
-        search_filter = request.GET['search_filter']
+    if 'ajax' in request.GET:
+        room_list = [x.rooms for x in HouseInfo.objects.all()]
+        if 'rooms' in request.GET:
+            room_list = request.GET.getlist('rooms')
+
+        p_code_list = [x.id for x in PostalCodes.objects.all()]
+        if 'p_code' in request.GET:
+            p_code_list = request.GET.getlist('p_code')
+
+
+
+        print(p_code_list)
+
+
+        db_houses = HouseInfo.objects.filter(rooms__in=room_list, house__p_code_id__in=p_code_list)
         houses = [{
-            'type': x.type,
+            'img_src': x.house.houseimage_set.first().image,
+            'address': f"{x.house.address} {x.house.street_nr}",
+            'p_code': str(x.house.p_code),
+            'price': intcomma(x.house.price),
+            'desc': x.description,
+            'type': x.type.type,
+            'rooms': x.rooms,
+            'size': x.size,
+            'sellingdate': x.house.sellingdate,
+
             #Þarf að fá upplýsingar um bæði houseInfo og house.. því ég leitae eftir mismundani upplýsingum.
             #for x in House.objects.filter(room=search_filter)
-        } for x in HouseInfo.objects.filter(type=search_filter)]
+        } for x in db_houses]
+
+
         return JsonResponse({'data': houses})
-        #Þarf að laga hvað er í gangi herna
     context = {
         'houses': House.objects.all(),
         'house_info': HouseInfo.objects.all(),
         'types': HouseType.objects.all(),
         'towns': PostalCodes.objects.all(),
-        'postal_codes': request.POST.getlist('postal_codes'),
-        'lyfta': request.POST.get('lyfta'),
-        'rooms': request.POST.get('rooms')
+        'rooms': []
         }
+    for i in context['house_info']:
+        context['rooms'].append(i.rooms)
+
+    context['rooms'] = sorted(set(context['rooms']))
 
     print(str(p[0].id) in request.POST.getlist('postal_codes'))
     print("req", request)
@@ -31,10 +58,9 @@ def index(request):
     print("post", request.POST.get('types'))
     print("post", request.POST.getlist('postal_codes'))
 
-    print("get", request.GET)
-    print("body", request.body)
 
     return render(request, 'house/index.html', context)
+
 
 
 def get_house_by_id(request, id):
