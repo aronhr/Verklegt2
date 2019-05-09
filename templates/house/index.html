@@ -24,7 +24,7 @@
                         </select>
                     </div>
                     <div class="input-field col s12">
-                        <select id="rooms" name="rooms">
+                        <select id="rooms" name="rooms" multiple>
                             <option value="" disabled selected>Herbergi</option>
                             {% for i in rooms %}
                                 <option value="{{ i }}">{{ i }}</option>
@@ -36,6 +36,7 @@
                     <div class="left_boxes">
                         <p>
                             <label>
+                                
                                 <input name="garage" type="checkbox" />
                                 <span>Bílskúr</span>
                             </label>

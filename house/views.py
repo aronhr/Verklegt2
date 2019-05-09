@@ -18,9 +18,6 @@ def index(request):
 
 
 
-        print(p_code_list)
-
-
         db_houses = HouseInfo.objects.filter(rooms__in=room_list, house__p_code_id__in=p_code_list)
         houses = [{
             'img_src': x.house.houseimage_set.first().image,
