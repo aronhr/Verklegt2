@@ -16,10 +16,7 @@ def index(request):
         if 'p_code' in request.GET:
             p_code_list = request.GET.getlist('p_code')
 
-
-
-        print(p_code_list)
-
+        
 
         db_houses = HouseInfo.objects.filter(rooms__in=room_list, house__p_code_id__in=p_code_list)
         houses = [{

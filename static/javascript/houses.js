@@ -1,20 +1,21 @@
 $(document).ready(function() {
     const url_builder = () =>{
         let url = '/?ajax'
-        const selected_rooms = $('#rooms option:selected')
+        const selected_rooms = $('#rooms option:selected');
         $.each(selected_rooms,(ix,el) => {
-            url += `&rooms=${$(el).val()}`
-        })
+            const selected_rooms = $(el).val()
+            if (selected_rooms !== ''){
+                url += `&rooms=${selected_rooms}`
+            }
+        });
 
         const selected_postal = $('#postal_codes option:selected')
         $.each(selected_postal,(ix,el) => {
-            const p_code = $(el).val()
+            const p_code = $(el).val();
             if(p_code !== ''){
                 url += `&p_code=${p_code}`
             }
-
-        })
-
+        });
 
         return url
 
