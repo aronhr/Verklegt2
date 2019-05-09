@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <h1>Register</h1>
-            <form class="col s12 m6 l6" method="POST">
+            <form class="col s12 m12 l8" method="POST">
                 {% csrf_token %}
                 {% for element in form %}
                     <div class="row">
@@ -17,9 +17,9 @@
                         </div>
                     </div>
                 {% endfor %}
-                <button type="submit" class="btn blue darken-4">Sign up</button>
+                <button type="submit" class="btn blue darken-4">Nýská</button>
             </form>
         </div>
-        <a href="{% url 'login-index' %}">login</a>
+        <a href="{% url 'login-index' %}"><button class="btn">Núþegar með aðgang?</button></a>
     </div>
 {% endblock %}
