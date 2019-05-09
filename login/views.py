@@ -3,8 +3,6 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from login.forms.reg_form import SignUpForm
 
-# Create your views here.
-
 
 def index(request):
     return render(request, 'login/index.html', {
