@@ -1,6 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ forgot }}</h1>
-    <a href="{% url 'login-index' %}">login</a>
+    <div class="container">
+        <div class="row">
+            <h1>Gleymt lykilorð</h1>
+            <form class="col s12 m12 l8" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="email" class="text-input" id="id_forgot" required>
+                        <label for="id_forgot">Email</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn blue darken-4" onclick="M.toast({html: 'I am a toast'})">Senda</button>
+            </form>
+        </div>
+        <a href="{% url 'login-index' %}"><button class="btn">Innskráning</button></a>
+        <a href="{% url 'register-index' %}"><button class="btn">Ný skráning</button></a>
+    </div>
 {% endblock %}

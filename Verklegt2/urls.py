@@ -28,4 +28,4 @@ urlpatterns = [
     path('register/', views.register, name="register-index"),
     path('forgot/', views.forgot, name="forgot-index"),
     path('admin/', admin.site.urls),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

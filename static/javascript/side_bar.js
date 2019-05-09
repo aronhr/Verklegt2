@@ -1,7 +1,6 @@
 $(document).ready(function(){
     $('select').formSelect();
 
-
     console.log("virkaur?")
     var slider = document.getElementById('test-slider');
     noUiSlider.create(slider, {
@@ -18,3 +17,10 @@ $(document).ready(function(){
         })
     });
 });
+$(document).ready(function(){
+    $('.carousel').carousel().next();
+  });
+
+$(document).ready(function(){
+    $('.carousel').carousel();
+  });

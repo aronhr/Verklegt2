@@ -29,7 +29,6 @@ def index(request):
             p_code_list = request.GET.getlist('p_code')
 
 
-
         garage_list = true_or_false('garage', request)
         lift_list = true_or_false('elevator', request)
         extra_apart_list = true_or_false('extra_apartment', request)
@@ -72,8 +71,6 @@ def index(request):
             })
 
 
-
-
         return JsonResponse({'data': houses})
     context = {
         'houses': House.objects.all(),
@@ -81,7 +78,7 @@ def index(request):
         'types': HouseType.objects.all(),
         'towns': PostalCodes.objects.all(),
         'rooms': []
-        }
+    }
     for i in context['house_info']:
         context['rooms'].append(i.rooms)
 
@@ -96,7 +93,6 @@ def index(request):
     print("post", request.POST.getlist('postal_codes'))
 
     return render(request, 'house/index.html', context)
-
 
 
 def get_house_by_id(request, id):

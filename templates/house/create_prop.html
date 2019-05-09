@@ -1,10 +1,48 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
     <form class="form from-horizontal" action="{% url 'profile-sell-property' %}" method="post">
         {% csrf_token %}
-        {{ form }}
+        {{ houseForm }}
+        {{ houseInfo }}
+        <div>
+            <p>
+              <label>
+                <input type="checkbox" value="garage" />
+                <span>{{ houseInfo.garage}}</span>Bílskúr
+              </label>
+            </p>
+            <p>
+              <label>
+                <input type="checkbox" value="ex-apartment" />
+                <span>{{ houseInfo.extra_apartment}}</span>Auka íbúð
+              </label>
+            </p>
+            <p>
+              <label>
+                <input type="checkbox" value="elevator" />
+                <span>{{ houseInfo.elevator}}</span>Lyfta
+              </label>
+            </p>
+            <p>
+              <label>
+                <input type="checkbox" value="entrance" />
+                <span>{{ houseInfo.entrance}}</span>Inngagnur
+              </label>
+            </p>
+        </div>
+        <div class="input-field col s12">
+            <label for="type_choice">
+                <select id="type_choice" name="types">
+                    <option value="" disabled selected>Týpa</option>
+                    {% for type in all_h_type %}
+                        <option>{{ type }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
         <input type="submit" value="Create">
     </form>
-
+<script src="{% static 'javascript/side_bar.js' %}"></script>
 {% endblock %}
