@@ -9,7 +9,27 @@
         <img width="200" src="{{ image }}" alt="{{ house.address }}">
     {% endfor %}
 
-    <div class="row">
+
+    <style>
+    #InfoAboutHouse{
+        width: 80%;
+    }
+    #PracticalInfo{
+        width: 80%;
+    }
+    #PhotoOfSeller{
+        width: 80%;
+        height:80%;
+    }
+    #BoxWithInfo{
+        width: 80%;
+        height:80%;
+    }
+    EmailAndNumber{
+        font-size: 0.6;
+    }
+    </style>
+    <div class="row" id="PracticalInfo">
       <div class="col s12"></div>
       <div class="col s6">
 
@@ -17,14 +37,14 @@
         <tbody>
           <tr>
             <th>Herbergi</th>
-            <td>{{ house.houseinfo_set.first.rooms }}</td>
+            <td class="right-align">{{ house.houseinfo_set.first.rooms }}</td>
           </tr>
           <tr>
               <th>Fasteignamat</th>
-            <td>{{ house.price|intcomma }}</td>
+            <td class="right-align" >{{ house.price|intcomma }}</td>
               <tr>
               <th>Byggt</th>
-            <td>{{ house.houseinfo_set.first.buildyear }}</td>
+            <td class="right-align">{{ house.houseinfo_set.first.buildyear }}</td>
           </tr>
         </tbody>
       </table>
@@ -35,11 +55,11 @@
         <tbody>
           <tr>
             <th>Fermetrar</th>
-            <td>{{ house.houseinfo_set.first.size|intcomma }}</td>
+            <td class="right-align">{{ house.houseinfo_set.first.size|intcomma }}</td>
           </tr>
           <tr>
             <th>Skráð</th>
-            <td>{{ house.sellingdate }}</td>
+            <td class="right-align">{{ house.sellingdate }}</td>
           </tr>
         </tbody>
       </table>
@@ -48,21 +68,22 @@
 
 
 <div>
-<div class="row">
-   <div class="col s11">
-      <h4>Lýsing</h4>
-      <div class="#e0e0e0 grey lighten-2">
+<div class="row" id="InfoAboutHouse">
+   <div class="col s5">
+      <h6>Lýsing</h6>
+      <div class="#e0e0e0 grey lighten-2" id="BoxWithInfo">
          <blockquote>
          {{ house.houseinfo_set.first.description }}
          </blockquote>
       </div>
    </div>
 
-   <div class="col s1">
-      <h5 class="center">{{ house.seller.name }}</h5>
-      <img class="center" width="110" src="{{ house.seller.profile.profile_pic }}" alt="{{ house.seller.profile.name }}">
-      <div class="center"><a href="tel: {{ house.seller.profile.phone }}">{{ house.seller.profile.phone }}</a></div>
-      <div class="center"><a href="mailto: {{ house.seller.email }}">{{ house.seller.email }}</a></div>
+<div class="col s2" class="#e0e0e0 grey lighten-2">
+      <img class="valign-wrapper" id="PhotoOfSeller" src="{{ house.seller.profile_pic }}" alt="{{ house.seller.name }}">
+      <h6 class="valign-wrapper">{{ house.seller.name }}</h6>
+      <div id="PhonenrAndEmail" class="black" class="valign-wrapper" id="EmailAndNumber">
+         <div><a href="tel: {{ house.seller.phone }}">Sími: {{ house.seller.phone }}</a></div>
+         <div><a href="mailto: {{ house.seller.email }}">Netfang: {{ house.seller.email }}</a></div>
    </div>
 </div>
 {% endblock %}
