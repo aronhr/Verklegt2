@@ -4,36 +4,37 @@ from django import forms
 
 
 class PropCreateForm(ModelForm):
-    description = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'input-field'}))
     image = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'input-field'}))
+    address = forms.CharField(required=True, label='Heimilisfang', help_text='Sláðu inn heimilisfang án húsnúmers')
+    street_nr = forms.CharField(required=True, label='Húsnúmer', help_text='Sláðu inn húsnúmer')
+    price = forms.IntegerField(required=True, label='Verð á húsnæði', help_text='Sláðu inn verð á húsnæði')
+    p_code = forms.Select()
+    sellingdate = forms.DateField(required=True, label='Söludagsetning')
 
     class Meta:
         model = House
         exclude = ['id', 'seller', 'on_sale']
-        widgets = {
-            'address': widgets.TextInput(attrs={'class': 'input-field'}),
-            'street_nr': widgets.NumberInput(attrs={'class': 'input-field'}),
-            'price': widgets.NumberInput(attrs={'class': 'input-field'}),
-            'p_code': widgets.Select(attrs={'class': 'input-field'}),
-            'sellingdate': widgets.DateInput(attrs={'class': 'datepicker'}),
-        }
 
 
 class CreateHouseInfo(ModelForm):
+    description = forms.CharField(required=True, label="Lýsing", help_text='Sláðu inn lýsingu', widget=forms.Textarea)
+    rooms = forms.Select()
+    buildyear = forms.IntegerField(required=True, label="Byggingaár", help_text='Sláðu inn ár sem fasteignin var byggð')
 
     class Meta:
         model = HouseInfo
-        exclude = ['id', 'house', 'type']
-        widgets = {
-            'description': widgets.TextInput(attrs={'class': 'input-field'}),
-            'rooms': widgets.NumberInput(attrs={'class': 'input-field'}),
-            'size': widgets.NumberInput(attrs={'class': 'input-field'}),
-            'garage': widgets.CheckboxInput(attrs={'class': 'checkbox'}),
-            'extra_apartment': widgets.CheckboxInput(attrs={'class': 'input-field'}),
-            'elevator': widgets.CheckboxInput(attrs={'class': 'checkbox'}),
-            'entrance': widgets.CheckboxInput(attrs={'class': 'checkbox'}),
-            'buildyear': widgets.NumberInput(attrs={'class': 'input-field'})
-        }
+        exclude = ['id', 'house', 'type', 'garage', 'extra_apartment', 'elevator', 'entrance']
+
+
+class CheckBoxForm(ModelForm):
+    garage = forms.BooleanField(label='Bílskúr')
+    extra_apartment = forms.BooleanField(label='Auka íbúð')
+    elevator = forms.BooleanField(label='Lyfta')
+    entrance = forms.BooleanField(label='Séringangur')
+
+    class Meta:
+        model = HouseInfo
+        exclude = ['id', 'house', 'type', 'description', 'rooms', 'buildyear']
 
 
 class CreateHouseType(ModelForm):

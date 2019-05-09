@@ -1,7 +1,51 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-
-    <h1>{{ sell_property }}</h1>
-
+    <div class="container">
+        <div class="col l4 m6 s12">
+            {% csrf_token %}
+            {% for element in houseForm %}
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ element }}
+                        <label for="{{ element.id }}">{{ element.label_tag }}</label>
+                        {% if element.help_text %}
+                            <span class="helper-text" data-success="right">{{ element.help_text }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+            {% for element in houseInfo %}
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ element }}
+                        <label for="{{ element.id }}">{{ element.label_tag }}</label>
+                        {% if element.help_text %}
+                            <span class="helper-text" data-success="right">{{ element.help_text }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+            {% for element in checkboxForm %}
+                <p>
+                    <label>
+                        {{ element }}
+                        <span>{{ element.label_tag }}</span>
+                    </label>
+                </p>
+            {% endfor %}
+            {% for element in houseType %}
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ element }}
+                        <label for="{{ element.id }}">{{ element.label_tag }}</label>
+                        {% if element.help_text %}
+                            <span class="helper-text" data-success="right">{{ element.help_text }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="{% static 'javascript/side_bar.js' %}"></script>
 {% endblock %}
