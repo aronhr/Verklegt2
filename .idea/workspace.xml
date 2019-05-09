@@ -114,7 +114,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Verklegt2/urls.py">
+        <entry file="file://$PROJECT_DIR$/manage.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="553">
               <caret line="31" selection-start-line="31" selection-end-line="31" />
@@ -181,7 +181,6 @@
         <option value="$PROJECT_DIR$/templates/map/index.html" />
         <option value="$PROJECT_DIR$/profiles/models.py" />
         <option value="$PROJECT_DIR$/house/models.py" />
-        <option value="$PROJECT_DIR$/templates/house/house.html" />
         <option value="$PROJECT_DIR$/profiles/forms/prop_form.py" />
         <option value="$PROJECT_DIR$/Verklegt2/settings.py" />
         <option value="$PROJECT_DIR$/Verklegt2/urls.py" />
@@ -189,6 +188,7 @@
         <option value="$PROJECT_DIR$/templates/profile/index.html" />
         <option value="$PROJECT_DIR$/profiles/forms/profile_form.py" />
         <option value="$PROJECT_DIR$/profiles/views.py" />
+        <option value="$PROJECT_DIR$/templates/house/house.html" />
       </list>
     </option>
   </component>
@@ -227,7 +227,30 @@
             <path>
               <item name="Verklegt2" type="b2602c69:ProjectViewProjectNode" />
               <item name="Verklegt2" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Verklegt2" type="b2602c69:ProjectViewProjectNode" />
               <item name="Verklegt2" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Verklegt2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Verklegt2" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Verklegt2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Verklegt2" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="house" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Verklegt2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Verklegt2" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="map" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -326,7 +349,7 @@
     <option name="totallyTimeSpent" value="68416000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="891" y="23" width="789" height="979" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2553305" />
@@ -460,11 +483,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#84#93#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="300">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
