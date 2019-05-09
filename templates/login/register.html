@@ -1,12 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="row">
-        <form class="col s12 m6 l6" method="POST">
-            {% csrf_token %}
-            {{ form }}
-            <button type="submit">Sign up</button>
-        </form>
+    <div class="container">
+        <div class="row">
+            <h1>Register</h1>
+            <form class="col s12 m6 l6" method="POST">
+                {% csrf_token %}
+                {% for element in form %}
+                    <div class="row">
+                        <div class="input-field col s12">
+                            {{ element }}
+                            <label for="{{ element.id }}">{{ element.label_tag }}</label>
+                            {% if element.help_text %}
+                                <span class="helper-text" data-success="right">{{ element.help_text }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn blue darken-4">Sign up</button>
+            </form>
+        </div>
+        <a href="{% url 'login-index' %}">login</a>
     </div>
-    <a href="{% url 'login-index' %}">login</a>
 {% endblock %}
