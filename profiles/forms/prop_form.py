@@ -28,9 +28,19 @@ class CreateHouseInfo(ModelForm):
             'description': widgets.TextInput(attrs={'class': 'input-field'}),
             'rooms': widgets.NumberInput(attrs={'class': 'input-field'}),
             'size': widgets.NumberInput(attrs={'class': 'input-field'}),
-            'garage': widgets.CheckboxInput(attrs={'class': 'input-field'}),
+            'garage': widgets.CheckboxInput(attrs={'class': 'checkbox'}),
             'extra_apartment': widgets.CheckboxInput(attrs={'class': 'input-field'}),
-            'elevator': widgets.CheckboxInput(attrs={'class': 'input-field'}),
-            'entrance': widgets.CheckboxInput(attrs={'class': 'input-field'}),
+            'elevator': widgets.CheckboxInput(attrs={'class': 'checkbox'}),
+            'entrance': widgets.CheckboxInput(attrs={'class': 'checkbox'}),
             'buildyear': widgets.NumberInput(attrs={'class': 'input-field'})
+        }
+
+
+class CreateHouseType(ModelForm):
+
+    class Meta:
+        model = HouseType
+        exclude = ['id']
+        widgets = {
+            'type': widgets.Select(attrs={'class': 'input-field'})
         }

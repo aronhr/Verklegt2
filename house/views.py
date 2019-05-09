@@ -16,8 +16,6 @@ def index(request):
         if 'p_code' in request.GET:
             p_code_list = request.GET.getlist('p_code')
 
-
-
         db_houses = HouseInfo.objects.filter(rooms__in=room_list, house__p_code_id__in=p_code_list)
         houses = [{
             'img_src': x.house.houseimage_set.first().image,
@@ -30,10 +28,9 @@ def index(request):
             'size': x.size,
             'sellingdate': x.house.sellingdate,
 
-            #Þarf að fá upplýsingar um bæði houseInfo og house.. því ég leitae eftir mismundani upplýsingum.
-            #for x in House.objects.filter(room=search_filter)
+            # Þarf að fá upplýsingar um bæði houseInfo og house.. því ég leitae eftir mismundani upplýsingum.
+            # for x in House.objects.filter(room=search_filter)
         } for x in db_houses]
-
 
         return JsonResponse({'data': houses})
     context = {
@@ -42,7 +39,7 @@ def index(request):
         'types': HouseType.objects.all(),
         'towns': PostalCodes.objects.all(),
         'rooms': []
-        }
+    }
     for i in context['house_info']:
         context['rooms'].append(i.rooms)
 
@@ -55,7 +52,6 @@ def index(request):
     print("post", request.POST.getlist('postal_codes'))
 
     return render(request, 'house/index.html', context)
-
 
 
 def get_house_by_id(request, id):
