@@ -37,18 +37,24 @@ def index(request):
 def sell_property(request):
     if request.method == 'POST':
         form = PropCreateForm(data=request.POST)
+        info = CreateHouseInfo(data=request.POST)
         if form.is_valid():
             house = form.save(commit=False)
+            house_info = info.save(commit=False)
             house.seller = request.user
             house.on_sale = False
-            house.save()
+            house_info.house = house.id
             house_image = HouseImage(image=request.POST['image'], house=house)
+            house.save()
+            house_info.save()
             house_image.save()
             return redirect('house-index')
     else:
         form = PropCreateForm()
+        info = CreateHouseInfo()
     return render(request, 'house/create_prop.html', {
-        'form': form
+        'houseForm': form,
+        'houseInfo': info
     })
 
 

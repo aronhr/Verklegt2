@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
     <form class="form from-horizontal" action="{% url 'profile-sell-property' %}" method="post">
         {% csrf_token %}
-        {{ form }}
+        {{ houseForm }}
+        {{ houseInfo }}
         <input type="submit" value="Create">
     </form>
-
+<script src="{% static 'javascript/side_bar.js' %}"></script>
 {% endblock %}
