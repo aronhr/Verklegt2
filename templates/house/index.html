@@ -6,13 +6,15 @@
             <div class="card">
                 <div class="dropdowns">
                     <div class="input-field col s12">
-                        <select id="type_choice" name="types" multiple>
+
+                        <select id="types" name="types" multiple>
                             <option value="" disabled selected>Týpa</option>
                             {% for type in types %}
-                                <option>{{ type }}</option>
+                                <option value="{{ type.id }}">{{ type }}</option>
                             {% endfor %}
                         </select>
                     </div>
+
                     <div class="input-field col s12">
                         <select id="postal_codes" name="postal_codes" multiple>
                             <option value="" disabled selected>Póstnúmer</option>
@@ -23,6 +25,7 @@
                             </optgroup>
                         </select>
                     </div>
+
                     <div class="input-field col s12">
                         <select id="rooms" name="rooms" multiple>
                             <option value="" disabled selected>Herbergi</option>
@@ -32,33 +35,44 @@
                         </select>
                     </div>
                 </div>
+
                 <div class="check_boxes">
                     <div class="left_boxes">
                         <p>
                             <label>
-                                
-                                <input name="garage" type="checkbox" />
+                                <input id="garage" name="garage" type="checkbox" />
                                 <span>Bílskúr</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input name="new_house" type="checkbox" />
+                                <input id="new_house" name="garage" type="checkbox" />
                                 <span>Nýtt hús</span>
                             </label>
-                        </p><p>
-                        <label>
-                            <input name="entrance" type="checkbox" />
-                            <span>Sér inngangar</span>
-                        </label>
-                    </p>
+                        </p>
                         <p>
                             <label>
-                                <input name="lift" type="checkbox"/>
+                                <input id="extra_apart" type="checkbox"/>
+                                <span>Auka húsnæði</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input id="special_eterance" type="checkbox" />
+                                <span>Sér inngangur</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input id="lift" type="checkbox" />
                                 <span>Lyfta</span>
                             </label>
                         </p>
+
                     </div>
+                </div>
+                <div id="test-slider">sliderinn er hernea
+
                 </div>
 
                 <button id="submit_button" class="btn waves-effect waves-light" type="submit" name="action">Submit
