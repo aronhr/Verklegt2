@@ -1,6 +1,6 @@
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
-from login.forms.forms import SignUpForm
+from login.forms.reg_form import SignUpForm
 
 # Create your views here.
 
@@ -23,7 +23,7 @@ def register(request):
             return redirect('login-index')
     else:
         form = SignUpForm()
-    return render(request, 'login/register.html', {'forms': form})
+    return render(request, 'login/register.html', {'form': form})
 
 
 def forgot(request):
