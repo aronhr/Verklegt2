@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <form class="form from-horizontal" action="{% url 'profile-sell-property' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Create">
+    </form>
+
+{% endblock %}

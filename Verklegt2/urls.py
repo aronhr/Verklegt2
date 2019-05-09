@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from login import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', include('house.urls'), name="index-logo"),
@@ -26,4 +28,4 @@ urlpatterns = [
     path('register/', views.register, name="register-index"),
     path('forgot/', views.forgot, name="forgot-index"),
     path('admin/', admin.site.urls),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

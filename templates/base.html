@@ -8,7 +8,7 @@
     <title>{% if house.address %} {{ house.address }} {{ house.street_nr }} {% else %} Fasteignir {% endif %}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
@@ -19,7 +19,12 @@
         <li><a href="{% url 'profile-sell-property' %}">Selja fasteign</a></li>
         <li><a href="{% url 'map-index' %}">Kort</a></li>
         <li><a href="{% url 'profile-wishList' %}">Óskalisti</a></li>
-        <li><a href="{% url 'profile-index' %}">Innskáning</a></li>
+          {% if user.is_authenticated %}
+              <li><a href="{% url 'profile-index' %}">Profíll</a></li>
+              <li><a href="{% url 'logout' %}">Útskráning</a></li>
+          {% else %}
+              <li><a href="{% url 'login-index' %}">Innskráning</a></li>
+          {% endif %}
       </ul>
   </nav>
 <main>

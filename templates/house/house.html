@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% block content %}
-<h1>{{ house.address }} {{ house.street_nr }}, {{ house.p_code }}</h1>
+    <h1>{{ house.address }} {{ house.street_nr }}, {{ house.p_code }}</h1>
     <hr>
     <img width="900" src="{{ house.houseimage_set.first.image }}" alt="{{ house.address }}">
     <br>
@@ -9,7 +9,27 @@
         <img width="200" src="{{ image }}" alt="{{ house.address }}">
     {% endfor %}
 
-    <div class="row">
+
+    <style>
+    #InfoAboutHouse{
+        width: 80%;
+    }
+    #PracticalInfo{
+        width: 80%;
+    }
+    #PhotoOfSeller{
+        width: 80%;
+        height:80%;
+    }
+    #BoxWithInfo{
+        width: 80%;
+        height:80%;
+    }
+    EmailAndNumber{
+        font-size: 0.6;
+    }
+    </style>
+    <div class="row" id="PracticalInfo">
       <div class="col s12"></div>
       <div class="col s6">
 
@@ -17,14 +37,14 @@
         <tbody>
           <tr>
             <th>Herbergi</th>
-            <td>{{ house.houseinfo_set.first.rooms }}</td>
+            <td class="right-align">{{ house.houseinfo_set.first.rooms }}</td>
           </tr>
           <tr>
               <th>Fasteignamat</th>
-            <td>{{ house.price|intcomma }}</td>
+            <td class="right-align" >{{ house.price|intcomma }}</td>
               <tr>
               <th>Byggt</th>
-            <td>{{ house.houseinfo_set.first.buildyear }}</td>
+            <td class="right-align">{{ house.houseinfo_set.first.buildyear }}</td>
           </tr>
         </tbody>
       </table>
@@ -35,24 +55,36 @@
         <tbody>
           <tr>
             <th>Fermetrar</th>
-            <td>{{ house.houseinfo_set.first.size|intcomma }}</td>
+            <td class="right-align">{{ house.houseinfo_set.first.size|intcomma }}</td>
           </tr>
           <tr>
             <th>Skráð</th>
-            <td>{{ house.sellingdate }}</td>
+            <td class="right-align">{{ house.sellingdate }}</td>
           </tr>
         </tbody>
       </table>
       </div>
     </div>
-    <h3>Lýsing</h3>
-    <blockquote>
-        {{ house.houseinfo_set.first.description }}
-    </blockquote>
-    <h1>Name: {{ house.seller.name }}</h1>
-    <img width="200" src="{{ house.seller.profile_pic }}" alt="{{ house.seller.name }}">
-    <p><a href="tel: {{ house.seller.phone }}">{{ house.seller.phone }}</a></p>
-    <p><a href="mailto: {{ house.seller.email }}">{{ house.seller.email }}</a></p>
 
+
+<div>
+<div class="row" id="InfoAboutHouse">
+   <div class="col s5">
+      <h6>Lýsing</h6>
+      <div class="#e0e0e0 grey lighten-2" id="BoxWithInfo">
+         <blockquote>
+         {{ house.houseinfo_set.first.description }}
+         </blockquote>
+      </div>
+   </div>
+
+<div class="col s2" class="#e0e0e0 grey lighten-2">
+      <img class="valign-wrapper" id="PhotoOfSeller" src="{{ house.seller.profile_pic }}" alt="{{ house.seller.name }}">
+      <h6 class="valign-wrapper">{{ house.seller.name }}</h6>
+      <div id="PhonenrAndEmail" class="black" class="valign-wrapper" id="EmailAndNumber">
+         <div><a href="tel: {{ house.seller.phone }}">Sími: {{ house.seller.phone }}</a></div>
+         <div><a href="mailto: {{ house.seller.email }}">Netfang: {{ house.seller.email }}</a></div>
+   </div>
+</div>
 {% endblock %}
 

@@ -1,51 +1,52 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="profile.css" />
-    <br>
     <div class="row">
-      <div class="col s6">
-        <img src="" alt="Profile photo">
-          <br><br>
-          <a class="waves-effect waves-light btn">Leitarsaga</a>
-          <a class="waves-effect waves-light btn">Mínar fasteignir</a>
-      </div>
-      <div class="col s6">
-          <form action="/submitEval.php" target="_blank" method="POST">
-    <fieldset style="width:450px">
-        <legend>Persónupplýsingar</legend>
-        <label for="name">Nafn:</label>
-        <input type="text" id="name" name="Nafn" value="Jón Jónsson"><br>
-        <label for="username">Notendanafn:</label>
-        <input type="text" id="username" name="Notendanafn" value="jjonsson"><br>
-        <label for="mail">Netfang:</label>
-        <input type="text" id="mail" name="Netfang" value="johnny@email.net"><br>
-        <label for="number">Símanúmer:</label>
-        <input type="text" id="number" name="Símanúmer" value="581 2345"><br>
-        <label for="password">Lykilorð:</label>
-        <input type="text" id="password" name="Lykilorð" value="********" ><br>
-        <input type="submit" value="Breyta">
-    </fieldset>
-    <fieldset style="width:450px">
-        <legend>Reikningsupplýsingar</legend>
-        <label for="kennitala">Kennitala:</label>
-        <input type="text" id="kennitala" name="Kennitala" value="230458-6969"><br>
-        <label for="bank">Bankanúmer:</label>
-        <input type="text" id="bank" name="Bankanúmer" value="0536-26-230458"><br>
-        <input type="submit" value="Breyta">
-    </fieldset>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="col l4 m6 s12">
+                <div class="container">
+                    <h4 class="center">{{ user.first_name }} {{ user.last_name }}</h4>
+                    <img  class="profile-img" src="{{ profile.profile_pic }}" alt="{{ user.first_name }}">
+                    <div class="file-field input-field">
+                        <div class="btn blue darken-4">
+                            <span>Breyta forsíðumynd</span>
+                            <input type="file" name="myfile">
 
-</form>
-      </div>
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col l4 m6 s12">
+                <h4 class="center">Breyta upplýsingum</h4>
+                {% csrf_token %}
+                {% for element in userform %}
+                    <div class="row">
+                        <div class="input-field col s12">
+                            {{ element }}
+                            <label for="{{ element.id }}">{{ element.label_tag }}</label>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% for element in form %}
+                    <div class="row">
+                        <div class="input-field col s12">
+                            {{ element }}
+                            <label for="{{ element.id }}">{{ element.label_tag }}</label>
+                        </div>
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn green darken-3">Breyta</button>
+            </form>
+        </div>
+        <div class="col l4 m6 s12">
+            <div class="container">
+                <a href="{% url 'profile-history' %}"><button class="row col l12 m12 s12 btn blue darken-4">Leitarsaga</button></a>
+                <a href="{% url 'profile-myProps' %}"><button class="row col l12 m12 s12  btn blue darken-4">Mínar fasteignir</button></a>
+                <a href="{% url 'profile-wishList' %}"><button class="row col l12 m12 s12  btn blue darken-4">Óskalisti</button></a>
+            </div>
+        </div>
     </div>
-
-
-
-
-
-
-
-</div>
-
 {% endblock %}

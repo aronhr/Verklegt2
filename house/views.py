@@ -2,7 +2,6 @@ from django.http import JsonResponse
 from django.contrib.humanize.templatetags.humanize import intcomma, date
 from django.shortcuts import render, get_object_or_404
 from house.models import *
-
 from profiles.models import User
 
 
@@ -57,7 +56,6 @@ def index(request):
     print("rom", request.POST.get('rooms'))
     print("post", request.POST.get('types'))
     print("post", request.POST.getlist('postal_codes'))
-
 
     return render(request, 'house/index.html', context)
 
