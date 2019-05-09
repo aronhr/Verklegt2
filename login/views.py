@@ -1,3 +1,4 @@
+from profiles.models import Profile
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from login.forms.reg_form import SignUpForm
@@ -19,6 +20,8 @@ def register(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
+            p = Profile(dob='1970-01-01', user=user)
+            p.save()
             login(request, user)
             return redirect('login-index')
     else:
@@ -27,6 +30,10 @@ def register(request):
 
 
 def forgot(request):
+    if request.method == 'POST':
+        data = 'Tölvupóstur sentur'
+    else:
+        data = ''
     return render(request, 'login/forgot.html', {
-        'forgot': 'forgotpage'
+        'forgot': data
     })
