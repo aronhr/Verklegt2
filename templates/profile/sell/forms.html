@@ -1,0 +1,21 @@
+{% load checkboxtag %}
+{% for element in form %}
+    {% if element|is_checkbox %}
+        <p>
+            <label>
+                {{ element }}
+                <span>{{ element.label_tag }}</span>
+            </label>
+        </p>
+    {% else %}
+        <div class="row">
+            <div class="input-field col s12">
+                {{ element }}
+                <label for="{{ element.id }}">{{ element.label_tag }}</label>
+                {% if element.help_text %}
+                    <span class="helper-text" data-success="right">{{ element.help_text }}</span>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}

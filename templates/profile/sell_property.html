@@ -3,49 +3,45 @@
 {% block content %}
     <div class="container">
         <div class="col l4 m6 s12">
-            {% csrf_token %}
-            {% for element in houseForm %}
-                <div class="row">
-                    <div class="input-field col s12">
-                        {{ element }}
-                        <label for="{{ element.id }}">{{ element.label_tag }}</label>
-                        {% if element.help_text %}
-                            <span class="helper-text" data-success="right">{{ element.help_text }}</span>
-                        {% endif %}
+            <div class="card-tabs">
+                <ul class="tabs tabs-fixed-width">
+                    <li class="tab"><a class="active" href="#s1">Almennar upplýsingar</a></li>
+                    <li class="tab"><a href="#s2">Nánari upplýsingar</a></li>
+                    <li class="tab"><a href="#s3">Myndir</a></li>
+                </ul>
+            </div>
+            <div class="card-content grey lighten-4">
+                <form method="POST" enctype=multipart/form-data>
+                    {% csrf_token %}
+                    <div id="s1">
+                        <h2>Almennar upplýsingar</h2>
+                        {% include 'profile/sell/forms.html' with form=houseForm %}
                     </div>
-                </div>
-            {% endfor %}
-            {% for element in houseInfo %}
-                <div class="row">
-                    <div class="input-field col s12">
-                        {{ element }}
-                        <label for="{{ element.id }}">{{ element.label_tag }}</label>
-                        {% if element.help_text %}
-                            <span class="helper-text" data-success="right">{{ element.help_text }}</span>
-                        {% endif %}
+                    <div id="s2">
+                        <h2>Nánari upplýsingar</h2>
+                        {% include 'profile/sell/forms.html' with form=houseInfo %}
                     </div>
-                </div>
-            {% endfor %}
-            {% for element in checkboxForm %}
-                <p>
-                    <label>
-                        {{ element }}
-                        <span>{{ element.label_tag }}</span>
-                    </label>
-                </p>
-            {% endfor %}
-            {% for element in houseType %}
-                <div class="row">
-                    <div class="input-field col s12">
-                        {{ element }}
-                        <label for="{{ element.id }}">{{ element.label_tag }}</label>
-                        {% if element.help_text %}
-                            <span class="helper-text" data-success="right">{{ element.help_text }}</span>
-                        {% endif %}
+                    <div id="s3">
+                        <h2>Myndir</h2>
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span>File</span>
+                                <input type="file" name="myfile" multiple>
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn blue darken-d right">Selja</button>
                     </div>
-                </div>
-            {% endfor %}
+                </form>
+            </div>
         </div>
     </div>
-    <script src="{% static 'javascript/side_bar.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            $('select').formSelect();
+            $('.tabs').tabs();
+        });
+    </script>
 {% endblock %}

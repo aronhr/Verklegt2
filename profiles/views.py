@@ -34,40 +34,32 @@ def index(request):
 
 
 @login_required
-# TODO: Fix why this thing is not posting to the data base, also make code sexy
 def sell_property(request):
-    all_h_types = [x for x in HouseType.objects.all()]
     if request.method == 'POST':
         form = PropCreateForm(data=request.POST)
         info = CreateHouseInfo(data=request.POST)
-        h_type = CreateHouseType(data=request.POST)
-        check = CheckBoxForm(data=request.POST)
-        if form.is_valid() and info.is_valid() and h_type.is_valid():
+        if form.is_valid() and info.is_valid():
             house = form.save(commit=False)
             house_info = info.save(commit=False)
-            house_type = h_type.save(commit=False)
-            house_check = check.save(commit=False)
             house.seller = request.user
-            house.on_sale = False
-            house_info.house = house.id
-            house_info.type = house_type.type
-            house_image = HouseImage(image=request.POST['image'], house=house)
             house.save()
+            house_info.house = house
             house_info.save()
-            house_image.save()
-            house_type.save()
-            house_check.save()
-            return redirect('house-index')
+            fs = FileSystemStorage()
+            for key in request.FILES.keys():
+                for formfile in request.FILES.getlist(key):
+                    house_image = HouseImage()
+                    filename = fs.save(formfile.name, formfile)
+                    house_image.image = fs.url(filename)
+                    house_image.house = house
+                    house_image.save()
+            return redirect('profile-sell-property')
     else:
         form = PropCreateForm()
         info = CreateHouseInfo()
-        h_type = CreateHouseType()
-        check = CheckBoxForm()
     return render(request, 'profile/sell_property.html', {
         'houseForm': form,
         'houseInfo': info,
-        'houseType': h_type,
-        'checkboxForm': check
     })
 
 
