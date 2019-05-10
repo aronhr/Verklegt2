@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <form method="post" enctype=multipart/form-data>
+    <form method="POST" enctype=multipart/form-data novalidate>
         <div class="container">
-            <div class="col l4 m6 s12">
+            <div class="col l4 m6 s12 ">
                 <div class="card-tabs">
                     <ul class="tabs tabs-fixed-width">
-                        <li class="tab"><a class="active" href="#s1">Almennar upplýsingar</a></li>
-                        <li class="tab"><a href="#s2">Nánari upplýsingar</a></li>
-                        <li class="tab"><a href="#s3">Myndir</a></li>
+                        <li class="tab"><a id="1" class="active white black-text" href="#s1">Almennar upplýsingar</a></li>
+                        <li class="tab"><a id="2" class="white black-text" href="#s2">Nánari upplýsingar</a></li>
+                        <li class="tab"><a id="3" class="white black-text" href="#s3">Myndir</a></li>
                     </ul>
                 </div>
                 <div class="card-content grey lighten-4">
@@ -16,10 +16,13 @@
                     <div id="s1">
                         <h2>Almennar upplýsingar</h2>
                         {% include 'profile/sell/forms.html' with form=houseForm %}
+                        <h3 class="btn blue darken-4 forward right">Áfram</h3>
                     </div>
                     <div id="s2">
                         <h2>Nánari upplýsingar</h2>
                         {% include 'profile/sell/forms.html' with form=houseInfo %}
+                        <h3 class="btn blue darken-4 back left">Til baka</h3>
+                        <h3 class="btn blue darken-4 forward_2 right">Áfram</h3>
                     </div>
                     <div id="s3">
                         <h2>Myndir</h2>
@@ -32,16 +35,14 @@
                                 <input class="file-path validate" type="text" placeholder="Upload one or more files">
                             </div>
                         </div>
-                        <button type="submit" onsubmit="{% url 'profile-sell-property' %}" class="btn blue darken-d right">Selja</button>
+                            <span class="btn blue darken-4 back_2 left">Til baka</span>
+                        <button type="submit" onsubmit="{% url 'profile-sell-property' %}" class="btn green darken-4 right">Selja</button>
+
                     </div>
                 </div>
             </div>
         </div>
     </form>
-    <script>
-        $(document).ready(function() {
-            $('select').formSelect();
-            $('.tabs').tabs();
-        });
+    <script src="{% static 'javascript/sellProp.js' %}">
     </script>
 {% endblock %}
