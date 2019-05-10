@@ -93,8 +93,9 @@ def get_offer_by_id(request, id):
 
 @login_required
 def myProps(request):
+    props = House.objects.filter(seller=request.user)
     return render(request, 'profile/myProps.html', {
-        'myProps': 'This is my properties'
+        'myProps': props
     })
 
 
