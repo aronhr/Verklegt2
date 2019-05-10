@@ -3,6 +3,7 @@ from django.db import models
 from profiles.models import Profile
 from django.contrib.auth.models import User
 
+
 class PostalCodes(models.Model):
     town = models.CharField(max_length=70)
 
@@ -10,7 +11,6 @@ class PostalCodes(models.Model):
         return f"{self.id} {self.town}"
 
 
-# Create your models here.
 class House(models.Model):
     address = models.CharField(max_length=255)
     street_nr = models.CharField(max_length=10, blank=True)
