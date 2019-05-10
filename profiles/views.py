@@ -131,3 +131,10 @@ def editProps(request):
     return render(request, 'profile/editProps.html', {
         'editProps': 'This is where i edit properties'
     })
+
+
+@login_required
+def delProperty(request, id):
+    house = get_object_or_404(House, pk=id)
+    house.delete()
+    return redirect('house-index')

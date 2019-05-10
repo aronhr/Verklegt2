@@ -19,11 +19,11 @@ class CreateHouseInfo(ModelForm):
     rooms = forms.IntegerField(required=True, label="Herbergi", help_text='Sláðu inn fjölda herbergja')
     buildyear = forms.IntegerField(required=True, label="Byggingaár", help_text='Sláðu inn ár sem fasteignin var byggð')
     size = forms.IntegerField(required=True, label='Stærð', help_text='Sláðu inn stærð í fermetrum')
-    garage = forms.BooleanField(label='Bílskúr')
-    extra_apartment = forms.BooleanField(label='Auka íbúð')
-    elevator = forms.BooleanField(label='Lyfta')
-    entrance = forms.BooleanField(label='Séringangur')
-    new_building = forms.BooleanField(label='Ný Bygging')
+    garage = forms.BooleanField(required=False, label='Bílskúr')
+    extra_apartment = forms.BooleanField(required=False, label='Auka íbúð')
+    elevator = forms.BooleanField(required=False, label='Lyfta')
+    entrance = forms.BooleanField(required=False, label='Séringangur')
+    new_building = forms.BooleanField(required=False, label='Ný Bygging')
 
     class Meta:
         model = HouseInfo

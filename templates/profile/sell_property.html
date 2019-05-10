@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="container">
-        <div class="col l4 m6 s12">
-            <div class="card-tabs">
-                <ul class="tabs tabs-fixed-width">
-                    <li class="tab"><a class="active" href="#s1">Almennar upplýsingar</a></li>
-                    <li class="tab"><a href="#s2">Nánari upplýsingar</a></li>
-                    <li class="tab"><a href="#s3">Myndir</a></li>
-                </ul>
-            </div>
-            <div class="card-content grey lighten-4">
-                <form method="POST" enctype=multipart/form-data>
+    <form method="post" enctype=multipart/form-data>
+        <div class="container">
+            <div class="col l4 m6 s12">
+                <div class="card-tabs">
+                    <ul class="tabs tabs-fixed-width">
+                        <li class="tab"><a class="active" href="#s1">Almennar upplýsingar</a></li>
+                        <li class="tab"><a href="#s2">Nánari upplýsingar</a></li>
+                        <li class="tab"><a href="#s3">Myndir</a></li>
+                    </ul>
+                </div>
+                <div class="card-content grey lighten-4">
                     {% csrf_token %}
                     <div id="s1">
                         <h2>Almennar upplýsingar</h2>
@@ -32,12 +32,12 @@
                                 <input class="file-path validate" type="text" placeholder="Upload one or more files">
                             </div>
                         </div>
-                        <button type="submit" class="btn blue darken-d right">Selja</button>
+                        <button type="submit" onsubmit="{% url 'profile-sell-property' %}" class="btn blue darken-d right">Selja</button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
     <script>
         $(document).ready(function() {
             $('select').formSelect();
