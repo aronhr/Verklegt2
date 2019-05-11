@@ -65,7 +65,7 @@ def sell_property(request):
 
 
 @login_required
-def wishList(request):
+def wish_list(request):
     wish = WishList.objects.filter(user=request.user)
     return render(request, 'profile/wishList.html', {
         'wish': wish
@@ -102,7 +102,7 @@ def get_offer_by_id(request, id):
 
 
 @login_required
-def myProps(request):
+def my_props(request):
     props = House.objects.filter(seller=request.user)
     return render(request, 'profile/myProps.html', {
         'myProps': props
@@ -110,42 +110,42 @@ def myProps(request):
 
 
 @user_passes_test(lambda u: u.is_superuser)
-def reviewPropsSubs(request):
+def review_props_subs(request):
     return render(request, 'profile/reviewPropsSubmission.html', {
         'reviewPropsSubmissions': 'This is where a review properties submissions'
     })
 
 
 @user_passes_test(lambda u: u.is_superuser)
-def delUser(request):
+def remove_user(request):
     return render(request, 'profile/delUser.html', {
         'delUser': 'This is where i delete users'
     })
 
 
 @user_passes_test(lambda u: u.is_superuser)
-def addAdmin(request):
+def add_admin(request):
     return render(request, 'profile/addAdmin.html', {
         'addAdmin': 'This is where a add an admin'
     })
 
 
 @user_passes_test(lambda u: u.is_superuser)
-def removeAdmin(request):
+def remove_admin(request):
     return render(request, 'profile/removeAdmin.html', {
         'removeAdmin': 'This is where a remove an admin'
     })
 
 
 @login_required
-def editProps(request):
+def edit_props(request):
     return render(request, 'profile/editProps.html', {
         'editProps': 'This is where i edit properties'
     })
 
 
 @login_required
-def delProperty(request, id):
+def del_property(request, id):
     house = get_object_or_404(House, pk=id)
     house.delete()
     return redirect('house-index')
