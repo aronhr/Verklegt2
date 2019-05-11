@@ -1,0 +1,9 @@
+<a href="{% url 'profile-history' %}"><button class="row col l12 m12 s12 btn blue darken-4">Leitarsaga</button></a>
+<a href="{% url 'profile-myProps' %}"><button class="row col l12 m12 s12  btn blue darken-4">Mínar fasteignir</button></a>
+<a href="{% url 'profile-wishList' %}"><button class="row col l12 m12 s12  btn blue darken-4">Óskalisti</button></a>
+{% if user.is_superuser %}
+    <a href="{% url 'profile-review-properties-submissions' %}"><button class="row col l12 m12 s12  btn blue darken-4">Óstaðfestar fasteignir</button></a>
+    <a href="{% url 'profile-delete-user' %}"><button class="row col l12 m12 s12  btn blue darken-4">Fjarlægja notenda</button></a>
+    <a href="{% url 'profile-add-admin' %}"><button class="row col l12 m12 s12  btn blue darken-4">Bæta við stjórnenda</button></a>
+    <a href="{% url 'profile-remove-admin' %}"><button class="row col l12 m12 s12  btn blue darken-4">Fjarlægja stjórnenda</button></a>
+{% endif %}

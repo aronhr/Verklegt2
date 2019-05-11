@@ -23,9 +23,7 @@
                 </ul>
             </div>
             <div class="col l4 m4 s12 buttons">
-                <a href="{% url 'profile-history' %}"><button class="row col l12 m12 s12 btn blue darken-4">Leitarsaga</button></a>
-                <a href="{% url 'profile-myProps' %}"><button class="row col l12 m12 s12  btn blue darken-4">Mínar fasteignir</button></a>
-                <a href="{% url 'profile-wishList' %}"><button class="row col l12 m12 s12  btn blue darken-4">Óskalisti</button></a>
+                {% include 'profile/include_templates/profile_buttons.html' %}
             </div>
         </div>
     </div>
