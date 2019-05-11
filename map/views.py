@@ -3,10 +3,9 @@ from house.models import House
 from geopy.geocoders import Nominatim
 
 geolocator = Nominatim(user_agent="my-application")
-location = geolocator.geocode("Daltún 17")
+
 #print(location.address)
 #print((location.latitude, location.longitude))
-
 
 
 # Create your views here.
