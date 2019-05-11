@@ -105,7 +105,9 @@ $(document).ready(function(){
                 </div>
             </div>
         </div>
+        {% if user.is_authenticated or user.is_superuser %}
         <a href="{% url 'profile-delete-property' house.id %}">Delete House</a>
+        {% endif %}
         </div>
     </div>
     </div>

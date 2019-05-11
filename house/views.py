@@ -89,8 +89,9 @@ def index(request):
 
 def get_house_by_id(request, id):
     house = get_object_or_404(House, pk=id)
-    history = History(user=request.user, house=house)
-    history.save()
+    if request.user.is_active:
+        history = History(user=request.user, house=house)
+        history.save()
     return render(request, 'house/house.html', {
         'house': house,
     })
