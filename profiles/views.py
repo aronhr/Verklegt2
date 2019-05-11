@@ -82,8 +82,9 @@ def remove_wish(request, id):
 
 @login_required
 def history(request):
+    history = History.objects.filter(user=request.user)
     return render(request, 'profile/history.html', {
-        'history': 'This is my search history'
+        'history': history
     })
 
 

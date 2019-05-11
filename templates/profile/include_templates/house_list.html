@@ -1,0 +1,32 @@
+{% load humanize %}
+<div class="container">
+    <div class="row">
+        <div class="col l8 m8 s12">
+            <ul class="collection">
+                {% for prop in houses %}
+                    <li class="collection-item avatar">
+                        <a href="/house/{{ prop.house.id }}">
+                            <img src="{{ prop.house.houseimage_set.first.image }}" alt="{{ prop.house.address }} {{ prop.house.street_nr }}" class="circle">
+                            <span class="title">{{ prop.address }} {{ prop.street_nr }}</span>
+                            <p>
+                                {{ prop.house.houseinfo_set.first.description }}
+                                <br>
+                                {{ prop.house.price|intcomma }} kr.
+                                <br>
+                                {{ prop.house.houseinfo_set.first.size|intcomma }} m²
+                            </p>
+                            {% if del == 'True' %}
+                            <a href="{% url 'profile-delete-wish' prop.id %}" class="secondary-content orange-text"><i class="material-icons">grade</i></a>
+                            {% endif %}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col l4 m4 s12">
+            <a href="{% url 'profile-history' %}"><button class="row col l12 m12 s12 btn blue darken-4">Leitarsaga</button></a>
+            <a href="{% url 'profile-myProps' %}"><button class="row col l12 m12 s12  btn blue darken-4">Mínar fasteignir</button></a>
+            <a href="{% url 'profile-wishList' %}"><button class="row col l12 m12 s12  btn blue darken-4">Óskalisti</button></a>
+        </div>
+    </div>
+</div>

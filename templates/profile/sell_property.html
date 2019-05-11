@@ -15,12 +15,12 @@
                     {% csrf_token %}
                     <div id="s1">
                         <h2>Almennar upplýsingar</h2>
-                        {% include 'profile/sell/forms.html' with form=houseForm %}
+                        {% include 'profile/include_templates/forms.html' with form=houseForm %}
                         <h3 class="btn blue darken-4 forward right">Áfram</h3>
                     </div>
                     <div id="s2">
                         <h2>Nánari upplýsingar</h2>
-                        {% include 'profile/sell/forms.html' with form=houseInfo %}
+                        {% include 'profile/include_templates/forms.html' with form=houseInfo %}
                         <h3 class="btn blue darken-4 back left">Til baka</h3>
                         <h3 class="btn blue darken-4 forward_2 right">Áfram</h3>
                     </div>
