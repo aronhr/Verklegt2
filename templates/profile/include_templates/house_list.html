@@ -7,7 +7,7 @@
                     <li class="collection-item avatar">
                         <a href="/house/{{ prop.house.id }}">
                             <img src="{{ prop.house.houseimage_set.first.image }}" alt="{{ prop.house.address }} {{ prop.house.street_nr }}" class="circle">
-                            <span class="title">{{ prop.address }} {{ prop.street_nr }}</span>
+                            <span class="title"><strong>{{ prop.house.address }} {{ prop.house.street_nr }}</strong></span>
                             <p>
                                 {{ prop.house.houseinfo_set.first.description }}
                                 <br>
@@ -23,7 +23,7 @@
                 {% endfor %}
             </ul>
         </div>
-        <div class="col l4 m4 s12">
+        <div class="col l4 m4 s12 buttons">
             <a href="{% url 'profile-history' %}"><button class="row col l12 m12 s12 btn blue darken-4">Leitarsaga</button></a>
             <a href="{% url 'profile-myProps' %}"><button class="row col l12 m12 s12  btn blue darken-4">Mínar fasteignir</button></a>
             <a href="{% url 'profile-wishList' %}"><button class="row col l12 m12 s12  btn blue darken-4">Óskalisti</button></a>
