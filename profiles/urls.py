@@ -14,5 +14,6 @@ urlpatterns = [
     path('addAdmin/', views.addAdmin, name="profile-add-admin"),
     path('removeAdmin/', views.removeAdmin, name="profile-remove-admin"),
     path('editProperties/', views.editProps, name="profile-edit-properties"),
-    path('deleteProperty/<int:id>/', views.delProperty, name="profile-delete-property")
+    path('deleteProperty/<int:id>/', views.delProperty, name="profile-delete-property"),
+    path('deletewish/<int:id>/', views.remove_wish, name="profile-delete-wish")
 ]

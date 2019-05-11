@@ -4,6 +4,7 @@ from profiles.forms.profile_form import ProfileForm, UserForm
 from house.views import *
 from profiles.forms.prop_form import *
 from django.core.files.storage import FileSystemStorage
+from django.contrib.auth.decorators import user_passes_test
 
 
 @login_required
@@ -65,9 +66,18 @@ def sell_property(request):
 
 @login_required
 def wishList(request):
+    wish = WishList.objects.filter(user=request.user)
     return render(request, 'profile/wishList.html', {
-        'wishList': 'This is my wishList'
+        'wish': wish
     })
+
+
+@login_required
+def remove_wish(request, id):
+    wish = get_object_or_404(WishList, pk=id)
+    if wish.user == request.user:
+        wish.delete()
+    return redirect('profile-wishList')
 
 
 @login_required
@@ -99,28 +109,28 @@ def myProps(request):
     })
 
 
-@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def reviewPropsSubs(request):
     return render(request, 'profile/reviewPropsSubmission.html', {
         'reviewPropsSubmissions': 'This is where a review properties submissions'
     })
 
 
-@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def delUser(request):
     return render(request, 'profile/delUser.html', {
         'delUser': 'This is where i delete users'
     })
 
 
-@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def addAdmin(request):
     return render(request, 'profile/addAdmin.html', {
         'addAdmin': 'This is where a add an admin'
     })
 
 
-@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def removeAdmin(request):
     return render(request, 'profile/removeAdmin.html', {
         'removeAdmin': 'This is where a remove an admin'
