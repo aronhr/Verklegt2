@@ -1,21 +1,26 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-from profiles.forms.profile_form import ProfileForm, UserForm
+from profiles.forms.profile_form import ProfileForm, UserForm, BankForm
 from house.views import *
 from profiles.forms.prop_form import *
 from django.core.files.storage import FileSystemStorage
+from django.contrib.auth.decorators import user_passes_test
+from profiles.models import UserBankInfo
 
 
 @login_required
 def index(request):
     profile = Profile.objects.filter(user=request.user).first()
     user = User.objects.filter(id=profile.user.id).first()
+    bank = UserBankInfo.objects.filter(user=request.user).first()
     if request.method == 'POST':
         form = ProfileForm(instance=profile, data=request.POST)
         userform = UserForm(instance=user, data=request.POST)
+        bankfrom = BankForm(instance=bank, data=request.POST)
         if form.is_valid():
             profile = form.save(commit=False)
             user = userform.save(commit=False)
+            bank = bankfrom.save(commit=False)
             if len(request.FILES) != 0:
                 myfile = request.FILES['myfile']
                 fs = FileSystemStorage()
@@ -23,12 +28,15 @@ def index(request):
                 profile.profile_pic = fs.url(filename)
             profile.user = request.user
             user.user = request.user
+            bank.user = request.user
             profile.save()
             user.save()
+            bank.save()
             return redirect('profile-index')
     return render(request, 'profile/index.html', {
         'form': ProfileForm(instance=profile),
         'userform': UserForm(instance=user),
+        'bankform': BankForm(instance=bank),
         'profile': profile
     })
 
@@ -64,16 +72,26 @@ def sell_property(request):
 
 
 @login_required
-def wishList(request):
+def wish_list(request):
+    wish = WishList.objects.filter(user=request.user)
     return render(request, 'profile/wishList.html', {
-        'wishList': 'This is my wishList'
+        'wish': wish
     })
 
 
 @login_required
+def remove_wish(request, id):
+    wish = get_object_or_404(WishList, pk=id)
+    if wish.user == request.user:
+        wish.delete()
+    return redirect('profile-wishList')
+
+
+@login_required
 def history(request):
+    history = History.objects.filter(user=request.user)
     return render(request, 'profile/history.html', {
-        'history': 'This is my search history'
+        'history': history
     })
 
 
@@ -92,50 +110,50 @@ def get_offer_by_id(request, id):
 
 
 @login_required
-def myProps(request):
+def my_props(request):
     props = House.objects.filter(seller=request.user)
     return render(request, 'profile/myProps.html', {
         'myProps': props
     })
 
 
-@login_required
-def reviewPropsSubs(request):
+@user_passes_test(lambda u: u.is_superuser)
+def review_props_subs(request):
     return render(request, 'profile/reviewPropsSubmission.html', {
         'reviewPropsSubmissions': 'This is where a review properties submissions'
     })
 
 
-@login_required
-def delUser(request):
+@user_passes_test(lambda u: u.is_superuser)
+def remove_user(request):
     return render(request, 'profile/delUser.html', {
         'delUser': 'This is where i delete users'
     })
 
 
-@login_required
-def addAdmin(request):
+@user_passes_test(lambda u: u.is_superuser)
+def add_admin(request):
     return render(request, 'profile/addAdmin.html', {
         'addAdmin': 'This is where a add an admin'
     })
 
 
-@login_required
-def removeAdmin(request):
+@user_passes_test(lambda u: u.is_superuser)
+def remove_admin(request):
     return render(request, 'profile/removeAdmin.html', {
         'removeAdmin': 'This is where a remove an admin'
     })
 
 
 @login_required
-def editProps(request):
+def edit_props(request):
     return render(request, 'profile/editProps.html', {
         'editProps': 'This is where i edit properties'
     })
 
 
 @login_required
-def delProperty(request, id):
+def del_property(request, id):
     house = get_object_or_404(House, pk=id)
     house.delete()
     return redirect('house-index')

@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
-
+{% load humanize %}
 {% block content %}
-
-    <h1>{{ wishList }}</h1>
-
+    {% include 'profile/include_templates/house_list.html' with houses=wish del='True' %}
 {% endblock %}
