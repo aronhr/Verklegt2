@@ -1,10 +1,34 @@
 $(document).ready(function() {
+
+    const from_to_param = (name) => {
+        let url = ""
+        const selected_from_price_el = $(`#${name}_from option:selected`)[0];
+        console.log(selected_from_price_el)
+        const selected_from_price = $(selected_from_price_el).val();
+        console.log(selected_from_price)
+        if(selected_from_price !== ""){
+            url += `&${name}_from=${selected_from_price}`
+        }
+
+        const selected_to_price_el = $(`#${name}_to option:selected`)[0];
+        const selected_to_price = $(selected_to_price_el).val();
+        if(selected_to_price !== ""){
+            url += `&${name}_to=${selected_to_price}`
+        }
+
+        return url
+    };
+
+
+
+
     const checkbox_url_param = (selector, name) => {
         const is_selected = $(selector).is(":checked");
         if(is_selected){
             return `&${name}=${true}`
         }
         return ""
+
     }
     const url_builder = () => {
 
@@ -34,15 +58,15 @@ $(document).ready(function() {
             }
         });
 
+
+        url += from_to_param('price')
+
+
         url += checkbox_url_param('#garage', 'garage')
         url += checkbox_url_param('#new_house', 'elevator')
         url += checkbox_url_param('#extra_apart', 'extra_apartment')
         url += checkbox_url_param('#special_eterance', 'new_building')
         url += checkbox_url_param('#lift', 'entrance')
-
-
-        
-
 
 
         return url
@@ -62,29 +86,29 @@ $(document).ready(function() {
                 }
                 var newHtml = resp.data.map(d => {
                     return `
-<section>
-    <div class="col s9 m6 l4">
-      <div class="card">
-        <div class="card-image">
-          <img alt="${ d.address}" src="${ d.img_src }">
-          <span class="card-title">${ d.address}</span>
-        </div>
-        <div class="card-content">
-            <article>
-                <small>${ d.p_code } <span class="right">${ d.price } kr</span></small>
-                <p>Desc: ${ d.desc }</p>
-                <p>Type: ${ d.type }</p>
-                <p>Rooms: ${ d.rooms }</p>
-                <p>Fermetrar: ${ d.size }</p>
-                <small>${ d.sellingdate }</small>
-            </article>
-        </div>
-        <div class="card-action">
-          <a class="black-text" href="/house/${ d.id }">Skoða nánar</a>
-        </div>
-      </div>
-    </div>
-</section>`
+                            <section>
+                                <div class="col s9 m6 l4">
+                                  <div class="card">
+                                    <div class="card-image">
+                                      <img alt="${ d.address}" src="${ d.img_src }">
+                                      <span class="card-title">${ d.address}</span>
+                                    </div>
+                                    <div class="card-content">
+                                        <article>
+                                            <small>${ d.p_code } <span class="right">${ d.price } kr</span></small>
+                                            <p>Desc: ${ d.desc }</p>
+                                            <p>Type: ${ d.type }</p>
+                                            <p>Rooms: ${ d.rooms }</p>
+                                            <p>Fermetrar: ${ d.size }</p>
+                                            <small>${ d.sellingdate }</small>
+                                        </article>
+                                    </div>
+                                    <div class="card-action">
+                                      <a class="black-text" href="/house/${ d.id }">Skoða nánar</a>
+                                    </div>
+                                  </div>
+                                </div>
+                            </section>`
                 });
                 $('.housess').html(newHtml.join(''));
                 $('#type_choice').val('')
