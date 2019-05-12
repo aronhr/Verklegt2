@@ -32,7 +32,7 @@ class HouseInfo(models.Model):
     house = models.ForeignKey(House, on_delete=models.CASCADE)
     description = models.CharField(max_length=999)
     rooms = models.SmallIntegerField()
-    size = models.CharField(max_length=200)
+    size = models.SmallIntegerField()
     type = models.ForeignKey(HouseType, on_delete=models.CASCADE)
     garage = models.BooleanField(default=False)
     extra_apartment = models.BooleanField(default=False)
