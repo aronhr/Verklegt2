@@ -1,3 +1,4 @@
+import sys
 from django.http import JsonResponse
 from django.contrib.humanize.templatetags.humanize import intcomma, date
 from django.shortcuts import render, get_object_or_404
@@ -20,6 +21,8 @@ def index(request):
         if 'rooms' in request.GET:
             room_list = request.GET.getlist('rooms')
 
+        print(request)
+
         type_list = [x.id for x in HouseType.objects.all()]
         if 'types' in request.GET:
             type_list = request.GET.getlist('types')
@@ -28,11 +31,33 @@ def index(request):
         if 'p_code' in request.GET:
             p_code_list = request.GET.getlist('p_code')
 
+
+        price_from = 0
+        if 'price_from' in request.GET:
+            price_from = request.GET.get('price_from')
+
+        print("FROM!!",price_from)
+
+
+        # HUUUUUGE number
+        price_to = sys.maxsize
+
+        if 'price_to' in request.GET:
+            price_to = request.GET.get('price_to')
+
+        print("TO!!!",price_to)
+
         garage_list = true_or_false('garage', request)
         lift_list = true_or_false('elevator', request)
         extra_apart_list = true_or_false('extra_apartment', request)
         new_building_list = true_or_false('new_building', request)
         extra_entrance_list = true_or_false('entrance', request)
+
+        print("YOYOYOOY", HouseInfo.objects.filter(
+            house__price__gte= price_to,
+            house__price__lte = price_from
+        ))
+
 
         db_houses = HouseInfo.objects.filter(
 
@@ -43,7 +68,9 @@ def index(request):
             elevator__in=lift_list,
             new_building__in=new_building_list,
             extra_apartment__in=extra_apart_list,
-            entrance__in=extra_entrance_list
+            entrance__in=extra_entrance_list,
+            house__price__gte=price_from,
+            house__price__lte=price_to
         )
 
         houses = []
