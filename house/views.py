@@ -36,16 +36,19 @@ def index(request):
         if 'price_from' in request.GET:
             price_from = request.GET.get('price_from')
 
-        print("FROM!!",price_from)
 
-
-        # HUUUUUGE number
         price_to = sys.maxsize
-
         if 'price_to' in request.GET:
             price_to = request.GET.get('price_to')
 
-        print("TO!!!",price_to)
+        size_from = 0
+        if 'price_from' in request.GET:
+            price_from = request.GET.get('size_from')
+
+        size_to = sys.maxsize
+        if 'size_to' in request.GET:
+            size_to = request.GET.get('size_to')
+
 
         garage_list = true_or_false('garage', request)
         lift_list = true_or_false('elevator', request)
@@ -70,7 +73,8 @@ def index(request):
             extra_apartment__in=extra_apart_list,
             entrance__in=extra_entrance_list,
             house__price__gte=price_from,
-            house__price__lte=price_to
+            house__price__lte=price_to,
+            
         )
 
         houses = []

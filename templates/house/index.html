@@ -41,31 +41,31 @@
                         <p>
                             <label>
                                 <input id="garage" name="garage" type="checkbox" />
-                                <span>Bílskúr</span>
+                                <span class="black-text">Bílskúr</span>
                             </label>
                         </p>
                         <p>
                             <label>
                                 <input id="new_house" name="garage" type="checkbox" />
-                                <span>Nýtt hús</span>
+                                <span class="black-text">Nýtt hús</span>
                             </label>
                         </p>
                         <p>
                             <label>
                                 <input id="extra_apart" type="checkbox"/>
-                                <span>Auka húsnæði</span>
+                                <span class="black-text">Auka húsnæði</span>
                             </label>
                         </p>
                         <p>
                             <label>
                                 <input id="special_eterance" type="checkbox" />
-                                <span>Sér inngangur</span>
+                                <span class="black-text">Sér inngangur</span>
                             </label>
                         </p>
                         <p>
                             <label>
                                 <input id="lift" type="checkbox" />
-                                <span>Lyfta</span>
+                                <span class="black-text">Lyfta</span>
                             </label>
                         </p>
 
@@ -89,8 +89,8 @@
                         <option value="90000000">90 mkr.</option>
                         <option value="100000000">100 mkr.</option>
                     </select>
-
                 </div>
+
                 <div class="input-field col s6">
                     <select id="price_to" name="rooms">
                         <option value="" disabled selected>Verð til</option>
@@ -109,10 +109,63 @@
                         <option value="90000000">90 mkr.</option>
                         <option value="100000000">100 mkr.</option>
                     </select>
-
                 </div>
 
-                <button id="submit_button" class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <div class="input-field col s6">
+                    <select id="size_from" name="price">
+                        <option value="" disabled selected>Stærð frá</option>
+                        <option value="0">0 m²</option>
+                        <option value="40">40 m²</option>
+                        <option value="60">60 m²</option>
+                        <option value="70">70 m²</option>
+                        <option value="80">80 m²</option>
+                        <option value="90">90 m²</option>
+                        <option value="100">100 m²</option>
+                        <option value="115">115 m²</option>
+                        <option value="130">130 m²</option>
+                        <option value="150">150 m²</option>
+                        <option value="200">200 m²</option>
+                        <option value="250">250 m²</option>
+                        <option value="300">300 m²</option>
+                        <option value="350">350 m²</option>
+                        <option value="400">400 m²</option>
+                        <option value="500">500 m²</option>
+                        <option value="600">600 m²</option>
+                        <option value="700">700 m²</option>
+                        <option value="800">800 m²</option>
+                        <option value="900">900 m²</option>
+                        <option value="1000">1000 m²</option>
+                    </select>
+
+                </div>
+                <div class="input-field col s6">
+                    <select id="size_to" name="rooms">
+                        <option value="" disabled selected>Stærð til</option>
+                        <option value="0">0 m²</option>
+                        <option value="40">40 m²</option>
+                        <option value="60">60 m²</option>
+                        <option value="70">70 m²</option>
+                        <option value="80">80 m²</option>
+                        <option value="90">90 m²</option>
+                        <option value="100">100 m²</option>
+                        <option value="115">115 m²</option>
+                        <option value="130">130 m²</option>
+                        <option value="150">150 m²</option>
+                        <option value="200">200 m²</option>
+                        <option value="250">250 m²</option>
+                        <option value="300">300 m²</option>
+                        <option value="350">350 m²</option>
+                        <option value="400">400 m²</option>
+                        <option value="500">500 m²</option>
+                        <option value="600">600 m²</option>
+                        <option value="700">700 m²</option>
+                        <option value="800">800 m²</option>
+                        <option value="900">900 m²</option>
+                        <option value="1000">1000 m²</option>
+                    </select>
+                </div>
+
+                <button id="submit_button" class="btn waves-effect blue darken-4" type="submit" name="action">Submit
                     <i class="material-icons right">send</i>
                 </button>
 

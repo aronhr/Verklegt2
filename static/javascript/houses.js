@@ -1,11 +1,9 @@
 $(document).ready(function() {
 
     const from_to_param = (name) => {
-        let url = ""
+        let url = "";
         const selected_from_price_el = $(`#${name}_from option:selected`)[0];
-        console.log(selected_from_price_el)
         const selected_from_price = $(selected_from_price_el).val();
-        console.log(selected_from_price)
         if(selected_from_price !== ""){
             url += `&${name}_from=${selected_from_price}`
         }
@@ -32,17 +30,17 @@ $(document).ready(function() {
     }
     const url_builder = () => {
 
-        let url = '/?ajax'
+        let url = '/?ajax';
         const selected_rooms = $('#rooms option:selected');
         $.each(selected_rooms, (ix, el) => {
-            const selected_rooms = $(el).val()
+            const selected_rooms = $(el).val();
             if (selected_rooms !== '') {
                 url += `&rooms=${selected_rooms}`
             }
         });
 
 
-        const selected_postal = $('#postal_codes option:selected')
+        const selected_postal = $('#postal_codes option:selected');
         $.each(selected_postal, (ix, el) => {
             const p_code = $(el).val();
             if (p_code !== '') {
@@ -52,21 +50,21 @@ $(document).ready(function() {
 
         const selected_types = $('#types option:selected');
         $.each(selected_types, (ix, el) => {
-            const selected_types = $(el).val()
+            const selected_types = $(el).val();
             if (selected_types !== '') {
                 url += `&types=${selected_types}`
             }
         });
 
 
-        url += from_to_param('price')
+        url += from_to_param('price');
+        url += from_to_param('size');
 
-
-        url += checkbox_url_param('#garage', 'garage')
-        url += checkbox_url_param('#new_house', 'elevator')
-        url += checkbox_url_param('#extra_apart', 'extra_apartment')
-        url += checkbox_url_param('#special_eterance', 'new_building')
-        url += checkbox_url_param('#lift', 'entrance')
+        url += checkbox_url_param('#garage', 'garage');
+        url += checkbox_url_param('#new_house', 'elevator');
+        url += checkbox_url_param('#extra_apart', 'extra_apartment');
+        url += checkbox_url_param('#special_eterance', 'new_building');
+        url += checkbox_url_param('#lift', 'entrance');
 
 
         return url
@@ -79,11 +77,6 @@ $(document).ready(function() {
             url: url,
             type: 'GET',
             success: function(resp) {
-                // data er það sem að ég skýrði í views gæjanum data : form
-                // map fer fer í gegnum göögnin og skilar nýjum lista af gögnum
-                for (x in resp.data) {
-                    console.log(resp.data[x])
-                }
                 var newHtml = resp.data.map(d => {
                     return `
                             <section>
