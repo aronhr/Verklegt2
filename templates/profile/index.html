@@ -20,22 +20,9 @@
             <div class="col l4 m6 s12">
                 <h4 class="center">Breyta upplýsingum</h4>
                 {% csrf_token %}
-                {% for element in userform %}
-                    <div class="row">
-                        <div class="input-field col s12">
-                            {{ element }}
-                            <label for="{{ element.id }}">{{ element.label_tag }}</label>
-                        </div>
-                    </div>
-                {% endfor %}
-                {% for element in form %}
-                    <div class="row">
-                        <div class="input-field col s12">
-                            {{ element }}
-                            <label for="{{ element.id }}">{{ element.label_tag }}</label>
-                        </div>
-                    </div>
-                {% endfor %}
+                {% include 'profile/include_templates/forms.html' with form=userform %}
+                {% include 'profile/include_templates/forms.html' with form=form %}
+                {% include 'profile/include_templates/forms.html' with form=bankform %}
                 <button type="submit" class="btn green darken-3">Breyta</button>
             </div>
         </form>
