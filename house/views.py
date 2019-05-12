@@ -42,7 +42,7 @@ def index(request):
             price_to = request.GET.get('price_to')
 
         size_from = 0
-        if 'price_from' in request.GET:
+        if 'size_from' in request.GET:
             price_from = request.GET.get('size_from')
 
         size_to = sys.maxsize
@@ -56,10 +56,6 @@ def index(request):
         new_building_list = true_or_false('new_building', request)
         extra_entrance_list = true_or_false('entrance', request)
 
-        print("YOYOYOOY", HouseInfo.objects.filter(
-            house__price__gte= price_to,
-            house__price__lte = price_from
-        ))
 
 
         db_houses = HouseInfo.objects.filter(
@@ -74,7 +70,8 @@ def index(request):
             entrance__in=extra_entrance_list,
             house__price__gte=price_from,
             house__price__lte=price_to,
-            
+            size__gte=size_from,
+            size__lte=size_to
         )
 
         houses = []
@@ -109,11 +106,6 @@ def index(request):
 
     context['rooms'] = sorted(set(context['rooms']))
 
-    print(str(p[0].id) in request.POST.getlist('postal_codes'))
-    print("req", request)
-    print("rom", request.POST.get('rooms'))
-    print("typess", request.POST.getlist('types'))
-    print("post", request.POST.getlist('postal_codes'))
 
     return render(request, 'house/index.html', context)
 
