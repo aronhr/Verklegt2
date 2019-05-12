@@ -61,7 +61,7 @@ def sell_property(request):
                     house_image.image = fs.url(filename)
                     house_image.house = house
                     house_image.save()
-            return redirect('profile-sell-property')
+            return redirect('house-index')
     else:
         form = PropCreateForm()
         info = CreateHouseInfo()
