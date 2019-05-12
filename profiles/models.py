@@ -12,7 +12,7 @@ class Profile(models.Model):
 
 
 class UserBankInfo(models.Model):
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    bank_nr = models.CharField(max_length=4)
-    ledger = models.CharField(max_length=2)
-    account_number = models.CharField(max_length=6)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    bank_nr = models.CharField(max_length=4, blank=True)
+    ledger = models.CharField(max_length=2, blank=True)
+    account_number = models.CharField(max_length=6, blank=True)

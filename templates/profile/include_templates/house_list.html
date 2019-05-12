@@ -1,0 +1,30 @@
+{% load humanize %}
+<div class="container">
+    <div class="row">
+        <div class="col l8 m8 s12">
+            <ul class="collection">
+                {% for prop in houses %}
+                    <li class="collection-item avatar">
+                        <a href="/house/{{ prop.house.id }}">
+                            <img src="{{ prop.house.houseimage_set.first.image }}" alt="{{ prop.house.address }} {{ prop.house.street_nr }}" class="circle">
+                            <span class="title"><strong>{{ prop.house.address }} {{ prop.house.street_nr }}</strong></span>
+                            <p>
+                                {{ prop.house.houseinfo_set.first.description }}
+                                <br>
+                                {{ prop.house.price|intcomma }} kr.
+                                <br>
+                                {{ prop.house.houseinfo_set.first.size|intcomma }} m²
+                            </p>
+                            {% if del == 'True' %}
+                            <a href="{% url 'profile-delete-wish' prop.id %}" class="secondary-content orange-text"><i class="material-icons">grade</i></a>
+                            {% endif %}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col l4 m4 s12 buttons">
+            {% include 'profile/include_templates/profile_buttons.html' %}
+        </div>
+    </div>
+</div>

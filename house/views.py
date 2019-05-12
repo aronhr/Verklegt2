@@ -4,13 +4,13 @@ from django.shortcuts import render, get_object_or_404
 from house.models import *
 from profiles.models import User
 
+
 def true_or_false(name, request):
     true_false_list = [True, False]
     if name in request.GET:
         true_false_list = [True]
 
     return true_false_list
-
 
 
 def index(request):
@@ -28,15 +28,11 @@ def index(request):
         if 'p_code' in request.GET:
             p_code_list = request.GET.getlist('p_code')
 
-
         garage_list = true_or_false('garage', request)
         lift_list = true_or_false('elevator', request)
         extra_apart_list = true_or_false('extra_apartment', request)
         new_building_list = true_or_false('new_building', request)
         extra_entrance_list = true_or_false('entrance', request)
-
-
-
 
         db_houses = HouseInfo.objects.filter(
 
@@ -49,7 +45,6 @@ def index(request):
             extra_apartment__in=extra_apart_list,
             entrance__in=extra_entrance_list
         )
-
 
         houses = []
         for x in db_houses:
@@ -70,7 +65,6 @@ def index(request):
                 'garage': x.garage
             })
 
-
         return JsonResponse({'data': houses})
     context = {
         'houses': House.objects.all(),
@@ -84,8 +78,6 @@ def index(request):
 
     context['rooms'] = sorted(set(context['rooms']))
 
-
-
     print(str(p[0].id) in request.POST.getlist('postal_codes'))
     print("req", request)
     print("rom", request.POST.get('rooms'))
@@ -96,6 +88,10 @@ def index(request):
 
 
 def get_house_by_id(request, id):
+    house = get_object_or_404(House, pk=id)
+    if request.user.is_active:
+        history = History(user=request.user, house=house)
+        history.save()
     return render(request, 'house/house.html', {
-        'house': get_object_or_404(House, pk=id),
+        'house': house,
     })

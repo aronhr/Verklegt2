@@ -5,108 +5,110 @@
 
     <div class="container">
 
-    <div class="center" id="FirstHalfOfSite">
-        <h2>{{ house.address }} {{ house.street_nr }}, {{ house.p_code }}</h2>
-        <hr id="Underline">
-        <!--<img width="900" src="{{ house.houseimage_set.first.image }}" alt="{{ house.address }}">-->
-        <br>
-    </div>
+        <div class="center" id="FirstHalfOfSite">
+            <h2>{{ house.address }} {{ house.street_nr }}, {{ house.p_code }}</h2>
+            <hr id="Underline">
+            <!--<img width="900" src="{{ house.houseimage_set.first.image }}" alt="{{ house.address }}">-->
+            <br>
+        </div>
 
-<div class="carousel" id="demo-carousel">
-   {% for image in house.houseimage_set.all %}
-                   <a class="carousel-item" href="#{{ image.id }}"><img class="myndir" width="900" src="{{ image }}" alt="{{ house.address }}"></a>
+        <div class="carousel" id="demo-carousel">
+            {% for image in house.houseimage_set.all %}
+                <a class="carousel-item" href="#{{ image.id }}"><img class="myndir" width="900" src="{{ image }}" alt="{{ house.address }}"></a>
             {% endfor %}
-  </div>
-
-<style>
-#PhoneNrAndEmail{
-    font-size: 0.6;
-}
-#BoxWithInfo{
-  width: 100%;
-  height: 30%;
-  border: 30% black;
-}
-.carousel-item img{
-height: 400px;
-width: 300px !important;
-}
-</style>
-    
-<script>
-$(document).ready(function(){
-      $('#demo-carousel').carousel();
-
-    });
-</script>
-
-    <div class="row" id="PracticalInfo">
-        <div class="col s12"></div>
-        <div class="col s6">
-
-            <table class="float-right">
-                <tbody>
-                <tr>
-                    <th>Herbergi</th>
-                    <td class="right-align">{{ house.houseinfo_set.first.rooms }}</td>
-                </tr>
-                <tr>
-                    <th>Fasteignamat</th>
-                    <td class="right-align" >{{ house.price|intcomma }}</td>
-                <tr>
-                    <th>Byggt</th>
-                    <td class="right-align">{{ house.houseinfo_set.first.buildyear }}</td>
-                </tr>
-                </tbody>
-            </table>
         </div>
-        <div class="col s6">
 
-            <table class="right">
-                <tbody>
-                <tr>
-                    <th>Fermetrar</th>
-                    <td class="right-align">{{ house.houseinfo_set.first.size|intcomma }}</td>
-                </tr>
-                <tr>
-                    <th>Skráð</th>
-                    <td class="right-align">{{ house.sellingdate }}</td>
-                </tr>
-                </tbody>
-            </table>
+        <style>
+            #PhoneNrAndEmail{
+                font-size: 0.6;
+            }
+            #BoxWithInfo{
+                width: 100%;
+                height: 30%;
+                border: 30% black;
+            }
+            .carousel-item img{
+                height: 400px;
+                width: 300px !important;
+            }
+        </style>
+
+        <script>
+            $(document).ready(function(){
+                $('#demo-carousel').carousel();
+
+            });
+        </script>
+
+        <div class="row" id="PracticalInfo">
+            <div class="col s12"></div>
+            <div class="col s6">
+
+                <table class="float-right">
+                    <tbody>
+                    <tr>
+                        <th>Herbergi</th>
+                        <td class="right-align">{{ house.houseinfo_set.first.rooms }}</td>
+                    </tr>
+                    <tr>
+                        <th>Fasteignamat</th>
+                        <td class="right-align" >{{ house.price|intcomma }}</td>
+                    <tr>
+                        <th>Byggt</th>
+                        <td class="right-align">{{ house.houseinfo_set.first.buildyear }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col s6">
+
+                <table class="right">
+                    <tbody>
+                    <tr>
+                        <th>Fermetrar</th>
+                        <td class="right-align">{{ house.houseinfo_set.first.size|intcomma }}</td>
+                    </tr>
+                    <tr>
+                        <th>Skráð</th>
+                        <td class="right-align">{{ house.sellingdate }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
-    <div>
-
-    <div class="row" id="InfoAboutHouse">
-    <div class="col s10">
-        <h6>Lýsing</h6>
-        <div class="grey lighten-2" id="BoxWithInfo">
-            {{ house.houseinfo_set.first.description }}
-        </div>
-    </div>
-
-    <img id="PhotoOfSeller" src="{{ house.seller.profile_pic }}" alt="{{ house.seller.name }}">
-
-    <div class="row">
-        <div class="col s2">
-            <div class="card">
-                <div class="card-image">
-                    <img id="PhotoOfSeller" src="{{ house.seller.profile_pic }}" alt="{{ house.seller.name }}">
-                    <span class="card-title"> afaf</span>
-                </div>
-                <div class="card-content">
-                    <h6 class="valign-wrapper">{{ house.seller.name }}</h6>
-                    <div class="card-action" id="PhoneNrAndEmail">
-                        <div><a href="tel: {{ house.seller.phone }}">Sími: {{ house.seller.phone }}</a></div>
-                        <div><a href="mailto: {{ house.seller.email }}">Netfang: {{ house.seller.email }}</a></div>
-                        <a href="#"></a>
+        <div>
+            <div class="row" id="InfoAboutHouse">
+                <div class="col s10">
+                    <h6>Lýsing</h6>
+                    <div class="grey lighten-2" id="BoxWithInfo">
+                        {{ house.houseinfo_set.first.description }}
                     </div>
+                </div>
+
+                <img id="PhotoOfSeller" src="{{ house.seller.profile_pic }}" alt="{{ house.seller.name }}">
+
+                <div class="row">
+                    <div class="col s2">
+                        <div class="card">
+                            <div class="card-image">
+                                <img id="PhotoOfSeller" src="{{ house.seller.profile_pic }}" alt="{{ house.seller.name }}">
+                                <span class="card-title"> afaf</span>
+                            </div>
+                            <div class="card-content">
+                                <h6 class="valign-wrapper">{{ house.seller.name }}</h6>
+                                <div class="card-action" id="PhoneNrAndEmail">
+                                    <div><a href="tel: {{ house.seller.phone }}">Sími: {{ house.seller.phone }}</a></div>
+                                    <div><a href="mailto: {{ house.seller.email }}">Netfang: {{ house.seller.email }}</a></div>
+                                    <a href="#"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if user.is_authenticated and house.user == user or user.is_superuser %}
+                        <a href="{% url 'profile-delete-property' house.id %}">Delete House</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
-        <a href="{% url 'profile-delete-property' house.id %}">Delete House</a>
-        </div>
-    </div>
     </div>
 {% endblock %}

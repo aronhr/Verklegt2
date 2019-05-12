@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from profiles.models import Profile
+from profiles.models import Profile, UserBankInfo
 from django.contrib.auth.models import User
 
 
@@ -19,4 +19,14 @@ class UserForm(ModelForm):
     class Meta:
         model = User
         exclude = ['id', 'password', 'last_login', 'is_superuser', 'is_active', 'is_staff', 'date_joined', 'user_permissions', 'groups']
+
+
+class BankForm(ModelForm):
+    bank_nr = forms.CharField(label='Bankanúmer', help_text='Sláðu inn gilt bankanúmer', required=False, max_length=4)
+    ledger = forms.CharField(label='Höfuðbók', help_text='Sláðu inn gilda höfuðbók', required=False, max_length=2)
+    account_number = forms.CharField(label='Reikningsnúmer', help_text='Sláðu inn gilt reikningsnúmer', required=False, max_length=6)
+    
+    class Meta:
+        model = UserBankInfo
+        exclude = ['id', 'user']
 

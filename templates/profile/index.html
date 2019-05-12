@@ -20,31 +20,23 @@
             <div class="col l4 m6 s12">
                 <h4 class="center">Breyta upplýsingum</h4>
                 {% csrf_token %}
-                {% for element in userform %}
-                    <div class="row">
-                        <div class="input-field col s12">
-                            {{ element }}
-                            <label for="{{ element.id }}">{{ element.label_tag }}</label>
-                        </div>
-                    </div>
-                {% endfor %}
-                {% for element in form %}
-                    <div class="row">
-                        <div class="input-field col s12">
-                            {{ element }}
-                            <label for="{{ element.id }}">{{ element.label_tag }}</label>
-                        </div>
-                    </div>
-                {% endfor %}
+                {% include 'profile/include_templates/forms.html' with form=userform %}
+                {% include 'profile/include_templates/forms.html' with form=form %}
+                {% include 'profile/include_templates/forms.html' with form=bankform %}
                 <button type="submit" class="btn green darken-3">Breyta</button>
             </div>
         </form>
-        <div class="col l4 m6 s12">
+        <div class="col l4 m6 s12 buttons">
             <div class="container">
-                <a href="{% url 'profile-history' %}"><button class="row col l12 m12 s12 btn blue darken-4">Leitarsaga</button></a>
-                <a href="{% url 'profile-myProps' %}"><button class="row col l12 m12 s12  btn blue darken-4">Mínar fasteignir</button></a>
-                <a href="{% url 'profile-wishList' %}"><button class="row col l12 m12 s12  btn blue darken-4">Óskalisti</button></a>
+                {% include 'profile/include_templates/profile_buttons.html' %}
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function(){
+            $('#id_dob').datepicker({
+                format: 'yyyy-mm-dd'
+            });
+        });
+    </script>
 {% endblock %}
