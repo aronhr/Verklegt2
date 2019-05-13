@@ -4,20 +4,13 @@
 {% block content %}
 
     <div class="container">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
         <div class="center" id="FirstHalfOfSite">
-            <h2>{{ house.address }} {{ house.street_nr }}, {{ house.p_code }}</h2>
+            <h2>{{ house.address }} {{ house.street_nr }}, {{ house.p_code }}<i class=" medium material-icons">  star_border</i></h2>
             <hr id="Underline">
-            <!--<img width="900" src="{{ house.houseimage_set.first.image }}" alt="{{ house.address }}">-->
             <br>
         </div>
-
-   <!-- <div class="carousel" id="demo-carousel">
-            {% for image in house.houseimage_set.all %}
-                <a class="carousel-item" href="#{{ image.id }}"><img class="myndir" src="{{ image }}" alt="{{ house.address }}"></a>
-            {% endfor %}
-        </div>>-->
-
-
     <div class="carousel carousel-slider" data-indicators="true">
             {% for image in house.houseimage_set.all %}
                 <a href="#{{ image.id }}" class="carousel-item"><img src="{{ image }}" class="center" alt="{{ image.id }}"></a>
@@ -30,7 +23,7 @@
             }
             .div1 {
                 width: 100%;
-                height: 100px;
+                min-height: 100px;
                 border: 1px solid black;
                 box-sizing: border-box;
                 background-color: grey;
@@ -42,21 +35,15 @@
             .carousel .carousel-item {
             width:300px !important;
             }
-                }
-                .card-action{
-                    font-size: 0.6;
-                }
-}
         </style>
         <script>
             $(document).ready(function(){
                 $('.carousel').carousel();
             });
         </script>
-
         <div class="row" id="PracticalInfo">
-            <div class="col s12"></div>
-            <div class="col s6">
+
+            <div class="col l6 m6 s12">
 
                 <table class="float-right">
                     <tbody>
@@ -74,7 +61,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col s6">
+            <div class="col l6 m6 s12">
 
                 <table class="right">
                     <tbody>
@@ -92,39 +79,39 @@
         </div>
         <div>
             <div class="row" id="InfoAboutHouse">
-                <div class="col s10">
+                <div class="col s8">
                     <h6>Lýsing</h6>
                     <div class="div1">
                         {{ house.houseinfo_set.first.description }}
                     </div>
                 </div>
-                <img id="PhotoOfSeller" src="{{ house.seller.profile_pic }}" alt="{{ house.seller.name }}">
                 <div class="row">
-                    <div class="col s2">
+                    <div class="col s4">
                         <div class="card">
                             <div class="card-image">
                                 <img id="PhotoOfSeller" src="{{ house.seller.profile.profile_pic }}" alt="{{ house.seller.first_name }} {{ house.seller.last_name }}">
-                                <span class="card-title"> afaf</span>
                             </div>
-                            <div class="card-content">
-                                <h6 class="valign-wrapper">{{ house.seller.first_name }} {{ house.seller.last_name }}</h6>
+                            <div class="card-content" style="word-wrap: break-word">
+                                <div class="left-align turnacate" id="PhoneNrAndEmail">
+                                    <div><h6 class="valign-wrapper">{{ house.seller.first_name }} {{ house.seller.last_name }}</h6></div>
                                 <hr id="Underline">
-                                <div class="center-align" id="PhoneNrAndEmail">
                                     <div><a href="tel: {{ house.seller.profile.phone }}">Sími: {{ house.seller.profile.phone }}</a></div>
                                     <div><a href="mailto: {{ house.seller.email }}">Netfang: {{ house.seller.email }}</a></div>
                                     <a href="#"></a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <div>
+                    </div></div>
+            </div>
+                <div class="row" id="BottumsToBuyAndDeleteRealestay">
                     {% if user.is_authenticated and house.user == user or user.is_superuser %}
                         <button type="submit" onsubmit="{% url 'profile-sell-property' %}" class="btn grey left">Eyða fasteign</button>
                     {% endif %}
                    <button type="submit" onsubmit="{% url 'profile-sell-property' %}" class="btn green darken-4 right">Setja inn tilboð</button>
                 </div>
-                </div>
-            </div>
+
         </div>
     </div>
 {% endblock %}
+
+
