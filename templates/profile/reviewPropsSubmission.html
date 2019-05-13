@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-    <h1>{{ reviewPropsSubmissions }}</h1>
-
+    {% include 'profile/include_templates/house_list.html' with houses=reviewPropsSubmissions del='False' onhold='True' %}
 {% endblock %}

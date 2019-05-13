@@ -15,5 +15,7 @@ urlpatterns = [
     path('removeAdmin/', views.remove_admin, name="profile-remove-admin"),
     path('editProperties/', views.edit_props, name="profile-edit-properties"),
     path('deleteProperty/<int:id>/', views.del_property, name="profile-delete-property"),
-    path('deletewish/<int:id>/', views.remove_wish, name="profile-delete-wish")
+    path('deletewish/<int:id>/', views.remove_wish, name="profile-delete-wish"),
+    path('approvesubmission/<int:id>/', views.approve_submission, name="profile-approve-submission"),
+    path('declinesubmission/<int:id>/', views.decline_submission, name="profile-decline-submission")
 ]
