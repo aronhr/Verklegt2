@@ -15,29 +15,4 @@
             </div>
         </div>
     </div>
-    <script>
-        var auto = $('input.autocomplete');
-        var users = {};
-        var ids = {};
-
-        {% for x in delUser %}
-            users['{{ x }}'] = '{{ x.profile.profile_pic }}';
-            ids['{{ x }}'] = '{{ x.id }}';
-        {% endfor %}
-
-        $(document).ready(function(){
-            auto.autocomplete({
-                data: users,
-            });
-        });
-
-        $('#del').on('click', () => {
-            var nid = Number(ids[auto.val()]);
-            {% if nid in delUser.id %}
-                console.log({{ delUser.id }});
-            {% endif %}
-            window.location.href = "{% url 'profiles.views.remove_user_id' nid %}";
-        })
-
-    </script>
 {% endblock %}

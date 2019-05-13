@@ -144,10 +144,7 @@ def decline_submission(request, id):
 
 @user_passes_test(lambda u: u.is_superuser)
 def remove_user(request):
-    users = User.objects.all()
-    return render(request, 'profile/delUser.html', {
-        'delUser': users
-    })
+    return render(request, 'profile/delUser.html')
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -155,6 +152,7 @@ def remove_user_id(request, id):
     return render(request, 'profile/delUser.html', {
         'delUser': id
     })
+
 
 @user_passes_test(lambda u: u.is_superuser)
 def add_admin(request):
