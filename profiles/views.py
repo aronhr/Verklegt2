@@ -7,6 +7,7 @@ from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import user_passes_test
 from profiles.models import UserBankInfo
 from house.forms.buy_house_form import *
+from profiles.forms.bank_form import *
 
 @login_required
 def index(request):
@@ -187,16 +188,25 @@ def buy_property(request, id):
     house = get_object_or_404(House, pk=id)
     if request.method == 'POST':
         form = OfferForm(data=request.POST)
-        if form.is_valid():
-            form.save(commit=False)
-            form.user = request.user
-            form.seller = house.seller
-            form.house = house.id
-            form.save()
+        card_info = CreateUserBankInfo(data=request.POST)
+        if form.is_valid() and card_info.is_valid():
+            Offers(price=request.POST['price'],
+                   house=house,
+                   user=request.user,
+                   seller=house.seller
+                   ).save()
+
+            Card(user=request.user,
+                 card_nr=request.POST['card_nr'],
+                 exdate=request.POST['exdate'],
+                 cvc=request.POST['cvc']
+                 ).save()
         return redirect('house-index')
     else:
         form = OfferForm()
+        card_info = CreateUserBankInfo()
     return render(request, 'profile/buy_property.html', {
         'offer_form': form,
+        'bank_info': card_info,
         'house': house
     })

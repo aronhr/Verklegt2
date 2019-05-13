@@ -16,3 +16,10 @@ class UserBankInfo(models.Model):
     bank_nr = models.CharField(max_length=4, blank=True)
     ledger = models.CharField(max_length=2, blank=True)
     account_number = models.CharField(max_length=6, blank=True)
+
+
+class Card(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    card_nr = models.CharField(max_length=20)
+    exdate = models.CharField(max_length=5)     # mm/yy
+    cvc = models.SmallIntegerField()

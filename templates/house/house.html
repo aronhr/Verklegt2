@@ -121,10 +121,9 @@
                     {% if user.is_authenticated and house.user == user or user.is_superuser %}
                         <button type="submit" onsubmit="{% url 'profile-sell-property' %}" class="btn grey left">Eyða fasteign</button>
                     {% endif %}
-                   <button type="submit" onsubmit="{% url 'profile-sell-property' %}" class="btn green darken-4 right">Setja inn tilboð</button>
+                    <a href="{% url 'profile-buy-property' house.id %}" class="btn green darken-4 right">Setja inn tilboð</a>
                 </div>
                 </div>
-                <a href="{% url 'profile-buy-property' house.id %}">HELLO IM A BUY BUTTON</a>
             </div>
         </div>
     </div>
