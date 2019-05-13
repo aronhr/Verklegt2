@@ -61,6 +61,7 @@ def sell_property(request):
                     house_image.image = fs.url(filename)
                     house_image.house = house
                     house_image.save()
+            OnHold(house=house).save()
             return redirect('house-index')
     else:
         form = PropCreateForm()
@@ -119,9 +120,27 @@ def my_props(request):
 
 @user_passes_test(lambda u: u.is_superuser)
 def review_props_subs(request):
+    onhold = OnHold.objects.all()
     return render(request, 'profile/reviewPropsSubmission.html', {
-        'reviewPropsSubmissions': 'This is where a review properties submissions'
+        'reviewPropsSubmissions': onhold
     })
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def approve_submission(request, id):
+    hold = get_object_or_404(OnHold, pk=id)
+    house = get_object_or_404(House, pk=hold.house.id)
+    house.on_sale = True
+    house.save()
+    return decline_submission(request, id)
+
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def decline_submission(request, id):
+    house = get_object_or_404(OnHold, pk=id)
+    house.delete()
+    return redirect('profile-review-properties-submissions')
 
 
 @user_passes_test(lambda u: u.is_superuser)

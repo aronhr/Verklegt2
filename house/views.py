@@ -95,7 +95,7 @@ def index(request):
 
         return JsonResponse({'data': houses})
     context = {
-        'houses': House.objects.all(),
+        'houses': House.objects.filter(on_sale=True).order_by('id'),
         'house_info': HouseInfo.objects.all(),
         'types': HouseType.objects.all(),
         'towns': PostalCodes.objects.all(),
