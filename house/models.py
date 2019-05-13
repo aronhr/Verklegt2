@@ -67,7 +67,7 @@ class History(models.Model):
 class Offers(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="buyer")
     seller = models.ForeignKey(User, on_delete=models.CASCADE, related_name="seller")
-    house = models.ForeignKey(House, on_delete=models.CASCADE, default=None)
+    house = models.ForeignKey(House, on_delete=models.CASCADE)
     price = models.BigIntegerField()
     date = models.DateTimeField(auto_now_add=True, blank=True)
     state = models.BooleanField(default=False)
