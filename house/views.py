@@ -59,12 +59,12 @@ def index(request):
 
 
         db_houses = HouseInfo.objects.filter(
-
             rooms__in=room_list,
             house__p_code_id__in=p_code_list,
             garage__in=garage_list,
             type__in=type_list,
             elevator__in=lift_list,
+            house__on_sale=True,
             new_building__in=new_building_list,
             extra_apartment__in=extra_apart_list,
             entrance__in=extra_entrance_list,
@@ -72,7 +72,7 @@ def index(request):
             house__price__lte=price_to,
             size__gte=size_from,
             size__lte=size_to
-        )
+        ).order_by('house__id')
 
         houses = []
         for x in db_houses:
@@ -81,6 +81,7 @@ def index(request):
             if first_image is not None:
                 image_src = first_image.image
             houses.append({
+                'id': x.house.id,
                 'img_src': image_src,
                 'address': f"{x.house.address} {x.house.street_nr}",
                 'p_code': str(x.house.p_code),

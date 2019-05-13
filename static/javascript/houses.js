@@ -67,6 +67,7 @@ $(document).ready(function() {
         url += checkbox_url_param('#lift', 'entrance');
 
 
+
         return url
     }
     $('#submit_button').on('click', function(e) {
