@@ -25,6 +25,6 @@ pip install geopy
 | 17 	 | Stjórnendur geta breytt upplýsingum um fasteign 																						    |	   |
 | 18 	 | Notandi getur séð netfang og símanúmer seljanda 																						    |	   |
 | 19 	 | Stjórnendur eiga að geta eytt notendum 																						            |	   |
-| 20 	 | Stjórnendur eiga að geta eytt fasteignum 																						        |	   |
+| 20 	 | Stjórnendur eiga að geta eytt fasteignum 																						        |	 x  |
 | 21 	 | Auðvelt að fara á milla skrefa í kaupum 																						            |	   |
-| 22 	 | Stjórnendur þurfa að samþykkja allar fasteignir sem notendur vilja setja inn á síðuna 													|	   |
+| 22 	 | Stjórnendur þurfa að samþykkja allar fasteignir sem notendur vilja setja inn á síðuna 													|	 x  |
