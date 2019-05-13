@@ -70,5 +70,5 @@ class Offers(models.Model):
     house = models.ForeignKey(House, on_delete=models.CASCADE, default=None)
     price = models.BigIntegerField()
     date = models.DateTimeField(auto_now_add=True, blank=True)
-    state = models.BooleanField(default=None)
+    state = models.BooleanField(default=False)
 

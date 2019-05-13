@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import user_passes_test
 from profiles.models import UserBankInfo
 from house.forms.buy_house_form import *
 
-
 @login_required
 def index(request):
     profile = Profile.objects.filter(user=request.user).first()
@@ -136,7 +135,6 @@ def approve_submission(request, id):
     return decline_submission(request, id)
 
 
-
 @user_passes_test(lambda u: u.is_superuser)
 def decline_submission(request, id):
     house = get_object_or_404(OnHold, pk=id)
@@ -146,8 +144,13 @@ def decline_submission(request, id):
 
 @user_passes_test(lambda u: u.is_superuser)
 def remove_user(request):
+    return render(request, 'profile/delUser.html')
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def remove_user_id(request, id):
     return render(request, 'profile/delUser.html', {
-        'delUser': 'This is where i delete users'
+        'delUser': id
     })
 
 
