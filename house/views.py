@@ -43,7 +43,7 @@ def index(request):
 
         size_from = 0
         if 'size_from' in request.GET:
-            price_from = request.GET.get('size_from')
+            size_from = request.GET.get('size_from')
 
         size_to = sys.maxsize
         if 'size_to' in request.GET:
