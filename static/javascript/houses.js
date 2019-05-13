@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
 
     const from_to_param = (name) => {
@@ -73,13 +74,25 @@ $(document).ready(function() {
     $('#submit_button').on('click', function(e) {
         const url = url_builder();
         e.preventDefault();
-        var search_choice = $('#type_choice').val();
         $.ajax({
             url: url,
             type: 'GET',
+
             success: function(resp) {
-                var newHtml = resp.data.map(d => {
-                    return `
+                let newHtml;
+                let houseshtml = $('.housess');
+                console.log(resp.data.length);
+                if(resp.data.length === 0){
+
+                    houseshtml.html(`
+                                                 <h3 class="red-text center" style="margin-top: 5em"</h3>
+                                                 <p>Engar niðurstöður fundust við þessar upplýsingar</p>
+                                                    <i style="font-size: 2em" class="center material-icons">error</i>
+                                                `);
+                }
+                else{
+                    newHtml = resp.data.map(d => {
+                        return `
                             <section>
                                 <div class="col s9 m6 l4">
                                   <div class="card">
@@ -103,10 +116,12 @@ $(document).ready(function() {
                                   </div>
                                 </div>
                             </section>`
-                });
-                $('.housess').html(newHtml.join(''));
-                $('#type_choice').val('')
-                // vil samt segja að typechoice eigi samt að vera haka í þarf að finna útúr því
+
+
+                    });
+                }
+                houseshtml.html(newHtml.join(''));
+
 
             },
             error: function(xhr, status, error) {
