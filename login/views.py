@@ -20,7 +20,7 @@ def register(request):
             user = authenticate(username=username, password=raw_password)
             b = UserBankInfo(user=user)
             b.save()
-            p = Profile(dob='1970-01-01', user=user)
+            p = Profile(dob='2000-01-01', user=user)
             p.save()
             login(request, user)
             return redirect('login-index')
