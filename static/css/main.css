@@ -40,3 +40,9 @@ a{
 .buttons{
     margin-top: 2em;
 }
+.card-tabs{
+    margin-top: 0.5em;
+}
+.tabs .indicator{
+    background-color: #0d47a1;
+}
