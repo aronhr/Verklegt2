@@ -6,7 +6,7 @@ from profiles.forms.prop_form import *
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import user_passes_test
 from profiles.models import UserBankInfo
-
+from django.core import serializers
 
 @login_required
 def index(request):
@@ -135,7 +135,6 @@ def approve_submission(request, id):
     return decline_submission(request, id)
 
 
-
 @user_passes_test(lambda u: u.is_superuser)
 def decline_submission(request, id):
     house = get_object_or_404(OnHold, pk=id)
@@ -145,8 +144,13 @@ def decline_submission(request, id):
 
 @user_passes_test(lambda u: u.is_superuser)
 def remove_user(request):
+    return render(request, 'profile/delUser.html')
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def remove_user_id(request, id):
     return render(request, 'profile/delUser.html', {
-        'delUser': 'This is where i delete users'
+        'delUser': id
     })
 
 
