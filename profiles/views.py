@@ -6,6 +6,7 @@ from profiles.forms.prop_form import *
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import user_passes_test
 from profiles.models import UserBankInfo
+from house.forms.buy_house_form import *
 
 
 @login_required
@@ -176,3 +177,23 @@ def del_property(request, id):
     house = get_object_or_404(House, pk=id)
     house.delete()
     return redirect('house-index')
+
+
+@login_required
+def buy_property(request, id):
+    house = get_object_or_404(House, pk=id)
+    if request.method == 'POST':
+        form = OfferForm(data=request.POST)
+        if form.is_valid():
+            form.save(commit=False)
+            form.user = request.user
+            form.seller = house.seller
+            form.house = house.id
+            form.save()
+        return redirect('house-index')
+    else:
+        form = OfferForm()
+    return render(request, 'profile/buy_property.html', {
+        'offer_form': form,
+        'house': house
+    })

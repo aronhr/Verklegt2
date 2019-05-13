@@ -17,5 +17,6 @@ urlpatterns = [
     path('deleteProperty/<int:id>/', views.del_property, name="profile-delete-property"),
     path('deletewish/<int:id>/', views.remove_wish, name="profile-delete-wish"),
     path('approvesubmission/<int:id>/', views.approve_submission, name="profile-approve-submission"),
-    path('declinesubmission/<int:id>/', views.decline_submission, name="profile-decline-submission")
+    path('declinesubmission/<int:id>/', views.decline_submission, name="profile-decline-submission"),
+    path('buy_property/<int:id>', views.buy_property, name="profile-buy-property")
 ]

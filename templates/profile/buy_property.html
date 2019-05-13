@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load static %}
+{% block content %}
+    <h1>{{ buy_props }}</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="input-field col s12">
+                {{ offer_form.price }}
+                <label for="{{ offer_form.price.id }}">{{ offer_form.price.label_tag }}</label>
+                <span class="helper-text" data-success="right">{{ element.help_text }}</span>
+            </div>
+        </div>
+        <button type="submit" onsubmit="{% url 'profile-buy-property' house.id %}" class="btn green darken-4 right">Kaupa</button>
+    </form>
+{% endblock %}
