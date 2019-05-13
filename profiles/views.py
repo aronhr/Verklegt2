@@ -9,6 +9,7 @@ from profiles.models import UserBankInfo
 from house.forms.buy_house_form import *
 from profiles.forms.bank_form import *
 
+
 @login_required
 def index(request):
     profile = Profile.objects.filter(user=request.user).first()
@@ -18,7 +19,7 @@ def index(request):
         form = ProfileForm(instance=profile, data=request.POST)
         userform = UserForm(instance=user, data=request.POST)
         bankfrom = BankForm(instance=bank, data=request.POST)
-        if form.is_valid():
+        if form.is_valid() and userform.is_valid() and bankfrom.is_valid():
             profile = form.save(commit=False)
             user = userform.save(commit=False)
             bank = bankfrom.save(commit=False)
@@ -34,10 +35,14 @@ def index(request):
             user.save()
             bank.save()
             return redirect('profile-index')
+    else:
+        form = ProfileForm(instance=profile)
+        userform = UserForm(instance=user)
+        bankfrom = BankForm(instance=bank)
     return render(request, 'profile/index.html', {
-        'form': ProfileForm(instance=profile),
-        'userform': UserForm(instance=user),
-        'bankform': BankForm(instance=bank),
+        'form': form,
+        'userform': userform,
+        'bankform': bankfrom,
         'profile': profile
     })
 
@@ -71,6 +76,13 @@ def sell_property(request):
         'houseForm': form,
         'houseInfo': info,
     })
+
+
+@login_required
+def add_to_wish_list(request, id):
+    house = get_object_or_404(House, pk=id)
+    WishList(user=request.user, house=house).save()
+    return redirect('house-index')
 
 
 @login_required
