@@ -103,14 +103,14 @@
                     <div class="col s2">
                         <div class="card">
                             <div class="card-image">
-                                <img id="PhotoOfSeller" src="{{ house.seller.profile_pic }}" alt="{{ house.seller.name }}">
+                                <img id="PhotoOfSeller" src="{{ house.seller.profile.profile_pic }}" alt="{{ house.seller.first_name }} {{ house.seller.last_name }}">
                                 <span class="card-title"> afaf</span>
                             </div>
                             <div class="card-content">
-                                <h6 class="valign-wrapper">{{ house.seller.name }}</h6>
+                                <h6 class="valign-wrapper">{{ house.seller.first_name }} {{ house.seller.last_name }}</h6>
                                 <hr id="Underline">
                                 <div class="center-align" id="PhoneNrAndEmail">
-                                    <div><a href="tel: {{ house.seller.phone }}">Sími: {{ house.seller.phone }}</a></div>
+                                    <div><a href="tel: {{ house.seller.profile.phone }}">Sími: {{ house.seller.profile.phone }}</a></div>
                                     <div><a href="mailto: {{ house.seller.email }}">Netfang: {{ house.seller.email }}</a></div>
                                     <a href="#"></a>
                                 </div>
