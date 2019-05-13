@@ -18,6 +18,6 @@ urlpatterns = [
     path('deletewish/<int:id>/', views.remove_wish, name="profile-delete-wish"),
     path('approvesubmission/<int:id>/', views.approve_submission, name="profile-approve-submission"),
     path('declinesubmission/<int:id>/', views.decline_submission, name="profile-decline-submission"),
-    path('buy_property/<int:id>', views.buy_property, name="profile-buy-property")
+    path('buy_property/<int:id>', views.buy_property, name="profile-buy-property"),
     path('delUser/<int:id>/', views.remove_user_id, name="profile-remove-user-id")
 ]
