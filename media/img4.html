@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+
+<!--
+,&&&/   /%&&&&&&%.      .////////////////////*,
+,&&@/*%&&&&&&&%%#.      .***************////////*.
+,&&&&&&&&(.                                 .*////*.
+,&&&&&&.                                       .////,
+,&&&&(                                           *///
+,&&&%              ./&&&&&&&&&&&&&&,              ////.
+,&&&(            ,&&&&&&%(/*//%&@&&&&(            *///.
+,&&&/          .&&&&&*           ,%@&&&,          *///.
+,&&&/         /&&&&,                .&&&&(        *///.
+,&&&/        ,&&&&.                  .%&&@,       *///.
+,&&&/       .%&&&*                    .&&&%.      *///.
+,&&&/       (@&&(                      %&&&/      *///.
+,&&&/       %&&&&%%%%%%%%%%%%%%%%%%%%%%%%&&&      *///.
+,&&&/       %&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&      *///.
+                                                  *///.
+            *&&&.                                 *///.
+            *&&&&.                                *///.
+.///,        ,&&&@%,                .#&&&&        *///.
+.///,           /&&&&&%(,......,(%&&&&&(.         *///.
+.///*              *%&&&&&&&&&&&&&&&%*            ////
+*///,                 ,/(#%%%#(*,               ,///*
+.*///*                                         *///*
+*////*.                                   .*////,
+*//////*,,.........................,,*//////*
+.///////////////////////////////////////.
+..,,,,,,,,,,,,,,,,,,,,,,,,,,,..
+-->
+
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8" />
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(3),u=e(4),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],t),e}finally{f.emit("fn-end",[c.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){if(!o)return!1;if(e!==o)return!1;if(!n)return!0;if(!i)return!1;for(var t=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var u=navigator.userAgent,f=u.match(a);f&&u.indexOf("Chrome")===-1&&u.indexOf("Chromium")===-1&&(o="Safari",i=f[1])}n.exports={agent:o,version:i,match:r}},{}],3:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],4:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],5:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=v(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||o(t)}function w(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(3),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!E++){var e=x.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+x.offset],null,"api");var t=l.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===l.readyState&&i()}function i(){f("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-x.offset}var u=(new Date).getTime(),f=e("handle"),c=e(3),s=e("ee"),p=e(2),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1123.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=n.exports={offset:u,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),l[m]?(l[m]("DOMContentLoaded",i,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",o),d[v]("onload",r)),f("mark",["firstbyte",u],null,"api");var E=0,O=e(5)},{}]},{},["loader"]);</script>
+    <![endif]-->
+
+    <!-- Google Tag Manager -->
+    <script>
+        var dataLayer = dataLayer ? dataLayer : [];
+
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-W3TW3Q');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <meta http-equiv="Expires" CONTENT="0">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="msapplication-TileColor" content="#222222">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta name="description" content="Real Estate, Houses for Sale, Rentals, Commercial and Businesses for sale at Realestate.co.nz" />
+    <meta name="keywords" content="Real Estate, Houses for Sale, Rentals, Commercial and Businesses for sale at Realestate.co.nz" />
+
+    <meta property="og:site_name" content="Real Estate, Houses for Sale, Rentals, Commercial and Businesses for sale at Realestate.co.nz">
+
+    
+    <title>Houses for sale in New Zealand - realestate.co.nz</title>
+
+            <link rel="stylesheet" href="//reconz-listings-search.realestate.co.nz/assets/vendor-c357376f73d84a76c8d723bb0b5c0eb8.css">
+        <link rel="stylesheet" href="//reconz-listings-search.realestate.co.nz/assets/listings-search-54a5a0fa7c44e7600072c58809ba4511.css">
+    
+    <link rel="icon" type="image/x-icon" href="//styleguide.realestate.co.nz/images/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <!-- AD -->
+    <!-- AD -->
+<link rel="dns-prefetch" href="//fastlane.rubiconproject.com/">
+
+<!-- BEGIN Google Publisher Tag  -->
+<script src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<script>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+</script>
+<!-- END Google Publisher Tag  -->
+
+<!-- BEGIN Krux  -->
+<script class="kxct" data-id="q21vkjxdm" data-timing="async" data-version="3.0" type="text/javascript">
+    window.Krux||((Krux=function(){Krux.q.push(arguments)}).q=[]);
+    (function(){
+        var k=document.createElement('script');k.type='text/javascript';k.async=true;
+        k.src=(location.protocol==='https:'?'https:':'http:')+'//cdn.krxd.net/controltag/q21vkjxdm.js';
+        var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(k,s);
+    }());
+</script>
+<script class="kxint" data-namespace="reconz" type="text/javascript">
+    window.Krux||((Krux=function(){Krux.q.push(arguments);}).q=[]);
+    (function(){
+        function retrieve(n){
+            var m, k='kxreconz_'+n,ls=(function(){
+                try{
+                    return window.localStorage;
+                }catch(e){
+                    return null;
+                }
+            })();
+            if (ls) {
+                return ls[k] || "";
+            } else if (navigator.cookieEnabled) {
+                m = document.cookie.match(k+'=([^;]*)');
+                return (m && decodeURIComponent(m[1])) || "";
+            } else {
+                return '';
+            }
+        }
+        Krux.user = retrieve('user');
+        Krux.segments = retrieve('segs') ? retrieve('segs').split(',') : [];
+    })();
+</script>
+<script>
+    Krux('ns:acme', 'page:load', function(G) {if(G){console.log('Krux error='+G)}},{pageView:false})
+</script>
+<!-- END Krux  -->
+
+
+    <!-- End AD -->
+    <script type="text/javascript">
+        window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{c.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(15),c={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(c.console=!0,o.indexOf("dev")!==-1&&(c.dev=!0),o.indexOf("nr_dev")!==-1&&(c.nrDev=!0))}catch(s){}c.nrDev&&i.on("internal-error",function(t){r(t.stack)}),c.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),c.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(c,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,e,n)])}catch(c){try{i("ierr",[c,(new Date).getTime(),!0])}catch(s){}}return"function"==typeof f&&f.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t){i("err",[t,(new Date).getTime()])}var i=t("handle"),a=t(16),c=t("ee"),s=t("loader"),f=window.onerror,u=!1,d=0;s.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(8),t(7),"addEventListener"in window&&t(5),s.xhrWrappable&&t(9),u=!0)}c.on("fn-start",function(t,e,n){u&&(d+=1)}),c.on("fn-err",function(t,e,n){u&&(this.thrown=!0,o(n))}),c.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),c.on("internal-error",function(t){i("ierr",[t,(new Date).getTime(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),c=t(7),s="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState";t("loader").features.stn=!0,t(6);var g=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof g&&(this.bstStart=Date.now())}),o.on(w,function(t,e){var n=t[0];n instanceof g&&i("bst",[n,e,this.bstStart,Date.now()])}),a.on(m,function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),a.on(w,function(t,e){i(v,[e,this.bstStart,Date.now(),this.bstType])}),c.on(m,function(){this.bstStart=Date.now()}),c.on(w,function(t,e){i(v,[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=Date.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+s]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+s]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+s]()},!1)),document[f]("scroll",r,!1),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){c.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),c=t(17)(a,!0),s=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=s(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?c(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,e,n){var r=t("ee").get("history"),o=t(17)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,e,n){var r=t("ee").get("raf"),o=t(17)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(17)(i),c="setTimeout",s="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[c,"setImmediate"],c+d),a.inPlace(window,[s],s+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(s+u,r),i.on(c+u,o)},{}],9:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",c)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,w,"fn-",c)}function i(t){v.push(t),h&&(g=-g,b.data=g)}function a(){for(var t=0;t<v.length;t++)r([],v[t]);v.length&&(v=[])}function c(t,e){return e}function s(t,e){for(var n in t)e[n]=t[n];return e}t(5);var f=t("ee"),u=f.get("xhr"),d=t(17)(u),l=NREUM.o,p=l.XHR,h=l.MO,m="readystatechange",w=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],v=[];e.exports=u;var y=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(m,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(s(p,y),y.prototype=p.prototype,d.inPlace(y.prototype,["open","send"],"-xhr-",c),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var g=1,b=document.createTextNode(g);new h(a).observe(b,{characterData:!0})}else f.on("fn-end",function(t){t[0]&&t[0].type===m||a()})},{}],10:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var a=t.getResponseHeader("X-NewRelic-App-Data");a&&(e.cat=a.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),c("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=s(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var c=t("handle"),s=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var a=0;a<d;a++)e.addEventListener(u[a],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{}],11:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],12:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[(new Date).getTime()].concat(c(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(15),c=t(16),s=t("ee").get("tracer"),f=NREUM;"undefined"==typeof window.newrelic&&(newrelic=f);var u=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit"],d="api-",l=d+"ixn-";a(u,function(t,e){f[e]=o(d+e,!0,"api")}),f.addPageAction=o(d+"addPageAction",!0),f.setCurrentRouteName=o(d+"routeName",!0),e.exports=newrelic,f.interaction=function(){return(new r).get()};var p=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[Date.now(),t,n],r),function(){if(s.emit((o?"":"no-")+"fn-start",[Date.now(),r,o],n),o)try{return e.apply(this,arguments)}finally{s.emit("fn-end",[Date.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){p[e]=o(l+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,(new Date).getTime()])}},{}],13:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],14:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],15:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],16:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],17:[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(16),a="nr@original",c=Object.prototype.hasOwnProperty,s=!1;e.exports=function(t,e){function n(t,e,n,o){function nrWrapper(){var r,a,c,s;try{a=this,r=i(arguments),c="function"==typeof n?n(r,a):n||{}}catch(f){l([f,"",[r,a,o],c])}u(e+"start",[r,a,o],c);try{return s=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],c),d}finally{u(e+"end",[r,a,s],c)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,o,i){o||(o="");var a,c,s,f="-"===o.charAt(0);for(s=0;s<e.length;s++)c=e[s],a=t[c],r(a)||(t[c]=n(a,f?c+o:o,i,c))}function u(n,r,o){if(!s||e){var i=s;s=!0;try{t.emit(n,r,o)}catch(a){l([a,n,r,o])}s=i}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){l([r])}for(var o in t)c.call(t,o)&&(e[o]=t[o]);return e}function l(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),n.inPlace=f,n.flag=a,n}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?s(t,c,i):i()}function n(n,r,o){if(!l.aborted){t&&t(n,r,o);for(var i=e(o),a=h(n),c=a.length,s=0;s<c;s++)a[s].apply(i,r);var f=u[y[n]];return f&&f.push([g,n,r,i]),i}}function p(t,e){v[t]=h(t).concat(e)}function h(t){return v[t]||[]}function m(t){return d[t]=d[t]||o(n)}function w(t,e){f(t,function(t,n){e=e||"feature",y[n]=e,e in u||(u[e]=[])})}var v={},y={},g={on:p,emit:n,get:m,listeners:h,context:e,buffer:w,abort:a,aborted:!1};return g}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var c="nr@context",s=t("gos"),f=t(15),u={},d={},l=e.exports=o();l.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!b++){var t=g.info=NREUM.info,e=d.getElementsByTagName("script")[0];if(setTimeout(f.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return f.abort();s(v,function(e,n){t[e]||(t[e]=n)}),c("mark",["onload",a()],null,"api");var n=d.createElement("script");n.src="https://"+t.agent,e.parentNode.insertBefore(n,e)}}function o(){"complete"===d.readyState&&i()}function i(){c("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var c=t("handle"),s=t(15),f=t("ee"),u=window,d=u.document,l="addEventListener",p="attachEvent",h=u.XMLHttpRequest,m=h&&h.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:h,REQ:u.Request,EV:u.Event,PR:u.Promise,MO:u.MutationObserver},t(12);var w=""+location,v={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-998.min.js"},y=h&&m&&m[l]&&!/CriOS/.test(navigator.userAgent),g=e.exports={offset:a(),origin:w,features:{},xhrWrappable:y};d[l]?(d[l]("DOMContentLoaded",i,!1),u[l]("load",r,!1)):(d[p]("onreadystatechange",o),u[p]("onload",r)),c("mark",["firstbyte",a()],null,"api");var b=0},{}]},{},["loader",2,10,4,3]);
+        ;NREUM.info={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",licenseKey:"c58e3a2b34",applicationID:"27954520",sa:1}
+    </script>
+    <!-- version.production-20170303.11.45 -->
+</head>
+
+<body  data-base-url="" class="residential">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3TW3Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+<div id="ember-basic-dropdown-wormhole"></div>
+<div class="content-page">
+    <img src="//styleguide.realestate.co.nz/images/loader.jpg" alt="" class="hide">
+
+    <div data-component="search-box" class="pad-l pad-m">
+        <div class="topbar-ad-parent text-center"">
+            <div class="fake-ad-top-header"><br></div>
+        </div>
+        <div class="row">
+        <div class="site-header ember-view"> <div><div class="mobile-slide-menu-fill false">
+    <br>
+</div></div>
+<header role="banner" class="header fake-header">
+    <div class="box collapse header-nav">
+        <!-- start mobile nav -->
+    <div class="hide-m hide-l">
+            <div class="box pad" style="padding-bottom: 18px;">
+                <div class="col s4 mobile text-left menu-toggle">
+                    <br>
+                </div>
+                <div class="col s4 mobile text-center">
+                    <a href="/" class="logo" data-ember-action="" data-ember-action-330="330">
+                        <svg class="logo">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#re-symbol"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- end mobile nav -->
+        <div class="m12 hide-s col">
+            <div class="box">
+                <nav role="navigation" class="top-bar text-center">
+
+                    <div class="show-for-medium-only text-left logo-btn hide-for-print fake-logo-mobile">
+                        <a href="/" class="logo medium-logo" data-ember-action="" data-ember-action-347="347">
+                            <svg class="logo">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#re-symbol"></use>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="hide-for-medium-only text-left logo-btn fake-logo-desktop">
+                        <a href="/" class="logo" data-ember-action="" data-ember-action-348="348">
+                            <svg class="logo">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#re-logo-hz-v2"></use>
+                            </svg>
+                        </a>
+                    </div>
+
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="fake-header-search-box pad fake-search-form-">
+    <div style="padding-top: 14px;">
+        <div class="width-23"></div>
+        <div class="width-100"></div>
+        <div class="width-50"></div>
+        <div class="width-50"></div>
+    </div>
+    <div style="padding-top:10px;">
+        <div class="width-40"></div>
+    </div>
+</div>
+<div>
+    <div class="loader">Loading...</div>
+</div>
+<!---->
+</div>
+        </div>
+    </div>
+
+    <div data-component="reconz-messages" class="message-block"></div>
+
+    <div class="dynamic-content-wrapper">
+            </div>
+
+    <div class="row hide-for-print">
+        <div data-component="footer-links"></div>
+    </div>
+</div>
+
+<!-- SVG SHEET STARTS -->
+
+<svg height="0" width="0" class="hide">
+
+  <symbol id="re-logo-hz-v2" viewBox="0 0 1534.5 240.9">
+    <title>Realestate.co.nz</title>
+  <style type="text/css"> .st0{fill:#141B4D;} .st1{fill:#00B5E2;} </style><path id="XMLID_87_" class="st0" d="M290.6 93.6h20v19.6c5.4-13 15.5-22 30.9-21.3v21.1h-1.2c-17.5 0-29.7 11.4-29.7 34.5v33.2h-20V93.6z"/><path id="XMLID_84_" class="st0" d="M351.7 137.5v-0.3c0-24.9 17.7-45.4 42.6-45.4 27.7 0 41.8 21.8 41.8 46.9 0 1.8-0.2 3.6-0.3 5.6h-64c2.1 14.2 12.2 22.1 25.1 22.1 9.7 0 16.7-3.6 23.6-10.4l11.7 10.4c-8.3 9.9-19.6 16.3-35.7 16.3C371.2 182.8 351.7 164.4 351.7 137.5zM416.2 131.1c-1.3-12.9-8.9-22.9-22.1-22.9 -12.2 0-20.8 9.4-22.6 22.9H416.2z"/><path id="XMLID_81_" class="st0" d="M448.3 155.7v-0.3c0-18.8 14.7-28.1 36-28.1 9.7 0 16.7 1.5 23.4 3.6v-2.1c0-12.4-7.6-19-21.6-19 -9.7 0-17 2.1-24.9 5.4l-5.3-15.7c9.6-4.3 19-7.1 32.8-7.1 13 0 22.8 3.5 28.9 9.7 6.4 6.3 9.4 15.5 9.4 26.9v51.7h-19.5v-10.9c-5.9 7.1-15 12.7-28.4 12.7C462.8 182.6 448.3 173.2 448.3 155.7zM508 149.4v-5.9c-5.1-2-11.9-3.5-19.8-3.5 -12.9 0-20.5 5.4-20.5 14.5v0.3c0 8.4 7.4 13.2 17 13.2C497.9 168.1 508 160.5 508 149.4z"/><path id="XMLID_79_" class="st0" d="M547.1 60.3h20v120.5h-20V60.3z"/><path id="XMLID_76_" class="st0" d="M583.3 137.5v-0.3c0-24.9 17.7-45.4 42.6-45.4 27.7 0 41.8 21.8 41.8 46.9 0 1.8-0.2 3.6-0.3 5.6h-64c2.1 14.2 12.2 22.1 25.1 22.1 9.7 0 16.7-3.6 23.6-10.4l11.7 10.4c-8.3 9.9-19.6 16.3-35.7 16.3C602.8 182.8 583.3 164.4 583.3 137.5zM647.8 131.1c-1.3-12.9-8.9-22.9-22.1-22.9 -12.2 0-20.8 9.4-22.6 22.9H647.8z"/><path id="XMLID_74_" class="st0" d="M679.3 169.4l8.9-13.5c9.6 7.1 19.6 10.7 28.6 10.7 8.6 0 13.5-3.6 13.5-9.4v-0.3c0-6.8-9.2-9.1-19.5-12.2 -12.9-3.6-27.2-8.9-27.2-25.6v-0.3c0-16.5 13.7-26.6 31-26.6 10.9 0 22.8 3.8 32 9.9l-7.9 14.2c-8.4-5.1-17.3-8.3-24.6-8.3 -7.8 0-12.2 3.6-12.2 8.6v0.3c0 6.4 9.4 9.1 19.6 12.4 12.7 4 27.1 9.7 27.1 25.4v0.3c0 18.3-14.2 27.4-32.4 27.4C703.9 182.4 690.2 178 679.3 169.4z"/><path id="XMLID_72_" class="st0" d="M771.9 156.7v-45.9h-11.1V93.6h11.1V69.7h20v23.9h23.4v17.2h-23.4v42.7c0 7.8 4 10.9 10.7 10.9 4.5 0 8.4-1 12.4-3v16.3c-5 2.8-10.4 4.5-18 4.5C782.3 182.3 771.9 175.8 771.9 156.7z"/><path id="XMLID_52_" class="st0" d="M827.2 155.7v-0.3c0-18.8 14.7-28.1 36-28.1 9.7 0 16.7 1.5 23.4 3.6v-2.1c0-12.4-7.6-19-21.6-19 -9.7 0-17 2.1-24.9 5.4l-5.3-15.7c9.6-4.3 19-7.1 32.8-7.1 13 0 22.8 3.5 28.9 9.7 6.4 6.3 9.4 15.5 9.4 26.9v51.7h-19.5v-10.9c-5.9 7.1-15 12.7-28.4 12.7C841.8 182.6 827.2 173.2 827.2 155.7zM887 149.4v-5.9c-5.1-2-11.9-3.5-19.8-3.5 -12.9 0-20.5 5.4-20.5 14.5v0.3c0 8.4 7.4 13.2 17 13.2C876.9 168.1 887 160.5 887 149.4z"/><path id="XMLID_47_" class="st0" d="M929.2 156.7v-45.9h-11.1V93.6h11.1V69.7h20v23.9h23.4v17.2h-23.4v42.7c0 7.8 4 10.9 10.7 10.9 4.5 0 8.4-1 12.4-3v16.3c-5 2.8-10.4 4.5-18 4.5C939.6 182.3 929.2 175.8 929.2 156.7z"/><path id="XMLID_38_" class="st0" d="M984.5 137.5v-0.3c0-24.9 17.7-45.4 42.6-45.4 27.7 0 41.8 21.8 41.8 46.9 0 1.8-0.2 3.6-0.3 5.6h-64c2.1 14.2 12.2 22.1 25.1 22.1 9.7 0 16.7-3.6 23.6-10.4l11.7 10.4c-8.3 9.9-19.6 16.3-35.7 16.3C1004 182.8 984.5 164.4 984.5 137.5zM1049.1 131.1c-1.3-12.9-8.9-22.9-22.1-22.9 -12.2 0-20.8 9.4-22.6 22.9H1049.1z"/><path id="XMLID_27_" class="st1" d="M1084.7 158h22v22.8h-22V158z"/><path id="XMLID_25_" class="st1" d="M1122.7 137.7v-0.3c0-24.8 19.1-45.6 45.4-45.6 16.3 0 26.6 6.1 34.8 15l-12.5 13.4c-6.1-6.4-12.5-10.9-22.4-10.9 -14.5 0-25.3 12.5-25.3 27.7v0.3c0 15.5 10.7 27.9 26.1 27.9 9.4 0 16.3-4.3 22.6-10.7l12.1 11.9c-8.6 9.6-18.7 16.3-35.7 16.3C1141.8 182.8 1122.7 162.5 1122.7 137.7z"/><path id="XMLID_14_" class="st1" d="M1213.5 137.7v-0.3c0-24.9 19.8-45.6 46.5-45.6 26.7 0 46.4 20.3 46.4 45.2v0.3c0 24.8-19.8 45.4-46.7 45.4C1233.1 182.8 1213.5 162.5 1213.5 137.7zM1286.4 137.7v-0.3c0-15.4-11.1-28.1-26.7-28.1 -16 0-26.2 12.5-26.2 27.7v0.3c0 15.2 11.1 27.9 26.6 27.9C1276.2 165.3 1286.4 152.7 1286.4 137.7z"/><path id="XMLID_12_" class="st1" d="M1322.4 158h22v22.8h-22V158z"/><path id="XMLID_10_" class="st1" d="M1364.5 93.6h20V107c5.6-8.1 13.7-15.2 27.2-15.2 19.6 0 31 13.2 31 33.3v55.6h-20v-49.5c0-13.5-6.8-21.3-18.7-21.3 -11.6 0-19.6 8.1-19.6 21.6v49.2h-20V93.6z"/><path id="XMLID_8_" class="st1" d="M1458.8 167.1l50.3-57.1h-48.5V93.6h73.9v13.7l-50.3 57.1h50.3v16.3h-75.8V167.1z"/><path id="XMLID_65_" class="st0" d="M64.5 0c-19 0-36.1 8.2-47.9 21.3V4.1H0v60.3c0 0 0 0 0 0v64.3h16.6v-0.9 -61c0-27.8 22.5-50.3 50.3-50.3H73V0H64.5z"/><path id="XMLID_66_" class="st0" d="M170.2 65.6c-12.2-14-29.4-21.7-48.6-21.7 -19.1 0-36.8 7.9-49.7 22.3C59.2 80.2 52 100.1 52 120.8v0.6c0 2.2 0.1 4.4 0.2 6.6l0.1 0.7h136.1l0.1-0.6c0.4-2 0.4-5.2 0.4-7C189 99.3 182.3 79.6 170.2 65.6zM169.9 112.3h-99c3.3-30 24.3-51.7 50.2-51.7 14.5 0 26.8 5.6 35.5 16.1C163.7 85.4 168.5 98.3 169.9 112.3z"/><path id="XMLID_69_" class="st1" d="M176.5 0h-68.1v16.6h65.7c27.8 0 50.3 22.5 50.3 50.3v107.2c0 27.8-22.5 50.3-50.3 50.3H66.9c-27.8 0-50.3-22.5-50.3-50.3v-9.8H0v12.3c0 35.6 28.9 64.5 64.5 64.5h112c35.6 0 64.5-28.9 64.5-64.5v-112C240.9 28.9 212.1 0 176.5 0z"/><path id="XMLID_70_" class="st0" d="M73.4 176c13.3 13.6 31.2 21.1 50.4 21.1 23.6 0 41.2-7.6 58.5-25.4l-12.6-11.1c-13.3 13.3-27.7 19.6-45.3 19.6 -13.5 0-26.3-5-36-14.2 -5.7-5.4-10.1-11.9-13.1-19.4H55.9C59.4 157.7 65.5 167.9 73.4 176z"/>
+  </symbol>
+
+  <symbol id="re-logo-hz-2" viewBox="0 0 1360.2 344.4">
+    <title>Realestate.co.nz</title>
+    <style type="text/css"> .st0{fill:#141B4D;}   .st1{fill:#00B5E2;} </style><path id="XMLID_4_" class="st0" d="M395 147.7h15.5v15.2c4.2-10.1 12-17 24-16.5v16.4h-0.9c-13.6 0-23.1 8.8-23.1 26.8v25.7H395V147.7z"/><path id="XMLID_16_" class="st0" d="M442.4 181.8v-0.3c0-19.3 13.7-35.2 33-35.2 21.5 0 32.4 16.9 32.4 36.4 0 1.4-0.1 2.8-0.3 4.4h-49.7c1.7 11 9.5 17.2 19.5 17.2 7.6 0 12.9-2.8 18.3-8.1l9.1 8.1c-6.4 7.7-15.2 12.7-27.7 12.7C457.5 216.9 442.4 202.6 442.4 181.8zM492.5 176.8c-1-10-6.9-17.8-17.2-17.8 -9.5 0-16.1 7.3-17.5 17.8H492.5z"/><path id="XMLID_19_" class="st0" d="M517.3 195.8v-0.3c0-14.6 11.4-21.8 27.9-21.8 7.6 0 12.9 1.2 18.2 2.8V175c0-9.6-5.9-14.7-16.8-14.7 -7.6 0-13.2 1.7-19.3 4.2l-4.1-12.2c7.4-3.3 14.7-5.5 25.5-5.5 10.1 0 17.7 2.7 22.4 7.6 5 4.9 7.3 12 7.3 20.9v40.1h-15.1v-8.5c-4.6 5.5-11.7 9.9-22 9.9C528.6 216.7 517.3 209.4 517.3 195.8zM563.7 191v-4.6c-4-1.5-9.2-2.7-15.4-2.7 -10 0-15.9 4.2-15.9 11.3v0.3c0 6.5 5.8 10.2 13.2 10.2C555.9 205.5 563.7 199.6 563.7 191z"/><path id="XMLID_22_" class="st0" d="M594 121.8h15.5v93.5H594V121.8z"/><path id="XMLID_30_" class="st0" d="M622.1 181.8v-0.3c0-19.3 13.7-35.2 33-35.2 21.5 0 32.4 16.9 32.4 36.4 0 1.4-0.1 2.8-0.3 4.4h-49.7c1.7 11 9.5 17.2 19.5 17.2 7.6 0 12.9-2.8 18.3-8.1l9.1 8.1c-6.4 7.7-15.2 12.7-27.7 12.7C637.2 216.9 622.1 202.6 622.1 181.8zM672.2 176.8c-1-10-6.9-17.8-17.2-17.8 -9.5 0-16.1 7.3-17.5 17.8H672.2z"/><path id="XMLID_33_" class="st0" d="M696.6 206.5l6.9-10.5c7.4 5.5 15.2 8.3 22.2 8.3 6.7 0 10.5-2.8 10.5-7.3v-0.3c0-5.3-7.2-7-15.1-9.5 -10-2.8-21.1-6.9-21.1-19.9v-0.3c0-12.8 10.6-20.6 24.1-20.6 8.5 0 17.7 2.9 24.8 7.7l-6.1 11c-6.5-4-13.4-6.4-19.1-6.4 -6 0-9.5 2.8-9.5 6.7v0.3c0 5 7.3 7 15.2 9.6 9.9 3.1 21 7.6 21 19.7v0.3c0 14.2-11 21.3-25.1 21.3C715.7 216.6 705.1 213.1 696.6 206.5z"/><path id="XMLID_35_" class="st0" d="M768.5 196.6V161h-8.6v-13.3h8.6v-18.6H784v18.6h18.2V161H784v33.2c0 6 3.1 8.5 8.3 8.5 3.5 0 6.5-0.8 9.6-2.3V213c-3.8 2.2-8.1 3.5-14 3.5C776.6 216.5 768.5 211.5 768.5 196.6z"/><path id="XMLID_37_" class="st0" d="M811.4 195.8v-0.3c0-14.6 11.4-21.8 27.9-21.8 7.6 0 12.9 1.2 18.2 2.8V175c0-9.6-5.9-14.7-16.8-14.7 -7.6 0-13.2 1.7-19.3 4.2l-4.1-12.2c7.4-3.3 14.7-5.5 25.5-5.5 10.1 0 17.7 2.7 22.4 7.6 5 4.9 7.3 12 7.3 20.9v40.1h-15.1v-8.5c-4.6 5.5-11.7 9.9-22 9.9C822.7 216.7 811.4 209.4 811.4 195.8zM857.8 191v-4.6c-4-1.5-9.2-2.7-15.4-2.7 -10 0-15.9 4.2-15.9 11.3v0.3c0 6.5 5.8 10.2 13.2 10.2C850 205.5 857.8 199.6 857.8 191z"/><path id="XMLID_42_" class="st0" d="M890.6 196.6V161H882v-13.3h8.6v-18.6h15.5v18.6h18.2V161h-18.2v33.2c0 6 3.1 8.5 8.3 8.5 3.5 0 6.5-0.8 9.6-2.3V213c-3.8 2.2-8.1 3.5-14 3.5C898.6 216.5 890.6 211.5 890.6 196.6z"/><path id="XMLID_44_" class="st0" d="M933.5 181.8v-0.3c0-19.3 13.7-35.2 33-35.2 21.5 0 32.4 16.9 32.4 36.4 0 1.4-0.1 2.8-0.3 4.4H949c1.7 11 9.5 17.2 19.5 17.2 7.6 0 12.9-2.8 18.3-8.1l9.1 8.1c-6.4 7.7-15.2 12.7-27.7 12.7C948.6 216.9 933.5 202.6 933.5 181.8zM983.5 176.8c-1-10-6.9-17.8-17.2-17.8 -9.5 0-16.1 7.3-17.5 17.8H983.5z"/><path id="XMLID_49_" class="st1" d="M1011.2 197.6h17v17.7h-17V197.6z"/><path id="XMLID_53_" class="st1" d="M1040.7 181.9v-0.3c0-19.2 14.9-35.4 35.2-35.4 12.7 0 20.6 4.7 27 11.7l-9.7 10.4c-4.7-5-9.7-8.5-17.4-8.5 -11.3 0-19.6 9.7-19.6 21.5v0.3c0 12 8.3 21.6 20.2 21.6 7.3 0 12.7-3.3 17.5-8.3l9.4 9.2c-6.7 7.4-14.5 12.7-27.7 12.7C1055.5 216.9 1040.7 201.1 1040.7 181.9z"/><path id="XMLID_55_" class="st1" d="M1111.1 181.9v-0.3c0-19.3 15.4-35.4 36.1-35.4 20.8 0 36 15.8 36 35.1v0.3c0 19.2-15.4 35.2-36.2 35.2C1126.4 216.9 1111.1 201.1 1111.1 181.9zM1167.7 181.9v-0.3c0-11.9-8.6-21.8-20.7-21.8 -12.4 0-20.4 9.7-20.4 21.5v0.3c0 11.8 8.6 21.6 20.6 21.6C1159.8 203.3 1167.7 193.5 1167.7 181.9z"/><path id="XMLID_58_" class="st1" d="M1195.7 197.6h17v17.7h-17V197.6z"/><path id="XMLID_60_" class="st1" d="M1228.3 147.7h15.5v10.4c4.4-6.3 10.6-11.8 21.1-11.8 15.2 0 24.1 10.2 24.1 25.9v43.2h-15.5v-38.4c0-10.5-5.3-16.5-14.5-16.5 -9 0-15.2 6.3-15.2 16.8v38.2h-15.5V147.7z"/><path id="XMLID_62_" class="st1" d="M1301.5 204.7l39.1-44.3h-37.7v-12.7h57.4v10.6l-39.1 44.3h39.1v12.7h-58.8V204.7z"/><path id="XMLID_65_" class="st0" d="M92.2 0C65 0 40.6 11.8 23.7 30.5V5.9H0v86.2c0 0 0 0 0 0v91.9h23.7v-1.2V95.6c0-39.7 32.2-71.9 71.9-71.9h8.7V0H92.2z"/><path id="XMLID_66_" class="st0" d="M243.2 93.8c-17.4-20-42.1-31.1-69.4-31.1 -27.3 0-52.6 11.3-71.1 31.9 -18 20-28.4 48.5-28.4 78v0.8c0 3.1 0.1 6.3 0.4 9.5l0.1 1.1h194.5l0.2-0.9c0.5-2.8 0.6-7.5 0.6-10C270.1 141.9 260.5 113.7 243.2 93.8zM242.8 160.5H101.2c4.7-42.9 34.7-74 71.7-74 20.7 0 38.2 8 50.7 23C233.9 122 240.9 140.6 242.8 160.5z"/><path id="XMLID_69_" class="st1" d="M252.2 0h-97.3v23.7h93.9c39.7 0 71.9 32.2 71.9 71.9v153.2c0 39.7-32.2 71.9-71.9 71.9H95.6c-39.7 0-71.9-32.2-71.9-71.9v-14.1H0v17.5c0 50.9 41.3 92.2 92.2 92.2h160c50.9 0 92.2-41.3 92.2-92.2v-160C344.4 41.3 303.1 0 252.2 0z"/><path id="XMLID_70_" class="st0" d="M104.9 251.5c19.1 19.4 44.6 30.1 72 30.1 33.7 0 58.9-10.9 83.6-36.3l-18-15.9c-18.9 19.1-39.6 28-64.8 28 -19.4 0-37.6-7.2-51.5-20.3 -8.1-7.7-14.4-17-18.7-27.7H79.8C85 225.4 93.6 239.9 104.9 251.5z"/>
+  </symbol>
+
+  <symbol id="re-logo-vert-2" viewBox="0 0 566.7 446.4">
+    <title>Realestate.co.nz</title>
+    <style type="text/css"> .st0{fill:#141B4D;} .st1{fill:#00B5E2;} </style><path id="XMLID_38_" class="st0" d="M203.3 0c-27.2 0-51.6 11.8-68.5 30.5V5.9h-23.7v86.2c0 0 0 0 0 0v91.9h23.7v-1.2V95.6c0-39.7 32.2-71.9 71.9-71.9h8.7V0H203.3z"/> <path id="XMLID_26_" class="st0" d="M354.4 93.8c-17.4-20-42.1-31.1-69.4-31.1 -27.3 0-52.6 11.3-71.1 31.9 -18 20-28.4 48.5-28.4 78v0.8c0 3.1 0.1 6.3 0.4 9.5l0.1 1.1h194.5l0.2-0.9c0.5-2.8 0.6-7.5 0.6-10C381.2 141.9 371.7 113.7 354.4 93.8zM353.9 160.5H212.4c4.7-42.9 34.7-74 71.7-74 20.7 0 38.2 8 50.7 23C345.1 122 352 140.6 353.9 160.5z"/> <path id="XMLID_25_" class="st1" d="M363.3 0h-97.3v23.7h93.9c39.7 0 71.9 32.2 71.9 71.9v153.2c0 39.7-32.2 71.9-71.9 71.9H206.8c-39.7 0-71.9-32.2-71.9-71.9v-14.1h-23.7v17.5c0 50.9 41.3 92.2 92.2 92.2h160c50.9 0 92.2-41.3 92.2-92.2v-160C455.5 41.3 414.2 0 363.3 0z"/> <path id="XMLID_24_" class="st0" d="M216 251.5c19.1 19.4 44.6 30.1 72 30.1 33.7 0 58.9-10.9 83.6-36.3l-18-15.9c-18.9 19.1-39.6 28-64.8 28 -19.4 0-37.6-7.2-51.5-20.3 -8.1-7.7-14.4-17-18.7-27.7H191C196.1 225.4 204.7 239.9 216 251.5z"/> <path id="XMLID_73_" class="st0" d="M0 405.8h9.1v8.9c2.5-5.9 7.1-10 14.1-9.7v9.6h-0.5c-8 0-13.5 5.2-13.5 15.7v15.1H0V405.8z"/> <path id="XMLID_75_" class="st0" d="M27.8 425.8v-0.2c0-11.4 8-20.7 19.4-20.7 12.6 0 19 9.9 19 21.4 0 0.8-0.1 1.7-0.2 2.6H36.9c1 6.5 5.6 10.1 11.4 10.1 4.4 0 7.6-1.7 10.8-4.7l5.3 4.7c-3.8 4.5-8.9 7.4-16.2 7.4C36.7 446.4 27.8 438.1 27.8 425.8zM57.2 422.9c-0.6-5.9-4.1-10.5-10.1-10.5 -5.6 0-9.5 4.3-10.3 10.5H57.2z"/> <path id="XMLID_78_" class="st0" d="M71.8 434.1V434c0-8.6 6.7-12.8 16.4-12.8 4.4 0 7.6 0.7 10.7 1.7v-1c0-5.6-3.5-8.6-9.9-8.6 -4.4 0-7.7 1-11.4 2.5l-2.4-7.1c4.4-2 8.6-3.2 15-3.2 5.9 0 10.4 1.6 13.2 4.4 2.9 2.9 4.3 7.1 4.3 12.3v23.5h-8.9v-5c-2.7 3.2-6.8 5.8-12.9 5.8C78.4 446.4 71.8 442.1 71.8 434.1zM99 431.2v-2.7c-2.3-0.9-5.4-1.6-9-1.6 -5.9 0-9.3 2.5-9.3 6.6v0.2c0 3.8 3.4 6 7.7 6C94.4 439.7 99 436.3 99 431.2z"/> <path id="XMLID_81_" class="st0" d="M116.9 390.6h9.1v54.9h-9.1V390.6z"/> <path id="XMLID_83_" class="st0" d="M133.3 425.8v-0.2c0-11.4 8-20.7 19.4-20.7 12.6 0 19 9.9 19 21.4 0 0.8-0.1 1.7-0.2 2.6h-29.2c1 6.5 5.6 10.1 11.4 10.1 4.4 0 7.6-1.7 10.8-4.7l5.3 4.7c-3.8 4.5-8.9 7.4-16.2 7.4C142.2 446.4 133.3 438.1 133.3 425.8zM162.7 422.9c-0.6-5.9-4.1-10.5-10.1-10.5 -5.6 0-9.5 4.3-10.3 10.5H162.7z"/> <path id="XMLID_86_" class="st0" d="M177.1 440.3l4.1-6.2c4.4 3.2 8.9 4.9 13 4.9 3.9 0 6.2-1.7 6.2-4.3v-0.2c0-3.1-4.2-4.1-8.9-5.6 -5.9-1.7-12.4-4.1-12.4-11.7v-0.2c0-7.5 6.2-12.1 14.1-12.1 5 0 10.4 1.7 14.6 4.5l-3.6 6.5c-3.8-2.3-7.9-3.8-11.2-3.8 -3.5 0-5.6 1.7-5.6 3.9v0.2c0 2.9 4.3 4.1 8.9 5.6 5.8 1.8 12.3 4.4 12.3 11.6v0.2c0 8.3-6.5 12.5-14.7 12.5C188.3 446.3 182 444.3 177.1 440.3z"/> <path id="XMLID_88_" class="st0" d="M219.3 434.5v-20.9h-5v-7.8h5v-10.9h9.1v10.9H239v7.8h-10.7V433c0 3.5 1.8 5 4.9 5 2 0 3.8-0.5 5.6-1.4v7.4c-2.3 1.3-4.7 2-8.2 2C224 446.1 219.3 443.2 219.3 434.5z"/> <path id="XMLID_90_" class="st0" d="M244.5 434.1V434c0-8.6 6.7-12.8 16.4-12.8 4.4 0 7.6 0.7 10.7 1.7v-1c0-5.6-3.5-8.6-9.9-8.6 -4.4 0-7.7 1-11.4 2.5l-2.4-7.1c4.4-2 8.6-3.2 15-3.2 5.9 0 10.4 1.6 13.2 4.4 2.9 2.9 4.3 7.1 4.3 12.3v23.5h-8.9v-5c-2.7 3.2-6.8 5.8-12.9 5.8C251.1 446.4 244.5 442.1 244.5 434.1zM271.7 431.2v-2.7c-2.3-0.9-5.4-1.6-9-1.6 -5.9 0-9.3 2.5-9.3 6.6v0.2c0 3.8 3.4 6 7.7 6C267.1 439.7 271.7 436.3 271.7 431.2z"/> <path id="XMLID_93_" class="st0" d="M290.9 434.6v-20.9h-5v-7.8h5v-10.9h9.1v10.9h10.7v7.8H300v19.5c0 3.5 1.8 5 4.9 5 2 0 3.8-0.5 5.6-1.4v7.4c-2.3 1.3-4.7 2-8.2 2C295.7 446.2 290.9 443.3 290.9 434.6z"/> <path id="XMLID_95_" class="st0" d="M316.1 425.8v-0.2c0-11.4 8-20.7 19.4-20.7 12.6 0 19 9.9 19 21.4 0 0.8-0.1 1.7-0.2 2.6h-29.2c1 6.5 5.6 10.1 11.4 10.1 4.4 0 7.6-1.7 10.8-4.7l5.3 4.7c-3.8 4.5-8.9 7.4-16.2 7.4C325 446.4 316.1 438.1 316.1 425.8zM345.5 422.9c-0.6-5.9-4.1-10.5-10.1-10.5 -5.6 0-9.5 4.3-10.3 10.5H345.5z"/> <path id="XMLID_98_" class="st1" d="M361.8 435.2h10v10.4h-10V435.2z"/> <path id="XMLID_100_" class="st1" d="M379.1 425.9v-0.2c0-11.3 8.7-20.8 20.7-20.8 7.4 0 12.1 2.8 15.9 6.8l-5.7 6.1c-2.8-2.9-5.7-5-10.2-5 -6.6 0-11.5 5.7-11.5 12.6v0.2c0 7.1 4.9 12.7 11.9 12.7 4.3 0 7.4-2 10.3-4.9l5.5 5.4c-3.9 4.4-8.5 7.4-16.2 7.4C387.8 446.4 379.1 437.2 379.1 425.9z"/> <path id="XMLID_102_" class="st1" d="M420.4 425.9v-0.2c0-11.4 9-20.8 21.2-20.8 12.2 0 21.1 9.2 21.1 20.6v0.2c0 11.3-9 20.7-21.3 20.7C429.4 446.4 420.4 437.2 420.4 425.9zM453.6 425.9v-0.2c0-7-5-12.8-12.2-12.8 -7.3 0-12 5.7-12 12.6v0.2c0 6.9 5 12.7 12.1 12.7C449 438.5 453.6 432.7 453.6 425.9z"/> <path id="XMLID_105_" class="st1" d="M470 435.2h10v10.4h-10V435.2z"/> <path id="XMLID_107_" class="st1" d="M489.2 405.8h9.1v6.1c2.6-3.7 6.2-6.9 12.4-6.9 8.9 0 14.1 6 14.1 15.2v25.3h-9.1V423c0-6.2-3.1-9.7-8.5-9.7 -5.3 0-8.9 3.7-8.9 9.9v22.4h-9.1V405.8z"/> <path id="XMLID_110_" class="st1" d="M532.1 439.3l22.9-26H533v-7.4h33.7v6.2l-22.9 26h22.9v7.4h-34.5V439.3z"/>
+  </symbol>
+
+  <symbol id="re-symbol" viewBox="0 0 344.4 344.4">
+    <title>Realestate.co.nz</title>
+    <style type="text/css"> .st0{fill:#141B4D;} .st1{fill:#00B5E2;} </style> <path id="XMLID_38_" class="st0" d="M92.2 0C65 0 40.6 11.8 23.7 30.5V5.9H0v86.2c0 0 0 0 0 0v91.9h23.7v-1.2V95.6c0-39.7 32.2-71.9 71.9-71.9h8.7V0H92.2z"/> <path id="XMLID_26_" class="st0" d="M243.2 93.8c-17.4-20-42.1-31.1-69.4-31.1 -27.3 0-52.6 11.3-71.1 31.9 -18 20-28.4 48.5-28.4 78v0.8c0 3.1 0.1 6.3 0.4 9.5l0.1 1.1h194.5l0.2-0.9c0.5-2.8 0.6-7.5 0.6-10C270.1 141.9 260.5 113.7 243.2 93.8zM242.8 160.5H101.2c4.7-42.9 34.7-74 71.7-74 20.7 0 38.2 8 50.7 23C233.9 122 240.9 140.6 242.8 160.5z"/> <path id="XMLID_25_" class="st1" d="M252.2 0h-97.3v23.7h93.9c39.7 0 71.9 32.2 71.9 71.9v153.2c0 39.7-32.2 71.9-71.9 71.9H95.6c-39.7 0-71.9-32.2-71.9-71.9v-14.1H0v17.5c0 50.9 41.3 92.2 92.2 92.2h160c50.9 0 92.2-41.3 92.2-92.2v-160C344.4 41.3 303.1 0 252.2 0z"/> <path id="XMLID_24_" class="st0" d="M104.9 251.5c19.1 19.4 44.6 30.1 72 30.1 33.7 0 58.9-10.9 83.6-36.3l-18-15.9c-18.9 19.1-39.6 28-64.8 28 -19.4 0-37.6-7.2-51.5-20.3 -8.1-7.7-14.4-17-18.7-27.7H79.8C85 225.4 93.6 239.9 104.9 251.5z"/>
+  </symbol>
+
+  <symbol id="re-profile" viewBox="0 0 999.17499 301.17499">
+    <title>Profile</title>
+    <g transform="matrix(1.25,0,0,-1.25,0,301.175)" id="g10"><g transform="scale(0.1,0.1)" id="g12"><path id="path14" style="fill:#131439;fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 644.855,2409.45 c -190.097,0 -360.964,-82.27 -478.988,-213.13 l 0,171.66 -165.867,0 0,-603.35 c 0,0 0,-0.02 0,-0.03 l 0,-643.21 165.867,0 0,619.16 c 0,277.82 225.215,503.03 503.031,503.03 l 60.95,0 0,165.87 -84.993,0" /><path id="path16" style="fill:#131439;fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 1698.64,1286.17 -990.331,0 c 33.078,300.39 243.011,517.48 501.991,517.48 144.97,0 267.58,-55.67 354.58,-161 71.93,-87.11 120.46,-216.63 133.76,-356.48 z m 3.1,466.91 c -121.76,140.2 -294.3,217.41 -485.85,217.41 -191.14,0 -367.796,-79.24 -497.437,-223.11 C 592.27,1607.34 519.898,1408.32 519.898,1201.36 l 0,-5.59 c 0,-21.68 0.836,-43.97 2.485,-66.23 l 0.555,-7.41 1360.942,0 1.26,6.47 c 3.84,19.8 4.41,52.34 4.41,69.97 0,218.12 -66.7,415.05 -187.81,554.51" /><path id="path18" style="fill:#40c1ea;fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 1764.59,2409.45 -680.71,0 0,-165.87 656.67,0 c 277.82,0 503.03,-225.21 503.03,-503.03 l 0,-1071.652 c 0,-277.816 -225.21,-503.027 -503.03,-503.027 l -1071.652,0 c -277.816,0 -503.031,225.211 -503.031,503.027 l 0,98.461 -165.867,0 0,-122.5 C 0,288.711 288.711,0 644.855,0 L 1764.59,0 c 356.15,0 644.86,288.711 644.86,644.859 l 0,1119.741 c 0,356.14 -288.71,644.85 -644.86,644.85" /><path id="path20" style="fill:#131439;fill-opacity:1;fill-rule:nonzero;stroke:none" d="M 733.949,649.91 C 867.43,513.879 1046.35,438.969 1237.75,438.969 c 235.92,0 412.29,76.363 584.77,254.301 L 1696.51,804.449 C 1564,671.012 1419.3,608.602 1243.34,608.602 1107.94,608.602 980.039,659 883.184,750.52 826.215,804.359 782.32,869.379 752.039,944.371 l -193.398,0 C 594.426,832.148 654.746,730.641 733.949,649.91" /><path id="path22" style="fill:#131439;fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 3607.9,1034.14 0,3.32 c 0,169.32 -114.54,280.54 -250.65,280.54 -136.12,0 -255.64,-112.88 -255.64,-280.54 l 0,-3.32 c 0,-167.66 119.52,-280.538 255.64,-280.538 137.77,0 250.65,107.898 250.65,280.538 z m -702.17,439.9 200.86,0 0,-146.08 c 64.73,91.3 156.03,164.34 298.8,164.34 205.84,0 406.69,-162.68 406.69,-454.84 l 0,-3.32 c 0,-290.499 -199.19,-454.839 -406.69,-454.839 -146.09,0 -237.39,73.031 -298.8,154.379 l 0,-401.731 -200.86,0 0,1142.091" /><path id="path24" style="fill:#131439;fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 3993.51,1474.04 200.86,0 0,-197.54 c 54.78,131.14 156.03,220.79 310.42,214.14 l 0,-212.47 -11.62,0 c -175.96,0 -298.8,-114.55 -298.8,-346.951 l 0,-333.66 -200.86,0 0,876.481" /><path id="path26" style="fill:#131439;fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 5316.02,1030.82 0,3.32 c 0,154.38 -111.22,282.2 -268.92,282.2 -161.02,0 -263.94,-126.16 -263.94,-278.88 l 0,-3.32 c 0,-152.718 111.22,-280.538 267.26,-280.538 162.68,0 265.6,126.16 265.6,277.218 z m -733.72,0 0,3.32 c 0,250.67 199.2,458.16 468.12,458.16 268.92,0 466.46,-204.17 466.46,-454.84 l 0,-3.32 c 0,-248.999 -199.2,-456.499 -469.78,-456.499 -267.26,0 -464.8,204.179 -464.8,453.179" /><path id="path28" style="fill:#131439;fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 6318.82,1474.04 200.86,0 0,-876.481 -200.86,0 0,876.481 z m -8.3,325.37 215.8,0 0,-190.91 -215.8,0 0,190.91 z m -582.66,-498.01 -111.22,0 0,167.66 111.22,0 0,64.74 c 0,96.28 24.9,169.33 71.38,215.8 46.48,46.49 111.22,69.72 197.54,69.72 69.72,0 117.86,-9.95 162.68,-23.23 l 0,-169.33 c -39.84,13.28 -74.7,21.58 -117.86,21.58 -76.36,0 -116.19,-41.5 -116.19,-132.8 l 0,-48.14 232.39,0 0,-166 -229.07,0 0,-703.841 -200.87,0 0,703.841" /><path id="path30" style="fill:#131439;fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 6763.51,597.559 200.859,0 0,1211.81 -200.859,0 0,-1211.81 z" /><path id="path32" style="fill:#131439;fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 7794.2,1097.22 c -13.28,129.48 -89.63,230.74 -222.44,230.74 -122.84,0 -209.16,-94.62 -227.42,-230.74 l 449.86,0 z m -649.06,-64.74 0,3.32 c 0,250.67 177.63,456.5 428.28,456.5 278.89,0 419.98,-219.12 419.98,-471.44 0,-18.26 -1.66,-36.52 -3.32,-56.438 l -644.08,0 c 21.58,-142.762 122.84,-222.442 252.33,-222.442 97.93,0 167.65,36.52 237.38,104.579 L 7953.57,741.98 C 7870.56,642.379 7756.03,577.641 7595,577.641 c -253.98,0 -449.86,184.257 -449.86,454.839" /></g></g>
+  </symbol>
+
+  <symbol id="open-listing-tab" viewBox="0 0 97.9 98.5">
+    <title>Open Listing Tab</title>
+    <style type="text/css"> .red-banner{fill:#C71316;} .white-txt{fill:#FFFFFF;} </style><polyline class="red-banner" points="0 63.2 62.1 0 97.9 0 0 98.5 "/><path class="white-txt" d="M22.3 54.1c-0.6-0.8-1.1-1.5-1.3-2.3 -0.3-0.7-0.3-1.5-0.1-2.2 0.2-0.7 0.7-1.5 1.5-2.3 0.8-0.8 1.6-1.3 2.3-1.5 0.7-0.2 1.5-0.1 2.2 0.1 0.7 0.3 1.5 0.7 2.3 1.3 0.8 0.6 1.6 1.4 2.4 2.2 0.8 0.8 1.6 1.6 2.2 2.4 0.6 0.8 1.1 1.5 1.3 2.3 0.3 0.7 0.3 1.5 0.1 2.2 -0.2 0.7-0.7 1.5-1.5 2.3 -0.8 0.8-1.5 1.3-2.3 1.5 -0.7 0.2-1.5 0.2-2.2-0.1 -0.7-0.3-1.5-0.7-2.3-1.3 -0.8-0.6-1.6-1.4-2.4-2.2C23.7 55.7 22.9 54.9 22.3 54.1zM28.5 56.2c0.6 0.5 1 0.8 1.5 1.1 0.4 0.2 0.8 0.3 1.1 0.3 0.3 0 0.7-0.2 1-0.5 0.3-0.3 0.5-0.6 0.5-1 0-0.3-0.1-0.7-0.3-1.1 -0.2-0.4-0.6-0.9-1.1-1.5 -0.5-0.6-1.1-1.2-1.8-1.9 -0.7-0.7-1.4-1.3-1.9-1.8 -0.5-0.5-1-0.8-1.5-1.1 -0.4-0.2-0.8-0.3-1.2-0.3 -0.3 0-0.7 0.2-1 0.5 -0.3 0.3-0.5 0.6-0.5 1 0 0.3 0.1 0.7 0.3 1.2 0.2 0.4 0.6 0.9 1.1 1.5 0.5 0.5 1.1 1.2 1.8 1.9C27.3 55.1 28 55.8 28.5 56.2zM31 39c0.5-0.5 1.1-0.9 1.6-1.1 0.6-0.2 1.1-0.2 1.6-0.1 0.5 0.1 1 0.3 1.5 0.6 0.5 0.3 0.9 0.7 1.4 1.1 0.6 0.6 1 1.1 1.2 1.7 0.3 0.6 0.4 1.1 0.4 1.7 0 0.6-0.2 1.1-0.4 1.6 -0.3 0.5-0.7 1.1-1.2 1.6L36 47.2l4.4 4.4 -2.1 2.1 -11-11L31 39zM35.3 44.6c0.4-0.4 0.6-0.9 0.6-1.4 0-0.5-0.3-1.1-0.9-1.6 -0.6-0.6-1.1-0.9-1.6-0.9 -0.5-0.1-1 0.2-1.6 0.7L31 42.2l3.3 3.3L35.3 44.6zM42.5 31.2l-3.7 3.7 2.6 2.6 3.5-3.5 1.8 1.8 -3.5 3.5 3 3 3.9-3.9 1.8 1.8 -5.9 5.9 -11-11 5.8-5.8L42.5 31.2zM54.3 30.7L54.3 30.7l-7.5-7.6 1.9-1.9 11 11 -2.4 2.4 -10.2-5.1 0 0 7.7 7.7 -1.9 1.9 -11-11 2.4-2.4L54.3 30.7z"/>
+  </symbol>
+
+  <symbol id="3d-walkthrough-icon" viewBox="0 0 155.8 153.3">
+    <title>3D Walkthrough</title>
+    <path d="M155.8 46.5L102.9 0 58 17.2c0 0-0.7 0.2-1.6 0.8L2.2 65.2c-1.2 1-1.9 2.5-1.9 4.1L0 147c0 3 2.4 5.5 5.5 5.5 3 0 5.5-2.4 5.5-5.5l0.3-75.2L60 29.5l49.8 43v69.8h-25V98.8c0-3-2.5-5.5-5.5-5.5h-38c-3 0-5.5 2.5-5.5 5.5v48.5c0 3 2.5 5.5 5.5 5.5s5.5-2.5 5.5-5.5v-43h27v43.5c0 3 2.5 5.5 5.5 5.5h36c1.8 0 3.4-0.9 4.4-2.2l36.1-24.9V46.5zM70.8 24.3l29.8-11.7L141 48.1l-25.1 15.1L70.8 24.3zM120.8 137V73.1l24-14.4v61.7L120.8 137z"/>
+  </symbol>
+
+  <symbol id="agency-icon" viewBox="0 0 156.6 162.1">
+    <title>Agency</title>
+    <path d="M66.4 161.9H20.9l9.1-56.7c0.6-3.9 4-6.8 8-6.8h12c4 0 7.4 3 8 6.9L66.4 161.9zM30.9 153.4h25.6l-6.9-46.5H38.4L30.9 153.4zM156.6 161.9h-45.5l9.1-56.7c0.6-3.9 4-6.8 8-6.8h12c4 0 7.4 3 8 6.9L156.6 161.9zM121.1 153.4h25.6l-6.9-46.5h-11.3L121.1 153.4zM88.9 93.3c-8.5 0-15.4-6.9-15.4-15.4s6.9-15.4 15.4-15.4c8.5 0 15.4 6.9 15.4 15.4S97.4 93.3 88.9 93.3zM88.9 70.5c-4.1 0-7.4 3.3-7.4 7.4s3.3 7.4 7.4 7.4c4.1 0 7.4-3.3 7.4-7.4S93 70.5 88.9 70.5zM45 93.3c-8.5 0-15.4-6.9-15.4-15.4S36.5 62.5 45 62.5s15.4 6.9 15.4 15.4S53.4 93.3 45 93.3zM45 70.5c-4.1 0-7.4 3.3-7.4 7.4s3.3 7.4 7.4 7.4 7.4-3.3 7.4-7.4S49 70.5 45 70.5zM136.1 93.3c-8.5 0-15.4-6.9-15.4-15.4s6.9-15.4 15.4-15.4c8.5 0 15.4 6.9 15.4 15.4S144.5 93.3 136.1 93.3zM136.1 70.5c-4.1 0-7.4 3.3-7.4 7.4s3.3 7.4 7.4 7.4c4.1 0 7.4-3.3 7.4-7.4S140.1 70.5 136.1 70.5zM67.2 98.4l1.3 8.5h34.2l-7.5 46.5H83.9l-5.6-37.8h-8.6l5.8 39.4c0.6 3.9 4 6.9 8 6.9h12c4 0 7.3-2.9 8-6.8l9.1-56.7H67.2z"/><polygon points="72.2 0 72.2 0 72.2 0 55.2 17 55.2 5.7 18.8 5.7 18.8 53.4 0 72.2 0 72.2 0 162.1 11.1 162.1 11.1 151.1 11 151.1 11 76.8 29.8 57.9 29.8 42.4 29.8 42.4 29.8 16.7 44.2 16.7 44.2 43.6 44.2 43.6 44.2 43.6 72.2 15.6 103.2 46.5 111 38.8 "/>
+  </symbol>
+
+  <symbol id="agent-icon" viewBox="0 0 145.9 159.2">
+    <title>Agent</title>
+    <path d="M60.6 87.9l1.6 11h11.1 7.1 19.1l-7.9 49.3h-11l-6-40.3H63.6l6.4 43c0.7 4.7 4.8 8.3 9.6 8.3h13.2c4.8 0 8.8-3.4 9.6-8.2l10.2-63.2H60.6zM85.1 81c-9.4 0-17-7.6-17-17s7.6-17 17-17 17 7.6 17 17S94.5 81 85.1 81zM85.1 56.1c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8S89.5 56.1 85.1 56.1z"/><polygon points="72.2 0 55.2 17 55.2 5.7 18.8 5.7 18.8 53.4 0 72.2 0 149.1 58.4 149.2 58.4 138.2 11.1 138.2 11.1 137.9 11 137.9 11 76.8 29.8 57.9 29.8 16.7 44.2 16.7 44.2 43.6 72.2 15.6 134.9 78.2 134.9 149.4 145.9 149.4 145.9 73.7 "/>
+  </symbol>
+
+  <symbol id="auction-icon" viewBox="0 0 160.6 152.7">
+    <title>Auction</title>
+    <path d="M74.4 152.7H5.5c-3 0-5.5-2.5-5.5-5.5s2.5-5.5 5.5-5.5h68.9c3 0 5.5 2.5 5.5 5.5S77.4 152.7 74.4 152.7zM59.8 131.8H19.2c-3 0-5.5-2.5-5.5-5.5s2.5-5.5 5.5-5.5h40.5c3 0 5.5 2.5 5.5 5.5S62.8 131.8 59.8 131.8zM158.8 130.6l-65-65 18.8-18.8c6.4-6.4 6.4-16.9 0-23.4L94 4.8c-6.4-6.4-16.9-6.4-23.4 0l-9.5 9.5 7.8 7.8 9.5-9.5c2.2-2.2 5.7-2.2 7.8 0l18.6 18.6c2.2 2.2 2.2 5.7 0 7.8L54.4 89.4c-2.2 2.2-5.6 2.2-7.8 0L28 70.8c-2.2-2.2-2.2-5.6 0-7.8l28.5-28.5 -7.8-7.8L20.2 55.2c-6.4 6.4-6.4 16.9 0 23.4l18.6 18.6c6.4 6.4 16.9 6.4 23.4 0l23.1-23.1 65 65c1.2 1.2 2.7 1.8 4.2 1.8s3.1-0.6 4.2-1.8C161.2 136.7 161.2 132.9 158.8 130.6z"/>
+  </symbol>
+
+  <symbol id="bathroom-icon" viewBox="0 0 148.9 134.9">
+    <title>Bathroom</title>
+    <rect x="101.8" y="123.6" width="11" height="11.3"/><rect x="13.6" y="123.6" width="11" height="11.3"/><path d="M27.6 26.1c-4.1 0-7.5-3.4-7.5-7.5 0-4.1 3.4-7.5 7.5-7.5 4.1 0 7.5 3.4 7.5 7.5C35.1 22.7 31.7 26.1 27.6 26.1M51.3 9.7c-2.7 0-4.8-2.2-4.8-4.8 0-2.7 2.2-4.8 4.8-4.8 2.7 0 4.8 2.2 4.8 4.8C56.1 7.5 53.9 9.7 51.3 9.7M148.9 36.2c0-12.2-9.9-22.1-22.1-22.1s-22.1 9.9-22.1 22.1c0 6.9 3.2 13.1 8.2 17.1H99.4c0.2-1.3 0.2-2.5 0.2-3.9 0-9.1-6.8-16.7-15.6-18 0-0.1 0-0.3 0-0.4 0-10-8.1-18.1-18.1-18.1 -8.2 0-15.1 5.4-17.3 12.8 -0.9-0.1-1.7-0.2-2.6-0.2 -5.4 0-10.5 2.5-13.9 6.5 -1.7-0.5-3.4-0.8-5.2-0.8 -10 0-18.1 8.1-18.1 18.1 0 1.1 0.2 2.4 0.6 3.9H0v11h130.6l-8.2 35.8 -0.1 0.3c-0.6 3.1-3.3 5.4-6.4 5.4H17.6c-3.6 0-6.5-2.9-6.5-6.5V77.1h-11v22.1c0 9.7 7.9 17.5 17.5 17.5h98.3c8.5 0 15.7-6 17.2-14.3l11.3-49.1h-3.8C145.7 49.3 148.9 43.1 148.9 36.2zM21.3 52.4c-0.7-0.2-1.4-2.1-1.5-2.9 0-3.9 3.2-7.1 7.1-7.1 1.5 0 2.9 0.5 4.1 1.3 1.4 1 3.1 1.3 4.8 0.8 1.6-0.5 2.9-1.7 3.5-3.3 1.1-2.7 3.7-4.6 6.6-4.6 1.5 0 3 0.5 4.3 1.4 1.8 1.4 4.3 1.5 6.2 0.2 1.9-1.2 2.9-3.5 2.4-5.7 -0.1-0.5-0.1-0.9-0.1-1.4 0-3.9 3.2-7.1 7.1-7.1s7.1 3.2 7.1 7.1c0 1.3-0.4 2.6-1.1 3.8 -1.3 2-1.1 4.7 0.5 6.5 1.6 1.8 4.1 2.4 6.3 1.5 0.9-0.4 1.8-0.6 2.8-0.6 3.9 0 7.1 3.2 7.1 7.1 0 2.8-0.1 3-0.7 3.6 -0.1 0.1-0.1 0.1-0.1 0.2H23.1C22.6 52.9 22 52.6 21.3 52.4zM126.8 47.2c-6.1 0-11.1-5-11.1-11.1s5-11.1 11.1-11.1 11.1 5 11.1 11.1S132.9 47.2 126.8 47.2z"/>
+  </symbol>
+
+  <symbol id="bedroom-icon" viewBox="0 0 152.8 128.2">
+    <title>Bedroom</title>
+    <path d="M152.8 56.6c0-7.8-6.4-14.2-14.2-14.2H68.5v35.5h10l0-24.4h59.1c2.3 0 4.2 1.9 4.2 4.2V88H11V5.5C11 2.5 8.5 0 5.5 0S0 2.5 0 5.5v122.7h11V99.1h141.8V56.6zM42.7 74.2c-11.8 0-21.4-9.6-21.4-21.4s9.6-21.4 21.4-21.4S64 41 64 52.8 54.5 74.2 42.7 74.2zM42.7 41.4c-6.3 0-11.4 5.1-11.4 11.4 0 6.3 5.1 11.4 11.4 11.4S54 59.1 54 52.8C54 46.5 48.9 41.4 42.7 41.4zM140.2 128.2c0-0.1 0-0.1 0-0.2v-19.6h-11V128c0 0.1 0 0.1 0 0.2H140.2z"/>
+  </symbol>
+
+  <symbol id="broadband-icon" viewBox="0 0 143.8 142">
+    <title>Broadband</title>
+    <rect x="20.2" y="101.7" width="20" height="11"/><path d="M87 57.4c-1.4 0-2.8-0.5-3.9-1.6 -2.9-2.9-6.8-4.5-10.9-4.5s-8 1.6-10.9 4.5c-2.1 2.1-5.6 2.1-7.8 0 -2.1-2.1-2.1-5.6 0-7.8 5-5 11.6-7.7 18.6-7.7s13.7 2.7 18.6 7.7c2.1 2.1 2.1 5.6 0 7.8C89.8 56.9 88.4 57.4 87 57.4zM115.3 28.8c-1.4 0-2.8-0.5-3.9-1.6C100.9 16.8 87 11 72.2 11S43.5 16.8 33 27.2c-2.1 2.1-5.6 2.1-7.8 0 -2.1-2.1-2.1-5.6 0-7.8C37.8 6.9 54.5 0 72.2 0s34.4 6.9 47 19.5c2.1 2.1 2.1 5.6 0 7.8C118.1 28.3 116.7 28.8 115.3 28.8zM102.5 44.1c-1.4 0-2.8-0.5-3.9-1.6 -7-7-16.4-10.9-26.3-10.9s-19.3 3.9-26.3 10.9c-2.1 2.1-5.6 2.1-7.8 0 -2.1-2.1-2.1-5.6 0-7.8 9.1-9.1 21.2-14.1 34.1-14.1s25 5 34.1 14.1c2.1 2.1 2.1 5.6 0 7.8C105.3 43.6 103.9 44.1 102.5 44.1zM127.3 82.6h-3.7v11h3.7c3 0 5.5 2.5 5.5 5.5v26.3c0 3-2.5 5.5-5.5 5.5H16.5c-3 0-5.5-2.5-5.5-5.5V99.1c0-3 2.5-5.5 5.5-5.5h85.9v-11H76.9V69.4c0-2.8-2.2-5-5-5s-5 2.2-5 5v13.2H16.5C7.4 82.6 0 90 0 99.1v26.3c0 9.1 7.4 16.5 16.5 16.5h110.8c9.1 0 16.5-7.4 16.5-16.5V99.1C143.8 90 136.4 82.6 127.3 82.6z"/>
+  </symbol>
+
+  <symbol id="business-icon" viewBox="0 0 184.3 148.7">
+    <title>Business</title>
+    <path d="M146.6 25.7l0-25.6L40 0l0 25.7H0v48h14.9v74.9h36.2v-45.6h-10v35.6H24.9V63.7H10v-28h30.1l0 16.9 106.6 0 0-17h27.6v28h-14.9v74.9H143V78.1H47.2c-3 0-5.5 2.5-5.5 5.5s2.5 5.5 5.5 5.5H132v59.6l37.3 0v-75h14.9v-48H146.6zM51.1 41.6L51 11l84.6 0.1 -0.1 30.6L51.1 41.6z"/><rect x="56.1" y="101.9" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -54.5885 80.9974)" width="28.8" height="9"/><rect x="58.8" y="112.6" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -56.722 97.2186)" width="60.3" height="9"/><rect x="96.1" y="119.2" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -54.6372 115.5145)" width="32" height="9"/>
+  </symbol>
+
+  <symbol id="carpark-covered-icon" viewBox="0 0 168.3 126.5">
+    <title>Carpark Covered</title>
+    <path d="M168.3 5.1c-0.2-3-2.8-5.3-5.8-5.1L6.5 10.1c-3 0.2-5.3 2.8-5.1 5.8 0.2 2.9 2.6 5.1 5.5 5.1 0.1 0 0.2 0 0.4 0l5.9-0.4V32l8.5-4.1v-7.8l125-8.1v44.2l8.5 3.3v-48l7.9-0.5C166.2 10.8 168.5 8.2 168.3 5.1zM121.1 54.2c-12.4-12.8-23.8-21-24.3-21.3L95.5 32H41c0 0-0.1 0-0.1 0 -0.3 0-6.5 0.3-13.5 2.3 -10.2 2.8-16.9 7.4-20 13.9C2.2 58.8-0.2 69.8 0 80.9c0.2 8.5 4.2 17.4 8.5 26.8l0.6 1.2c0.8 1.7 2.5 2.8 4.3 2.8 0.6 0 1.3-0.1 1.9-0.4 2.4-1.1 3.4-3.9 2.3-6.2l-0.6-1.2c-3.8-8.5-7.5-16.5-7.6-23.1 -0.2-9.5 1.9-19.1 6.5-28.5 3.9-8 19.7-10.5 25.5-10.8 0 0 0 0 0 0h51.1c3.3 2.4 12.8 9.9 22.6 20.1l0.8 0.8 1.1 0.4c14.2 4.8 31.1 11.2 33.7 13.4 1.8 2.1 2.5 7.4 1.8 13.5 -0.4 2.9-3.1 7.9-5.5 11.7 -0.5-13-11.2-23.5-24.4-23.5 -13.3 0-24.1 10.7-24.4 23.9h-28c-0.3-13.2-11.1-23.9-24.4-23.9 -13.4 0-24.4 10.9-24.4 24.4s10.9 24.4 24.4 24.4c10.1 0 18.7-6.1 22.4-14.9h31.9c3.7 8.7 12.4 14.9 22.4 14.9 10.2 0 18.9-6.3 22.6-15.2h6.2l1.4-1.9c0.8-1.1 8.1-11.4 9-18.7 0.7-5.4 1-15.4-4.3-21.1C153.9 65.8 133.6 58.4 121.1 54.2zM45.8 116.5c-7.9 0-14.4-6.4-14.4-14.4 0-7.9 6.4-14.4 14.4-14.4s14.4 6.4 14.4 14.4C60.2 110 53.7 116.5 45.8 116.5zM122.5 116.5c-7.9 0-14.4-6.4-14.4-14.4 0-7.9 6.4-14.4 14.4-14.4s14.4 6.4 14.4 14.4C136.9 110 130.5 116.5 122.5 116.5z"/>
+  </symbol>
+
+  <symbol id="carpark-uncovered-icon" viewBox="0 0 162.1 94.5">
+    <title>Carpark Uncovered</title>
+    <path d="M157.5 37.6c-3.6-3.8-23.9-11.1-36.4-15.4C108.7 9.4 97.2 1.2 96.8 0.9L95.5 0H41c0 0-0.1 0-0.1 0 -0.3 0-6.5 0.3-13.5 2.3C17.2 5 10.5 9.7 7.4 16.1 2.2 26.8-0.2 37.8 0 48.9c0.2 8.5 4.2 17.4 8.5 26.8L9 76.9c0.8 1.7 2.5 2.8 4.3 2.8 0.6 0 1.3-0.1 1.9-0.4 2.4-1.1 3.4-3.9 2.3-6.2L17 71.8c-3.8-8.5-7.5-16.5-7.6-23.1 -0.2-9.5 1.9-19.1 6.5-28.5 3.9-8 19.7-10.5 25.5-10.8 0 0 0 0 0 0h51.1c3.3 2.4 12.8 9.9 22.6 20.1l0.8 0.8 1.1 0.4c14.2 4.8 31.1 11.2 33.7 13.4 1.8 2.1 2.5 7.4 1.8 13.5 -0.4 2.9-3.1 7.9-5.5 11.7 -0.5-13-11.2-23.5-24.4-23.5 -13.3 0-24.1 10.7-24.4 23.9h-28c-0.3-13.2-11.1-23.9-24.4-23.9 -13.4 0-24.4 10.9-24.4 24.4s10.9 24.4 24.4 24.4c10.1 0 18.7-6.1 22.4-14.9h31.9c3.7 8.7 12.4 14.9 22.4 14.9 10.2 0 18.9-6.3 22.6-15.2h6.2l1.4-1.9c0.8-1.1 8.1-11.4 9-18.7C162.4 53.3 162.8 43.3 157.5 37.6zM45.8 84.5c-7.9 0-14.4-6.4-14.4-14.4 0-7.9 6.4-14.4 14.4-14.4s14.4 6.4 14.4 14.4C60.2 78 53.7 84.5 45.8 84.5zM122.5 84.5c-7.9 0-14.4-6.4-14.4-14.4 0-7.9 6.4-14.4 14.4-14.4s14.4 6.4 14.4 14.4C136.9 78 130.5 84.5 122.5 84.5z"/>
+  </symbol>
+
+  <symbol id="commercial-for-lease-icon" viewBox="0 0 202.9 180.7">
+    <title>Commercial for Lease</title>
+    <path d="M198.1 55.9h-37.4V44.6c0-2.8-2.2-5-5-5s-5 2.2-5 5v11.3h-9.5l0-55.9H0v156c0 9.7 7.9 17.5 17.5 17.5H44v0h11v-47h23.9c3 0 5.5-2.5 5.5-5.5s-2.5-5.5-5.5-5.5H44v47.4H17.5c-3.8 0-6.9-3.1-6.9-6.9V10.6h120l-0.1 45.3h-16.3c-2.6 0-4.7 2.1-4.7 4.7v80.7c0 2.6 2.1 4.7 4.7 4.7h15.7l0 16.9h-29.3v10.6h40l0-27.5h10v34.7h10v-34.7h37.4c2.6 0 4.7-2.1 4.7-4.7V60.7C202.9 58.1 200.8 55.9 198.1 55.9zM193.4 136.6H119V65.4h74.4V136.6z"/><path d="M149.9 80.4V112h20.9v9.5h-30.6V80.4H149.9z"/><path d="M119.1 47.3H95.3V21.7h17.5c3.5 0 6.3 2.8 6.3 6.3V47.3zM83.2 47.3H59.4V21.7h17.5c3.5 0 6.3 2.8 6.3 6.3V47.3zM47.3 47.3H23.5V21.7H41c3.5 0 6.3 2.8 6.3 6.3V47.3zM83.2 85.8H59.4V60.2h17.5c3.5 0 6.3 2.8 6.3 6.3V85.8zM47.3 85.8H23.5V60.2H41c3.5 0 6.3 2.8 6.3 6.3V85.8z"/>
+  </symbol>
+
+  <symbol id="commercial-for-sale-icon" viewBox="0 0 140.9 173.6">
+    <title>Commercial for Sale</title>
+    <path d="M140.9 0H0v156c0 9.7 7.9 17.5 17.5 17.5H44v0h11v-47h23.9c3 0 5.5-2.5 5.5-5.5s-2.5-5.5-5.5-5.5H44v47.4H17.5c-3.8 0-6.9-3.1-6.9-6.9V10.6h119.7l0 152.3h-29.6v10.6h40.1L140.9 0zM119.5 28c0-3.5-2.8-6.3-6.3-6.3H95.6v25.6h23.8V28zM83.6 28c0-3.5-2.8-6.3-6.3-6.3H59.7v25.6h23.8V28zM47.7 28c0-3.5-2.8-6.3-6.3-6.3H23.8v25.6h23.8V28zM59.7 60.2v25.6h23.8V66.5c0-3.5-2.8-6.3-6.3-6.3H59.7zM23.8 60.2v25.6h23.8V66.5c0-3.5-2.8-6.3-6.3-6.3H23.8z"/>
+  </symbol>
+
+  <symbol id="dining-icon" viewBox="0 0 180.7 114.1">
+    <title>Dining</title>
+    <path d="M143.8 44.6c2.8 0 5-2.2 5-5s-2.2-5-5-5h-106c-2.8 0-5 2.2-5 5s2.2 5 5 5H86v69.5h10V44.6H143.8z"/><polygon points="170.7 0 170.7 65.6 118.1 65.6 118.1 75.6 124.8 75.6 124.8 114.1 134.8 114.1 134.8 75.6 170.7 75.6 170.7 114.1 180.7 114.1 180.7 0 "/><polygon points="10 0 0 0 0 114.1 10 114.1 10 75.6 45.9 75.6 45.9 114.1 55.9 114.1 55.9 75.6 62.6 75.6 62.6 65.6 10 65.6 "/>
+  </symbol>
+
+  <symbol id="email-icon" viewBox="0 0 154.7 102">
+    <title>Email</title>
+    <path d="M0 0v14.6l79.3 65.7 64.4-53.4v59.3c0 2.6-2.1 4.8-4.8 4.8H15.2c-2.3 0-4.2-1.9-4.2-4.2V38.4L0 29.2v58.6C0 95.7 6.4 102 14.2 102h126.4c7.8 0 14.2-6.4 14.2-14.2V0H0zM78.8 65.3L13.6 11h130.1L78.8 65.3z"/>
+  </symbol>
+
+  <symbol id="ensuite-icon" viewBox="0 0 130.3 146.4">
+    <title>Ensuite</title>
+    <path d="M25.5 146.4c-3 0-5.5-2.5-5.5-5.5V131c0-3 2.5-5.5 5.5-5.5S31 128 31 131v9.9C31 144 28.5 146.4 25.5 146.4zM54.1 146.4c-3 0-5.5-2.5-5.5-5.5V131c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5v9.9C59.6 144 57.1 146.4 54.1 146.4zM82.6 146.4c-3 0-5.5-2.5-5.5-5.5V131c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5v9.9C88.1 144 85.6 146.4 82.6 146.4zM90.4 100.6v14c0 3 2.5 5.5 5.5 5.5s5.5-2.5 5.5-5.5v-14H90.4zM61.9 100.6v14c0 3 2.5 5.5 5.5 5.5s5.5-2.5 5.5-5.5v-14H61.9zM33.3 100.6v14c0 3 2.5 5.5 5.5 5.5s5.5-2.5 5.5-5.5v-14H33.3zM4.8 100.6v14c0 3 2.5 5.5 5.5 5.5s5.5-2.5 5.5-5.5v-14H4.8zM58 0c-6.7 0-12.1 5.4-12.1 12.1v26.3C27.3 41.2 11.7 53.5 4.3 70.3h12.3c7.5-12.9 21.5-21.6 37.4-21.6 20.3 0 37.4 14.1 42.1 33H0v11l108.6 0c0.1-9.4-2.3-18.4-6.6-26.3 -0.1-0.1-0.1-0.2-0.2-0.3 -0.1-0.2-0.2-0.3-0.3-0.5C92.7 49.9 76.1 38.9 57 37.8V13.3c0-1.2 1-2.2 2.2-2.2h71.1V0H58z"/>
+  </symbol>
+
+  <symbol id="floor-area-icon" viewBox="0 0 180.8 173.4">
+    <title>Floor Area</title>
+    <rect x="73" y="11.4" width="12" height="11"/><rect x="52" y="11.4" width="12" height="11"/><rect x="31" y="11.4" width="12" height="11"/><rect x="94" y="11.4" width="12" height="11"/><polygon points="24 26.8 14.1 16.9 24 7.1 16.9 0 0 16.9 16.9 33.8 "/><polygon points="113.9 7.4 123.7 17.2 113.9 27 120.9 34.1 137.9 17.2 120.9 0.3 "/><rect x="158.4" y="87.6" width="11" height="12"/><rect x="158.4" y="129.6" width="11" height="12"/><rect x="158.4" y="108.6" width="11" height="12"/><rect x="158.4" y="66.6" width="11" height="12"/><polygon points="163.9 49.7 173.7 59.6 180.8 52.5 163.9 35.6 147 52.5 154 59.6 "/><polygon points="163.6 159.3 153.8 149.5 146.7 156.5 163.6 173.4 180.5 156.5 173.4 149.5 "/><path d="M119.7 49.4L6.3 49.3v118.8h35.2v-11H17.4V60.4h46v33.8H49.5V105l38.9 0V94.2H74.2V60.4H118c2.6 0 4.8 2.1 4.8 4.8v92.1h-20.2l-28.5-28.5 -7.7 7.7 31.7 31.7 0 0h35.7v-7.3l0 0V63.5C133.9 55.7 127.5 49.4 119.7 49.4z"/>
+  </symbol>
+
+  <symbol id="floor-plan-icon" viewBox="0 0 154.5 145.8">
+    <title>Floor Plan</title>
+    <path d="M14.2 0C6.4 0 0 6.4 0 14.2v117.4c0 7.8 6.4 14.2 14.2 14.2h39.5v-11H15.8c-2.6 0-4.8-2.1-4.8-4.8V15.2c0-2.3 1.9-4.2 4.2-4.2h38.4v42.3l-16.9 0v10.8l16.9 0v0h10.8v0h16.9V53.4l-16.9 0V11h78.9v42.6h-30.2c-2.8 0-5.1 2.3-5.1 5.1s2.3 5.1 5.1 5.1h30.2v71h-41.5l-28.5-28.5 -7.7 7.7 31.7 31.7 0 0h57v-1.1 -9.8V0H14.2z"/>
+  </symbol>
+
+  <symbol id="garden-icon" viewBox="0 0 179.2 138.7">
+    <title>Garden</title>
+    <path d="M124.9 0C96.2 0 72.6 22.4 70.7 50.6H56v10.9h74.8v62.1c0 2.2-1.8 4-4 4H69.3c-1.2 0-2.2-1-2.2-2.2V73.1H56v15.4L27 62.9l-7.3 8.2 36.3 32v23.4c0 6.7 5.4 12.1 12.1 12.1H128c7.7 0 13.9-6.2 13.9-13.9V61.5c0-6.6-5.8-10.9-12.4-10.9H81.7C83.6 28.5 102.2 11 124.9 11c23.9 0 43.3 19.4 43.3 43.3 0 12.7-5.5 24.2-14.3 32.1v13.8c15.2-9.6 25.3-26.6 25.3-45.9C179.2 24.4 154.8 0 124.9 0z"/><rect x="0.5" y="50.8" transform="matrix(0.6671 -0.745 0.745 0.6671 -38.1536 27.1831)" width="21.7" height="11"/>
+  </symbol>
+
+  <symbol id="kitchen-icon" viewBox="0 0 152.7 135">
+    <title>Kitchen</title>
+    <path d="M143.1 47.2V34.5c0-3-2.5-5.5-5.5-5.5s-5.5 2.5-5.5 5.5v12.7H143.1zM117.9 47.2V15.5c0-3-2.5-5.5-5.5-5.5s-5.5 2.5-5.5 5.5v31.7H117.9zM92.8 47.2V5.5c0-3-2.5-5.5-5.5-5.5s-5.5 2.5-5.5 5.5v41.7H92.8zM67.6 47.2V31.5c0-3-2.5-5.5-5.5-5.5s-5.5 2.5-5.5 5.5v15.7H67.6zM5.5 56.6c-3 0-5.5 2.5-5.5 5.5s2.5 5.5 5.5 5.5h136.2v51.6c0 2.6-2.1 4.8-4.8 4.8H59.8c-2.3 0-4.2-1.9-4.2-4.2V80h-11v40.9c0 7.8 6.4 14.2 14.2 14.2h79.9c7.8 0 14.2-6.4 14.2-14.2V56.6H5.5z"/>
+  </symbol>
+
+  <symbol id="land-area-icon" viewBox="0 0 177 151.2">
+    <title>Land Area</title>
+    <rect x="164.1" y="85.4" width="12.9" height="14"/><rect x="164.1" y="109.3" width="12.9" height="14"/><rect x="164.1" y="60.8" width="12.9" height="14"/><rect x="164.1" y="36.2" width="12.9" height="14"/><rect x="0" y="83.1" width="12.9" height="15.2"/><rect x="0" y="108.2" width="12.9" height="15.2"/><rect x="0" y="57.4" width="12.9" height="15.2"/><rect x="0" y="31.7" width="12.9" height="15.2"/><rect x="126" y="0" width="14" height="12.9"/><rect x="101.4" y="0" width="14" height="12.9"/><rect x="76.8" y="0" width="14" height="12.9"/><rect x="52.2" y="0" width="14" height="12.9"/><rect x="27.7" y="0" width="14" height="12.9"/><polygon points="0 134.3 12.9 134.3 12.9 138.3 20.5 138.3 20.5 151.2 0 151.2 "/><rect x="31" y="138.3" width="14" height="12.9"/><rect x="55.6" y="138.3" width="14" height="12.9"/><rect x="80.1" y="138.3" width="14" height="12.9"/><rect x="104.7" y="138.3" width="14" height="12.9"/><rect x="129.3" y="138.3" width="14" height="12.9"/><polygon points="177 151.1 156.5 151.1 156.5 138.2 164.1 138.2 164.1 134.1 177 134.1 "/><polygon points="0.4 0 20.9 0 20.9 12.9 13.3 12.9 13.3 20.6 0.4 20.6 "/><path d="M49.6 70.2h10v5c2.3-3 5.3-5.6 10.4-5.6 4.6 0 8.1 2 9.9 5.6 3.1-3.6 6.8-5.6 11.5-5.6 7.4 0 11.9 4.5 11.9 12.9v22.9h-10V85.8c0-4.7-2.1-7.1-5.8-7.1 -3.7 0-6 2.4-6 7.1v19.6h-10V85.8c0-4.7-2.1-7.1-5.8-7.1 -3.7 0-6 2.4-6 7.1v19.6h-10V70.2zM123.1 73.1l3.5-2.7c6.6-5.1 9.7-8.2 9.7-14.5v-0.1c0-7.2-5.3-12-13.2-12 -7 0-10.5 3-14 7.8l-0.6 0.8 7 5.6 0.6-0.8c2.7-3.3 4.3-4.4 6.5-4.4 2.4 0 3.8 1.3 3.8 3.6 0 2.5-1.5 4.2-5.8 7.8l-12.2 10v7.7h28.3v-8.7H123.1zM164.2 17.7v7H177v-8.2C177 7.4 169.6 0 160.6 0h-10.9v12.8h9.6C162 12.8 164.2 15 164.2 17.7z"/>
+  </symbol>
+
+  <symbol id="lifestyle-icon" viewBox="0 0 180.9 153.9">
+    <title>Lifestyle</title>
+    <path d="M83.8 65.1L54.4 4.6C53 1.8 50.1 0 47 0h-9.2c-3.1 0-5.9 1.7-7.3 4.5L0 65.4v36l28.6 24.4 0.1-14.5L10.6 96v-28l28.7-57.3h6.2l27.7 57v27.9l-26.1 17.2V47.9h-10v106h10v-28.5l36.7-24.2V65.1zM126.1 114.4h-23.9c-3 0-5.5-2.5-5.5-5.5s2.5-5.5 5.5-5.5h34.9v38.5h32.8V97.8l-18.8-18.8V37.7h-14.3v26.9l-28-28L90.2 55.1 85 44.7 108.7 21l17 17V26.7h36.3v47.7l18.8 18.8v59.7h-54.8V114.4z"/>
+  </symbol>
+
+  <symbol id="lounge-icon" viewBox="0 0 185.3 121">
+    <title>Lounge</title>
+    <path d="M68.3 82.2l-27-27 27.1-27.1 27 27L68.3 82.2zM55.5 55.2l12.9 12.9 13-13L68.4 42.3 55.5 55.2z"/><path d="M117 82.2l-27-27 27.1-27.1 27 27L117 82.2zM104.1 55.2L117 68.1l13-13 -12.9-12.9L104.1 55.2z"/><path d="M171.1 34.9h-10.8c-7.8 0-14.2 6.4-14.2 14.2v25.7H39.1V49.1c0-5.3-2.9-9.9-7.3-12.4V16.4v-0.5c0-2.6 2.1-4.8 4.8-4.8h111.9c2.3 0 4.2 1.9 4.2 4.2v1.1 4.1 2h11v-8.3c0-7.8-6.4-14.2-14.2-14.2H34.9c-7.8 0-14.2 6.4-14.2 14.2v20.8h-6.6C6.4 34.9 0 41.3 0 49.1v31.8h0V121h185.3l0-71.9C185.3 41.3 178.9 34.9 171.1 34.9zM11.1 110.6V50.1c0-2.3 1.9-4.2 4.2-4.2h8c2.6 0 4.8 2.1 4.8 4.8l0.1 35.1h129.1v-11 -8.9V50.8c0-2.6 2.1-4.8 4.8-4.8h8c2.3 0 4.2 1.9 4.2 4.2l0 60.4H11.1z"/>
+  </symbol>
+
+  <symbol id="map-icon" viewBox="0 0 154.7 153.1">
+    <title>Map</title>
+    <rect x="17.6" y="114.9" width="20" height="11"/><rect x="49.6" y="114.9" width="20" height="11"/><rect x="82.6" y="114.9" width="20" height="11"/><rect x="114.6" y="114.9" width="20" height="11"/><path d="M77 42.2c-6 0-10.9-4.9-10.9-10.9S71 20.4 77 20.4s10.9 4.9 10.9 10.9S83 42.2 77 42.2zM77.4 100.7l-4.9-9.8c-2.6-5.2-25.5-45.8-25.5-60.5C46.9 13.7 60.6 0 77.4 0s30.4 13.7 30.4 30.4c0 14.6-22.9 55.3-25.5 60.5L77.4 100.7zM77.4 11c-10.7 0-19.4 8.7-19.4 19.4 0 7.6 10.5 26.6 19.4 45.5C86.3 57.1 96.8 38 96.8 30.4 96.8 19.7 88.1 11 77.4 11z"/><path d="M117.2 41.6c-0.9 3.4-2.2 7.1-3.6 11h30.1v84.6c0 2.6-2.1 4.8-4.8 4.8H15.2c-2.3 0-4.2-1.9-4.2-4.2V52.7h30.1c-1.4-3.9-2.7-7.6-3.6-11H0v97.3c0 7.8 6.4 14.2 14.2 14.2h126.4c7.8 0 14.2-6.4 14.2-14.2V41.6H117.2z"/><path d="M77.4 100.7l-4.9-9.8c-2.6-5.2-25.5-45.8-25.5-60.5C46.9 13.7 60.6 0 77.4 0s30.4 13.7 30.4 30.4c0 14.6-22.9 55.3-25.5 60.5L77.4 100.7zM77.4 11c-10.7 0-19.4 8.7-19.4 19.4 0 7.6 10.5 26.6 19.4 45.5C86.3 57.1 96.8 38 96.8 30.4 96.8 19.7 88.1 11 77.4 11z"/>
+  </symbol>
+
+  <symbol id="max-tenants-icon" viewBox="0 0 151.4 151.9">
+    <title>Max Tenants</title>
+    <path d="M50.7 151.9H0l10.2-63.3c0.7-4.4 4.5-7.6 8.9-7.6h13.4c4.4 0 8.3 3.3 8.9 7.7L50.7 151.9zM11.1 142.5h28.6l-7.7-51.9H19.5L11.1 142.5zM151.4 151.9h-50.7l10.2-63.3c0.7-4.4 4.5-7.6 8.9-7.6h13.4c4.4 0 8.3 3.3 8.9 7.7L151.4 151.9zM111.8 142.5h28.6l-7.7-51.9h-12.6L111.8 142.5zM77 75.4c-9.5 0-17.1-7.7-17.1-17.1S67.5 41.1 77 41.1c9.5 0 17.1 7.7 17.1 17.1S86.4 75.4 77 75.4zM77 50c-4.5 0-8.2 3.7-8.2 8.2s3.7 8.2 8.2 8.2c4.5 0 8.2-3.7 8.2-8.2S81.5 50 77 50zM26.8 75.4c-9.5 0-17.1-7.7-17.1-17.1s7.7-17.1 17.1-17.1c9.5 0 17.1 7.7 17.1 17.1S36.3 75.4 26.8 75.4zM26.8 50c-4.5 0-8.2 3.7-8.2 8.2s3.7 8.2 8.2 8.2c4.5 0 8.2-3.7 8.2-8.2S31.4 50 26.8 50zM128.3 75.4c-9.5 0-17.1-7.7-17.1-17.1s7.7-17.1 17.1-17.1 17.1 7.7 17.1 17.1S137.8 75.4 128.3 75.4zM128.3 50c-4.5 0-8.2 3.7-8.2 8.2s3.7 8.2 8.2 8.2 8.2-3.7 8.2-8.2S132.9 50 128.3 50zM55 34.3c-9.5 0-17.1-7.7-17.1-17.1S45.5 0 55 0s17.1 7.7 17.1 17.1S64.4 34.3 55 34.3zM55 8.9c-4.5 0-8.2 3.7-8.2 8.2s3.7 8.2 8.2 8.2 8.2-3.7 8.2-8.2S59.5 8.9 55 8.9zM99.2 34.3c-9.5 0-17.1-7.7-17.1-17.1S89.8 0 99.2 0c9.5 0 17.1 7.7 17.1 17.1S108.7 34.3 99.2 34.3zM99.2 8.9c-4.5 0-8.2 3.7-8.2 8.2s3.7 8.2 8.2 8.2c4.5 0 8.2-3.7 8.2-8.2S103.7 8.9 99.2 8.9zM51.6 81.1l1.4 9.6h9.3l0.3-0.1h28.6l-8.3 51.9H70.3L64 100.2h-9.6l6.5 44c0.6 4.4 4.5 7.7 8.9 7.7h13.4c4.5 0 8.2-3.2 8.9-7.6l10.1-62.9 0.1-0.3H51.6z"/>
+  </symbol>
+
+  <symbol id="move-box-icon" viewBox="0 0 136.4 143">
+    <title>Move Box</title>
+    <path d="M0 112.8c0-28.7 0-57.4 0-86.2 0.5-0.2 1-0.3 1.5-0.5 12.2-4.9 24.4-9.8 36.6-14.7C47.7 7.7 57.2 3.8 66.7 0c1 0 1.9 0 2.9 0 0.2 0.1 0.4 0.2 0.5 0.2 21.5 8.6 43 17.2 64.6 25.8 1.3 0.5 1.7 1.2 1.7 2.5 0 27.3 0 54.6 0 81.9 0 1.4-0.4 2.1-1.7 2.6 -16.3 7.3-32.7 14.7-49 22 -5.8 2.6-11.6 5.2-17.4 7.9 -0.2 0-0.3 0-0.5 0 -1.7-0.8-3.4-1.6-5.1-2.3C41.9 131.4 20.9 122.1 0 112.8zM73 94.4c0 10.1 0 20.2 0 30.2 0 1.4 0 2.7 0 4.1 0 1.3 0.1 1.4 1.4 0.8 0.6-0.3 1.2-0.6 1.9-0.8 16.1-7.2 32.2-14.5 48.4-21.7 1.1-0.5 1.9-0.9 1.9-2.4 0-21.8 0-43.7 0-65.5 0-1.5-0.1-1.5-1.5-1 -16.8 6.7-33.6 13.4-50.5 20.1 -1.1 0.4-1.5 1-1.5 2.2C73.1 71.7 73 83 73 94.4zM63.1 94.4c0-11.3 0-22.6 0-33.9 0-1.3-0.4-1.9-1.6-2.4 -6.3-2.4-12.5-5-18.7-7.5 -1.5-0.6-1.5-0.6-1.5 1 0 5.4 0 10.7 0 16.1 0 2.3-1 3.9-3.1 4.9 -3.1 1.4-6.6-1-6.7-4.6 0-6.8 0-13.6 0-20.4 0-1.1-0.3-1.7-1.3-2.1C23.8 43.1 17.4 40.5 11 38c-1.2-0.5-1.3-0.4-1.3 0.9 0 22 0 44 0 66 0 0.9 0.3 1.4 1.2 1.8 16.9 7.6 33.8 15.2 50.6 22.8 1.6 0.7 1.6 0.7 1.6-1.1C63.1 117 63.1 105.7 63.1 94.4zM50.3 42.7c0.2 0.4 0.6 0.5 1 0.6 5.1 2.1 10.3 4.2 15.4 6.3 1 0.4 1.8 0.4 2.7 0 15.7-6.3 31.5-12.6 47.2-18.9 0.4-0.1 0.8-0.2 1-0.6 -0.2-0.4-0.7-0.4-1-0.6 -5.2-2.1-10.4-4.2-15.6-6.3 -1-0.4-1.8-0.4-2.7 0C82.7 29.5 67 35.8 51.3 42.1 50.9 42.2 50.5 42.3 50.3 42.7zM18.5 30.2c0.5 0.2 0.8 0.4 1.2 0.5 5.1 2.1 10.2 4.1 15.3 6.2 1 0.4 1.9 0.4 2.9 0 15.6-6.3 31.2-12.5 46.9-18.8 0.4-0.2 0.9-0.2 1.2-0.7 -0.3-0.4-0.8-0.5-1.2-0.6 -5-2-10.1-4.1-15.1-6.2 -1.1-0.5-2.1-0.5-3.2 0C51 16.9 35.4 23.2 19.8 29.4 19.4 29.6 18.9 29.7 18.5 30.2z"/>
+  </symbol>
+
+  <symbol id="move-bulb-icon" viewBox="0 0 107.8 164.4">
+    <title>Move Bulb</title>
+    <path d="M65.5 164.4c-7.8 0-15.5 0-23.3 0 -0.2-0.1-0.4-0.1-0.6-0.2 -6.3-1.6-11.1-8.2-9.3-15.5 0.2-0.8-0.2-1.2-0.7-1.6 -3.1-2.7-4.6-6-4.6-10.1 0-6.5 0-13 0-19.5 0-5.3-1.3-10.3-4.2-14.8 -4-6.1-8.4-11.9-12.9-17.6 -3.4-4.4-5.7-9.2-7.4-14.4C1.4 67 0.8 63.3 0.2 59.5c0-3.4 0-6.9 0-10.3 0.3-1.9 0.5-3.8 0.9-5.7C6 22.8 18.5 9 38.8 2.3c3.5-1.1 7.1-1.6 10.7-2.1 3 0 5.9 0 8.9 0 0.9 0.1 1.7 0.2 2.6 0.4 15.3 2.1 27.4 9.5 36.5 21.9 8.1 11.2 11.4 23.8 10 37.6 -1 9.5-4.1 18.2-10 25.8 -2.2 2.8-4.3 5.6-6.3 8.4 -1.8 2.5-3.5 5-5.4 7.5 -3.5 4.7-4.8 10-4.9 15.7 -0.1 6.5 0 13 0 19.6 0 4.1-1.5 7.6-4.7 10.2 -0.6 0.5-0.8 1-0.7 1.9 0.8 4.2-0.3 7.9-3 11.2C70.5 162.5 68.1 163.7 65.5 164.4zM53.9 118.3c2.2 0 4.4 0 6.6 0 3.2 0 6.4 0 9.6 0 1.8 0 1.8 0 1.9-1.8 0-0.7 0.1-1.4 0.2-2.2 0.2-5.1 1.5-9.9 4-14.3 3-5.2 6.7-9.9 10.2-14.6 2.3-3.1 5-6.1 6.9-9.5 5-9.1 6.6-18.8 4.9-29C94.3 23.4 73 7.1 50.1 9.2c-11.9 1.1-21.9 6.1-29.8 15C11.6 34.1 8 45.8 9.2 59c0.7 7.8 3.2 15 8.1 21.3 3.9 4.9 7.7 10 11.3 15.1 4.5 6.3 7.1 13.3 7 21.1 0 1.6 0.2 1.8 1.8 1.8C42.9 118.3 48.4 118.3 53.9 118.3zM53.9 127.3c-5.5 0-11 0-16.4 0 -0.9 0-1.4 0.3-1.4 1.3 0 2.9 0 5.8 0 8.6 0 2.6 1.6 4.2 4.2 4.2 3.9 0 7.7 0 11.6 0.1 1 0 1.4 0.4 1.3 1.3 0 2 0 4 0 6 0 1.1-0.4 1.5-1.5 1.5 -3.2-0.1-6.3 0-9.5 0 -1 0-1.4 0.4-1.4 1.4 0 2.1 1.6 3.9 3.7 4 6.2 0 12.3 0 18.5 0 1.5 0 2.5-0.7 3.2-2 0.9-1.7 0.6-3.4-0.6-4.9 -2.3-2.7-0.9-6.7 2.5-7.4 2.7-0.6 3.7-1.7 3.7-4.5 0-2.7 0-5.4 0-8 0-1.5-0.1-1.6-1.6-1.6C64.7 127.3 59.3 127.3 53.9 127.3zM23.2 57.7c-1.1 0-2.2-0.1-3.4 0 -1.2 0.1-1.6-0.5-1.7-1.6 -0.2-4.4 0.1-8.8 1.5-13C22.3 34.7 27.5 28.5 35 24c1-0.6 1.5-0.5 2 0.5 1 2 2.1 4 3.3 6 0.6 1 0.4 1.5-0.6 2.1 -6.2 3.7-10.1 9.1-11.5 16.2 -0.5 2.5-0.5 5-0.2 7.5 0.1 1.1-0.2 1.4-1.2 1.3C25.6 57.6 24.4 57.7 23.2 57.7z"/>
+  </symbol>
+
+  <symbol id="move-truck-icon" viewBox="0 0 219.6 141.8">
+    <title>Move Truck</title>
+    <path d="M147.6 0.2c2.9 1.2 4 3.3 3.9 6.4 -0.1 6.2 0 12.5 0 18.7 0 1.7 0 1.7 1.6 1.7 11.4 0 22.9 0 34.3 0 1 0 1.9 0 2.8 0.4 1.7 0.7 2.8 1.9 2.9 3.9 0.5 6.9 1 13.8 1.5 20.7 0.3 4.2 0.7 8.4 0.9 12.5 0.1 1.1 0.6 1.2 1.5 1.2 5 0 10.1 0 15.1 0 4.1 0 6.1 2 6.2 6.1 0.2 7.5 0.3 14.9 0.5 22.4 0.2 6.4 0.3 12.7 0.5 19.1 0.1 3.1-2.1 5.4-5.4 5.5 -1.6 0.1-3.2 0.1-4.8 0 -1 0-1.4 0.3-1.6 1.3 -3 11.3-10.2 18.6-21.5 21.2 -15.9 3.6-29.9-6.4-33.6-20.5 -0.5-1.9 0-1.9-2.4-1.9 -16.6 0-33.3 0-49.9 0 -1.2 0-1.7 0.3-2 1.5 -2.8 11.5-12.7 20.1-24.3 21.3 -14.5 1.5-27.2-7.3-30.8-21.5 -0.3-1-0.7-1.3-1.7-1.3 -6.2 0-12.5 0-18.7 0 -1.5 0-1.6-0.1-1.6-1.6 0-7.8 0-15.6 0-23.4 0-4.1 2.8-6.6 6.4-5.8 2.1 0.5 3.8 2.3 4 4.6 0.4 4.4 0.1 8.7 0.2 13.1 0.1 3.1-0.3 2.6 2.7 2.7 2.2 0 4.4-0.1 6.6 0 1.2 0 1.6-0.3 1.9-1.5C45.9 95.9 53 88.7 64.1 86c15-3.6 30.2 5.8 33.9 20.8 0.3 1.2 0.8 1.6 2 1.6 16.8 0 33.5 0 50.3 0 1.2 0 1.7-0.4 2-1.6 2.9-11.4 12.2-19.8 23.7-21.4 14.4-2 28 7.3 31.5 21.5 0.1 0.5 0 1 0.5 1.4 0.5-0.4 0.3-0.8 0.3-1.3 0-9.8 0-19.7 0-29.5 0-1.1-0.3-1.4-1.4-1.4 -4.9 0-9.8 0-14.8 0 -1.9 0-3.3-0.8-4.4-2.3 -0.6-0.9-0.5-2.1-0.6-3.1 -0.7-8.4-1.3-16.7-1.9-25.1 -0.2-2.3-0.4-4.6-0.5-6.9 0-0.8-0.3-1.2-1.2-1.2 -10.3 0-20.6 0-31 0 -1.2 0-1.2 0.7-1.2 1.5 0 10.3 0 20.6 0 31 0 1.4-0.2 2.8-1.1 4 -1.4 1.8-3.6 2.5-5.8 1.9 -2-0.6-3.6-2.5-3.7-4.8 0-0.5 0-1 0-1.4 0-19.1 0-38.2 0-57.2 0-1.7 0-1.7-1.7-1.7 -35.3 0-70.6 0-106 0 -1.7 0-1.7 0-1.7 1.7 0 7.4 0 14.9 0 22.3 0 1.2-0.4 1.6-1.6 1.6 -2.6-0.1-5.2-0.2-7.8-0.2 -1 0-1.1-0.5-1.1-1.3 0-3.2 0-6.4 0-9.6 0-6.3 0-12.6 0-19 0-3.3 1.1-4.8 4.1-6C66 0.2 106.8 0.2 147.6 0.2zM70.5 95.8c-9.9 0-17.9 7.9-17.9 17.6 0 10.1 7.8 18.1 17.8 18.1 10.1 0 18.1-7.9 18.1-17.9C88.5 103.7 80.5 95.8 70.5 95.8zM180 131.5c10 0 18-7.9 18-17.8 0-10-7.9-17.9-17.9-17.9 -10 0-18 7.9-18 17.8C162.1 123.5 170 131.5 180 131.5zM0.2 71c1-2.7 3-3.7 5.8-3.7 10.6 0.1 21.2 0 31.8 0 3.4 0 5.7 2.8 5 6 -0.5 2.2-2.5 3.7-5 3.7 -6.7 0-13.4 0-20 0 -3.9 0-7.8-0.1-11.8 0 -2.8 0.1-4.8-1-5.8-3.7C0.2 72.6 0.2 71.8 0.2 71zM25.6 57.8c-4 0-8 0-12 0 -3.6 0-6-3.1-5-6.3 0.6-2 2-3.1 4.1-3.4C14.1 48 15.5 48 17 48c6.4 0 12.7 0 19.1 0 0.9 0 1.8 0.1 2.6 0.2 2.5 0.3 4.2 2.2 4.3 4.7 0.1 2.2-1.6 4.3-3.8 4.8 -0.7 0.1-1.3 0.2-2 0.2C33.2 57.9 29.4 57.8 25.6 57.8z"/>
+  </symbol>
+
+  <symbol id="move-trolley-icon" viewBox="0 0 189.4 170">
+    <title>Move Trolley</title>
+    <path d="M173.1 95.2l-39.6 32.2c-1.3-2.2-2.8-4.1-4.6-5.8l50.5-42.9c1.7-1.4 1.9-3.9 0.5-5.6L139 24.5c-1.4-1.7-3.9-1.9-5.6-0.5L122 33.6 95 1.4c-1.4-1.7-3.9-1.9-5.6-0.5L51.3 33c-1.7 1.4-1.9 3.9-0.5 5.6l63.3 75.4c-1.6-0.3-3.3-0.4-4.9-0.4 -15.6 0-28.2 12.7-28.2 28.2S93.7 170 109.2 170s28.2-12.6 28.2-28.2c0-1.6-0.1-3.1-0.4-4.6l39.1-31.8 12.1 1.5 1.2-9.7L173.1 95.2zM59.4 36.5l32.1-27 24.6 29.2L84 65.7 59.4 36.5zM135.6 32.6l35.8 42.6 -46.5 39.1L89.1 71.7 135.6 32.6zM109.2 160.1c-10.1 0-18.3-8.2-18.3-18.3 0-10.1 8.2-18.3 18.3-18.3 10.1 0 18.3 8.2 18.3 18.3C127.5 151.9 119.3 160.1 109.2 160.1z"/><polygon points="95.7 106.4 24.2 18.2 0 38.8 6.4 46.3 22.9 32.2 88.1 112.6 "/>
+  </symbol>
+
+  <symbol id="move-tape-icon" viewBox="0 0 119.7 145">
+    <title>Move Tape</title>
+    <path d="M31.1 64.5v28.2c0 25.6-10.2 43.6-19.6 44.3 -0.2 0-7.3 0-7.5 0 -2.3 0-4 1.8-4 4s1.8 4 4 4h39.2c8.1 0 15.3-6.1 20.5-16.1h27.9c16.1 0 28.2-27.7 28.2-64.5S107.7 0 91.5 0H59.3C43.2 0 31.1 27.7 31.1 64.5zM71.4 64.5C71.4 31.3 82 8.1 91.5 8.1s20.1 23.2 20.1 56.4 -10.6 56.4-20.1 56.4S71.4 97.7 71.4 64.5zM67 120.9c1.5-4 2.4-8.5 3.2-13.2 2.1 5.3 4.5 9.8 7.3 13.2H67zM39.2 92.7V64.5c0-33.2 10.6-56.4 20.1-56.4h18.2C69 18.9 63.3 39.6 63.3 64.5v28.2c0 26.1-10.6 44.3-20.1 44.3H26.3C34 127.8 39.2 111.5 39.2 92.7zM95.4 68c-0.6 7.3-2.8 11.6-3.9 12.4 -1.3-1-4-6.6-4-16s2.7-15 4-16c0 0 1.7 0.3 2.5 2.8l7.8-0.3c-1.9-6.2-5.2-10.8-10.3-10.8 -8.4 0-12.1 12.6-12.1 24.2s3.7 24.2 12.1 24.2c7.5 0 11.3-10.2 12-20.7h-8.1V68z"/>
+  </symbol>
+
+  <symbol id="open-home-icon" viewBox="0 0 215.2 165.4">
+    <title>Open Home</title>
+    <path d="M95.2 165.4c-0.2 0-0.5 0-0.7-0.1 -2.7-0.4-4.6-2.9-4.2-5.7C90.8 156.2 103 74 120 40c17.7-35.5 47-44.6 66.7-38 18.7 6.2 26.8 24 27.1 24.8l1.5 3.4 -107.5 94.8c-0.4 0.4-0.9 0.7-1.4 0.9 -3.8 19.8-6.1 34.9-6.1 35.3C99.8 163.6 97.6 165.4 95.2 165.4zM174 10c-14.8 0-32.8 9.9-45.1 34.5 -7.6 15.3-14.4 41.7-19.5 65.6l93.4-82.4c-2.8-4.5-9.1-12.8-19.4-16.2C180.6 10.5 177.4 10 174 10z"/><path d="M155 51c-2-0.8-3.7-1.9-5.2-3.3 -1.5-1.4-2.7-3.1-3.5-4.9 -0.8-1.9-1.2-4-1.2-6.2v-0.1c0-2.2 0.4-4.2 1.2-6.1 0.9-1.9 2-3.6 3.5-5 1.5-1.4 3.2-2.5 5.2-3.4 2-0.8 4.2-1.2 6.5-1.2 2.3 0 4.5 0.4 6.5 1.2 2 0.8 3.7 1.9 5.2 3.3 1.5 1.4 2.7 3.1 3.5 4.9 0.8 1.9 1.2 4 1.2 6.2v0.1c0 2.2-0.4 4.2-1.2 6.1 -0.9 1.9-2 3.6-3.5 5 -1.5 1.4-3.2 2.6-5.2 3.4 -2 0.8-4.2 1.2-6.5 1.2S157 51.8 155 51zM164.1 42.7c0.8-0.4 1.4-0.9 2-1.5 0.6-0.6 0.9-1.3 1.2-2.2 0.3-0.8 0.4-1.6 0.4-2.5v-0.1c0-0.9-0.2-1.7-0.4-2.5 -0.3-0.8-0.7-1.5-1.3-2.2 -0.6-0.6-1.2-1.1-2-1.5 -0.8-0.4-1.6-0.6-2.6-0.6 -0.9 0-1.8 0.2-2.6 0.6 -0.8 0.4-1.4 0.9-2 1.5 -0.6 0.6-0.9 1.3-1.2 2.2 -0.3 0.8-0.4 1.6-0.4 2.5v0.1c0 0.9 0.1 1.7 0.4 2.5 0.3 0.8 0.7 1.5 1.3 2.2 0.6 0.6 1.2 1.1 2 1.5 0.8 0.4 1.6 0.6 2.6 0.6C162.5 43.3 163.3 43.1 164.1 42.7z"/><path d="M108.9 48.1L72.2 11.5l-17 17V17.2H18.8v47.7L0 83.7v76.7h62.4v-47h23.9c3 0 5.5-2.5 5.5-5.5s-2.5-5.5-5.5-5.5H51.4v47H11V88.2l18.8-18.8V28.2h14.3v26.9l28-28 32.6 32.6L108.9 48.1z"/>
+  </symbol>
+
+  <symbol id="pets-icon" viewBox="0 0 142.7 143.9">
+    <title>Pets</title>
+    <path d="M119 22.9c-0.9-5.8-3.6-11.1-7.8-15.2C106 2.6 99.2-0.1 92 0c-7.2 0.1-13.9 3-18.9 8.2 -5 5.2-7.7 12-7.6 19.2 0.1 5.2 1.6 10.1 4.4 14.3l8.1 8.1 7.3-7.5 -3.9-3.8c-3.1-3-4.8-7-4.8-11.2 -0.1-4.3 1.5-8.3 4.5-11.4 3-3.1 7-4.8 11.2-4.8 4.3-0.1 8.3 1.5 11.4 4.5 3.3 3.2 5.1 7.7 4.8 12.4l-0.4 6.4 6.3-0.6c4.6-0.4 9.2 1.2 12.5 4.4 3.1 3 4.8 7 4.8 11.2 0.1 4.3-1.5 8.3-4.5 11.4 -0.1 0.1-0.1 0.1-0.2 0.2 -5.8 5.8-14.9 6.3-21.2 1.2l-3.9-3.1 -42.6 43.9 3.2 3.8c5.3 6.3 5 15.5-0.7 21.4 -6.1 6.3-16.3 6.5-22.6 0.3 -3.3-3.2-5.1-7.7-4.8-12.4l0.4-6.4 -6.3 0.6c-4.6 0.4-9.2-1.2-12.5-4.4 -3.1-3-4.8-7-4.8-11.2 -0.1-4.3 1.5-8.3 4.5-11.4 0.1-0.1 0.1-0.1 0.2-0.2 3-3 6.9-4.6 11-4.7 4.3-0.1 8.3 1.5 11.4 4.5l3.9 3.8 20.9-21.5 -7.8-7.8L41.4 71.6c-4.4-2.8-9.5-4.3-14.8-4.2 -7.2 0.1-13.9 3-18.9 8.2 -5 5.2-7.7 12-7.6 19.2 0.1 7.2 3 13.9 8.2 18.9 4.2 4.1 9.7 6.7 15.5 7.4 0.9 5.8 3.6 11.1 7.8 15.2 10.6 10.3 27.5 10.1 37.8-0.3 0.1-0.1 0.2-0.2 0.3-0.3 8.5-8.8 10-21.8 4.1-32.1l29.4-30.2c10.4 5.6 23.4 3.7 32-5.1 5-5.2 7.7-12 7.6-19.2 -0.1-7.2-3-13.9-8.2-18.9C130.3 26.1 124.8 23.6 119 22.9z"/>
+  </symbol>
+
+  <symbol id="photo-icon" viewBox="0 0 149.4 124.7">
+    <title>Photo</title>
+    <path d="M74.7 108.6c-19.5 0-35.4-15.9-35.4-35.4s15.9-35.4 35.4-35.4c19.5 0 35.4 15.9 35.4 35.4S94.2 108.6 74.7 108.6zM74.7 48.9c-13.4 0-24.4 10.9-24.4 24.4s10.9 24.4 24.4 24.4c13.4 0 24.4-10.9 24.4-24.4S88.2 48.9 74.7 48.9zM135.2 21.8h-26.4v-7.7c0-7.8-6.4-14.2-14.2-14.2H55.4c-7.8 0-14.2 6.4-14.2 14.2v7.7H14.2C6.4 21.8 0 28.2 0 36v60.4h11V37.7c0-2.6 2.1-4.8 4.8-4.8h118.3c2.3 0 4.2 1.9 4.2 4.2v76.6H73.2 71 0v0.9 10.2h71 2.2 76.2V36C149.4 28.2 143 21.8 135.2 21.8zM52.3 15.8c0-2.6 2.1-4.8 4.8-4.8h36.5c2.3 0 4.2 1.9 4.2 4.2v6.6H52.3V15.8z"/><rect x="120.4" y="39" width="11" height="11"/>
+  </symbol>
+
+  <symbol id="pool-icon" viewBox="0 0 121.6 137">
+    <title>Pool</title>
+    <path d="M58.9 0c-6.7 0-12.1 5.4-12.1 12.1v9.8H11v-8.6c0-1.2 1-2.2 2.2-2.2h16.1V0H12.1C5.4 0 0 5.4 0 12.1v67.4l11-10.2V55.9h35.7v26.9l11-11.1V13.3c0-1.2 1-2.2 2.2-2.2h16.1V0H58.9zM11 44.9v-12h35.7v12H11zM121.6 124.4c-4 0.1-5.8 1.8-8.7 4.7 -3.4 3.4-8.2 7.9-17 7.9 -8.8 0-13.5-4.6-17-7.9 -3-2.9-4.8-4.7-8.9-4.7 -4.1 0-5.9 1.8-8.9 4.7 -3.4 3.4-8.2 7.9-17 7.9 -8.8 0-13.5-4.6-17-7.9 -3-2.9-4.8-4.7-8.9-4.7s-5.9 1.8-8.9 4.7c-2.3 2.2-5.1 4.9-9.2 6.5v-13.6c0.4-0.4 0.8-0.7 1.2-1.2 3.4-3.4 8.2-7.9 17-7.9s13.5 4.6 17 7.9c3 2.9 4.8 4.7 8.9 4.7 4.1 0 5.9-1.8 8.9-4.7 3.4-3.4 8.2-7.9 17-7.9s13.5 4.6 17 7.9c3 2.9 4.8 4.7 8.9 4.7 4.1 0 6-1.8 8.9-4.7 3.4-3.3 8.1-7.8 16.7-7.9V124.4zM121.6 95.1c-4 0.1-5.8 1.8-8.7 4.7 -3.4 3.4-8.2 7.9-17 7.9 -8.8 0-13.5-4.6-17-7.9 -3-2.9-4.8-4.7-8.9-4.7 -4.1 0-5.9 1.8-8.9 4.7 -3.4 3.4-8.2 7.9-17 7.9 -8.8 0-13.5-4.6-17-7.9 -3-2.9-4.8-4.7-8.9-4.7s-5.9 1.8-8.9 4.7c-2.3 2.2-5.1 4.9-9.2 6.5V92.7c0.4-0.4 0.8-0.7 1.2-1.2 3.4-3.4 8.2-7.9 17-7.9s13.5 4.6 17 7.9c3 2.9 4.8 4.7 8.9 4.7 4.1 0 5.9-1.8 8.9-4.7 3.4-3.4 8.2-7.9 17-7.9s13.5 4.6 17 7.9c3 2.9 4.8 4.7 8.9 4.7 4.1 0 6-1.8 8.9-4.7 3.4-3.3 8.1-7.8 16.7-7.9V95.1z"/>
+  </symbol>
+
+  <symbol id="printer-icon" viewBox="0 0 155.9 154.5">
+    <title>Printer</title>
+    <path d="M107.1 113h-56c-3 0-5.5-2.5-5.5-5.5s2.5-5.5 5.5-5.5h56c3 0 5.5 2.5 5.5 5.5S110.2 113 107.1 113zM84.1 130h-33c-3 0-5.5-2.5-5.5-5.5s2.5-5.5 5.5-5.5h33c3 0 5.5 2.5 5.5 5.5S87.2 130 84.1 130z"/><polygon points="20.6 0 20.6 11 20.6 46.2 31.6 46.2 31.6 11 125.3 11 125.3 46.2 136.4 46.2 136.4 0 "/><path d="M155.9 66.7c0-7.8-6.4-14.2-14.2-14.2H14.2C6.4 52.5 0 58.8 0 66.7v45.6h20.6v28.2c0 7.8 6.4 14.2 14.2 14.2h87.5c7.8 0 14.2-6.4 14.2-14.2v-28.2h19.5V66.7zM144.8 101.6l-8.4 0v0h-11v37.1c0 2.6-2.1 4.8-4.8 4.8l-84.8 0c-2.3 0-4.2-1.9-4.2-4.2v-37.7h-11 -9.5l0-33.3c0-2.6 2.1-4.8 4.8-4.8h124.9c2.3 0 4.2 1.9 4.2 4.2L144.8 101.6z"/><circle cx="129.1" cy="78.9" r="7.3"/>
+  </symbol>
+
+  <symbol id="property-search-icon" viewBox="0 0 145.9 165.2">
+    <title>Property Search</title>
+    <path d="M74.7 130c-18.8 0-34.2-15.3-34.2-34.2s15.3-34.2 34.2-34.2 34.2 15.3 34.2 34.2S93.6 130 74.7 130zM74.7 72.2c-13.1 0-23.7 10.6-23.7 23.7s10.6 23.7 23.7 23.7c13.1 0 23.7-10.6 23.7-23.7S87.8 72.2 74.7 72.2zM99.1 131.4l32.2 32.2c2.1 2.1 5.6 2.1 7.8 0 2.1-2.1 2.1-5.6 0-7.9l-32.2-32.2L99.1 131.4z"/><polygon points="72.1 0 55.3 16.8 55.3 5.5 19 5.5 19 53.1 0.2 72 0.3 72 0 72.3 0 150.3 96.6 150.3 85.6 139.3 11 139.3 11 76.9 30.2 57.6 30.2 16.5 44.2 16.5 44.2 43.7 72.2 15.6 134.9 78.3 134.9 133.3 145.9 143.8 145.9 73.8 "/>
+  </symbol>
+
+  <symbol id="rental-icon" viewBox="0 0 174.6 148.9">
+    <title>Rental</title>
+    <path d="M169.8 53.9h-27.5V42.6c0-2.8-2.2-5-5-5s-5 2.2-5 5v11.3h-26.5c-2.6 0-4.7 2.1-4.7 4.7v65.2c0 2.6 2.1 4.7 4.7 4.7h26.5v20.3h10v-20.3h27.5c2.6 0 4.7-2.1 4.7-4.7V58.7C174.6 56 172.4 53.9 169.8 53.9zM165.1 119.2h-54.6V63.4h54.6V119.2zM119.8 47.6L72.2 0l-17 17V5.7H18.8v47.7L0 72.2v76.7h62.4v-47h23.9c3 0 5.5-2.5 5.5-5.5s-2.5-5.5-5.5-5.5H51.4v47H11V76.8l18.8-18.8V16.7h14.3v26.9l28-28 32.1 32.1L119.8 47.6z"/><path d="M120.4 71.1h18.8c5.2 0 9.3 1.5 12 4.2 2.3 2.3 3.5 5.5 3.5 9.4v0.1c0 6.6-3.6 10.8-8.8 12.8l10.1 14.7h-10.6l-8.8-13.2h-7.1v13.2h-9.1V71.1zM138.6 91.1c4.4 0 6.9-2.4 6.9-5.8v-0.1c0-3.9-2.7-5.9-7.1-5.9h-9v11.8H138.6z"/>
+  </symbol>
+
+  <symbol id="residential-apartment-icon" viewBox="0 0 200.8 161.9">
+    <title>Residential Apartment</title>
+    <path d="M165.7 130.2h-23.9c-3 0-5.5-2.5-5.5-5.5s2.5-5.5 5.5-5.5h34.9v31.4h13V41.3l-37-27 -37.1 28.5v119.1h-11V38.2L152.8 0l48 36.8v124.8h-35V130.2zM61 130.2H37.1c-3 0-5.5-2.5-5.5-5.5s2.5-5.5 5.5-5.5H72v31.4h13V42.6l-37-27L11 44.1v117.8H0L0 39.6 48.1 1.3l48 36.8v123.5H61V130.2zM168.9 75.6H145V50h17.5c3.5 0 6.3 2.8 6.3 6.3V75.6zM62.4 75.6H38.5V50h17.5c3.5 0 6.3 2.8 6.3 6.3V75.6z"/>
+  </symbol>
+
+  <symbol id="residential-house-icon" viewBox="0 0 145.9 149.2">
+    <title>Residential House</title>
+    <path d="M145.9 73.7L72.2 0l-17 17V5.7H18.8v47.7L0 72.2v76.7h64.6v-47h23.9c3 0 5.5-2.5 5.5-5.5s-2.5-5.5-5.5-5.5H53.6v47H11V76.8l18.8-18.8V16.7h14.3v26.9l28-28 62.7 62.7v60.1H93.8v10.9l52.1 0V73.7z"/>
+  </symbol>
+
+  <symbol id="residential-townhouse-icon" viewBox="0 0 195.2 152.1">
+    <title>Residential Townhouse</title>
+    <path id="XMLID_2852_" d="M42.1 113.3H66c3 0 5.5-2.5 5.5-5.5s-2.5-5.5-5.5-5.5H31.1v38.5H11V88.1l38.1-35.7 37.3 37.2v62.5h11V85L49.1 36.9 0 83.5v68.2h42.1V113.3z"/><path id="XMLID_2851_" d="M153.1 104.8h-23.9c-3 0-5.5-2.5-5.5-5.5s2.5-5.5 5.5-5.5h34.9v47h20.1v-81L140 15.6 97.5 61.2v90.8h-11V56.7L140 0l55.2 55.2v96.6h-42.1V104.8z"/>
+  </symbol>
+
+  <symbol id="rural-icon" viewBox="0 0 228.5 131.6">
+    <title>Rural</title>
+    <path d="M174.7 37.1L157.9 3.6c-1.1-2.2-3.3-3.6-5.8-3.6H147c-2.5 0-4.8 1.4-5.9 3.7L125 36.9c-0.1 0.3-0.2 0.6-0.2 0.9v19.8c0 0.6 0.3 1.2 0.8 1.6l16.9 13.1v14.4h9V67.3l-16.9-13.8V39.6l14.5-29.8h0.9l15 30v14l-9.2 7.9c-0.4 0.4-0.7 0.9-0.7 1.5l0 8c0 0.8 0.5 1.5 1.2 1.8 0.7 0.3 1.5 0.2 2.1-0.3l15.7-13.4c0.4-0.4 0.7-0.9 0.7-1.5V38C174.9 37.7 174.8 37.4 174.7 37.1zM74.3 87V60.5H56.8c-2.4 0-4.4 2-4.4 4.4 0 2.4 2 4.4 4.4 4.4h8.7V87H74.3z"/><polygon points="114.4 86.8 104.4 86.8 104.4 63 74.9 49.1 74.9 30.6 57.4 20.3 39.8 30.6 39.8 49.1 10.3 63 10.3 86.8 0.3 86.8 0.3 56.7 29.8 42.8 29.8 24.8 55.8 9.7 59 9.7 84.9 24.8 84.9 42.8 114.4 56.7 "/><polygon points="180.9 131.6 119.8 97.9 107.6 97.9 161.9 131.6 "/><polygon points="228.5 131.6 150.1 97.9 135.6 97.9 205.5 131.6 "/><polygon points="106.2 131.6 69.3 97.9 58.6 97.9 92.1 131.6 "/><polygon points="143.7 131.6 93.3 97.9 81.6 97.9 126.9 131.6 "/><polygon points="73.3 131.6 49.9 97.9 39.7 97.9 61.4 131.6 "/><rect y="97.9" width="10" height="33.7"/><polygon points="40.2 131.6 30.5 97.9 20.1 97.9 29.8 131.6 "/>
+  </symbol>
+
+  <symbol id="save-icon" viewBox="0 0 154.7 125.1">
+    <title>Save</title>
+    <path d="M109.6 60.4l-7.5 11h41.5v37.8c0 2.6-2.1 4.8-4.8 4.8H15.2c-2.3 0-4.2-1.9-4.2-4.2V71.4h42l-6.8-11H0v50.5c0 7.8 6.4 14.2 14.2 14.2h126.4c7.8 0 14.2-6.4 14.2-14.2V60.4H109.6zM78.1 93.1L40.6 30.7h20.7V5.5c0-3 2.5-5.5 5.5-5.5 3 0 5.5 2.5 5.5 5.5v36.2H60l18.1 30.1 18.1-30.1H84.4V5.5c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5v25.2h20.3L78.1 93.1z"/>
+  </symbol>
+
+  <symbol id="share-with-email-icon" viewBox="0 0 154.7 113">
+    <title>Share with Email</title>
+    <polygon points="105.8 11 95.8 11 95.8 0 84.8 0 84.8 11 73.8 11 73.8 22 84.8 22 84.8 32 95.8 32 95.8 22 105.8 22 "/><path d="M144.3 11.5L78.8 76.2 13.6 22h47.8V11H0v87.8c0 7.8 6.4 14.2 14.2 14.2h126.4c7.8 0 14.2-6.4 14.2-14.2V11.5L144.3 11.5zM138.9 101.9H15.2c-2.3 0-4.2-1.9-4.2-4.2V34.6l68.2 56.7 64.4-63.6v69.5C143.7 99.8 141.6 101.9 138.9 101.9z"/>
+  </symbol>
+
+  <symbol id="share-icon" viewBox="0 0 206.4 206.4">
+    <title>Share</title>
+    <path d="M169.3 206.4c-2-0.6-4.1-1.2-6.1-1.9 -14-5-22.9-19.5-21.1-34.3 0.1-0.9 0.3-1.8 0.5-3C114 152.9 85.5 138.6 58.3 125c-6.8 3.5-12.4 7.6-18.6 9.3 -17 4.6-34-5.9-38.7-22.9 -0.3-1.2-0.7-2.3-1.1-3.4 0-3.2 0-6.4 0-9.7 0.6-2 1.2-4.1 1.9-6.1 7.7-21.5 35-28.3 51.9-13 1 0.9 1.9 1.8 3 2.8 28.5-14.3 56.9-28.5 85.5-42.8 0-4.1-0.6-8.3 0.1-12.3 2.6-14 11.1-22.8 25-26.3 0.6-0.2 1.2-0.5 1.8-0.7 3.2 0 6.4 0 9.7 0 9 2.3 17.1 6.3 22 14.6 2.3 3.9 3.6 8.5 5.4 12.8 0 3.2 0 6.4 0 9.7 -0.3 0.9-0.6 1.8-0.9 2.6 -3.4 12.3-11.1 20.5-23.4 23.7 -12.5 3.2-23.3-0.5-32.1-9.8 -0.6-0.7-1.2-1.4-2.2-2.5 -28.1 14-56.2 28.1-84.4 42.2 0.4 3.4 1 6.7 1 10 0 3.2-0.6 6.4-1 10 27.9 14 56.1 28 84.4 42.2 5.1-6.4 11.3-10.9 19.2-12.6 17.5-3.8 34.1 6.6 38.5 23.9 0.2 0.9 0.6 1.8 0.9 2.6 0 3.2 0 6.4 0 9.7 -2.3 9-6.3 17.1-14.6 22 -3.9 2.3-8.5 3.6-12.8 5.4C175.7 206.4 172.5 206.4 169.3 206.4zM193.5 32c-0.1-10.5-8.8-19.1-19.4-19.1 -10.7 0-19.4 8.9-19.3 19.6 0.1 10.5 8.8 19.1 19.4 19.1C184.8 51.6 193.5 42.8 193.5 32zM51.6 103.1c0-10.5-8.7-19.2-19.3-19.2 -10.7 0-19.5 8.8-19.4 19.5 0.1 10.5 8.7 19.2 19.3 19.2C42.9 122.6 51.6 113.8 51.6 103.1zM174.1 154.8c-10.5 0-19.2 8.6-19.3 19.2 -0.1 10.7 8.7 19.5 19.4 19.5 10.7 0 19.4-8.8 19.3-19.6C193.4 163.4 184.6 154.8 174.1 154.8z"/>
+  </symbol>
+
+  <symbol id="stairs-icon" viewBox="0 0 167.8 166.4">
+    <title>Stairs</title>
+    <path d="M5 166.4c-2.8 0-5-2.2-5-5v-58.1L101.8 1.5c2-2 5.1-2 7.1 0 2 2 2 5.1 0 7.1L10 107.4v54C10 164.1 7.8 166.4 5 166.4z"/><polygon points="152.1 70 65.3 154.9 42.6 154.9 42.6 128.8 72.1 128.8 72.1 99.6 101.3 99.6 101.3 70.4 130.4 70.4 130.4 41.6 143.6 41.6 157.8 41.6 167.8 41.6 167.8 31.6 120.4 31.6 120.4 60.4 91.3 60.4 91.3 89.6 62.1 89.6 62.1 118.8 32.6 118.8 32.6 164.9 69.3 164.9 166.4 70 "/>
+  </symbol>
+
+  <symbol id="stairs2-icon" viewBox="0 0 167.8 166.4">
+    <title>Stairs</title>
+  <path d="M157.8 161.4v-54L58.9 8.6c-2-2-2-5.1 0-7.1s5.1-2 7.1 0l101.8 101.8v58.1c0 2.8-2.2 5-5 5S157.8 164.1 157.8 161.4z"/><polygon points="1.4 70 98.5 164.9 135.2 164.9 135.2 118.8 105.7 118.8 105.7 89.6 76.5 89.6 76.5 60.4 47.4 60.4 47.4 31.6 0 31.6 0 41.6 10 41.6 24.2 41.6 37.4 41.6 37.4 70.4 66.5 70.4 66.5 99.6 95.7 99.6 95.7 128.8 125.2 128.8 125.2 154.9 102.5 154.9 15.7 70 "/>
+  </symbol>
+
+  <symbol id="star-icon" viewBox="0 0 95.1 90.5">
+    <title>Star</title>
+    <polygon points="59.3 33.8 95.1 34.5 66.6 56.2 77 90.4 47.6 70 18.2 90.5 28.5 56.2 0 34.6 35.8 33.8 47.5 0 "/>
+  </symbol>
+
+  <symbol id="toilet-icon" viewBox="0 0 102 151.2">
+    <title>Toilet</title>
+    <path d="M94.5 48.2H44.9v10h49.7c2.8 0 5-2.2 5-5S97.3 48.2 94.5 48.2zM100.6 67.7c-0.9-1-2.2-1.5-3.6-1.5l-59.8 0V5c0-2.8-2.2-5-5-5H5C2.2 0 0 2.2 0 5v61.2 1.1 62.6h10V76.2h81.2c-1.2 5.5-4.2 14-12 17.9 -13.5 6.8-30.9 6.4-31.2 6.4 -1.3 0-2.6 0.5-3.6 1.4 -1 0.9-1.5 2.2-1.5 3.6v16.5c0 1.9 1 3.6 2.7 4.4l11.1 9.1v5.8H15.6h-3.9H0.1v10h61.6c2.8 0 5-2.2 5-5v-13.8c0-1.9-1-3.6-2.7-4.4l-11.1-9.4v-8.1c8.5-0.2 19.1-1.5 30.8-7.4 17.3-8.7 18.2-30.7 18.3-31.7C102 70 101.5 68.7 100.6 67.7zM10 10h17.2v56.2l-17.2 0V10z"/>
+  </symbol>
+
+  <symbol id="delete-icon" viewBox="0 0 94.3 102.6">
+    <title>Delete</title>
+    <rect y="17" width="94.3" height="8.6"/><rect x="8.8" y="25.6" width="8.4" height="72.7"/><rect x="76.8" y="25.6" width="8.4" height="72.7"/><rect x="16.4" y="94" width="60.8" height="8.6"/><rect x="42.8" y="38.4" width="8.4" height="42.9"/><rect x="25.8" y="38.4" width="8.4" height="42.9"/><rect x="59.8" y="38.4" width="8.4" height="42.9"/><rect x="27.7" width="37" height="8.6"/><rect x="17.3" y="7" transform="matrix(0.4429 -0.8966 0.8966 0.4429 5.011 30.6313)" width="19.8" height="8.6"/><rect x="55.3" y="7" transform="matrix(-0.4429 -0.8966 0.8966 -0.4429 83.8915 74.6958)" width="19.8" height="8.6"/>
+  </symbol>
+
+  <symbol id="video-icon" viewBox="0 0 153.2 153.2">
+    <title>Video</title>
+    <path d="M56.5 108.8c-1 0-2-0.3-2.8-0.8 -1.7-1-2.7-2.8-2.7-4.7V49.9c0-1.9 1-3.7 2.7-4.7 1.7-1 3.7-1 5.4-0.1l49.8 26.7c1.8 1 2.9 2.8 2.9 4.8s-1.1 3.9-2.9 4.8l-49.8 26.7C58.3 108.6 57.4 108.8 56.5 108.8zM62 59.1v35l32.6-17.5L62 59.1zM76.6 0C53.2 0 32.2 10.6 18.2 27.1l9.7 5.6C39.9 19.4 57.3 11 76.6 11c36.2 0 65.6 29.4 65.6 65.6 0 36.2-29.4 65.6-65.6 65.6 -36.2 0-65.6-29.4-65.6-65.6 0-8.6 1.7-16.8 4.7-24.3L6 46.8C2.2 56 0 66 0 76.6c0 42.2 34.4 76.6 76.6 76.6 42.2 0 76.6-34.4 76.6-76.6C153.2 34.4 118.9 0 76.6 0z"/>
+  </symbol>
+
+  <symbol id="website-icon" viewBox="0 0 156.5 121.2">
+    <title>Website</title>
+    <path d="M71.5 26.8L63 35.2l0-5.2H47.8v20.4l-7.5 7.5v33.9H71V73.2h7c2.6 0 4.7-2.1 4.7-4.7s-2.1-4.7-4.7-4.7H61.6v18.6H49.7V61.8l4-4v0.1L71.5 40l22.3 22.3v20.3H77.5v9.3l25.7 0V58.5L71.5 26.8zM156.5 121.2h-31.2v-10.6h20.5v-100H17.5c-3.8 0-6.9 3.1-6.9 6.9v86.2c0 3.8 3.1 6.9 6.9 6.9h92.7v10.6H17.5c-9.7 0-17.5-7.9-17.5-17.5V17.5C0 7.9 7.9 0 17.5 0h139V121.2z"/><circle cx="129.4" cy="60.4" r="8"/>
+  </symbol>
+
+  <symbol id="menu-icon" viewBox="0 0 40.2 40.1">
+    <title>Website</title>
+    <rect x="0.1" width="40" height="4.3"/><rect x="0.1" y="11" width="40" height="4.3"/><rect x="0.1" y="22" width="40" height="4.3"/><path d="M4.1 40l-2.3-7.6H1.7C1.8 34 1.8 35 1.8 35.5V40H0v-9.6h2.8l2.3 7.4h0l2.4-7.4h2.8V40H8.4v-4.6c0-0.2 0-0.5 0-0.7 0-0.3 0-1 0.1-2.2H8.4L6 40H4.1zM18.5 40H13v-9.6h5.6V32H15v2.1h3.3v1.7H15v2.5h3.5V40zM29.6 40h-2.6l-4.2-7.3h-0.1c0.1 1.3 0.1 2.2 0.1 2.8V40h-1.8v-9.6h2.6l4.2 7.2h0c-0.1-1.3-0.1-2.1-0.1-2.7v-4.6h1.8V40zM40.2 30.4v6.2c0 0.7-0.2 1.3-0.5 1.9 -0.3 0.5-0.8 0.9-1.4 1.2 -0.6 0.3-1.3 0.4-2.1 0.4 -1.2 0-2.2-0.3-2.9-1 -0.7-0.6-1-1.5-1-2.6v-6.2h2v5.9c0 0.7 0.1 1.3 0.4 1.6 0.3 0.3 0.8 0.5 1.5 0.5 0.7 0 1.2-0.2 1.5-0.5 0.3-0.3 0.5-0.9 0.5-1.6v-5.9H40.2z"/>
+  </symbol>
+
+  <symbol id="search-magnify-icon" viewBox="0 0 100.1 103.6">
+    <title>Search Magnify</title>
+    <path d="M34.2 68.4C15.3 68.4 0 53 0 34.2S15.3 0 34.2 0s34.2 15.3 34.2 34.2S53 68.4 34.2 68.4zM34.2 10.5c-13.1 0-23.7 10.6-23.7 23.7s10.6 23.7 23.7 23.7c13.1 0 23.7-10.6 23.7-23.7S47.2 10.5 34.2 10.5zM58.5 69.7L90.8 102c2.1 2.1 5.6 2.1 7.8 0 2.1-2.1 2.1-5.6 0-7.9L66.3 61.8 58.5 69.7z"/>
+  </symbol>
+
+  <symbol id="close-icon" viewBox="0 0 24.7 26.4">
+    <title>Close</title>
+    <path d="M24.7 26.4h-6.4l-6.1-10L6 26.4H0l8.8-13.6L0.6 0h6.2l5.7 9.5L18 0h6l-8.3 13.1L24.7 26.4z"/>
+  </symbol>
+
+  <symbol id="list-view-icon" viewBox="0 0 218.4 136.6">
+    <title>List View</title>
+    <rect width="54.8" height="54.8"/><rect y="81.8" width="54.8" height="54.8"/><rect x="142.4" y="-59.5" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 158.8112 -141.8993)" width="16" height="136"/><rect x="142.4" y="60.6" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 278.9337 -21.7767)" width="16" height="136"/><rect x="142.4" y="-20.5" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 197.8112 -102.8993)" width="16" height="136"/><rect x="142.4" y="21.5" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 239.8112 -60.8993)" width="16" height="136"/>
+  </symbol>
+
+  <symbol id="grid-icon" viewBox="0 0 218.4 136.6">
+    <title>Grid</title>
+    <rect width="54.8" height="54.8"/><rect x="81.8" width="54.8" height="54.8"/><rect y="81.8" width="54.8" height="54.8"/><rect x="81.8" y="81.8" width="54.8" height="54.8"/><rect x="163.6" y="81.8" width="54.8" height="54.8"/><rect x="163.6" width="54.8" height="54.8"/>
+  </symbol>
+
+  <symbol id="right-arrow-icon" viewBox="0 0 84.1 168.7">
+    <title>Right Arrow</title>
+    <polygon points="84.1 84.3 13.3 0 0 11.2 61.4 84.4 0 157.6 13.3 168.7 84.1 84.4 84 84.4 "/>
+  </symbol>
+
+  <symbol id="left-arrow-icon" viewBox="0 0 84.1 168.7">
+    <title>Left Arrow</title>
+    <polygon points="0 84.3 70.8 0 84.1 11.2 22.6 84.4 84.1 157.6 70.8 168.7 0 84.4 0 84.4 "/>
+  </symbol>
+
+  <symbol id="up-arrow-icon" viewBox="0 0 168.7 84.1">
+    <title>Up Arrow</title>
+    <polygon points="84.4 0 168.7 70.8 157.6 84.1 84.4 22.6 11.2 84.1 0 70.8 84.3 0 84.4 0 "/>
+  </symbol>
+
+  <symbol id="down-arrow-icon" viewBox="0 0 168.7 84.1">
+    <title>Down Arrow</title>
+    <polygon points="84.4 84.1 168.7 13.3 157.6 0 84.4 61.4 11.2 0 0 13.3 84.3 84.1 84.4 84 "/>
+  </symbol>
+
+  <symbol id="user-icon" viewBox="0 0 45.5 99.3">
+    <title>User</title>
+    <path d="M21.7 30.7c-8.5 0-15.4-6.9-15.4-15.4S13.3 0 21.7 0c8.5 0 15.4 6.9 15.4 15.4S30.2 30.7 21.7 30.7zM21.7 8c-4.1 0-7.4 3.3-7.4 7.4s3.3 7.4 7.4 7.4c4.1 0 7.4-3.3 7.4-7.4S25.8 8 21.7 8zM0 35.8l1.3 8.5h34.2L28 90.8H16.7L11.1 53H2.5l5.8 39.4c0.6 3.9 4 6.9 8 6.9h12c4 0 7.3-2.9 8-6.8l9.1-56.7H0z"/>
+  </symbol>
+
+  <symbol id="facebook-icon" viewBox="0 0 90 90">
+    <title>Facebook</title>
+    <path d="M90 15c0-7.9-7.1-15-15-15H15C7.1 0 0 7.1 0 15v60c0 7.9 7.1 15 15 15h30V56H34V41h11v-5.8C45 25.1 52.6 16 61.9 16H74v15H61.9c-1.3 0-2.9 1.6-2.9 4v6h15v15H59v34h16c7.9 0 15-7.1 15-15V15z"/>
+  </symbol>
+
+  <symbol id="twitter-icon" viewBox="0 0 430.1 296.3">
+    <title>Twitter</title>
+    <path d="M381.4 131.7c24.2-2 40.5-13 46.8-27.9 -8.7 5.4-35.8 11.2-50.7 5.6 -0.7-3.5-1.5-6.8-2.4-9.9 -11.4-41.8-50.4-75.5-91.2-71.4 3.3-1.3 6.7-2.6 10-3.7 4.5-1.6 30.9-5.9 26.7-15.2 -3.5-8.2-35.7 6.2-41.8 8.1 8-3 21.3-8.2 22.7-17.4 -12.3 1.7-24.3 7.5-33.6 15.9 3.4-3.6 5.9-8 6.5-12.8 -32.7 20.9-51.8 63.1-67.3 103.9 -12.1-11.8-22.9-21-32.6-26.2C147.4 66.4 115 51.2 64.2 32.3c-1.6 16.8 8.3 39.2 36.8 54.1 -6.2-0.8-17.5 1-26.5 3.2 3.7 19.3 15.7 35.2 48.2 42.8 -14.8 1-22.5 4.4-29.5 11.6 6.8 13.4 23.3 29.2 53 25.9 -33 14.2-13.5 40.6 13.4 36.6C113.7 254 41.5 250.5 0 210.9c108.3 147.6 343.7 87.3 378.8-54.9 26.3 0.2 41.7-9.1 51.3-19.4C415 139.2 393 136.6 381.4 131.7z"/>
+  </symbol>
+
+  <symbol id="twitter-icon-new" viewBox="90 90 180 230">
+    <title>Twitter</title>
+    <path d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23"/>
+  </symbol>
+
+  <symbol id="google-plus-icon" viewBox="0 0 204.9 130.2">
+    <title>Google Plus</title>
+    <path d="M65.1 55.8c0 7.4 0 14.8 0 22.2 12.4 0.4 24.8 0.2 37.2 0.4 -5.5 27.5-42.9 36.4-62.7 18.5 -20.4-15.8-19.4-50.3 1.8-64.9 14.8-11.8 35.8-8.9 50.6 1.3 5.8-5.4 11.2-11.1 16.5-17.1C96.3 6.3 81.2-0.7 65.1 0.1 31.6-1.1 0.7 28.3 0.2 61.8c-2.1 27.4 15.9 54.3 41.3 64 25.4 9.8 57.9 3.1 74.1-19.7 10.7-14.4 13-32.9 11.7-50.3C106.5 55.7 85.8 55.7 65.1 55.8zM186.3 55.7c-0.1-6.2-0.1-12.4-0.1-18.6 -6.2 0-12.3 0-18.5 0 -0.1 6.2-0.1 12.4-0.2 18.6 -6.2 0-12.4 0.1-18.6 0.1 0 6.2 0 12.3 0 18.5 6.2 0.1 12.4 0.1 18.6 0.2 0.1 6.2 0.1 12.4 0.1 18.6 6.2 0 12.3 0 18.5 0 0-6.2 0.1-12.4 0.1-18.6 6.2-0.1 12.4-0.1 18.6-0.2 0-6.2 0-12.3 0-18.5C198.7 55.7 192.5 55.7 186.3 55.7z"/>
+  </symbol>
+
+  <symbol id="pinterest-icon" viewBox="0 0 430.1 430.1">
+    <title>Pinterest</title>
+    <path d="M106.8 18.9C51.4 40.9 13.8 83.1 3.3 140c-6.4 34.9-4 73 11.4 105.7 3.4 7.3 7.6 14.2 12.5 20.7 2.4 3.1 4.9 6.2 7.7 9 4.9-1.8 9.7-3.9 14.2-6.5 18.7-10.6 32.5-26.8 48.5-40.5 -53.5-62 3.2-138.9 74.2-156 66.1-15.9 155.6 11.6 175.7 79.5 8.3 28.2 2.9 59.3-20.1 79.7 -12 10.7-27.2 17.7-43.4 20.6 -9.4 1.7-19.1 1.9-28.6 1 -5.3-0.5-10.6-1.4-15.8-2.6 -8.8-2.1-16.6-1.8-16.6-11.2 0-24.8 0-49.6 0-74.3 0-12.4 0-24.8 0-37.2 0-7.6 0.7-6.2-5.6-7 -5-0.6-9.9-1.1-14.9-1.5 -17.5-1.4-35.9-2.3-53.2 0.7 -6.5 1.1-6.9 0.1-6.9 7.1 0 5.7 0 11.4 0 17.1 0 13.9 0 27.8 0 41.7 0 41.5 3.1 83.5 1.4 125 -0.5 12.4-0.8 42-14.7 48.1 -16 7.1-30.2-7.9-45-11 2 20.8-11 62 13.3 72.5 22.2 9.6 47.8 13.2 71.3 5.3 49.1-16.7 65-71.3 58.8-116.2 75.8 22.6 157.7-15.2 190.1-83.7C440.7 177 430.9 116.5 396.2 75 331.1-2.6 198.9-17.5 106.8 18.9z"/>
+  </symbol>
+
+  <symbol id="checked-circle-icon" viewBox="0 0 203.2 203.2">
+    <title>Checked Circle</title>
+    <path d="M76.6 118.6c24.9-24.9 49.3-49.3 73.6-73.6 6.9 6.9 13.8 13.7 20.4 20.4 -31.4 31.3-62.8 62.7-94 93.9 -17.1-17.1-34.4-34.5-51.6-51.6 6.6-6.6 13.5-13.4 20.4-20.3C55.4 97.4 65.8 107.8 76.6 118.6z"/><path d="M101.6 203.2C45.6 203.2 0 157.6 0 101.6 0 45.6 45.6 0 101.6 0c56 0 101.6 45.6 101.6 101.6C203.2 157.6 157.6 203.2 101.6 203.2zM101.6 11C51.6 11 11 51.6 11 101.6c0 50 40.6 90.6 90.6 90.6 50 0 90.6-40.6 90.6-90.6C192.2 51.6 151.5 11 101.6 11z"/>
+  </symbol>
+
+  <symbol id="spanner-circle-icon" viewBox="0 0 203.2 203.2">
+    <title>Spanner Circle</title>
+    <path d="M101.6 203.2C45.6 203.2 0 157.6 0 101.6S45.6 0 101.6 0s101.6 45.6 101.6 101.6S157.6 203.2 101.6 203.2zM101.6 11C51.6 11 11 51.6 11 101.6s40.6 90.6 90.6 90.6 90.6-40.6 90.6-90.6S151.5 11 101.6 11z"/><path d="M164.4 56c3.8 14.3-4.3 29.1-18.3 33.6 -5 1.6-10.1 1.9-15.3 0.7 -0.9-0.2-1.4 0-2 0.6 -21.5 21.6-43 43.1-64.6 64.7 -2.3 2.3-5 3.9-8.4 4.3 -8 0.9-14.8-5.2-14.8-13.2 0-3.8 1.5-7 4.2-9.7 7.2-7.1 14.3-14.3 21.4-21.4C81 101.3 95.3 87 109.6 72.7c0.7-0.7 0.9-1.2 0.6-2.2 -4.1-14.2 4-29.5 18-34.1 5.3-1.8 10.7-2 16.1-0.6 0.1 0.2 0.3 0.3 0.4 0.5 -0.4 0.2-0.9 0.3-1.2 0.6 -4.7 4.7-9.4 9.4-14.1 14.1 -0.6 0.6-0.7 1.1-0.5 1.9 1.2 4.5 2.4 8.9 3.6 13.4 0.2 0.8 0.6 1.2 1.4 1.4 4.4 1.1 8.9 2.3 13.3 3.6 0.9 0.3 1.5 0.1 2.1-0.6 4.6-4.7 9.3-9.3 13.9-13.9 0.3-0.3 0.5-0.8 0.7-1.2C164.1 55.8 164.2 55.9 164.4 56zM52.2 142.9c-2.8 0-5 2.2-5 5.1 0 2.9 2.3 5.1 5.2 5 2.8 0 5-2.3 4.9-5.1C57.2 145.1 55 142.9 52.2 142.9z"/>
+  </symbol>
+
+  <symbol id="question-circle-icon" viewBox="0 0 203.2 203.2">
+    <title>Question Circle</title>
+    <path d="M101.6 203.2C45.6 203.2 0 157.6 0 101.6S45.6 0 101.6 0s101.6 45.6 101.6 101.6S157.6 203.2 101.6 203.2zM101.6 11C51.6 11 11 51.6 11 101.6s40.6 90.6 90.6 90.6 90.6-40.6 90.6-90.6S151.5 11 101.6 11z"/><path d="M86 127.6v-7.2c0-6.2 1.3-11.7 4-16.3 2.7-4.6 7.6-9.5 14.6-14.7 6.8-4.9 11.3-8.9 13.5-11.9 2.2-3.1 3.3-6.5 3.3-10.3 0-4.2-1.6-7.5-4.7-9.7 -3.1-2.2-7.5-3.3-13.1-3.3 -9.8 0-20.9 3.2-33.4 9.6L59.6 42.4c14.5-8.1 29.9-12.2 46.2-12.2 13.4 0 24.1 3.2 32 9.7s11.9 15 11.9 25.8c0 7.2-1.6 13.3-4.9 18.6 -3.3 5.2-9.4 11.1-18.6 17.6 -6.2 4.6-10.2 8.1-11.9 10.5 -1.7 2.4-2.5 5.6-2.5 9.5v5.9H86zM82.8 161c0-5.5 1.5-9.6 4.4-12.4 2.9-2.8 7.2-4.2 12.8-4.2 5.4 0 9.6 1.4 12.5 4.3 3 2.9 4.4 7 4.4 12.3 0 5.1-1.5 9.2-4.5 12.2 -3 3-7.2 4.4-12.5 4.4 -5.5 0-9.7-1.4-12.7-4.3C84.3 170.4 82.8 166.3 82.8 161z"/>
+  </symbol>
+
+  <symbol id="news-icon" viewBox="0 0 107.5 99.4">
+    <title>News</title>
+    <path d="M67.6 16.7H38.1c-1.4 0-2.7 1.5-2.7 2.7v24.7l0 0h32.2V16.7zM62.2 38.7H40.7V22h21.5V38.7z"/><polygon points="35.4 70.3 91.6 70.3 91.6 77.2 35.4 77.2 35.4 73.7 "/><polygon points="35.4 54.1 91.6 54.1 91.6 61.1 35.4 61.1 35.4 57.6 "/><path d="M104.8 0H21.5c-1.4 0-2.7 1.5-2.7 2.7v24.2H2.7c-1.5 0-2.7 1.5-2.7 2.7v40.2h5.4V32.2h13.4v55.1c0 3.8-2.9 6.7-6.7 6.7s-6.7-2.9-6.7-6.7v-9.6H0v9.6C0 94 5.4 99.4 12.1 99.4h83.3c6.7 0 12.1-5.4 12.1-12.1V2.7C107.4 1.3 106.2 0 104.8 0zM102.1 87.3c0 3.8-2.9 6.7-6.7 6.7H21.8c1.4-2 2.4-4.2 2.4-6.7V5.4h77.9V87.3z"/>
+  </symbol>
+
+  <symbol id="tips-icon" viewBox="0 0 101.3 92.3">
+    <title>Tips and Info</title>
+    <rect x="21" y="16.5" width="7.8" height="7.3"/><rect x="21" y="29.3" width="7.6" height="26.9"/><polygon points="61.3 49.2 61.3 52.7 61.3 56.2 40.1 56.2 40.1 52.7 40.1 49.2 "/><polygon points="40.1 33.1 82.4 33.1 82.4 40.1 40.1 40.1 40.1 36.6 "/><polygon points="40.1 17 82.4 17 82.4 23.9 40.1 23.9 40.1 20.5 "/><path d="M94.3 56.2v5.7c0 2.4-1.9 4.3-4.3 4.3H70.6l-20 17 -20-17H11.3c-2.4 0-4.3-1.9-4.3-4.3V11.3C7 8.9 8.9 7 11.3 7H90c2.4 0 4.3 1.9 4.3 4.3v37h7v-37C101.3 5 96.3 0 90 0H11.3C5 0 0 5 0 11.3v50.6c0 6.2 5 11.3 11.3 11.3h16.9l22.5 19.1 22.5-19.1H90c6.2 0 11.3-5 11.3-11.3v-5.7H94.3z"/>
+  </symbol>
+
+  <symbol id="inspiration-icon" viewBox="0 0 152.4 182.4">
+    <title>Inspiration</title>
+    <path d="M82.7 182.4h-11c0-12.6-10.2-22.8-22.8-22.8S26 169.8 26 182.4H15c0-18.7 15.2-33.8 33.8-33.8S82.7 163.7 82.7 182.4z"/><circle cx="49.6" cy="67" r="8.5"/><circle cx="76.6" cy="67" r="8.5"/><circle cx="103.5" cy="67" r="8.5"/><path d="M152.4 59.5c0-18.8-15.3-34.1-34.1-34.1 -0.6 0-1.2 0-1.8 0C110.6 10.5 96.1 0 79.2 0 59.8 0 43.6 13.8 39.9 32.1c-22 0.1-39.9 18-39.9 40 0 11.4 4.8 21.8 12.5 29.1 2-2.9 4.4-6.1 6.5-9.1 -5-5.2-8-12.3-8-20 0-16 13-29 29-29 3.7 0 7.3 0.7 10.5 2 -0.3-1.6-0.4-3.3-0.4-5 0-16 13-29 29-29 15.6 0 28.3 12.3 29 27.7 3.1-1.5 6.5-2.3 10.1-2.3 12.7 0 23.1 10.4 23.1 23.1 0 12-9.3 22-21 23 1.9 2.3 3 5.2 3 8.3 0 7.3-5.9 13.2-13.2 13.2 -5.4 0-10.1-3.3-12.1-8 -2.3 9.6-11 16.7-21.2 16.7 -0.5 0-1 0-1.5-0.1 -1.8-13-13-23-26.5-23 -14.8 0-26.8 12-26.8 26.8 0 14.8 12 26.8 26.8 26.8 12.3 0 22.6-8.3 25.8-19.5 0.7 0 1.5 0.1 2.2 0.1 9.4 0 18.1-4 24.1-10.5 2.9 1.2 6 1.8 9.2 1.8 13.3 0 24.2-10.8 24.2-24.2 0-0.4 0-0.9 0-1.3C145.1 83.7 152.4 72.3 152.4 59.5zM48.9 132.1c-8.7 0-15.8-7.1-15.8-15.8 0-8.7 7.1-15.8 15.8-15.8s15.8 7.1 15.8 15.8C64.6 125.1 57.6 132.1 48.9 132.1z"/>
+  </symbol>
+
+  <symbol id="a-icon" viewBox="0 0 82.1 96.7">
+    <title>A</title>
+    <path d="M72.5 10.3C65.6 3.4 55.5 0 42.3 0c-13.6 0-23.7 3.1-34 7.8l4.2 11.4c8.7-4 17.4-6.9 28.4-6.9 17.5 0 27.8 8.7 27.8 25.5v1.3l0.1 12.2c0 0 0 0 0.1 0v9c0 14.8-14.1 25.3-31.3 25.3 -12.7 0-23.5-6.9-23.5-18.6v-0.4c0-11.8 9.8-19.3 27.3-19.3 5.8 0 11 0.5 15.6 1.3V38.4c-5-0.8-10.5-1.3-17-1.3 -23.7 0-40 10.5-40 30.2v0.4c0 19.2 17.5 29.1 34.9 29.1 16.4 0 27.3-7.6 33.8-16.1v14.1h13.4V37.6C82.1 25.7 78.8 16.6 72.5 10.3z"/>
+  </symbol>
+
+  <symbol id="b-icon" viewBox="0 0 94.4 134">
+    <title>B</title>
+    <path d="M94.4 85v0.4c0 30.6-22.1 48.6-44.7 48.6 -17.4 0-28.6-9.4-35.8-19.9V132H0V0h13.9v87c0 7.6 2.2 15 6.8 21 6.4 8.5 16.3 13.5 26.5 13.5 18.1 0 32.9-13.4 32.9-36v-0.4C80.1 63.1 64.9 49 47.2 49c-8 0-15.8 3.1-21.9 8.6V44.9c6.4-5 14.4-8.3 24.5-8.3C72.1 36.5 94.4 54.2 94.4 85z"/>
+  </symbol>
+
+  <symbol id="c-icon" viewBox="0 0 86.1 97.6">
+    <title>C</title>
+    <path d="M0 49.2v-0.4C0 22.4 20.6 0 47.9 0c17.7 0 28.7 7.4 37.4 16.6l-9.2 9.8c-7.4-7.8-15.7-14.1-28.4-14.1 -19 0-33.4 16.1-33.4 36.2v0.4c0 20.2 14.8 36.3 34.3 36.3 11.9 0 21.2-6 28.6-13.9l8.9 8.3C76.7 90 65.4 97.6 47.9 97.6 20.6 97.6 0 75.4 0 49.2z"/>
+  </symbol>
+
+  <symbol id="d-icon" viewBox="0 0 94.4 134">
+    <title>D</title>
+    <path d="M94.4 0v132H80.5v-18.8C72.9 124.4 61.8 134 44.6 134 22.2 134 0 116.2 0 85.5v-0.4c0-30.6 22.2-48.6 44.6-48.6 10.1 0 18.1 3.2 24.4 7.9v13.1C63 52.1 55.2 49 47.2 49c-18.1 0-32.9 13.4-32.9 36v0.4c0 22.1 15.4 36.2 32.9 36.2 9.7 0 19.1-4.6 25.5-12.4 5.1-6.2 7.7-14.2 7.7-22.3V0H94.4z"/>
+  </symbol>
+
+  <symbol id="e-icon" viewBox="0 0 87.2 97.5">
+    <title>E</title>
+    <path d="M75.2 13.8C67.5 4.9 56.5 0 44.3 0 32.1 0 20.9 5 12.6 14.2 4.6 23.1 0 35.8 0 49v0.4c0 1.4 0.1 2.8 0.2 4.2l0 0.5h86.6l0.1-0.4c0.2-1.3 0.3-3.3 0.3-4.5C87.2 35.3 83 22.7 75.2 13.8zM75 43.6H12c2.1-19.1 15.5-32.9 32-32.9 9.2 0 17 3.5 22.6 10.3C71.1 26.4 74.2 34.7 75 43.6zM13.6 84.1c8.5 8.7 19.9 13.4 32.1 13.4 15 0 26.2-4.9 37.2-16.2l-8-7.1c-8.4 8.5-17.6 12.5-28.9 12.5 -8.6 0-16.8-3.2-22.9-9 -3.6-3.4-6.4-7.6-8.3-12.3H2.5C4.7 72.5 8.6 78.9 13.6 84.1z"/>
+  </symbol>
+
+  <symbol id="f-icon" viewBox="0 0 94.4 124.7">
+    <title>F</title>
+    <path d="M12.8 51.5h13.9v0h29.5V39.6H26.6V32c0-13.4 5.4-19.9 16.3-19.9 4.7 0 8.5 0.9 13.6 2.4V2.4C51.9 0.7 47.5 0 41 0 32.5 0 25.7 2.5 21 7.2c-5.2 5.2-8.1 13.4-8.1 24v8.1H0v12.1L12.8 51.5 12.8 51.5z"/><rect x="12.8" y="62.8" width="13.9" height="69.8"/>
+  </symbol>
+
+  <symbol id="g-icon" viewBox="0 0 94.4 124.7">
+    <title>G</title>
+    <path d="M94.4 2v77.2c0 14.5-4.3 25.5-11.9 33.1 -8.3 8.3-20.8 12.5-35.6 12.5 -15.5 0-30-4.3-42.5-13l6.3-10.8c10.7 7.8 22.6 11.9 36 11.9 20.6 0 34-11.4 34-33.3v-11c0 0 0 0 0 0V46.8c0-18.3-14.2-33.7-32.5-34.5 -0.5 0-1 0-1.5 0 -17.7 0-32.4 12.3-32.4 31.4v0.4c0 18.8 15 31.8 32.4 31.8 8.3 0 16.4-2.8 22.7-7.8V80c-6.7 5-15 8.2-25.4 8.2C21.5 88.2 0 71.4 0 44.5v-0.4C0 16.8 21.7 0 43.9 0c17.5 0 28.9 8.7 36.5 18.8V2H94.4z"/>
+  </symbol>
+
+  <symbol id="h-icon" viewBox="0 0 81.7 132">
+    <title>H</title>
+    <path d="M13.9 54.7C13.9 54.8 13.9 54.8 13.9 54.7l0-54.7H0v132h13.9V78.5c0-0.4 0-0.7 0-1.1V54.7zM45.9 36.5c-8.5 0-15.3 2.3-20.7 6v11.9c4.6-3.3 10.3-5.2 16.7-5.2 16.5 0 25.9 10.8 25.9 28.2V132h13.9v-58C81.7 51.7 68.5 36.5 45.9 36.5z"/>
+  </symbol>
+
+  <symbol id="i-icon" viewBox="0 0 15.9 129.3">
+    <title>I</title>
+    <path d="M0 0h15.9v15.4H0V0zM0.9 35.8h13.9v93.5H0.9V35.8z"/>
+  </symbol>
+
+  <symbol id="j-icon" viewBox="0 0 32.5 158.7">
+    <title>J</title>
+    <path d="M0 157.8v-11.4c2.2 0.4 4.9 0.5 6.9 0.5 6.3 0 10.7-3.8 10.7-12.5V35.8h13.9v98.9c0 16.5-8.7 24-22.8 24C5.4 158.7 3.1 158.5 0 157.8zM16.6 0h15.9v15.4H16.6V0z"/>
+  </symbol>
+
+  <symbol id="k-icon" viewBox="0 0 83 132">
+    <title>K</title>
+    <polygon points="50.7 89.4 41.1 99.1 66.3 132 83 132 "/><polygon points="64.4 38.5 13.9 91.1 13.9 0 0 0 0 132 13.9 132 13.9 107.6 81.7 38.5 "/>
+  </symbol>
+
+  <symbol id="l-icon" viewBox="0 0 13.9 132">
+    <title>L</title>
+    <path d="M0 0h13.9v132H0V0z"/>
+  </symbol>
+
+  <symbol id="m-icon" viewBox="0 0 97.4 97.6">
+    <title>M</title>
+    <path d="M75 21.3c-1.5-4.3-3.8-8.3-6.9-11.6C62.5 3.9 54.6 0 44.1 0c-15.7 0-24 8.5-30.2 17.7V2H0v93.5h13.9V42.1c0-17.2 11.2-29.5 26-29.5 14.8 0 24 10.3 24 27.8v55h13.9V41.6c0-0.5 0-1.1 0-1.6 0.2-5.8-0.5-11.6-2.4-17L75 21.3zM107 0C96.5 0 88.6 3.5 82.5 8.8l3.7 10.6c4.6-4.4 10.7-6.7 17.3-6.7 15.2 0 24.2 10.1 24.2 28.2v54.6h13.9V37.6C141.7 14.5 128.5 0 107 0z"/>
+  </symbol>
+
+  <symbol id="n-icon" viewBox="0 0 97.4 97.6">
+    <title>N</title>
+    <rect y="2" width="13.9" height="93.5"/><path d="M45.9 0c-8.6 0-15.3 2.3-20.7 6v11.9c4.6-3.3 10.3-5.2 16.7-5.2 16.5 0 25.9 10.8 25.9 28.2v54.6h13.9v-58C81.7 15.2 68.5 0 45.9 0z"/>
+  </symbol>
+
+  <symbol id="o-icon" viewBox="0 0 97.4 97.6">
+    <title>O</title>
+    <path d="M48.8 0c-8 0-15.3 1.8-21.7 4.9l7.6 10.2c4.1-1.8 8.8-2.9 13.8-2.9 19.7 0 34.7 16.5 34.7 36.5v0.4c0 19.7-14.1 36-34.3 36 -19.7 0-34.5-16.3-34.5-36.3v-0.4c0-10.6 4.1-20.3 11-27l-7.7-10.4C6.6 20.1 0 33.8 0 48.8v0.4c0 26.4 20.4 48.4 48.5 48.4 28.2 0 49-22.4 49-48.8v-0.4C97.4 22.1 76.8 0 48.8 0z"/>
+  </symbol>
+
+  <symbol id="p-icon" viewBox="0 0 94.4 124.4">
+    <title>P</title>
+    <path d="M94.4 48.4v0.4c0 30.6-22.1 48.6-44.7 48.6 -17.3 0-28.6-9.4-35.8-19.9v46.8H0V2h13.9v48.5c0 7.5 2.2 15 6.8 21C27.1 80 37 85 47.2 85c18.1 0 32.9-13.4 32.9-36v-0.4c0-22-15.2-36.1-32.9-36.1 -8 0-15.9 3.1-22 8.6V8.4C31.6 3.3 39.6 0 49.7 0 72.1 0 94.4 17.7 94.4 48.4z"/>
+  </symbol>
+
+  <symbol id="q-icon" viewBox="0 0 94.4 124.4">
+    <title>Q</title>
+    <path d="M94.4 2v122.4H80.4V76.6c-7.6 11.2-18.6 20.8-35.8 20.8C22.2 97.4 0 79.7 0 49v-0.4C0 18.1 22.2 0 44.6 0c10.2 0 18.2 3.2 24.6 8v13.1c-6.1-5.5-14-8.7-22.1-8.7 -18.1 0-32.9 13.4-32.9 36v0.4C14.3 70.9 29.6 85 47.2 85c11.3 0 22.3-6.2 28.5-16.6 3.3-5.5 4.9-11.9 4.9-18.4V2H94.4z"/>
+  </symbol>
+
+  <symbol id="r-icon" viewBox="0 0 52.1 95.1">
+    <title>R</title>
+    <path d="M0 1.7h13.9v24.4C20.8 10.5 34.3-0.7 52.1 0v15H51c-20.4 0-37.1 14.6-37.1 42.8v37.2H0V1.7z"/>
+  </symbol>
+
+  <symbol id="s-icon" viewBox="0 0 56.6 123.3">
+    <title>S</title>
+    <path d="M0 83.2l7.1-9.9c10.1 7.6 21.3 11.9 32.4 11.9 11.2 0 19.3-5.8 19.3-14.8V70c0-9.4-11-13-23.3-16.5C20.8 49.4 4.5 44.3 4.5 27.1v-0.4C4.5 10.7 17.9 0 36.3 0c11.4 0 24 4 33.6 10.3l-6.3 10.5c-8.7-5.6-18.6-9-27.7-9 -11 0-18.1 5.8-18.1 13.6v0.4c0 8.9 11.6 12.3 24 16.1 14.5 4.3 30 9.9 30 26.8v0.4c0 17.7-14.6 28-33.3 28C25.3 96.9 10.5 91.7 0 83.2z"/>
+  </symbol>
+
+  <symbol id="t-icon" viewBox="0 0 56.6 123.3">
+    <title>T</title>
+    <path d="M27 95.8L27 95.8l0-95.8H13v28.2H0v12.3h13v56.4c0 19 11.4 26.4 26.4 26.4 6.7 0 11.9-1.4 16.8-4v-11.9c-4.9 2.4-8.9 3.3-13.6 3.3C33.5 110.6 27.2 106.6 27 95.8z"/><rect x="38.3" y="28.2" width="18.3" height="12.3"/>
+  </symbol>
+
+  <symbol id="u-icon" viewBox="0 0 81.5 95.5">
+    <title>U</title>
+    <path d="M56.5 77.5c-4.6 3.4-10.4 5.3-16.7 5.3 -16.5 0-25.9-10.8-25.9-28.2V0H0v58c0 22.2 13.2 37.4 35.8 37.4 8.6 0 15.3-2.3 20.7-6.1V77.5z"/><rect x="67.8" width="13.7" height="93.5"/>
+  </symbol>
+
+  <symbol id="v-icon" viewBox="0 0 93.5 94.2">
+    <title>V</title>
+    <polygon points="58.7 80.4 93.5 0 78.5 0 52.2 64.4 "/><polygon points="14.5 0 0 0 40.5 94.2 52.8 94.2 52.8 94.1 "/>
+  </symbol>
+
+  <symbol id="w-icon" viewBox="0 0 140.5 94.5">
+    <title>W</title>
+    <polygon points="113.7 77 140.5 0.4 126 0.4 107.3 57.4 "/><polygon points="96.8 61.7 76.1 0 64.5 0 39.4 75.4 14.8 0.4 0 0.4 32.7 94.5 45 94.5 70.3 20.8 95.5 94.5 107.5 94.5 "/>
+  </symbol>
+
+  <symbol id="x-icon" viewBox="0 0 94.2 122.9">
+    <title>X</title>
+    <polygon points="59.8 54.8 51.6 64.2 73.6 93.5 89.7 93.5 "/><polygon points="88.2 0 51.7 47 15.5 93.5 0 93.5 36.5 45.9 1.4 0 17.4 0 44.8 36.5 72.7 0 "/><polygon points="88.2 0 52.8 45.7 51.7 47 "/>
+  </symbol>
+
+  <symbol id="y-icon" viewBox="0 0 94.2 122.9">
+    <title>Y</title>
+    <path d="M15.2 0H0l42.5 93.1c-5.6 13.2-10.8 17.5-19.2 17.5 -6 0-10.1-1.1-14.6-3.4l-4.7 11c6.3 3.1 12.1 4.7 19.9 4.7 14.1 0 23.1-7.1 31.1-26.4l1.2-3L15.2 0z"/><polygon points="62.1 78.9 94.2 0 79.4 0 55.1 62.9 "/>
+  </symbol>
+
+  <symbol id="z-icon" viewBox="0 0 81 93.5">
+    <title>Z</title>
+    <polygon points="69 22.9 52.5 22.9 0 84.6 0 93.5 81 93.5 81 81.7 18.8 81.7 "/><polygon points="78.6 11.6 81 8.9 81 0 2.2 0 2.2 11.6 "/>
+  </symbol>
+
+</svg>
+
+<!-- SVG SHEET ENDS -->
+
+
+        <script>
+        document.body.style.overflow = "hidden";
+        i = 0;
+        el = document.getElementById('loading');
+        var s = setInterval(function() {
+            if(null !== el){
+                i = ++i % 5;
+                if(i == 0){
+                    el.innerHTML = '';
+                } else {
+                    el.innerHTML += '<div class="load"></div>';
+                }
+            } else {
+                s = null;
+            }
+        }, 200);
+    </script>
+    <script src="//styleguide.realestate.co.nz/js/vendor.js"></script>
+    <script src="//styleguide.realestate.co.nz/js/app.js"></script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    <!-- This script tag is only for testing until staging assets are updated -->
+    <script>
+        $(function(){
+            $("#findAnAgent,#findAnOffice").submit(function(e){
+                e.preventDefault();
+                var f_id = $('#inputField',this).val();
+                if (f_id.length > 0) {
+                    window.location.href=$(this).attr('action')+f_id;
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        var reData = {
+            preferences: {"jsonapi":{"version":"1.0"},"data":[]}.data
+        }
+
+        var user = null;
+                    user = {
+                sessionsId: "e4988e6fa476de7a24276a69a89d3f37",
+                followedList: [],
+                attributes: {}
+            };
+        
+        reData.user = user;
+        reData.ads = [];
+    </script>
+
+    <!-- Full story -->
+    <script>
+        window['_fs_debug'] = false;
+        window['_fs_host'] = 'fullstory.com';
+        window['_fs_org'] = '58JCE';
+        window['_fs_namespace'] = 'FS';
+        (function(m,n,e,t,l,o,g,y){
+            if (e in m) {if(m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');} return;}
+            g=m[e]=function(a,b,s){g.q?g.q.push([a,b,s]):g._api(a,b,s);};g.q=[];
+            o=n.createElement(t);o.async=1;o.src='https://'+_fs_host+'/s/fs.js';
+            y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y);
+            g.identify=function(i,v,s){g(l,{uid:i},s);if(v)g(l,v,s)};g.setUserVars=function(v,s){g(l,v,s)};g.event=function(i,v,s){g('event',{n:i,p:v},s)};
+            g.shutdown=function(){g("rec",!1)};g.restart=function(){g("rec",!0)};
+            g.consent=function(a){g("consent",!arguments.length||a)};
+            g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;g(o,v)};
+            g.clearUserCookie=function(){};
+        })(window,document,window['_fs_namespace'],'script','user');
+    </script>
+
+    <!-- app import -->
+    <script src="//reconz-listings-search.realestate.co.nz/assets/vendor-31b79c55657237bfc252c1b59fa7eb5a.js"></script>
+    <script src="//reconz-listings-search.realestate.co.nz/assets/listings-search-cb1216017a929a974d06c7c74a4315ec.js"></script>
+
+
+    <script>
+        reData.catType = 'res_sale';
+        reData.locationSlug = 'null';
+        reData.titleSlug = 'Houses for sale in New Zealand';
+        reData.pageTitle = 'residential/sale'
+        reData.trackingData = {
+            type: 'search'
+        };
+    </script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"c58e3a2b34","applicationID":"31473619","transactionName":"ZF1abEMDVhJWAhBbWV0XeVtFC1cPGAIFRlNUV0pBbg5ZD1MIClU=","queueTime":0,"applicationTime":268,"atts":"SBpZGgsZRRw=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+
+</html>
