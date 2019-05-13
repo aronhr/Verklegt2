@@ -4,19 +4,10 @@
     <div class="container">
         <div class="row">
             <h1>Innskráning</h1>
+            {% include 'profile/include_templates/form_error.html' with form=form %}
             <form class="col s12 m12 l8" method="POST">
                 {% csrf_token %}
-                {% for element in form %}
-                    <div class="row">
-                        <div class="input-field col s12">
-                            {{ element }}
-                            <label for="{{ element.id }}">{{ element.label_tag }}</label>
-                            {% if element.help_text %}
-                                <span class="helper-text" data-success="right">{{ element.help_text }}</span>
-                            {% endif %}
-                        </div>
-                    </div>
-                {% endfor %}
+                {% include 'profile/include_templates/forms.html' with form=form %}
                 <button type="submit" class="btn blue darken-4">Innskrá</button>
             </form>
         </div>

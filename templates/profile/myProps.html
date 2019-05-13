@@ -5,21 +5,29 @@
         <div class="row">
             <div class="col l8 m8 s12">
                 <ul class="collection">
-                    {% for prop in myProps %}
-                        <li class="collection-item avatar">
-                            <a href="/house/{{ prop.id }}">
-                                <img src="{{ prop.houseimage_set.first.image }}" alt="{{ prop.address }} {{ prop.street_nr }}" class="circle">
-                                <span class="title"><strong>{{ prop.address }} {{ prop.street_nr }}</strong></span>
-                                <p>
-                                    {{ prop.houseinfo_set.first.description }}
-                                    <br>
-                                    {{ prop.price|intcomma }} kr.
-                                    <br>
-                                    {{ prop.houseinfo_set.first.size|intcomma }} m²
-                                </p>
-                            </a>
-                        </li>
-                    {% endfor %}
+                    {% if myProps %}
+                        {% for prop in myProps %}
+                            <li class="collection-item avatar">
+                                <a href="/house/{{ prop.id }}">
+                                    <img src="{{ prop.houseimage_set.first.image }}" alt="{{ prop.address }} {{ prop.street_nr }}" class="circle">
+                                    <span class="title"><strong>{{ prop.address }} {{ prop.street_nr }}</strong></span>
+                                    <p>
+                                        {{ prop.houseinfo_set.first.description }}
+                                        <br>
+                                        {{ prop.price|intcomma }} kr.
+                                        <br>
+                                        {{ prop.houseinfo_set.first.size|intcomma }} m²
+                                    </p>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <h3 class="red-text center">
+                            Engar niðurstöður fundust
+                            <br>
+                            <i style="font-size: 2em" class="center material-icons">error</i>
+                        </h3>
+                    {% endif %}
                 </ul>
             </div>
             <div class="col l4 m4 s12 buttons">
