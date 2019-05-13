@@ -2,6 +2,8 @@
 
 {% block content %}
 
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 
     <style>
         /* Always set the map height explicitly to define the size of the div
@@ -23,23 +25,21 @@
     <div id="map"></div>
     <script>
 
-        var locations = [
-            ['Linkur', 64.1537916, -21.7800444001661, 'Hamravik 36'],
-            ['Linkur', 64.15710395, -21.6627301425538, 'Reykjabyggð 30'],
-            ['Linkur', 64.1237306, -21.9266593513513, 'Menntavegur 1'],
-            ['Linkur', 64.15460605, -21.7746723604167, 'Hamravík 82'],
-            ['Linkur', 64.1695078, -21.7023663975637, 'Bergholt 2'],
-            ['Linkur', 64.14889345, -21.7975091505579, 'Smárarimi 21']
-        ];
-        // {% for x in ad %}
-        //    locations.push({{ x }},);
-        // {% endfor %}
+        var locations = [];
+
+         {% for x in ad %}
+            locations.push({{ x }},);
+         {% endfor %}
+        locations.push(['Pungur',64.147209, -21.942400, 'Hallgrímskirkja']);
+
+        console.log(locations);
 
         function initMap() {
 
             var myOptions = {
                 center: new google.maps.LatLng(64.1237306, -21.9266593513513),
-                zoom: 8,
+                zoom: 12,
+                maxZoom: 200,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
 
             };
@@ -59,7 +59,9 @@
                 latlngset = new google.maps.LatLng(lat, long);
 
                 var marker = new google.maps.Marker({
-                    map: map, title: address , position: latlngset
+                    map: map,
+                    title: address,
+                    position: latlngset
                 });
                 map.setCenter(marker.getPosition());
 
@@ -79,15 +81,12 @@
 
 
 
-            // Add a marker clusterer to manage the markers.
-            var markerCluster = new MarkerClusterer(map, markers,
-                {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
 
 
 
     </script>
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
-    </script>
+
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZeWptDYX3_I5wUn7Vr9RDrJt6n54MPZ8&callback=initMap">
     </script>
