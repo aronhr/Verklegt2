@@ -1,24 +1,28 @@
 {% load humanize %}
-<section>
-    <div class="col s12 m6 l4">
-        <div class="card">
-            <div class="card-image">
-                <img alt="{{ house.address }} {{ house.street_nr }}" src="{{ house.houseimage_set.first.image }}">
-            </div>
-            <div class="card-content">
-                <article>
-                    <span class="card-title">{{ house.address }} {{ house.street_nr }}</span>
-                    <small>{{ house.p_code }} <span class="right">{{ house.price|intcomma  }} kr</span></small>
-                    <p>{{house.houseinfo_set.first.description }}</p>
-                    <p>Þetta hús er {{house.houseinfo_set.first.type }}</p>
-                    <p>og hefur {{house.houseinfo_set.first.rooms }} herbergi</p>
-                    <p>og er {{house.houseinfo_set.first.size }} fermetrar</p>
-                    <small>{{house.sellingdate }}</small>
-                </article>
-            </div>
-            <div class="card-action">
-                <a class="black-text" href="/house/{{ house.id }}">Skoða nánar</a>
+<a href="/house/{{ house.id }}">
+    <section>
+        <div class="col s12 m6 l4">
+            <div class="card">
+                <div class="card-image">
+                    <img alt="{{ house.address }} {{ house.street_nr }}" src="{{ house.houseimage_set.first.image }}">
+                </div>
+                <div class="card-content">
+                    <article>
+                        <span class="card-title">{{ house.address }} {{ house.street_nr }}</span>
+                        <small>{{ house.p_code }} <span class="right">{{ house.price|intcomma  }} kr</span></small>
+                        <p>{{house.houseinfo_set.first.description }}</p>
+                        <p>Þetta hús er {{house.houseinfo_set.first.type }}</p>
+                        <p>og hefur {{house.houseinfo_set.first.rooms }} herbergi</p>
+                        <p>og er {{house.houseinfo_set.first.size }} fermetrar</p>
+                        <small>{{house.sellingdate }}</small>
+                    </article>
+                </div>
+                <div class="card-action">
+                    <a id="change_to_yellow" class="right black-text " href="#">
+                        <i class="material-icons">grade</i>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</a>
