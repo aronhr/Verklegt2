@@ -1,18 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col l8 m8 s12">
-                <div class="input-field col s12">
-                    <input type="text" id="autocomplete-input" class="autocomplete" autocomplete="off">
-                    <label for="autocomplete-input">Username</label>
-                    <button class="btn red darken-4" id="del">Delete</button>
-                </div>
-            </div>
-            <div class="col l4 m4 s12 buttons">
-                {% include 'profile/include_templates/profile_buttons.html' %}
-            </div>
-        </div>
-    </div>
+    {% include 'profile/include_templates/error.html' with error=error %}
+    {% include 'profile/include_templates/user_list.html' with users=users remove_user='True' %}
 {% endblock %}
