@@ -11,6 +11,8 @@
                         <li class="tab"><a id="3" class="white black-text" href="#s3">Myndir</a></li>
                     </ul>
                 </div>
+                {% include 'profile/include_templates/form_error.html' with form=houseForm %}
+                {% include 'profile/include_templates/form_error.html' with form=houseInfo %}
                 <div class="card-content grey lighten-4">
                     {% csrf_token %}
                     <div id="s1">

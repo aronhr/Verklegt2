@@ -79,6 +79,13 @@ def sell_property(request):
 
 
 @login_required
+def add_to_wish_list(request, id):
+    house = get_object_or_404(House, pk=id)
+    WishList(user=request.user, house=house).save()
+    return redirect('house-index')
+
+
+@login_required
 def wish_list(request):
     wish = WishList.objects.filter(user=request.user)
     return render(request, 'profile/wishList.html', {
