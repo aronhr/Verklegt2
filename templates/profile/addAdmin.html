@@ -2,6 +2,7 @@
 
 {% block content %}
 
-    <h1>{{ addAdmin }}</h1>
+    {% include 'profile/include_templates/error.html' with error=error %}
+    {% include 'profile/include_templates/user_list.html' with users=users add_admin='True' %}
 
 {% endblock %}

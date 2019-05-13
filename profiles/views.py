@@ -145,28 +145,54 @@ def decline_submission(request, id):
 
 @user_passes_test(lambda u: u.is_superuser)
 def remove_user(request):
-    return render(request, 'profile/delUser.html')
+    users = User.objects.all()
+    return render(request, 'profile/delUser.html', {'users': users})
 
 
 @user_passes_test(lambda u: u.is_superuser)
 def remove_user_id(request, id):
-    return render(request, 'profile/delUser.html', {
-        'delUser': id
-    })
+    user = get_object_or_404(User, pk=id)
+    users = User.objects.all()
+    if user == request.user:
+        return render(request, 'profile/delUser.html', {'error': 'Þú mátt ekki eyða þér sjálfum félagi!', 'users': users})
+    user.delete()
+    return redirect('profile-delete-user')
 
 
 @user_passes_test(lambda u: u.is_superuser)
 def add_admin(request):
+    users = User.objects.filter(is_superuser=False)
     return render(request, 'profile/addAdmin.html', {
-        'addAdmin': 'This is where a add an admin'
+        'users': users
     })
 
 
 @user_passes_test(lambda u: u.is_superuser)
+def add_admin_id(request, id):
+    user = get_object_or_404(User, pk=id)
+    user.is_superuser = True
+    user.save()
+    return redirect('profile-add-admin')
+
+
+@user_passes_test(lambda u: u.is_superuser)
 def remove_admin(request):
+    users = User.objects.filter(is_superuser=True)
     return render(request, 'profile/removeAdmin.html', {
-        'removeAdmin': 'This is where a remove an admin'
+        'users': users
     })
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def remove_admin_id(request, id):
+    user = get_object_or_404(User, pk=id)
+    users = User.objects.all()
+    if user == request.user:
+        return render(request, 'profile/delUser.html',
+                      {'error': 'Þú mátt ekki eyða þér sjálfum félagi!', 'users': users})
+    user.is_superuser = False
+    user.save()
+    return redirect('profile-remove-admin')
 
 
 @login_required
