@@ -3,28 +3,36 @@
     <div class="row">
         <div class="col l8 m8 s12">
             <ul class="collection">
-                {% for prop in houses %}
-                    <li class="collection-item avatar">
-                        <a href="/house/{{ prop.house.id }}">
-                            <img src="{{ prop.house.houseimage_set.first.image }}" alt="{{ prop.house.address }} {{ prop.house.street_nr }}" class="circle">
-                            <span class="title"><strong>{{ prop.house.address }} {{ prop.house.street_nr }}</strong></span>
-                            <p>
-                                {{ prop.house.houseinfo_set.first.description }}
-                                <br>
-                                {{ prop.house.price|intcomma }} kr.
-                                <br>
-                                {{ prop.house.houseinfo_set.first.size|intcomma }} m²
-                            </p>
-                            {% if del == 'True' %}
-                                <a href="{% url 'profile-delete-wish' prop.id %}" class="secondary-content orange-text"><i class="material-icons">grade</i></a>
-                            {% endif %}
-                            {% if onhold %}
-                                <a href="{% url 'profile-approve-submission' prop.id %}" class="secondary-content right"><i class="material-icons">check</i></a>
-                                <a href="{% url 'profile-decline-submission' prop.id %}" class="secondary-content right" style="margin-top: 2em"><i class="material-icons">close</i></a>
-                            {% endif %}
-                        </a>
-                    </li>
-                {% endfor %}
+                {% if houses %}
+                    {% for prop in houses %}
+                        <li class="collection-item avatar">
+                            <a href="/house/{{ prop.house.id }}">
+                                <img src="{{ prop.house.houseimage_set.first.image }}" alt="{{ prop.house.address }} {{ prop.house.street_nr }}" class="circle">
+                                <span class="title"><strong>{{ prop.house.address }} {{ prop.house.street_nr }}</strong></span>
+                                <p>
+                                    {{ prop.house.houseinfo_set.first.description }}
+                                    <br>
+                                    {{ prop.house.price|intcomma }} kr.
+                                    <br>
+                                    {{ prop.house.houseinfo_set.first.size|intcomma }} m²
+                                </p>
+                                {% if del == 'True' %}
+                                    <a href="{% url 'profile-delete-wish' prop.id %}" class="secondary-content orange-text"><i class="material-icons">grade</i></a>
+                                {% endif %}
+                                {% if onhold %}
+                                    <a href="{% url 'profile-approve-submission' prop.id %}" class="secondary-content right"><i class="material-icons">check</i></a>
+                                    <a href="{% url 'profile-decline-submission' prop.id %}" class="secondary-content right" style="margin-top: 2em"><i class="material-icons">close</i></a>
+                                {% endif %}
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <h3 class="red-text center">
+                        Engar niðurstöður fundust
+                        <br>
+                        <i style="font-size: 2em" class="center material-icons">error</i>
+                    </h3>
+                {% endif %}
             </ul>
         </div>
         <div class="col l4 m4 s12 buttons">

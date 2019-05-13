@@ -2,33 +2,41 @@
     <div class="row">
         <div class="col l8 m8 s12">
             <ul class="collection">
-                {% for user in users %}
-                    <li class="collection-item avatar">
-                        <img src="{{ user.profile.profile_pic }}" alt="" class="circle">
-                        <span class="title"><strong>{{ user.first_name }} {{ user.last_name }}</strong></span>
-                        <p>
-                            {{ user.username }}
-                            <br>
-                            {{ user.last_login }}
-                            <br>
-                            {% if user.is_superuser %}
-                                Notandi er stjórnandi
-                            {% else %}
-                                Notandi er ekki stjórnandi
-                            {% endif %}
+                {% if users %}
+                    {% for user in users %}
+                        <li class="collection-item avatar">
+                            <img src="{{ user.profile.profile_pic }}" alt="" class="circle">
+                            <span class="title"><strong>{{ user.first_name }} {{ user.last_name }}</strong></span>
+                            <p>
+                                {{ user.username }}
+                                <br>
+                                {{ user.last_login }}
+                                <br>
+                                {% if user.is_superuser %}
+                                    Notandi er stjórnandi
+                                {% else %}
+                                    Notandi er ekki stjórnandi
+                                {% endif %}
 
-                        </p>
-                        {% if remove_user %}
-                            <a href="{% url 'profile-remove-user-id' user.id %}" class="secondary-content right red-text" style="margin-top: 2em"><i class="material-icons">close</i></a>
-                        {% endif %}
-                        {% if remove_admin %}
-                            <a href="{% url 'profile-remove-admin-id' user.id %}" class="secondary-content right red-text" style="margin-top: 2em"><i class="material-icons">close</i></a>
-                        {% endif %}
-                        {% if add_admin %}
-                            <a href="{% url 'profile-add-admin-id' user.id %}" class="secondary-content right green-text" style="margin-top: 2em"><i class="material-icons">check</i></a>
-                        {% endif %}
-                    </li>
-                {% endfor %}
+                            </p>
+                            {% if remove_user %}
+                                <a href="{% url 'profile-remove-user-id' user.id %}" class="secondary-content right red-text" style="margin-top: 2em"><i class="material-icons">close</i></a>
+                            {% endif %}
+                            {% if remove_admin %}
+                                <a href="{% url 'profile-remove-admin-id' user.id %}" class="secondary-content right red-text" style="margin-top: 2em"><i class="material-icons">close</i></a>
+                            {% endif %}
+                            {% if add_admin %}
+                                <a href="{% url 'profile-add-admin-id' user.id %}" class="secondary-content right green-text" style="margin-top: 2em"><i class="material-icons">check</i></a>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <h3 class="red-text center">
+                        Engar niðurstöður fundust
+                        <br>
+                        <i style="font-size: 2em" class="center material-icons">error</i>
+                    </h3>
+                {% endif %}
             </ul>
         </div>
         <div class="col l4 m4 s12 buttons">
