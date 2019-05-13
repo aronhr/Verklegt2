@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load static %}
+{% block content %}
+    <h1>{{ buy_props }}</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="col l6 m12 s12">
+                    <img style="width: 100%" src="{{ house.houseimage_set.first }}" alt="">
+                </div>
+                <div class="col l6 m12 s12">
+                    <div>
+                        {% include 'profile/include_templates/bank_froms.html' with form=offer_form %}
+                    </div>
+                    <div>
+                        {% include 'profile/include_templates/bank_froms.html' with form=bank_info %}
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <button type="submit" onsubmit="{% url 'profile-buy-property' house.id %}" class="btn green darken-4 right">Kaupa</button>
+    </form>
+{% endblock %}

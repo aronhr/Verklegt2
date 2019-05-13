@@ -6,7 +6,8 @@ from profiles.forms.prop_form import *
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import user_passes_test
 from profiles.models import UserBankInfo
-from django.core import serializers
+from house.forms.buy_house_form import *
+from profiles.forms.bank_form import *
 
 @login_required
 def index(request):
@@ -180,3 +181,32 @@ def del_property(request, id):
     house = get_object_or_404(House, pk=id)
     house.delete()
     return redirect('house-index')
+
+
+@login_required
+def buy_property(request, id):
+    house = get_object_or_404(House, pk=id)
+    if request.method == 'POST':
+        form = OfferForm(data=request.POST)
+        card_info = CreateUserBankInfo(data=request.POST)
+        if form.is_valid() and card_info.is_valid():
+            Offers(price=request.POST['price'],
+                   house=house,
+                   user=request.user,
+                   seller=house.seller
+                   ).save()
+
+            Card(user=request.user,
+                 card_nr=request.POST['card_nr'],
+                 exdate=request.POST['exdate'],
+                 cvc=request.POST['cvc']
+                 ).save()
+        return redirect('house-index')
+    else:
+        form = OfferForm()
+        card_info = CreateUserBankInfo()
+    return render(request, 'profile/buy_property.html', {
+        'offer_form': form,
+        'bank_info': card_info,
+        'house': house
+    })

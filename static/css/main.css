@@ -31,7 +31,7 @@
 .input-field .prefix.active {
     color: #000;
 }
-.collection-item a{
+a{
     color: black;
 }
 .collection-item:hover{
