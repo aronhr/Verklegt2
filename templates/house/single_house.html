@@ -4,28 +4,32 @@
     <div class="col s12 m6 l4">
         <div class="card">
             <div class="card-image">
-                <img style="height: 250px"  alt="{{ house.address }} {{ house.street_nr }}" src="{{ house.houseimage_set.first.image }}">
+                <img style="height: 250px"  alt="{{ house.house.address }} {{ house.house.street_nr }}" src="{{ house.house.houseimage_set.first.image }}">
             </div>
             <div class= "card-content">
                 <article>
-                    <span class="card-title">{{ house.address }} {{ house.street_nr }}
+                    <span class="card-title">{{ house.house.address }} {{ house.house.street_nr }}
                         <div style="width: 30px!important; margin: 0 auto" class="right">
-                            <a id="change_to_yellow" href="{% url 'profile-add-to-wish-list' house.id %}">
-                                <i style="font-size: 1.5em;" class="material-icons">turned_in_not</i>
+                            <a id="fav_button" data-id="{{ house.house.id }}" href="#">
+                          {% if house.fav %}
+                                    <i style="font-size: 1.5em;" class="material-icons">turned_in</i>
+                                {% else %}
+                                    <i style="font-size: 1.5em;" class="material-icons">turned_in_not</i>
+                                {% endif %}
                             </a>
                         </div>
                     </span>
 
-                    <small>{{ house.p_code }} <span class="right">{{ house.price|intcomma  }} kr</span></small>
-                    <p class="truncate">{{house.houseinfo_set.first.description }}</p>
+                    <small>{{ house.house.p_code }} <span class="right">{{ house.house.price|intcomma  }} kr</span></small>
+                    <p class="truncate">{{house.house.houseinfo_set.first.description }}</p>
                     <br>
                     <p>
-                        <b>{{house.houseinfo_set.first.type }}</b> sem að er <b>{{house.houseinfo_set.first.size }}</b> fermetrar og hefur <b>{{house.houseinfo_set.first.rooms }}</b> herbergi</p>
-                    <small>{{house.sellingdate }}</small>
+                        <b>{{house.house.houseinfo_set.first.type }}</b> sem að er <b>{{house.house.houseinfo_set.first.size }}</b> fermetrar og hefur <b>{{house.house.houseinfo_set.first.rooms }}</b> herbergi</p>
+                    <small>{{house.house.sellingdate }}</small>
                 </article>
             </div>
             <div style="height: 75px" class="card-action">
-                <a class="btn waves-effect blue darken-3 col s12 m12 l12" style="color: white" href="/house/{{ house.id }}">SJÁ NÁNAR</a>
+                <a class="btn waves-effect blue darken-3 col s12 m12 l12" style="color: white" href="/house/{{ house.house.id }}">SJÁ NÁNAR</a>
             </div>
         </div>
     </div>

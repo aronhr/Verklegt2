@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import user_passes_test
 from profiles.models import UserBankInfo
 from house.forms.buy_house_form import *
 from profiles.forms.bank_form import *
+from django.http import JsonResponse
+
 
 
 @login_required
@@ -79,10 +81,21 @@ def sell_property(request):
 
 
 @login_required
-def add_to_wish_list(request, id):
+def toggle_wish_list(request, id):
+    print("HELLO",id)
+
+
     house = get_object_or_404(House, pk=id)
-    WishList(user=request.user, house=house).save()
-    return redirect('house-index')
+    print("", house)
+    if 'set' in request.GET:
+        WishList(user=request.user, house=house).save()
+        print("inni i if")
+    """else:
+        wish = get_object_or_404(WishList, pk=id)
+        if wish.user == request.user:
+            wish.delete()
+            """
+    return JsonResponse({'status': 'OK'}, status=200)
 
 
 @login_required

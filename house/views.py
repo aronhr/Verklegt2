@@ -15,6 +15,11 @@ def true_or_false(name, request):
 
 
 def index(request):
+    fav = []
+    if request.user.is_active:
+        for wl in WishList.objects.filter(user=request.user):
+            fav.append(wl.house.id)
+
     p = HouseInfo.objects.all()
     if 'ajax' in request.GET:
         room_list = [x.rooms for x in HouseInfo.objects.all().distinct()]
@@ -48,6 +53,7 @@ def index(request):
         size_to = sys.maxsize
         if 'size_to' in request.GET:
             size_to = request.GET.get('size_to')
+
 
 
         garage_list = true_or_false('garage', request)
@@ -91,12 +97,22 @@ def index(request):
                 'rooms': x.rooms,
                 'size': x.size,
                 'sellingdate': x.house.sellingdate,
-                'garage': x.garage
+                'garage': x.garage,
+                'favorate': x.house.id in fav
             })
 
         return JsonResponse({'data': houses})
+
+    houses = []
+    for house in House.objects.filter(on_sale=True).order_by('id'):
+        houses.append({
+            'house': house,
+            'fav': house.id in fav
+        })
+    print(houses)
+    print("BLA",fav)
     context = {
-        'houses': House.objects.filter(on_sale=True).order_by('id'),
+        'houses': houses,
         'house_info': HouseInfo.objects.all(),
         'types': HouseType.objects.all(),
         'towns': PostalCodes.objects.all(),
