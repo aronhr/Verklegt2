@@ -3,27 +3,104 @@
 {% load static %}
 {% block content %}
     <h1>{{ buy_props }}</h1>
-    <form method="POST">
+    <form method="POST" id="buy_form">
         {% csrf_token %}
-        <div class="container">
-            <div class="row">
-                <div class="col l6 m12 s12">
-                    <img style="width: 100%" src="{{ house.houseimage_set.first }}" alt="">
+        <div class="container grey lighten-4">
+            <div class="row caption-container">
+                <div>
+                    <h3 class="left">{{ house.address }}{{ house.street_nr }}</h3>
                 </div>
-                <div class="col l6 m12 s12">
-                    <div>
-                        {% include 'profile/include_templates/bank_froms.html' with form=offer_form %}
+                <div>
+                    <h3 class="right">{{ house.price|intcomma }}.ISK</h3>
+                </div>
+                <div class="col s12"><hr style="height: 3px; background-color: black; border: 0">
+                    <div class="row" id="PracticalInfo">
+                        <div class="col l6 m12 s12">
+                            <img style="width: 100%" src="{{ house.houseimage_set.first }}" alt="">
+                        </div>
+                        <div class="col s6">
+                            <table class="float-right">
+                                <tbody>
+                                <tr>
+                                    <th>Herbergi</th>
+                                    <td class="right-align">{{ house.houseinfo_set.first.rooms }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Byggt</th>
+                                    <td class="right-align">{{ house.houseinfo_set.first.buildyear }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col s6">
+                            <table class="right">
+                                <tbody>
+                                <tr>
+                                    <th>Fermetrar</th>
+                                    <td class="right-align">{{ house.houseinfo_set.first.size|intcomma }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Skráð</th>
+                                    <td class="right-align">{{ house.sellingdate }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <div>
-                        {% include 'profile/include_templates/bank_froms.html' with form=bank_info %}
+                </div>
+                <div class="col s6 container">
+                    <div class="col6 s10">
+                        <h6>Lýsing</h6>
+                        <div class="div1">
+                            {{ house.houseinfo_set.first.description }}
+                        </div>
                     </div>
-                    <div>
-
+                    <a href="{% url 'house-details' house.id %}" class="btn ">Til baka</a>
+                </div>
+                <div class="col s6">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col l12 m12 s12">
+                                <div>
+                                    {% include 'profile/include_templates/bank_froms.html' with form=offer_form %}
+                                </div>
+                                <div>
+                                    {% include 'profile/include_templates/bank_froms.html' with form=bank_info %}
+                                </div>
+                                <div>
+                                    <div id="modal1" class="modal">
+                                        <div class="modal-content">
+                                            <h4>Staðfesting á tilboði</h4>
+                                            <p>
+                                                <a class="modal-close waves-effect btn red darken-4">Hætta við</a>
+                                                <button type="submit" id="confirm_button" data-target="modal2" class="btn modal-trigger modal-close waves-effect btn green darken-2" href="#modal2" onsubmit="{% url 'profile-buy-property' house.id %}">Senda tilboð</button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    {% if submit_response %}
+                                        <div id="modal2" class="modal">
+                                            <div class="modal-content">
+                                                <h4>{{ submit_response }}</h4>
+                                                <p>
+                                                    <a class="btn green darken-3" href="{% url 'house-index' %}">Aftur á upphafsíðu</a>
+                                                    <script>
+                                                        $(document).ready(function () {
+                                                            setTimeout(window.location.replace({% url 'house-index' %}, 5000))
+                                                        })
+                                                    </script>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <button data-target="modal1" class="btn modal-trigger green darken-4 right">Senda tilboð</button>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
-        <button type="submit" onsubmit="{% url 'profile-buy-property' house.id %}" class="btn green darken-4 right">Kaupa</button>
     </form>
+    <script src="{% static 'javascript/buy_house.js' %}"></script>
 {% endblock %}
