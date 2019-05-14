@@ -15,13 +15,14 @@ def true_or_false(name, request):
 
 
 def index(request):
-    p = HouseInfo.objects.all()
+    fav = []
+    if request.user.is_active:
+        fav = WishList.objects.all().values_list('house', flat=True).filter(user=request.user)
+
     if 'ajax' in request.GET:
         room_list = [x.rooms for x in HouseInfo.objects.all().distinct()]
         if 'rooms' in request.GET:
             room_list = request.GET.getlist('rooms')
-
-        print(request)
 
         type_list = [x.id for x in HouseType.objects.all()]
         if 'types' in request.GET:
@@ -31,11 +32,9 @@ def index(request):
         if 'p_code' in request.GET:
             p_code_list = request.GET.getlist('p_code')
 
-
         price_from = 0
         if 'price_from' in request.GET:
             price_from = request.GET.get('price_from')
-
 
         price_to = sys.maxsize
         if 'price_to' in request.GET:
@@ -49,14 +48,11 @@ def index(request):
         if 'size_to' in request.GET:
             size_to = request.GET.get('size_to')
 
-
         garage_list = true_or_false('garage', request)
         lift_list = true_or_false('elevator', request)
         extra_apart_list = true_or_false('extra_apartment', request)
         new_building_list = true_or_false('new_building', request)
         extra_entrance_list = true_or_false('entrance', request)
-
-
 
         db_houses = HouseInfo.objects.filter(
             rooms__in=room_list,
@@ -80,9 +76,11 @@ def index(request):
             image_src = "https://lh3.googleusercontent.com/uRXfIlcQBu-0hRfBHXcvWrDZjYu640sZL2JxQ3TJ4o1hAijbnXsS9zkJr9ZGjByp_Udei2XG=w640-h400-e365"
             if first_image is not None:
                 image_src = first_image.image
+            fav_list = fav
             houses.append({
                 'id': x.house.id,
-                'img_src': image_src,
+                'img_src': list(image_src),
+                'fav_lst': fav_list,
                 'address': f"{x.house.address} {x.house.street_nr}",
                 'p_code': str(x.house.p_code),
                 'price': intcomma(x.house.price),
@@ -95,18 +93,20 @@ def index(request):
             })
 
         return JsonResponse({'data': houses})
+
+
     context = {
         'houses': House.objects.filter(on_sale=True).order_by('id'),
         'house_info': HouseInfo.objects.all(),
         'types': HouseType.objects.all(),
         'towns': PostalCodes.objects.all(),
-        'rooms': []
+        'rooms': [],
+        'fav': fav
     }
     for i in context['house_info']:
         context['rooms'].append(i.rooms)
 
     context['rooms'] = sorted(set(context['rooms']))
-
 
     return render(request, 'house/index.html', context)
 

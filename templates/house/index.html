@@ -174,7 +174,7 @@
 
         <div class="housess col l9">
             {% for house in houses %}
-                {% include 'house/single_house.html' with house=house %}
+                {% include 'house/single_house.html' with house=house fav=fav %}
             {% endfor %}
         </div>
 

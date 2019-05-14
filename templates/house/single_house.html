@@ -1,5 +1,4 @@
 {% load humanize %}
-
 <section>
     <div class="col s12 m6 l4">
         <div class="card">
@@ -11,11 +10,14 @@
                     <span class="card-title">{{ house.address }} {{ house.street_nr }}
                         <div style="width: 30px!important; margin: 0 auto" class="right">
                             <a id="change_to_yellow" href="{% url 'profile-add-to-wish-list' house.id %}">
-                                <i style="font-size: 1.5em;" class="material-icons">turned_in_not</i>
+                                {% if house.id in fav %}
+                            <i class="material-icons">turned_in</i>
+                            {% else %}
+                            <i class="material-icons">turned_in_not</i>
+                        {% endif %}
                             </a>
                         </div>
                     </span>
-
                     <small>{{ house.p_code }} <span class="right">{{ house.price|intcomma  }} kr</span></small>
                     <p class="truncate">{{house.houseinfo_set.first.description }}</p>
                     <br>
