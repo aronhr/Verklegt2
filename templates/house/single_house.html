@@ -9,13 +9,15 @@
                 <article>
                     <span class="card-title">{{ house.address }} {{ house.street_nr }}
                         <div style="width: 30px!important; margin: 0 auto" class="right">
-                            <a id="change_to_yellow" href="{% url 'profile-add-to-wish-list' house.id %}">
-                                {% if house.id in fav %}
-                            <i class="material-icons">turned_in</i>
+                            {% if house.id in fav %}
+                                <a id="change_to_yellow" href="{% url 'profile-delete-wish' house.id %}">
+                                    <i class="material-icons">turned_in</i>
+                                </a>
                             {% else %}
-                            <i class="material-icons">turned_in_not</i>
-                        {% endif %}
-                            </a>
+                                <a id="change_to_yellow" href="{% url 'profile-add-to-wish-list' house.id %}">
+                                    <i class="material-icons">turned_in_not</i>
+                                </a>
+                            {% endif %}
                         </div>
                     </span>
                     <small>{{ house.p_code }} <span class="right">{{ house.price|intcomma  }} kr</span></small>

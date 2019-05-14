@@ -76,11 +76,9 @@ def index(request):
             image_src = "https://lh3.googleusercontent.com/uRXfIlcQBu-0hRfBHXcvWrDZjYu640sZL2JxQ3TJ4o1hAijbnXsS9zkJr9ZGjByp_Udei2XG=w640-h400-e365"
             if first_image is not None:
                 image_src = first_image.image
-            fav_list = fav
             houses.append({
                 'id': x.house.id,
-                'img_src': list(image_src),
-                'fav_lst': fav_list,
+                'img_src': image_src,
                 'address': f"{x.house.address} {x.house.street_nr}",
                 'p_code': str(x.house.p_code),
                 'price': intcomma(x.house.price),
