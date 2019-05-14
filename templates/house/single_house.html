@@ -19,7 +19,11 @@
                 </div>
                 <div class="card-action">
                     <a id="change_to_yellow" class="right black-text " href="{% url 'profile-add-to-wish-list' house.id %}">
-                        <i class="material-icons">grade</i>
+                        {% if house.id in fav %}
+                            <i class="material-icons">turned_in</i>
+                            {% else %}
+                            <i class="material-icons">turned_in_not</i>
+                        {% endif %}
                     </a>
                 </div>
             </div>
