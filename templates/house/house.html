@@ -4,43 +4,28 @@
 {% block content %}
 
     <div class="container">
-
         <div class="center" id="FirstHalfOfSite">
             <h2>{{ house.address }} {{ house.street_nr }}, {{ house.p_code }}<i class=" medium material-icons">  star_border</i></h2>
-            <hr id="Underline">
+            <hr>
             <br>
         </div>
-    <div class="carousel carousel-slider" data-indicators="true">
-            {% for image in house.houseimage_set.all %}
-                <a href="#{{ image.id }}" class="carousel-item"><img src="{{ image }}" class="center" alt="{{ image.id }}"></a>
-            {% endfor %}
+        <div class="slider">
+            <ul class="slides">
+                {% for image in house.houseimage_set.all %}
+                    <li>
+                        <a href="#{{ image.id }}"><img src="{{ image }}" alt="{{ image.id }}"></a>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
 
-        <style>
-            #PhoneNrAndEmail{
-                font-size: 0.5;
-            }
-            .div1 {
-                width: 100%;
-                min-height: 100px;
-                border: 1px solid black;
-                box-sizing: border-box;
-                background-color: grey;
-}
-            .carousel-item img{
-                height: 400px;
-                width: 300px !important;
-            }
-            .carousel .carousel-item {
-            width:300px !important;
-            }
-        </style>
         <script>
             $(document).ready(function(){
-                $('.carousel').carousel();
+                $('.materialboxed').materialbox();
+                $('.slider').slider();
             });
         </script>
-        <div class="row" id="PracticalInfo">
+        <div class="row">
             <div class="col l6 m6 s12">
                 <table class="float-right">
                     <tbody>
@@ -50,7 +35,7 @@
                     </tr>
                     <tr>
                         <th>Fasteignamat</th>
-                        <td class="right-align" >{{ house.price|intcomma }}</td>
+                        <td class="right-align" >{{ house.price|intcomma }} kr</td>
                     <tr>
                         <th>Byggt</th>
                         <td class="right-align">{{ house.houseinfo_set.first.buildyear }}</td>
@@ -64,7 +49,7 @@
                     <tbody>
                     <tr>
                         <th>Fermetrar</th>
-                        <td class="right-align">{{ house.houseinfo_set.first.size|intcomma }}</td>
+                        <td class="right-align">{{ house.houseinfo_set.first.size|intcomma }} m²</td>
                     </tr>
                     <tr>
                         <th>Skráð</th>
@@ -74,39 +59,41 @@
                 </table>
             </div>
         </div>
-        <div>
-            <div class="row" id="InfoAboutHouse">
-                <div class="col s8">
-                    <h6>Lýsing</h6>
-                    <div class="div1">
-                        {{ house.houseinfo_set.first.description }}
+        <div class="row">
+            <div class="col l8 m8 s12">
+                <div class="card">
+                    <div class="grey lighten-3">
+                        <div class="card-content">
+                            <article>
+                                <span class="card-title">Lýsing</span>
+                                <p>{{ house.houseinfo_set.first.description }}</p>
+                            </article>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col s4">
-                        <div class="card">
-                            <div class="card-image">
-                                <img id="PhotoOfSeller" src="{{ house.seller.profile.profile_pic }}" alt="{{ house.seller.first_name }} {{ house.seller.last_name }}">
-                            </div>
-                            <div class="card-content" style="word-wrap: break-word">
-                                <div class="left-align turnacate" id="PhoneNrAndEmail">
-                                    <div><h6 class="valign-wrapper">{{ house.seller.first_name }} {{ house.seller.last_name }}</h6></div>
-                                <hr id="Underline">
-                                    <div><a href="tel: {{ house.seller.profile.phone }}">Sími: {{ house.seller.profile.phone }}</a></div>
-                                    <div><a href="mailto: {{ house.seller.email }}">Netfang: {{ house.seller.email }}</a></div>
-                                    <a href="#"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div></div>
             </div>
-                <div class="row" id="BottumsToBuyAndDeleteRealestay">
-                    {% if user.is_authenticated and house.user == user or user.is_superuser %}
-                        <a href="{% url 'profile-delete-property' house.id %}" class="btn grey left">Eyða fasteign</a>
-                    {% endif %}
-                    <a href="{% url 'profile-buy-property' house.id %}" class="btn green darken-4 right">Setja inn tilboð</a>
+            <div class="col l4 m4 s12">
+                <div class="card">
+                    <div class="card-image">
+                        <img id="PhotoOfSeller" src="{{ house.seller.profile.profile_pic }}" alt="{{ house.seller.first_name }} {{ house.seller.last_name }}">
+                    </div>
+                    <div class="card-content" style="word-wrap: break-word">
+                        <div class="left-align turnacate" id="PhoneNrAndEmail">
+                            <div><h6 class="valign-wrapper">{{ house.seller.first_name }} {{ house.seller.last_name }}</h6></div>
+                            <hr id="Underline">
+                            <div><a href="tel: {{ house.seller.profile.phone }}">Sími: {{ house.seller.profile.phone }}</a></div>
+                            <div><a href="mailto: {{ house.seller.email }}">Netfang: {{ house.seller.email }}</a></div>
+                            <a href="#"></a>
+                        </div>
+                    </div>
                 </div>
-
+            </div>
+        </div>
+        <div class="row" id="BottumsToBuyAndDeleteRealestay">
+            {% if user.is_authenticated and house.user == user or user.is_superuser %}
+                <a href="{% url 'profile-delete-property' house.id %}" style="margin-left: 0.7em" class="btn grey left">Eyða fasteign</a>
+            {% endif %}
+            <a href="{% url 'profile-buy-property' house.id %}" style="margin-right: 0.7em" class="btn green darken-4 right">Setja inn tilboð</a>
         </div>
     </div>
 {% endblock %}
