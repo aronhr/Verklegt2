@@ -92,7 +92,6 @@ $(document).ready(function() {
                                     </div>
                                     <div class="card-content">
                                         <article>
-                                            <h3>${ d.fav_lst }</h3>
                                             <small>${ d.p_code } <span class="right">${ d.price } kr</span></small>
                                             <p>Desc: ${ d.desc }</p>
                                             <p>Type: ${ d.type }</p>
