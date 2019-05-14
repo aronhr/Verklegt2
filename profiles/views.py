@@ -239,7 +239,10 @@ def buy_property(request, id):
                  exdate=request.POST['exdate'],
                  cvc=request.POST['cvc']
                  ).save()
-        return redirect('house-index')
+        return render(request, 'profile/buy_property.html', {
+            'submit_response': 'Tilboð þitt hefur verið sent',
+            'house': house
+        })
     else:
         form = OfferForm()
         card_info = CreateUserBankInfo()
