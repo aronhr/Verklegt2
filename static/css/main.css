@@ -31,7 +31,7 @@
 .input-field .prefix.active {
     color: #000;
 }
-.collection-item a{
+a{
     color: black;
 }
 .collection-item:hover{
@@ -39,4 +39,27 @@
 }
 .buttons{
     margin-top: 2em;
+}
+.card-tabs{
+    margin-top: 0.5em;
+}
+.tabs .indicator{
+    background-color: #0d47a1;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    height: calc(100% - 64px);
+    width: 100%;
+    position: absolute !important;
+}
+@media only screen and (max-width: 600px) {
+  #map {
+    height: calc(100% - 56px);
+  }
 }

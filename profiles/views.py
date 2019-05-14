@@ -9,6 +9,7 @@ from profiles.models import UserBankInfo
 from house.forms.buy_house_form import *
 from profiles.forms.bank_form import *
 
+
 @login_required
 def index(request):
     profile = Profile.objects.filter(user=request.user).first()
@@ -18,7 +19,7 @@ def index(request):
         form = ProfileForm(instance=profile, data=request.POST)
         userform = UserForm(instance=user, data=request.POST)
         bankfrom = BankForm(instance=bank, data=request.POST)
-        if form.is_valid():
+        if form.is_valid() and userform.is_valid() and bankfrom.is_valid():
             profile = form.save(commit=False)
             user = userform.save(commit=False)
             bank = bankfrom.save(commit=False)
@@ -34,10 +35,14 @@ def index(request):
             user.save()
             bank.save()
             return redirect('profile-index')
+    else:
+        form = ProfileForm(instance=profile)
+        userform = UserForm(instance=user)
+        bankfrom = BankForm(instance=bank)
     return render(request, 'profile/index.html', {
-        'form': ProfileForm(instance=profile),
-        'userform': UserForm(instance=user),
-        'bankform': BankForm(instance=bank),
+        'form': form,
+        'userform': userform,
+        'bankform': bankfrom,
         'profile': profile
     })
 
@@ -71,6 +76,13 @@ def sell_property(request):
         'houseForm': form,
         'houseInfo': info,
     })
+
+
+@login_required
+def add_to_wish_list(request, id):
+    house = get_object_or_404(House, pk=id)
+    WishList(user=request.user, house=house).save()
+    return redirect('house-index')
 
 
 @login_required
@@ -145,28 +157,54 @@ def decline_submission(request, id):
 
 @user_passes_test(lambda u: u.is_superuser)
 def remove_user(request):
-    return render(request, 'profile/delUser.html')
+    users = User.objects.all()
+    return render(request, 'profile/delUser.html', {'users': users})
 
 
 @user_passes_test(lambda u: u.is_superuser)
 def remove_user_id(request, id):
-    return render(request, 'profile/delUser.html', {
-        'delUser': id
-    })
+    user = get_object_or_404(User, pk=id)
+    users = User.objects.all()
+    if user == request.user:
+        return render(request, 'profile/delUser.html', {'error': 'Þú mátt ekki eyða þér sjálfum félagi!', 'users': users})
+    user.delete()
+    return redirect('profile-delete-user')
 
 
 @user_passes_test(lambda u: u.is_superuser)
 def add_admin(request):
+    users = User.objects.filter(is_superuser=False)
     return render(request, 'profile/addAdmin.html', {
-        'addAdmin': 'This is where a add an admin'
+        'users': users
     })
 
 
 @user_passes_test(lambda u: u.is_superuser)
+def add_admin_id(request, id):
+    user = get_object_or_404(User, pk=id)
+    user.is_superuser = True
+    user.save()
+    return redirect('profile-add-admin')
+
+
+@user_passes_test(lambda u: u.is_superuser)
 def remove_admin(request):
+    users = User.objects.filter(is_superuser=True)
     return render(request, 'profile/removeAdmin.html', {
-        'removeAdmin': 'This is where a remove an admin'
+        'users': users
     })
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def remove_admin_id(request, id):
+    user = get_object_or_404(User, pk=id)
+    users = User.objects.all()
+    if user == request.user:
+        return render(request, 'profile/delUser.html',
+                      {'error': 'Þú mátt ekki eyða þér sjálfum félagi!', 'users': users})
+    user.is_superuser = False
+    user.save()
+    return redirect('profile-remove-admin')
 
 
 @login_required

@@ -1,94 +1,55 @@
 {% extends 'base.html' %}
-
+{% load humanize %}
 {% block content %}
-
-
     <style>
-        /* Always set the map height explicitly to define the size of the div
-         * element that contains the map. */
-        #map {
-            height: calc(100% - 44px);
-            width: 100%;
-            position: absolute !important;
-        }
 
-        /* Optional: Makes the sample page fill the window. */
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
 
     </style>
-    <div id="map"></div>
+    <div id="map" ></div>
     <script>
-
-        var locations = [
-            ['Linkur', 64.1537916, -21.7800444001661, 'Hamravik 36'],
-            ['Linkur', 64.15710395, -21.6627301425538, 'Reykjabyggð 30'],
-            ['Linkur', 64.1237306, -21.9266593513513, 'Menntavegur 1'],
-            ['Linkur', 64.15460605, -21.7746723604167, 'Hamravík 82'],
-            ['Linkur', 64.1695078, -21.7023663975637, 'Bergholt 2'],
-            ['Linkur', 64.14889345, -21.7975091505579, 'Smárarimi 21']
-        ];
-        // {% for x in ad %}
-        //    locations.push({{ x }},);
-        // {% endfor %}
-
         function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 64.835109, lng: -18.696558},
+                zoom: 7,
+                mapTypeControl: false,
+                streetViewControl: false,
+            });
 
-            var myOptions = {
-                center: new google.maps.LatLng(64.1237306, -21.9266593513513),
-                zoom: 8,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
+            var infowindow = new google.maps.InfoWindow({maxWidth: 400});
+            {% autoescape off %}
+                {% for x in houses %}
+                    var location = {{ x.geo }};
+                    // Locations OBJ
+                    var marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(location),
+                        map: map,
+                        title: '{{x.address}}'
+                    });
 
-            };
-            var map = new google.maps.Map(document.getElementById("map"),
-                myOptions);
-
-            var i;
-
-            for (i = 0; i < locations.length; i++)
-            {
-
-                var link = locations[i][0];
-                var lat = locations[i][1];
-                var long = locations[i][2];
-                var address =  locations[i][3];
-
-                latlngset = new google.maps.LatLng(lat, long);
-
-                var marker = new google.maps.Marker({
-                    map: map, title: address , position: latlngset
-                });
-                map.setCenter(marker.getPosition());
-
-
-                var content = "Hús: " + link +  "  " + "Address: " + address;
-
-                var infowindow = new google.maps.InfoWindow();
-
-                google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){
-                    return function() {
-                        infowindow.setContent(content);
-                        infowindow.open(map,marker);
-                    };
-                })(marker,content,infowindow));
-
-            }}
-
-
-
-            // Add a marker clusterer to manage the markers.
-            var markerCluster = new MarkerClusterer(map, markers,
-                {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-
-
-
+                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                        return function() {
+                            var des = '      <div class="card">\n' +
+                                '        <div class="card-image">\n' +
+                                '          <img src="{{ x.image }}" max-height="300">\n' +
+                                '          <span class="card-title">{{ x.address }}</span>\n' +
+                                '        </div>\n' +
+                                '        <div class="card-content">\n' +
+                                '          <p>{{x.description}}</p>\n' +
+                                '        </div>\n' +
+                                '        <div class="card-action">\n' +
+                                '          <a href="/house/{{ x.id }}">Meira um {{ x.address }} </a>\n' +
+                                '        </div>\n' +
+                                '      </div>';
+                            infowindow.setContent(des);
+                            infowindow.open(map, marker);
+                        }
+                    })(marker, {{ x.id}}));
+                {% endfor %}
+            {% endautoescape %}
+        }
     </script>
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
-    </script>
+
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZeWptDYX3_I5wUn7Vr9RDrJt6n54MPZ8&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM--hFf2vF_tToG03z8h6Gmqs6hWwBan4&callback=initMap">
     </script>
 {% endblock %}

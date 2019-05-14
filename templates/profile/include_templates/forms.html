@@ -13,7 +13,7 @@
                 {{ element }}
                 <label for="{{ element.id }}">{{ element.label_tag }}</label>
                 {% if element.help_text %}
-                    <span class="helper-text" data-success="right">{{ element.help_text }}</span>
+                    <span class="helper-text" data-error="Þetta lítur ekki út fyrir að vera rétt..">{{ element.help_text }}</span>
                 {% endif %}
             </div>
         </div>

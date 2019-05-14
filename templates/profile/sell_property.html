@@ -11,6 +11,8 @@
                         <li class="tab"><a id="3" class="white black-text" href="#s3">Myndir</a></li>
                     </ul>
                 </div>
+                {% include 'profile/include_templates/form_error.html' with form=houseForm %}
+                {% include 'profile/include_templates/form_error.html' with form=houseInfo %}
                 <div class="card-content grey lighten-4">
                     {% csrf_token %}
                     <div id="s1">
@@ -27,12 +29,12 @@
                     <div id="s3">
                         <h2>Myndir</h2>
                         <div class="file-field input-field">
-                            <div class="btn">
-                                <span>File</span>
+                            <div class="btn blue darken-4">
+                                <span>Myndir</span>
                                 <input type="file" name="myfile" multiple accept=".png,.jpeg,.jpg,.gif">
                             </div>
                             <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                <input class="file-path validate" type="text" placeholder="Settu inn eina eða fleiri skrár">
                             </div>
                         </div>
                             <span class="btn blue darken-4 back_2 left">Til baka</span>
