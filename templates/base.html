@@ -41,7 +41,12 @@
         <li><a href="{% url 'map-index' %}">Kort</a></li>
         <li><a href="{% url 'profile-wishList' %}">Óskalisti</a></li>
         {% if user.is_authenticated %}
-            <li><a href="{% url 'profile-index' %}">Prófíll</a></li>
+
+            <li><a href="{% url 'profile-index' %}">Prófíll
+            {% if offer %}
+                <span class="new badge red"></span>
+            {% endif %}
+            </a></li>
             <li><a href="{% url 'logout' %}">Útskráning</a></li>
         {% else %}
             <li><a href="{% url 'login-index' %}">Innskráning</a></li>

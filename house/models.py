@@ -41,6 +41,10 @@ class HouseInfo(models.Model):
     entrance = models.BooleanField(default=False)
     buildyear = models.CharField(max_length=4, blank=True)
 
+    def __str__(self):
+        return "{}<br> Þetta hús er {}, hefur {} herbergi og er {} fermetrar.".format(self.description, self.type,
+                                                                                   self.rooms, self.size)
+
 
 class HouseImage(models.Model):
     image = models.CharField(max_length=500)
@@ -71,4 +75,5 @@ class Offers(models.Model):
     price = models.BigIntegerField()
     date = models.DateTimeField(auto_now_add=True, blank=True)
     state = models.BooleanField(default=False)
+    seen = models.BooleanField(default=False)
 

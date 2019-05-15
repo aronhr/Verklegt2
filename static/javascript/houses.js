@@ -41,7 +41,6 @@ $(document).on('click', '#fav_button', (e) =>{
 });
 $(document).ready(function() {
 
-
     const from_to_param = (name) => {
         let url = "";
         const selected_from_price_el = $(`#${name}_from option:selected`)[0];
@@ -59,9 +58,6 @@ $(document).ready(function() {
         return url
     };
 
-
-
-
     const checkbox_url_param = (selector, name) => {
         const is_selected = $(selector).is(":checked");
         if(is_selected){
@@ -69,9 +65,9 @@ $(document).ready(function() {
         }
         return ""
 
-    }
-    const url_builder = () => {
+    };
 
+    const url_builder = () => {
         let url = '/?ajax';
         const selected_rooms = $('#rooms option:selected');
         $.each(selected_rooms, (ix, el) => {
@@ -80,7 +76,6 @@ $(document).ready(function() {
                 url += `&rooms=${selected_rooms}`
             }
         });
-
 
         const selected_postal = $('#postal_codes option:selected');
         $.each(selected_postal, (ix, el) => {
@@ -98,7 +93,6 @@ $(document).ready(function() {
             }
         });
 
-
         url += from_to_param('price');
         url += from_to_param('size');
 
@@ -108,32 +102,28 @@ $(document).ready(function() {
         url += checkbox_url_param('#special_eterance', 'new_building');
         url += checkbox_url_param('#lift', 'entrance');
 
-
-
         return url
-    }
+    };
     $('#submit_button').on('click', function(e) {
         const url = url_builder();
         e.preventDefault();
         $.ajax({
             url: url,
             type: 'GET',
-
             success: function(resp) {
                 let newHtml;
                 let houseshtml = $('.housess');
-                console.log(resp.data.length);
                 if(resp.data.length === 0){
-
                     houseshtml.html(`
-                                             <h3 class="red-text center" style="margin-top: 5em"</h3>
-                                                 <p>Engar niðurstöður fundust við þessar upplýsingar</p>
-                                            <i style="font-size: 2em" class="center material-icons">error</i>
+                     <h3 class="red-text center">
+                        Engar niðurstöður fundust við þessar upplýsingar
+                        <br>
+                        <i style="font-size: 2em" class="center material-icons">error</i>
+                    </h3>
                                                 `);
                 }
                 else{
                     newHtml = resp.data.map(d => {
-                        console.log(d.street_nr)
                         return `
                             <section>
     <div class="col s12 m6 l4">
@@ -164,20 +154,13 @@ $(document).ready(function() {
         </div>
     </div>
 </section>`
-
-
                     });
                 }
                 houseshtml.html(newHtml.join(''));
-
-
             },
             error: function(xhr, status, error) {
-                // TODO nett TODO
                 console.error(error)
             }
-
         })
-
     })
 });

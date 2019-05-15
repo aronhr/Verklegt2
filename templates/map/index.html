@@ -1,56 +1,51 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% block content %}
-    <style>
-        /* Always set the map height explicitly to define the size of the div
-         * element that contains the map. */
-        #map {
-            height: calc(100% - 44px);
-            width: 100%;
-            position: absolute !important;
-        }
-        /* Optional: Makes the sample page fill the window. */
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
-    <div id="map"></div>
+
+    <div id="map" ></div>
     <script>
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 64.835109, lng: -18.696558},
-                zoom: 7,
+                center: {lat: 64.117209, lng: -21.742400},
+                zoom: 12,
                 mapTypeControl: false,
                 streetViewControl: false,
             });
 
             var infowindow = new google.maps.InfoWindow({maxWidth: 400});
             {% autoescape off %}
-                {% for x in houses %}
-                    var location = {{ x.geo }};
+                {% for house in houses %}
+                    var location = {{ house.geo }};
                     // Locations OBJ
                     var marker = new google.maps.Marker({
                         position: new google.maps.LatLng(location),
                         map: map,
-                        title: '{{x.address}}'
+                        title: '{{house.address}}'
                     });
 
                     google.maps.event.addListener(marker, 'click', (function(marker, i) {
                         return function() {
                             var des = '      <div class="card">\n' +
                                 '        <div class="card-image">\n' +
-                                '          <img src="{{ x.image }}">\n' +
-                                '          <span class="card-title">{{ x.address }}</span>\n' +
+                                '          <img src="{{ house.image }}">\n' +
+                                '          <span class="card-title">{{ house.address }}</span>\n' +
                                 '        </div>\n' +
                                 '        <div class="card-content">\n' +
-                                '          <p>{{x.description}}</p>\n' +
+                                '          <p class=>{{house.description}}</p>\n' +
                                 '        </div>\n' +
                                 '        <div class="card-action">\n' +
-                                '          <a href="/house/{{ x.id }}">Meira um {{ x.address }} </a>\n' +
+                                '          <a href="/house/{{ house.id }}">Meira um {{ house.address }} </a>\n' +
                                 '        </div>\n' +
-                                '      </div>';
+                                '      </div>\n' +
+                                '        <style>\n' +
+                                '           .card-image{max-height: 300px;}\n' +
+                                '           .housed{\n' +
+                                '               width: 280px;\n' +
+                                '               white-space: nowrap;\n' +
+                                '                overflow: hidden;\n' +
+                                '                text-overflow: ellipsis;\n' +
+                                '           }\n' +
+                                '        </style>';
                             infowindow.setContent(des);
                             infowindow.open(map, marker);
                         }

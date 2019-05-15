@@ -5,7 +5,6 @@ from house.views import *
 from profiles.forms.prop_form import *
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import user_passes_test
-from profiles.models import UserBankInfo
 from house.forms.buy_house_form import *
 from profiles.forms.bank_form import *
 from django.http import JsonResponse
@@ -102,7 +101,7 @@ def wish_list(request):
 
 @login_required
 def remove_wish(request, id):
-    wish = get_object_or_404(WishList, pk=id)
+    wish = get_object_or_404(WishList, house=id, user=request.user)
     if wish.user == request.user:
         wish.delete()
     return redirect('profile-wishList')
@@ -118,15 +117,23 @@ def history(request):
 
 @login_required
 def offers(request):
+    offers = Offers.objects.filter(seller=request.user)
     return render(request, 'profile/offers.html', {
-        'offers': Offers.objects.all()
+        'houses': offers
     })
 
 
 @login_required
-def get_offer_by_id(request, id):
+def approve_offer(request, id):
     return render(request, 'profile/offer_by_id.html', {
-        'offer': get_object_or_404(Offers, pk=id)
+        'offer': 'Approved'
+    })
+
+
+@login_required
+def decline_offer(request, id):
+    return render(request, 'profile/offer_by_id.html', {
+        'offer': 'declined'
     })
 
 
@@ -246,7 +253,10 @@ def buy_property(request, id):
                  exdate=request.POST['exdate'],
                  cvc=request.POST['cvc']
                  ).save()
-        return redirect('house-index')
+        return render(request, 'profile/buy_property.html', {
+            'submit_response': 'Tilboð þitt hefur verið sent',
+            'house': house
+        })
     else:
         form = OfferForm()
         card_info = CreateUserBankInfo()
