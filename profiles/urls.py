@@ -7,6 +7,7 @@ urlpatterns = [
     path('wishList/', views.wish_list, name="profile-wishList"),
     path('history/', views.history, name="profile-history"),
     path('offers/', views.offers, name="profile-offers"),
+    path('offers/<int:id>', views.view_offer, name="profile-view-offer"),
     path('approveoffer/<int:id>/', views.approve_offer, name="profile-approve-offer"),
     path('declineoffer/<int:id>/', views.decline_offer, name="profile-decline-offer"),
     path('myProps/', views.my_props, name="profile-myProps"),

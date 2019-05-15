@@ -1,8 +1,149 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% load humanize %}
 {% block content %}
-    <h1>This is one offer</h1><br>
-    {{ offer.seller }}
-    {{ offer.buyer }}
-    {{ offer.price }}
+    <div class="container">
+        <div class="card">
+            <div class="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-tabs">
+                <ul class="tabs tabs-fixed-width">
+                    <li class="tab"><a class="active" href="#test4">Upplýsingar um tilboð</a></li>
+                    <li class="tab"><a href="#test5">Test 2</a></li>
+                    <li class="tab"><a href="#test6">Test 3</a></li>
+                </ul>
+            </div>
+            <div class="card-content grey lighten-4">
+                <div id="test4">
+                    <div class="col s12">
+                        <div class="row" id="PracticalInfo">
+                            <div class="col l6 m12 s12">
+                                <img style="width: 100%" src="{{ house.houseimage_set.first }}" alt="">
+                            </div>
+                            <div class="col s6">
+                                <table class="float-right">
+                                    <tbody>
+                                    <tr>
+                                        <th>Fasteignamat</th>
+                                        <td class="right-align">{{ house.price|intcomma }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Herbergi</th>
+                                        <td class="right-align">{{ house.houseinfo_set.first.rooms }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Byggt</th>
+                                        <td class="right-align">{{ house.houseinfo_set.first.buildyear }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Fermetrar</th>
+                                        <td class="right-align">{{ house.houseinfo_set.first.size|intcomma }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Skráð</th>
+                                        <td class="right-align">{{ house.sellingdate }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="test5">
+                    <div class="col s12">
+                        <div class="row" id="PracticalInfo">
+                            <div class="col l6 m12 s12">
+                                <img style="width: 100%" src="{{ house.houseimage_set.first }}" alt="">
+                            </div>
+                            <div class="col s6">
+                                <table class="float-right">
+                                    <tbody>
+                                    <tr>
+                                        <th>Tilboðs upphæð</th>
+                                        <td class="right-align">{{ my_offer.price|intcomma }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Kaupandi</th>
+                                        <td class="right-align">{{ my_offer.user }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Seljadni</th>
+                                        <td class="right-align">{{ buyer.first_name }} {{ buyer.last_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Kennitala</th>
+                                        <td class="right-align">{{ buyer_profile.kt }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>E-mail</th>
+                                        <td class="right-align">{{ buyer.email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Sími</th>
+                                        <td class="right-align">{{ buyer_profile.phone }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="test6">
+                    <div class="col s12">
+                        <div class="row" id="PracticalInfo">
+                            <div class="col l6 m12 s12">
+                                <img style="width: 100%" src="{{ house.houseimage_set.first }}" alt="">
+                            </div>
+                            <div class="col s6">
+                                <table class="float-right">
+                                    <tbody>
+                                    <tr>
+                                        <th>Fasteignamat</th>
+                                        <td class="right-align">{{ house.price|intcomma }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Tilboðsuppgæð</th>
+                                        <td class="right-align">{{ my_offer.price }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Kaupandi</th>
+                                        <td class="right-align">{{ buyer.first_name }} {{ buyer.last_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Seljandi</th>
+                                        <td class="right-align">{{ house.seller.first_name}} {{ house.seller.last_name }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <button data-target="accept" class="btn modal-trigger green right">Samþykkja</button>
+                            <button data-target="refuse" class="btn modal-trigger red right">Hafna</button>
+                        </div>
+                    </div>
+                    <div id="accept" class="modal">
+                        <div class="modal-content">
+                            <h4>Ertu viss um að samþykja tilboð?</h4>
+                            <p>
+                                <a class="modal-close waves-effect btn red darken-4" >Loka</a>
+                                <a class="btn modal-trigger modal-close waves-effect btn green darken-2" href="{% url 'profile-approve-offer' my_offer.id %}">Samþyggja</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div id="refuse" class="modal">
+                        <div class="modal-content">
+                            <h4>Ertu viss um að hafna tilboð?</h4>
+                            <p>
+                                <a class="modal-close waves-effect btn red darken-4" >Loka</a>
+                                <a class="btn modal-trigger modal-close waves-effect btn green darken-2" href="{% url 'profile-decline-offer' my_offer.id %}">Hafna</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'javascript/sellProp.js' %}"></script>
+    <script src="{% static 'javascript/buy_house.js' %}"></script>
 {% endblock %}

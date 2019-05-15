@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
     {% load humanize %}
     <div class="container">
@@ -9,23 +9,20 @@
                     {% if houses %}
                         {% for prop in houses %}
                             <li class="collection-item avatar">
-                                <a href="/house/{{ prop.house.id }}">
-                                    <img src="{{ prop.house.houseimage_set.first.image }}" alt="{{ prop.house.address }} {{ prop.house.street_nr }}" class="circle">
-                                    <span class="title"><strong>{{ prop.house.address }} {{ prop.house.street_nr }}</strong></span>
-                                    <p>
-                                        Fasteignamat: <strong>{{ prop.house.price|intcomma }} kr.</strong>
-                                        <br>
-                                        Mögulegur kaupandi: {{ prop.user.first_name }} {{ prop.user.last_name }}
-                                        <br>
-                                        Sími: {{ prop.user.profile.phone }}
-                                        <br>
-                                        Tölvupóstur: {{ prop.user.email }}
-                                        <br>
-                                        Tilboð: <strong class="red-text">{{ prop.price|intcomma }} kr.</strong>
-                                    </p>
-                                    <a href="{% url 'profile-approve-offer' prop.id %}" class="secondary-content right "><i class="material-icons">check</i></a>
-                                    <a href="{% url 'profile-decline-offer' prop.id %}" class="secondary-content right red-text" style="margin-top: 2em"><i class="material-icons">close</i></a>
-                                </a>
+                                <img src="{{ prop.house.houseimage_set.first.image }}" alt="{{ prop.house.address }} {{ prop.house.street_nr }}" class="circle">
+                                <span class="title"><strong>{{ prop.house.address }} {{ prop.house.street_nr }}</strong></span>
+                                <p>
+                                    Fasteignamat: <strong>{{ prop.house.price|intcomma }} kr.</strong>
+                                    <br>
+                                    Mögulegur kaupandi: {{ prop.user.first_name }} {{ prop.user.last_name }}
+                                    <br>
+                                    Sími: {{ prop.user.profile.phone }}
+                                    <br>
+                                    Tölvupóstur: {{ prop.user.email }}
+                                    <br>
+                                    Tilboð: <strong class="red-text">{{ prop.price|intcomma }} kr.</strong>
+                                </p>
+                                <a class="btn green secondary-content right" href="{% url 'profile-view-offer' prop.id %}">Skoða tilboð</a>
                             </li>
                         {% endfor %}
                     {% else %}
@@ -42,4 +39,5 @@
             </div>
         </div>
     </div>
+    <script src="{% static 'javascript/buy_house.js' %}"></script>
 {% endblock %}

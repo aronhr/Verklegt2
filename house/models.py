@@ -77,3 +77,4 @@ class Offers(models.Model):
     state = models.BooleanField(default=False)
     seen = models.BooleanField(default=False)
 
+
