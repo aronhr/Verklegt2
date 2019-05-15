@@ -97,10 +97,10 @@ $(document).ready(function() {
         url += from_to_param('size');
 
         url += checkbox_url_param('#garage', 'garage');
-        url += checkbox_url_param('#new_house', 'elevator');
+        url += checkbox_url_param('#new_house', 'new_building');
         url += checkbox_url_param('#extra_apart', 'extra_apartment');
         url += checkbox_url_param('#special_eterance', 'new_building');
-        url += checkbox_url_param('#lift', 'entrance');
+        url += checkbox_url_param('#lift', 'elevator');
 
         return url
     };

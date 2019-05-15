@@ -6,15 +6,15 @@
     <div class="container">
         <div class="center" id="FirstHalfOfSite">
             <h2>{{ house.address }} {{ house.street_nr }}, {{ house.p_code }}
-                <a id="fav_button" data-id="{{ house.id }}" href="#">
-                    {% if fav %}
-                        <i style="font-size: 1.5em;" class="material-icons turn">turned_in</i>
-                    {% else %}
-                        <i style="font-size: 1.5em;" class="material-icons turn">turned_in_not</i>
-                    {% endif %}
-                </a>
             </h2>
             <hr>
+            <a id="fav_button" data-id="{{ house.id }}" href="#">
+                    {% if fav %}
+                        <i style="font-size: 3em;" class="material-icons turn">turned_in</i>
+                    {% else %}
+                        <i style="font-size: 3em;" class="material-icons turn">turned_in_not</i>
+                    {% endif %}
+                </a>
             <br>
         </div>
         <div class="slider">
