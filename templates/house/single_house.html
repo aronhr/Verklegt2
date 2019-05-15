@@ -9,13 +9,19 @@
                 <article>
                     <span class="card-title"><strong>{{ house.house.address }} {{ house.house.street_nr }}</strong>
                         <div style="width: 30px!important; margin: 0 auto" class="right">
-                            <a id="fav_button" data-id="{{ house.house.id }}" href="#">
-                                {% if house.fav %}
-                                    <i style="font-size: 1.5em;" class="material-icons turn">turned_in</i>
-                                {% else %}
+                            {% if user.is_authenticated %}
+                                <a id="fav_button" data-id="{{ house.house.id }}" href="#">
+                                    {% if house.fav %}
+                                        <i style="font-size: 1.5em;" class="material-icons turn">turned_in</i>
+                                    {% else %}
+                                        <i style="font-size: 1.5em;" class="material-icons turn">turned_in_not</i>
+                                    {% endif %}
+                                </a>
+                            {% else %}
+                                <a href="{% url 'login-index' %}?next=/house">
                                     <i style="font-size: 1.5em;" class="material-icons turn">turned_in_not</i>
-                                {% endif %}
-                            </a>
+                                </a>
+                            {% endif %}
                         </div>
                     </span>
 
