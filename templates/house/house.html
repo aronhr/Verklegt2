@@ -9,12 +9,12 @@
             </h2>
             <hr>
             <a id="fav_button" data-id="{{ house.id }}" href="#">
-                    {% if fav %}
-                        <i style="font-size: 3em;" class="material-icons turn">turned_in</i>
-                    {% else %}
-                        <i style="font-size: 3em;" class="material-icons turn">turned_in_not</i>
-                    {% endif %}
-                </a>
+                {% if fav %}
+                    <i style="font-size: 3em;" class="material-icons turn">turned_in</i>
+                {% else %}
+                    <i style="font-size: 3em;" class="material-icons turn">turned_in_not</i>
+                {% endif %}
+            </a>
             <br>
         </div>
         <div class="slider">
@@ -90,7 +90,7 @@
                     <tr>
                         <th>Sér inngangur</th>
                         <td class="right-align">
-                        {% if house.houseinfo_set.first.entrance %}
+                            {% if house.houseinfo_set.first.entrance %}
                                 Já
                             {% else %}
                                 Nei
@@ -100,7 +100,7 @@
                     <tr>
                         <th>Auka húsnæði</th>
                         <td class="right-align">
-                        {% if house.houseinfo_set.first.extra_apartment %}
+                            {% if house.houseinfo_set.first.extra_apartment %}
                                 Já
                             {% else %}
                                 Nei
@@ -127,16 +127,20 @@
             <div class="col l4 m4 s12">
                 <div class="card">
                     <div class="card-image">
-                        <img id="PhotoOfSeller" src="{{ house.seller.profile.profile_pic }}" alt="{{ house.seller.first_name }} {{ house.seller.last_name }}">
+                        <a href="{% url 'profile-id' house.seller.id %}">
+                            <img id="PhotoOfSeller" src="{{ house.seller.profile.profile_pic }}" alt="{{ house.seller.first_name }} {{ house.seller.last_name }}">
+                        </a>
                     </div>
                     <div class="card-content" style="word-wrap: break-word">
-                        <div class="left-align turnacate" id="PhoneNrAndEmail">
-                            <div><h6 class="valign-wrapper">{{ house.seller.first_name }} {{ house.seller.last_name }}</h6></div>
-                            <hr id="Underline">
-                            <div><a href="tel: {{ house.seller.profile.phone }}">Sími: {{ house.seller.profile.phone }}</a></div>
-                            <div><a href="mailto: {{ house.seller.email }}">Netfang: {{ house.seller.email }}</a></div>
-                            <a href="#"></a>
-                        </div>
+                        <a href="{% url 'profile-id' house.seller.id %}">
+                            <div class="left-align turnacate" id="PhoneNrAndEmail">
+                                <div><h6 class="valign-wrapper">{{ house.seller.first_name }} {{ house.seller.last_name }}</h6></div>
+                                <hr id="Underline">
+                                <div><a href="tel: {{ house.seller.profile.phone }}">Sími: {{ house.seller.profile.phone }}</a></div>
+                                <div><a href="mailto: {{ house.seller.email }}">Netfang: {{ house.seller.email }}</a></div>
+                                <a href="#"></a>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>

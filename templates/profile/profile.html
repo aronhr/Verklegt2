@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block content %}
+    <div class="container">
+        <div class="row buttons">
+            <div class="col offset-l3 offset-m3 offset-s3 l6 s6 m6">
+                <img class="responsive-img circle" src="{{ user.profile.profile_pic }}" alt="{{ user.first_name }} {{ user.last_name }}">
+                <h2 class="center">{{ user.first_name }} {{ user.last_name }}</h2>
+                <br>
+                {{ user.profile.phone }}
+                <br>
+                {{ user.email }}
+                <br>
+                {{ user.profile.dob }}
+                <br>
+                {{ user.profile.address }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
