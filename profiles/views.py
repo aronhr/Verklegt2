@@ -122,9 +122,19 @@ def history(request):
 
 
 @login_required
-def offers(request):
+def offers_seller(request):
     offers = Offers.objects.filter(seller=request.user)
     return render(request, 'profile/offers.html', {
+        'seller': 'seller',
+        'houses': offers
+    })
+
+
+@login_required
+def offers_buyer(request):
+    offers = Offers.objects.filter(user=request.user)
+    return render(request, 'profile/offers.html', {
+        'buyer': 'buyer',
         'houses': offers
     })
 
@@ -149,7 +159,7 @@ def approve_offer(request, id):
     house = get_object_or_404(House, pk=my_offer.house.id)
     my_offer.delete()  # Eyða tilboði þegar því hefur verið hafnað samþykkt
     # house.delete()  # Eyða húsi þegar tilboð hefur verið samþykkt
-    return redirect('profile-offers')
+    return redirect('profile-offers-seller')
 
 
 @login_required
@@ -157,7 +167,7 @@ def decline_offer(request, id):
     my_offer = get_object_or_404(Offers, pk=id)
     house = get_object_or_404(House, pk=my_offer.house.id)
     my_offer.delete()  # Eyða tilboði þegar því hefur verið hafnað
-    return redirect('profile-offers')
+    return redirect('profile-offers-seller')
 
 
 @login_required

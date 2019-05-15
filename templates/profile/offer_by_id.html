@@ -5,21 +5,21 @@
     <div class="container">
         <div class="card">
             <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                <h3>Tilboðslýsing</h3>
             </div>
             <div class="card-tabs">
                 <ul class="tabs tabs-fixed-width">
-                    <li class="tab"><a class="active" href="#test4">Upplýsingar um tilboð</a></li>
-                    <li class="tab"><a href="#test5">Test 2</a></li>
-                    <li class="tab"><a href="#test6">Test 3</a></li>
+                    <li class="tab"><a id="1" class="active" href="#s1">Hús</a></li>
+                    <li class="tab"><a id="2" href="#s2">Test 2</a>Kaupandi</li>
+                    <li class="tab"><a id="3" href="#s3">Test 3</a>Yfirlit</li>
                 </ul>
             </div>
             <div class="card-content grey lighten-4">
-                <div id="test4">
+                <div id="s1">
                     <div class="col s12">
                         <div class="row" id="PracticalInfo">
                             <div class="col l6 m12 s12">
-                                <img style="width: 100%" src="{{ house.houseimage_set.first }}" alt="">
+                                <img style="width: 100%" src="{{ house.houseimage_set.first }}" alt="{{ house.address }} {{ house.street_nr }}">
                             </div>
                             <div class="col s6">
                                 <table class="float-right">
@@ -50,8 +50,9 @@
                             </div>
                         </div>
                     </div>
+                    <h3 class="btn blue darken-4 forward right">Áfram</h3>
                 </div>
-                <div id="test5">
+                <div id="s2">
                     <div class="col s12">
                         <div class="row" id="PracticalInfo">
                             <div class="col l6 m12 s12">
@@ -89,12 +90,14 @@
                             </div>
                         </div>
                     </div>
+                    <h3 class="btn blue darken-4 back left">Til baka</h3>
+                    <h3 class="btn blue darken-4 forward_2 right">Áfram</h3>
                 </div>
-                <div id="test6">
+                <div id="s3">
                     <div class="col s12">
                         <div class="row" id="PracticalInfo">
                             <div class="col l6 m12 s12">
-                                <img style="width: 100%" src="{{ house.houseimage_set.first }}" alt="">
+                                <img style="width: 100%" class="responsive-img" src="{{ house.houseimage_set.first }}" alt="">
                             </div>
                             <div class="col s6">
                                 <table class="float-right">
