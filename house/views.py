@@ -15,13 +15,15 @@ def true_or_false(name, request):
 
 
 def index(request):
-    p = HouseInfo.objects.all()
+    fav = []
+    if request.user.is_active:
+        for wl in WishList.objects.filter(user=request.user):
+            fav.append(wl.house.id)
+            
     if 'ajax' in request.GET:
         room_list = [x.rooms for x in HouseInfo.objects.all().distinct()]
         if 'rooms' in request.GET:
             room_list = request.GET.getlist('rooms')
-
-        print(request)
 
         type_list = [x.id for x in HouseType.objects.all()]
         if 'types' in request.GET:
@@ -31,11 +33,9 @@ def index(request):
         if 'p_code' in request.GET:
             p_code_list = request.GET.getlist('p_code')
 
-
         price_from = 0
         if 'price_from' in request.GET:
             price_from = request.GET.get('price_from')
-
 
         price_to = sys.maxsize
         if 'price_to' in request.GET:
@@ -49,14 +49,11 @@ def index(request):
         if 'size_to' in request.GET:
             size_to = request.GET.get('size_to')
 
-
         garage_list = true_or_false('garage', request)
         lift_list = true_or_false('elevator', request)
         extra_apart_list = true_or_false('extra_apartment', request)
         new_building_list = true_or_false('new_building', request)
         extra_entrance_list = true_or_false('entrance', request)
-
-
 
         db_houses = HouseInfo.objects.filter(
             rooms__in=room_list,
@@ -91,22 +88,31 @@ def index(request):
                 'rooms': x.rooms,
                 'size': x.size,
                 'sellingdate': x.house.sellingdate,
-                'garage': x.garage
+                'garage': x.garage,
+                'favorate': x.house.id in fav
             })
 
         return JsonResponse({'data': houses})
+
+    houses = []
+    for house in House.objects.filter(on_sale=True).order_by('id'):
+        houses.append({
+            'house': house,
+            'fav': house.id in fav
+        })
+
     context = {
-        'houses': House.objects.filter(on_sale=True).order_by('id'),
+        'houses': houses,
         'house_info': HouseInfo.objects.all(),
         'types': HouseType.objects.all(),
         'towns': PostalCodes.objects.all(),
-        'rooms': []
+        'rooms': [],
+        'fav': fav
     }
     for i in context['house_info']:
         context['rooms'].append(i.rooms)
 
     context['rooms'] = sorted(set(context['rooms']))
-
 
     return render(request, 'house/index.html', context)
 
