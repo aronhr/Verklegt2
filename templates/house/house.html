@@ -40,6 +40,26 @@
                         <th>Byggt</th>
                         <td class="right-align">{{ house.houseinfo_set.first.buildyear }}</td>
                     </tr>
+                    <tr>
+                        <th>Bílskúr</th>
+                        <td class="right-align">
+                            {% if house.houseinfo_set.first.garage %}
+                                Já
+                            {% else %}
+                                Nei
+                            {% endif %}
+                        </td>
+                    <tr>
+                        <th>Lyfta</th>
+                        <td class="right-align">
+                            {% if house.houseinfo_set.first.elevator %}
+                                Já
+                            {% else %}
+                                Nei
+                            {% endif %}
+                        </td>
+                    </tr>
+                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -54,6 +74,30 @@
                     <tr>
                         <th>Skráð</th>
                         <td class="right-align">{{ house.sellingdate }}</td>
+                    </tr>
+                    <tr>
+                        <th>Týpa</th>
+                        <td class="right-align">{{ house.houseinfo_set.first.type }}</td>
+                    </tr>
+                    <tr>
+                        <th>Sér inngangur</th>
+                        <td class="right-align">
+                        {% if house.houseinfo_set.first.entrance %}
+                                Já
+                            {% else %}
+                                Nei
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Auka húsnæði</th>
+                        <td class="right-align">
+                        {% if house.houseinfo_set.first.extra_apartment %}
+                                Já
+                            {% else %}
+                                Nei
+                            {% endif %}
+                        </td>
                     </tr>
                     </tbody>
                 </table>
