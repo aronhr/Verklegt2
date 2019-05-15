@@ -11,10 +11,10 @@
                     <span class="card-title">{{ house.house.address }} {{ house.house.street_nr }}
                         <div style="width: 30px!important; margin: 0 auto" class="right">
                             <a id="fav_button" data-id="{{ house.house.id }}" href="#">
-                          {% if house.fav %}
-                                    <i style="font-size: 1.5em;" class="material-icons">turned_in</i>
+                                {% if house.fav %}
+                                    <i style="font-size: 1.5em;" class="material-icons turn">turned_in</i>
                                 {% else %}
-                                    <i style="font-size: 1.5em;" class="material-icons">turned_in_not</i>
+                                    <i style="font-size: 1.5em;" class="material-icons turn">turned_in_not</i>
                                 {% endif %}
                             </a>
                         </div>

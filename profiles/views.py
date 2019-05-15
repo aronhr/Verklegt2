@@ -82,19 +82,13 @@ def sell_property(request):
 
 @login_required
 def toggle_wish_list(request, id):
-    print("HELLO",id)
-
-
     house = get_object_or_404(House, pk=id)
-    print("", house)
     if 'set' in request.GET:
         WishList(user=request.user, house=house).save()
-        print("inni i if")
-    """else:
-        wish = get_object_or_404(WishList, pk=id)
+    else:
+        wish = get_object_or_404(WishList, house=id, user=request.user)
         if wish.user == request.user:
             wish.delete()
-            """
     return JsonResponse({'status': 'OK'}, status=200)
 
 

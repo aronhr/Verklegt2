@@ -1,23 +1,44 @@
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+
 $(document).on('click', '#fav_button', (e) =>{
     e.preventDefault();
     const el = $(e.currentTarget);
     house_id = el.data("id");
-    set = ""
+    set = "";
     if (el.children()[0].innerHTML === "turned_in_not"){
-        set = "set"
+        set = "set";
+        el.children()[0].innerHTML = "turned_in"
+    }
+    else if(el.children()[0].innerHTML === "turned_in"){
+        el.children()[0].innerHTML = "turned_in_not"
     }
     $.ajax({
             url: `profile/toggleWishListItem/${house_id}/?${set}`,
             type: 'POST',
             headers: {
-                "X-CSRFToken": ""
+                "X-CSRFToken": csrftoken
             },
             success: (resp) => {
-                console.log(resp)
+
             }
         }
     )
-})
+});
 $(document).ready(function() {
 
 

@@ -17,7 +17,7 @@
                                     {{ prop.house.houseinfo_set.first.size|intcomma }} m²
                                 </p>
                                 {% if del == 'True' %}
-                                    <a href="{% url 'profile-delete-wish' prop.id %}" class="secondary-content orange-text"><i class="material-icons">grade</i></a>
+                                    <a href="{% url 'profile-delete-wish' prop.id %}" class="secondary-content black-text"><i class="material-icons">turned_in</i></a>
                                 {% endif %}
                                 {% if onhold %}
                                     <a href="{% url 'profile-approve-submission' prop.id %}" class="secondary-content right"><i class="material-icons">check</i></a>
