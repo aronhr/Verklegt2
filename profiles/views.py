@@ -10,7 +10,6 @@ from profiles.forms.bank_form import *
 from django.http import JsonResponse
 
 
-
 @login_required
 def index(request):
     profile = Profile.objects.filter(user=request.user).first()
@@ -124,17 +123,34 @@ def offers(request):
 
 
 @login_required
-def approve_offer(request, id):
+def view_offer(request, id):
+    my_offer = get_object_or_404(Offers, pk=id)
+    house = get_object_or_404(House, pk=my_offer.house.id)
+    buyer = get_object_or_404(User, pk=my_offer.user.id)
+    profile = get_object_or_404(Profile, user=my_offer.user.id)
     return render(request, 'profile/offer_by_id.html', {
-        'offer': 'Approved'
+        'house': house,
+        'my_offer': my_offer,
+        'buyer': buyer,
+        'buyer_profile': profile
     })
 
 
 @login_required
+def approve_offer(request, id):
+    my_offer = get_object_or_404(Offers, pk=id)
+    house = get_object_or_404(House, pk=my_offer.house.id)
+    my_offer.delete()  # Eyða tilboði þegar því hefur verið hafnað samþykkt
+    # house.delete()  # Eyða húsi þegar tilboð hefur verið samþykkt
+    return redirect('profile-offers')
+
+
+@login_required
 def decline_offer(request, id):
-    return render(request, 'profile/offer_by_id.html', {
-        'offer': 'declined'
-    })
+    my_offer = get_object_or_404(Offers, pk=id)
+    house = get_object_or_404(House, pk=my_offer.house.id)
+    my_offer.delete()  # Eyða tilboði þegar því hefur verið hafnað
+    return redirect('profile-offers')
 
 
 @login_required
@@ -180,7 +196,8 @@ def remove_user_id(request, id):
     user = get_object_or_404(User, pk=id)
     users = User.objects.all()
     if user == request.user:
-        return render(request, 'profile/delUser.html', {'error': 'Þú mátt ekki eyða þér sjálfum félagi!', 'users': users})
+        return render(request, 'profile/delUser.html',
+                      {'error': 'Þú mátt ekki eyða þér sjálfum félagi!', 'users': users})
     user.delete()
     return redirect('profile-delete-user')
 
