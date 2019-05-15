@@ -110,15 +110,23 @@ def history(request):
 
 @login_required
 def offers(request):
+    offers = Offers.objects.filter(seller=request.user)
     return render(request, 'profile/offers.html', {
-        'offers': Offers.objects.all()
+        'houses': offers
     })
 
 
 @login_required
-def get_offer_by_id(request, id):
+def approve_offer(request, id):
     return render(request, 'profile/offer_by_id.html', {
-        'offer': get_object_or_404(Offers, pk=id)
+        'offer': 'Approved'
+    })
+
+
+@login_required
+def decline_offer(request, id):
+    return render(request, 'profile/offer_by_id.html', {
+        'offer': 'declined'
     })
 
 
