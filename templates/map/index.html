@@ -31,7 +31,7 @@
                                 '          <span class="card-title">{{ house.address }}</span>\n' +
                                 '        </div>\n' +
                                 '        <div class="card-content">\n' +
-                                '          <p class=>{{house.description}}</p>\n' +
+                                '          <p class="housed">{{house.description}}</p>\n' +
                                 '        </div>\n' +
                                 '        <div class="card-action">\n' +
                                 '          <a href="/house/{{ house.id }}">Meira um {{ house.address }} </a>\n' +
@@ -40,10 +40,10 @@
                                 '        <style>\n' +
                                 '           .card-image{max-height: 300px;}\n' +
                                 '           .housed{\n' +
-                                '               width: 280px;\n' +
+                                '               width: 330px;\n' +
                                 '               white-space: nowrap;\n' +
-                                '                overflow: hidden;\n' +
-                                '                text-overflow: ellipsis;\n' +
+                                '               overflow: hidden;\n' +
+                                '               text-overflow: ellipsis;\n' +
                                 '           }\n' +
                                 '        </style>';
                             infowindow.setContent(des);
