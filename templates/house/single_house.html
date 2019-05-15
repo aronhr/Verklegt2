@@ -7,7 +7,7 @@
             </div>
             <div class= "card-content">
                 <article>
-                    <span class="card-title">{{ house.house.address }} {{ house.house.street_nr }}
+                    <span class="card-title"><strong>{{ house.house.address }} {{ house.house.street_nr }}</strong>
                         <div style="width: 30px!important; margin: 0 auto" class="right">
                             <a id="fav_button" data-id="{{ house.house.id }}" href="#">
                                 {% if house.fav %}
@@ -19,13 +19,25 @@
                         </div>
                     </span>
 
-                    <small>{{ house.house.p_code }} <span class="right">{{ house.house.price|intcomma  }} kr</span></small>
-                    <p class="truncate">{{house.house.houseinfo_set.first.description }}</p>
+                    <p class="truncate"><strong>{{ house.house.price|intcomma  }} kr</strong></p>
                     <br>
-                    <p>
-                        <b>{{house.house.houseinfo_set.first.type }}</b> sem að er
-                        <b>{{house.house.houseinfo_set.first.size }}</b>
-                        fermetrar og hefur <b>{{house.house.houseinfo_set.first.rooms }}</b> herbergi</p>
+                    <div style="margin-bottom: 0px" class="row">
+                        <div class="col s6">
+                            <p>Tegund: <strong>{{house.house.houseinfo_set.first.type }}</strong></p>
+                        </div>
+                        <div class="col s6">
+                            <p class="right-align">Stærð <strong>{{house.house.houseinfo_set.first.size }} m²</strong></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div style="margin-bottom: 0px" class="row">
+                        <div class="col s12">
+                            <p>Herbergi: <strong>{{house.house.houseinfo_set.first.rooms }}</strong></p>
+                        </div>
+
+                    </div>
+                    <hr>
+
                     <small>{{house.house.sellingdate }}</small>
                 </article>
             </div>

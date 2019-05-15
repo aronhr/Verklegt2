@@ -34,6 +34,7 @@
                             {% endfor %}
                         </select>
                     </div>
+
                 </div>
                 <div class="row">
                     <div class="check_boxes">
@@ -168,6 +169,16 @@
                             <option value="1000">1000 m²</option>
                         </select>
                     </div>
+                    <div class="input-field col s12">
+                        <select id="order" name="rooms">
+                            <option value="-house__id" selected>Nýjast</option>
+                            <option value="-house__price">Verð i lækkandi röð</option>
+                            <option value="house__price">Verð i hækkandi röð</option>
+                            <option value="house__address">Heimilisfang i stafrófsröð</option>
+                            <option value="-house__address">Heimilisfang i öfugri stafrófsröð</option>
+                        </select>
+                    </div>
+
                 </div>
                 <button id="submit_button" class=" btn waves-effect blue darken-3" type="submit" name="action">Hefja leit
                     <i class="material-icons right">send</i>
@@ -178,6 +189,9 @@
         </div>
 
         <div class="housess col l9 m12 s12">
+        <div class="input-field col s12">
+            <input placeholder="Leitaðu að húsi eftir nafni" id="first_name" type="text" class="validate">
+        </div>
             {% if houses %}
                 {% for house in houses %}
                     {% include 'house/single_house.html' with house=house fav=fav %}

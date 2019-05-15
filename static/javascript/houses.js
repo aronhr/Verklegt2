@@ -58,6 +58,7 @@ $(document).ready(function() {
         return url
     };
 
+
     const checkbox_url_param = (selector, name) => {
         const is_selected = $(selector).is(":checked");
         if(is_selected){
@@ -91,6 +92,13 @@ $(document).ready(function() {
             if (selected_types !== '') {
                 url += `&types=${selected_types}`
             }
+
+        const elem = $(`#order option:selected`);
+        const selected_order = $(elem).val();
+            if (selected_order !== '') {
+                url += `&order=${selected_order}`
+            }
+
         });
 
         url += from_to_param('price');

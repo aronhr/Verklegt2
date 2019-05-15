@@ -51,11 +51,13 @@ def index(request):
         if 'size_to' in request.GET:
             size_to = request.GET.get('size_to')
 
+
         garage_list = true_or_false('garage', request)
         lift_list = true_or_false('elevator', request)
         extra_apart_list = true_or_false('extra_apartment', request)
         new_building_list = true_or_false('new_building', request)
         extra_entrance_list = true_or_false('entrance', request)
+        order = request.GET.get('order')
 
         db_houses = HouseInfo.objects.filter(
             rooms__in=room_list,
@@ -70,8 +72,8 @@ def index(request):
             house__price__gte=price_from,
             house__price__lte=price_to,
             size__gte=size_from,
-            size__lte=size_to
-        ).order_by('house__id')
+            size__lte=size_to,
+        ).order_by(order)
 
         houses = []
         for x in db_houses:
