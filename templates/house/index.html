@@ -35,39 +35,45 @@
                         </select>
                     </div>
                 </div>
-
-                <div class="check_boxes">
-                    <p>
-                        <label>
-                            <input id="garage" name="garage" type="checkbox" />
-                            <span class="black-text">Bílskúr</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input id="new_house" name="garage" type="checkbox" />
-                            <span class="black-text">Nýtt hús</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input id="extra_apart" type="checkbox"/>
-                            <span class="black-text">Auka húsnæði</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input id="special_eterance" type="checkbox" />
-                            <span class="black-text">Sér inngangur</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input id="lift" type="checkbox" />
-                            <span class="black-text">Lyfta</span>
-                        </label>
-                    </p>
+                <div class="row">
+                    <div class="check_boxes">
+                        <div class="col l6">
+                            <p>
+                                <label>
+                                    <input id="garage" name="garage" type="checkbox" />
+                                    <span class="black-text">Bílskúr</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input id="new_house" name="garage" type="checkbox" />
+                                    <span class="black-text">Nýtt hús</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input id="extra_apart" type="checkbox"/>
+                                    <span class="black-text">Auka húsnæði</span>
+                                </label>
+                            </p>
+                        </div>
+                        <div class="col s6">
+                            <p>
+                                <label>
+                                    <input id="special_eterance" type="checkbox" />
+                                    <span class="black-text">Sér inngangur</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input id="lift" type="checkbox" />
+                                    <span class="black-text">Lyfta</span>
+                                </label>
+                            </p>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="selectors">
                     <div class="input-field col s6">
                         <select id="price_from" name="price">
@@ -168,11 +174,10 @@
                 </button>
                 <br>
                 <br>
-
             </div>
         </div>
 
-        <div class="housess col l9">
+        <div class="housess col l9 m12 s12">
             {% for house in houses %}
                 {% include 'house/single_house.html' with house=house fav=fav %}
             {% endfor %}

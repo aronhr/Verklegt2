@@ -5,7 +5,15 @@
 
     <div class="container">
         <div class="center" id="FirstHalfOfSite">
-            <h2>{{ house.address }} {{ house.street_nr }}, {{ house.p_code }}<i class=" medium material-icons">  star_border</i></h2>
+            <h2>{{ house.address }} {{ house.street_nr }}, {{ house.p_code }}
+                <a id="fav_button" data-id="{{ house.id }}" href="#">
+                    {% if fav %}
+                        <i style="font-size: 1.5em;" class="material-icons turn">turned_in</i>
+                    {% else %}
+                        <i style="font-size: 1.5em;" class="material-icons turn">turned_in_not</i>
+                    {% endif %}
+                </a>
+            </h2>
             <hr>
             <br>
         </div>
@@ -96,6 +104,7 @@
             <a href="{% url 'profile-buy-property' house.id %}" style="margin-right: 0.7em" class="btn green darken-4 right">Setja inn tilboð</a>
         </div>
     </div>
+    <script src="{% static 'javascript/houses.js' %}"></script>
 {% endblock %}
 
 

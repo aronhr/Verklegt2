@@ -97,12 +97,11 @@ def index(request):
         return JsonResponse({'data': houses})
 
     houses = []
-    for house in House.objects.filter(on_sale=True).order_by('id'):
+    for house in House.objects.filter(on_sale=True).order_by('-id'):
         houses.append({
             'house': house,
             'fav': house.id in fav
         })
-
     context = {
         'houses': houses,
         'house_info': HouseInfo.objects.all(),
@@ -121,10 +120,13 @@ def index(request):
 
 
 def get_house_by_id(request, id):
+    fav = []
     house = get_object_or_404(House, pk=id)
     if request.user.is_active:
         history = History(user=request.user, house=house)
         history.save()
+        fav = WishList.objects.filter(user=request.user, house=house)
     return render(request, 'house/house.html', {
         'house': house,
+        'fav': fav
     })
