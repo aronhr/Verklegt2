@@ -13,13 +13,13 @@ function getCookie(name) {
     }
     return cookieValue;
 }
-var csrftoken = getCookie('csrftoken');
+let csrftoken = getCookie('csrftoken');
 
 $(document).on('click', '#fav_button', (e) =>{
     e.preventDefault();
     const el = $(e.currentTarget);
-    house_id = el.data("id");
-    set = "";
+    let house_id = el.data("id");
+    let set = "";
     if (el.children()[0].innerHTML === "turned_in_not"){
         set = "set";
         el.children()[0].innerHTML = "turned_in"
@@ -28,7 +28,7 @@ $(document).on('click', '#fav_button', (e) =>{
         el.children()[0].innerHTML = "turned_in_not"
     }
     $.ajax({
-            url: `profile/toggleWishListItem/${house_id}/?${set}`,
+            url: `/profile/toggleWishListItem/${house_id}/?${set}`,
             type: 'POST',
             headers: {
                 "X-CSRFToken": csrftoken
