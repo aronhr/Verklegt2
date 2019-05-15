@@ -106,6 +106,14 @@ def wish_list(request):
 
 
 @login_required
+def remove_wish(request, id):
+    wish = get_object_or_404(WishList, house=id, user=request.user)
+    if wish.user == request.user:
+        wish.delete()
+    return redirect('profile-wishList')
+
+
+@login_required
 def history(request):
     history = History.objects.filter(user=request.user)
     return render(request, 'profile/history.html', {
