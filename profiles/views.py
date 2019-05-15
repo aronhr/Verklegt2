@@ -7,6 +7,8 @@ from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import user_passes_test
 from house.forms.buy_house_form import *
 from profiles.forms.bank_form import *
+from django.http import JsonResponse
+
 
 
 @login_required
@@ -78,10 +80,15 @@ def sell_property(request):
 
 
 @login_required
-def add_to_wish_list(request, id):
+def toggle_wish_list(request, id):
     house = get_object_or_404(House, pk=id)
-    WishList(user=request.user, house=house).save()
-    return redirect('house-index')
+    if 'set' in request.GET:
+        WishList(user=request.user, house=house).save()
+    else:
+        wish = get_object_or_404(WishList, house=id, user=request.user)
+        if wish.user == request.user:
+            wish.delete()
+    return JsonResponse({'status': 'OK'}, status=200)
 
 
 @login_required

@@ -19,8 +19,9 @@ def index(request):
     fav = []
     if request.user.is_active:
         offer = Offers.objects.filter(seller=request.user, seen=False)
-        fav = WishList.objects.all().values_list('house', flat=True).filter(user=request.user)
-
+        for wl in WishList.objects.filter(user=request.user):
+            fav.append(wl.house.id)
+            
     if 'ajax' in request.GET:
         room_list = [x.rooms for x in HouseInfo.objects.all().distinct()]
         if 'rooms' in request.GET:
@@ -89,14 +90,21 @@ def index(request):
                 'rooms': x.rooms,
                 'size': x.size,
                 'sellingdate': x.house.sellingdate,
-                'garage': x.garage
+                'garage': x.garage,
+                'favorate': x.house.id in fav
             })
 
         return JsonResponse({'data': houses})
 
+    houses = []
+    for house in House.objects.filter(on_sale=True).order_by('id'):
+        houses.append({
+            'house': house,
+            'fav': house.id in fav
+        })
 
     context = {
-        'houses': House.objects.filter(on_sale=True).order_by('id'),
+        'houses': houses,
         'house_info': HouseInfo.objects.all(),
         'types': HouseType.objects.all(),
         'towns': PostalCodes.objects.all(),

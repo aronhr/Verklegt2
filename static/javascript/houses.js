@@ -1,4 +1,46 @@
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+
+$(document).on('click', '#fav_button', (e) =>{
+    e.preventDefault();
+    const el = $(e.currentTarget);
+    house_id = el.data("id");
+    set = "";
+    if (el.children()[0].innerHTML === "turned_in_not"){
+        set = "set";
+        el.children()[0].innerHTML = "turned_in"
+    }
+    else if(el.children()[0].innerHTML === "turned_in"){
+        el.children()[0].innerHTML = "turned_in_not"
+    }
+    $.ajax({
+            url: `profile/toggleWishListItem/${house_id}/?${set}`,
+            type: 'POST',
+            headers: {
+                "X-CSRFToken": csrftoken
+            },
+            success: (resp) => {
+
+            }
+        }
+    )
+});
 $(document).ready(function() {
+
     const from_to_param = (name) => {
         let url = "";
         const selected_from_price_el = $(`#${name}_from option:selected`)[0];
@@ -82,30 +124,36 @@ $(document).ready(function() {
                 }
                 else{
                     newHtml = resp.data.map(d => {
+                        return `
+                            <section>
+    <div class="col s12 m6 l4">
+        <div class="card">
+            <div class="card-image">
+                <img style="height: 250px"  alt="${ d.address }" src="${ d.img_src }">
+            </div>
+            <div class= "card-content">
+                <article>
+                    <span class="card-title">${ d.address }<div style="width: 30px!important; margin: 0 auto" class="right">
+                            <a id="fav_button" data-id="${d.id}" href="#">
+                                <i style="font-size: 1.5em;" class="material-icons">turned_in_not</i>
+                            </a>
+                        </div>
+                    </span>
 
-                        return `<section>
-                                <div class="col s9 m6 l4">
-                                  <div class="card">
-                                    <div class="card-image">
-                                      <img alt="${ d.address}" src="${ d.img_src }">
-                                      <span class="card-title">${ d.address}</span>
-                                    </div>
-                                    <div class="card-content">
-                                        <article>
-                                            <small>${ d.p_code } <span class="right">${ d.price } kr</span></small>
-                                            <p>Desc: ${ d.desc }</p>
-                                            <p>Type: ${ d.type }</p>
-                                            <p>Rooms: ${ d.rooms }</p>
-                                            <p>Fermetrar: ${ d.size }</p>
-                                            <small>${ d.sellingdate }</small>
-                                        </article>
-                                    </div>
-                                    <div class="card-action">
-                                        <a id="change_to_yellow" class="right black-text " href="{% url 'profile-add-to-wish-list' d.id %}">${'#thisisabutt'}</a>
-                                    </div>
-                                  </div>
-                                </div>
-                            </section>`
+                    <small>${ d.p_code } <span class="right">${ d.price  } kr</span></small>
+                    <p class="truncate">${d.desc }</p>
+                    <br>
+                    <p>
+                        <b>${d.type }</b> sem að er <b>${d.size }</b> fermetrar og hefur <b>${d.rooms }</b> herbergi</p>
+                    <small>${d.sellingdate }</small>
+                </article>
+            </div>
+            <div style="height: 75px" class="card-action">
+                <a class="btn waves-effect blue darken-3 col s12 m12 l12" style="color: white" href="/house/${ d.id }">SJÁ NÁNAR</a>
+            </div>
+        </div>
+    </div>
+</section>`
                     });
                 }
                 houseshtml.html(newHtml.join(''));
