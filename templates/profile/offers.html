@@ -1,11 +1,45 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>These are all my offers</h1><br>
-    {% for offer in offers %}
-        {{ offer.price }}
-        {{ offer.house.address }}
-        {{ offer.seller }}
-        {{ offer.user }}
-    {% endfor %}
+    {% load humanize %}
+    <div class="container">
+        <div class="row">
+            <div class="col l8 m8 s12">
+                <ul class="collection">
+                    {% if houses %}
+                        {% for prop in houses %}
+                            <li class="collection-item avatar">
+                                <a href="/house/{{ prop.house.id }}">
+                                    <img src="{{ prop.house.houseimage_set.first.image }}" alt="{{ prop.house.address }} {{ prop.house.street_nr }}" class="circle">
+                                    <span class="title"><strong>{{ prop.house.address }} {{ prop.house.street_nr }}</strong></span>
+                                    <p>
+                                        Fasteignamat: <strong>{{ prop.house.price|intcomma }} kr.</strong>
+                                        <br>
+                                        Mögulegur kaupandi: {{ prop.user.first_name }} {{ prop.user.last_name }}
+                                        <br>
+                                        Sími: {{ prop.user.profile.phone }}
+                                        <br>
+                                        Tölvupóstur: {{ prop.user.email }}
+                                        <br>
+                                        Tilboð: <strong class="red-text">{{ prop.price|intcomma }} kr.</strong>
+                                    </p>
+                                    <a href="{% url 'profile-approve-offer' prop.id %}" class="secondary-content right "><i class="material-icons">check</i></a>
+                                    <a href="{% url 'profile-decline-offer' prop.id %}" class="secondary-content right red-text" style="margin-top: 2em"><i class="material-icons">close</i></a>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <h3 class="red-text center">
+                            Engar niðurstöður fundust
+                            <br>
+                            <i style="font-size: 2em" class="center material-icons">error</i>
+                        </h3>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="col l4 m4 s12 buttons">
+                {% include 'profile/include_templates/profile_buttons.html' %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

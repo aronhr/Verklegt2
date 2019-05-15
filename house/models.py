@@ -75,4 +75,5 @@ class Offers(models.Model):
     price = models.BigIntegerField()
     date = models.DateTimeField(auto_now_add=True, blank=True)
     state = models.BooleanField(default=False)
+    seen = models.BooleanField(default=False)
 

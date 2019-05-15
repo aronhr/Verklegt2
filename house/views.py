@@ -15,8 +15,10 @@ def true_or_false(name, request):
 
 
 def index(request):
+    offer = False
     fav = []
     if request.user.is_active:
+        offer = Offers.objects.filter(seller=request.user, seen=False)
         for wl in WishList.objects.filter(user=request.user):
             fav.append(wl.house.id)
             
@@ -107,7 +109,8 @@ def index(request):
         'types': HouseType.objects.all(),
         'towns': PostalCodes.objects.all(),
         'rooms': [],
-        'fav': fav
+        'fav': fav,
+        'offer': offer
     }
     for i in context['house_info']:
         context['rooms'].append(i.rooms)

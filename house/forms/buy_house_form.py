@@ -8,4 +8,4 @@ class OfferForm(ModelForm):
 
     class Meta:
         model = Offers
-        exclude = ['user', 'seller', 'house', 'date', 'state']
+        exclude = ['user', 'seller', 'house', 'date', 'state', 'seen']
