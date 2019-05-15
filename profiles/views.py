@@ -48,6 +48,13 @@ def index(request):
     })
 
 
+def profile_id(request, id):
+    profile = get_object_or_404(User, pk=id)
+    return render(request, 'profile/profile.html', {
+        'user': profile
+    })
+
+
 @login_required
 def sell_property(request):
     if request.method == 'POST':
