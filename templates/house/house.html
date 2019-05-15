@@ -101,7 +101,9 @@
             {% if user.is_authenticated and house.user == user or user.is_superuser %}
                 <a href="{% url 'profile-delete-property' house.id %}" style="margin-left: 0.7em" class="btn grey left">Eyða fasteign</a>
             {% endif %}
-            <a href="{% url 'profile-buy-property' house.id %}" style="margin-right: 0.7em" class="btn green darken-4 right">Setja inn tilboð</a>
+            {% if house.seller != user %}
+                <a href="{% url 'profile-buy-property' house.id %}" style="margin-right: 0.7em" class="btn green darken-4 right">Setja inn tilboð</a>
+            {% endif %}
         </div>
     </div>
     <script src="{% static 'javascript/houses.js' %}"></script>
