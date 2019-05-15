@@ -178,9 +178,17 @@
         </div>
 
         <div class="housess col l9 m12 s12">
-            {% for house in houses %}
-                {% include 'house/single_house.html' with house=house fav=fav %}
-            {% endfor %}
+            {% if houses %}
+                {% for house in houses %}
+                    {% include 'house/single_house.html' with house=house fav=fav %}
+                {% endfor %}
+            {% else %}
+                <h3 class="red-text center">
+                    Engin hús til staðar
+                    <br>
+                    <i style="font-size: 2em" class="center material-icons">error</i>
+                </h3>
+            {% endif %}
         </div>
 
     </div>
