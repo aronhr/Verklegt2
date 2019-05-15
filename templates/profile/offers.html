@@ -22,7 +22,47 @@
                                     <br>
                                     Tilboð: <strong class="red-text">{{ prop.price|intcomma }} kr.</strong>
                                 </p>
-                                <a class="btn green secondary-content right" href="{% url 'profile-view-offer' prop.id %}">Skoða tilboð</a>
+                                {% if seller %}
+                                    <a class="btn green secondary-content right" href="{% url 'profile-view-offer' prop.id %}">Skoða tilboð</a>
+                                {% else %}
+                                    <a class="btn green secondary-content right modal-trigger" href="#modal1">Skoða tilboð</a>
+                                    <div id="modal1" class="modal">
+                                        <div class="modal-content">
+                                            <h4>Staðfesting á tilboði</h4>
+                                            <p>
+                                            <div class="container">
+                                                <div>
+                                                    <img class="responsive-img" src="{{ prop.house.houseimage_set.first }}" alt="{{ prop.house.address }} {{ prop.house.street_nr }}">
+                                                </div>
+                                                <table class="float-right">
+                                                    <tbody>
+                                                    <tr>
+                                                        <th>Tilboðs upphæð</th>
+                                                        <td class="right-align">{{ prop.price }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Kaupandi</th>
+                                                        <td class="right-align">{{ prop.user.first_name }} {{ prop.user.last_name }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Seljadni</th>
+                                                        <td class="right-align">{{ prop.seller.first_name }} {{ prop.seller.last_name }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>E-mail</th>
+                                                        <td class="right-align">{{ prop.user.profile.kt }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Sími</th>
+                                                        <td class="right-align">{{ prop.user.profile.phone }}</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <a class="modal-close waves-effect waves-green btn-flat grey right">Loka</a>
+                                    </div>
+                                {% endif %}
                             </li>
                         {% endfor %}
                     {% else %}
