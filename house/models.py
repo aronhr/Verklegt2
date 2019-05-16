@@ -42,8 +42,7 @@ class HouseInfo(models.Model):
     buildyear = models.CharField(max_length=4, blank=True)
 
     def __str__(self):
-        return "Þetta hús er {}, hefur {} herbergi og er {} fm.<br>{}".format(self.type, self.rooms, self.size,
-                                                                              self.description)
+        return "Þetta hús er {}, hefur {} herbergi og er {} fm.".format(self.type, self.rooms, self.size)
 
 
 class HouseImage(models.Model):

@@ -28,7 +28,7 @@
                             var des = '      <div class="card">\n' +
                                 '        <div class="card-image">\n' +
                                 '          <img src="{{ house.image }}">\n' +
-                                '          <span class="card-title">{{ house.address }}</span>\n' +
+                                '          <a class="card-title">{{ house.address }}</a>\n' +
                                 '        </div>\n' +
                                 '        <div class="card-content">\n' +
                                 '          <p class="housed">{{house.description}}</p>\n' +
@@ -38,7 +38,11 @@
                                 '        </div>\n' +
                                 '      </div>\n' +
                                 '        <style>\n' +
-                                '           .card-image{max-height: 300px;}\n' +
+                                '           .card .card-image .card-title {' +
+                                '               background-color: rgba(0,0,0,.3);' +
+                                '               padding: 8px !important;' +
+                                '               margin: 6px !important;' +
+                                '           }\n' +
                                 '           .housed{\n' +
                                 '               width: 330px;\n' +
                                 '               white-space: nowrap;\n' +
