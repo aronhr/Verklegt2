@@ -2,207 +2,203 @@
 {%  load static %}
 {% block content %}
     <div class="row">
-        <div class="col s12 l3 m12">
+        <div class="col s12 l3 m12 sia">
             <div class="card grey lighten-3">
-                <div class="dropdowns">
-                    <div class="input-field col s12">
-
-                        <select id="types" name="types" multiple>
-                            <option value="" disabled selected>Týpa</option>
-                            {% for type in types %}
-                                <option value="{{ type.id }}">{{ type }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-
-                    <div class="input-field col s12">
-                        <select id="postal_codes" name="postal_codes" multiple>
-                            <option value="" disabled selected>Póstnúmer</option>
-                            <optgroup label="Reykjavik t.d">
-                                {% for town in towns %}
-                                    <option value="{{ town.id }}">{{ town.id }} - {{ town.town }}</option>
+                <div class="row" style="margin: 0">
+                    <div class="dropdowns">
+                        <div class="input-field col s12">
+                            <select id="types" name="types" multiple>
+                                <option value="" disabled selected>Týpa</option>
+                                {% for type in types %}
+                                    <option value="{{ type.id }}">{{ type }}</option>
                                 {% endfor %}
-                            </optgroup>
-                        </select>
-                    </div>
-
-                    <div class="input-field col s12">
-                        <select id="rooms" name="rooms" multiple>
-                            <option value="" disabled selected>Herbergi</option>
-                            {% for i in rooms %}
-                                <option value="{{ i }}">{{ i }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="check_boxes">
-                        <div class="col l6">
-                            <p>
-                                <label>
-                                    <input id="garage" name="garage" type="checkbox" />
-                                    <span class="black-text">Bílskúr</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input id="new_house" name="garage" type="checkbox" />
-                                    <span class="black-text">Nýtt hús</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input id="extra_apart" type="checkbox"/>
-                                    <span class="black-text">Auka húsnæði</span>
-                                </label>
-                            </p>
+                            </select>
                         </div>
-                        <div class="col s6">
-                            <p>
-                                <label>
-                                    <input id="special_eterance" type="checkbox" />
-                                    <span class="black-text">Sér inngangur</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input id="lift" type="checkbox" />
-                                    <span class="black-text">Lyfta</span>
-                                </label>
-                            </p>
+
+                        <div class="input-field col s12">
+                            <select id="postal_codes" name="postal_codes" multiple>
+                                <option value="" disabled selected>Póstnúmer</option>
+                                <optgroup label="Reykjavik t.d">
+                                    {% for town in towns %}
+                                        <option value="{{ town.id }}">{{ town.id }} - {{ town.town }}</option>
+                                    {% endfor %}
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <select id="rooms" name="rooms" multiple>
+                                <option value="" disabled selected>Herbergi</option>
+                                {% for i in rooms %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="check_boxes">
+                            <div class="col l6">
+                                <p>
+                                    <label>
+                                        <input id="garage" name="garage" type="checkbox" />
+                                        <span class="black-text">Bílskúr</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input id="new_house" name="garage" type="checkbox" />
+                                        <span class="black-text">Nýtt hús</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input id="extra_apart" type="checkbox"/>
+                                        <span class="black-text">Auka húsnæði</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="col s6">
+                                <p>
+                                    <label>
+                                        <input id="special_eterance" type="checkbox" />
+                                        <span class="black-text">Sér inngangur</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input id="lift" type="checkbox" />
+                                        <span class="black-text">Lyfta</span>
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="selectors">
+                        <div class="input-field col s6">
+                            <select id="price_from" name="price">
+                                <option value="" selected>Verð frá</option>
+                                <option value="1000000">1 mkr.</option>
+                                <option value="5000000">5 mkr.</option>
+                                <option value="10000000">10 mkr.</option>
+                                <option value="15000000">15 mkr.</option>
+                                <option value="20000000">20 mkr.</option>
+                                <option value="25000000">25 mkr.</option>
+                                <option value="30000000">30 mkr.</option>
+                                <option value="40000000">40 mkr.</option>
+                                <option value="50000000">50 mkr.</option>
+                                <option value="60000000">60 mkr.</option>
+                                <option value="70000000">70 mkr.</option>
+                                <option value="80000000">80 mkr.</option>
+                                <option value="90000000">90 mkr.</option>
+                                <option value="100000000">100 mkr.</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s6">
+                            <select id="price_to" name="rooms">
+                                <option value="" selected>Verð til</option>
+                                <option value="1000000">1 mkr.</option>
+                                <option value="5000000">5 mkr.</option>
+                                <option value="10000000">10 mkr.</option>
+                                <option value="15000000">15 mkr.</option>
+                                <option value="20000000">20 mkr.</option>
+                                <option value="25000000">25 mkr.</option>
+                                <option value="30000000">30 mkr.</option>
+                                <option value="40000000">40 mkr.</option>
+                                <option value="50000000">50 mkr.</option>
+                                <option value="60000000">60 mkr.</option>
+                                <option value="70000000">70 mkr.</option>
+                                <option value="80000000">80 mkr.</option>
+                                <option value="90000000">90 mkr.</option>
+                                <option value="100000000">100 mkr.</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s6">
+                            <select id="size_from" name="price">
+                                <option value="" selected>Stærð frá</option>
+                                <option value="0">0 m²</option>
+                                <option value="40">40 m²</option>
+                                <option value="60">60 m²</option>
+                                <option value="70">70 m²</option>
+                                <option value="80">80 m²</option>
+                                <option value="90">90 m²</option>
+                                <option value="100">100 m²</option>
+                                <option value="115">115 m²</option>
+                                <option value="130">130 m²</option>
+                                <option value="150">150 m²</option>
+                                <option value="200">200 m²</option>
+                                <option value="250">250 m²</option>
+                                <option value="300">300 m²</option>
+                                <option value="350">350 m²</option>
+                                <option value="400">400 m²</option>
+                                <option value="500">500 m²</option>
+                                <option value="600">600 m²</option>
+                                <option value="700">700 m²</option>
+                                <option value="800">800 m²</option>
+                                <option value="900">900 m²</option>
+                                <option value="1000">1000 m²</option>
+                            </select>
+
+                        </div>
+                        <div class="input-field col s6">
+                            <select id="size_to" name="rooms">
+                                <option value="" selected>Stærð til</option>
+                                <option value="0">0 m²</option>
+                                <option value="40">40 m²</option>
+                                <option value="60">60 m²</option>
+                                <option value="70">70 m²</option>
+                                <option value="80">80 m²</option>
+                                <option value="90">90 m²</option>
+                                <option value="100">100 m²</option>
+                                <option value="115">115 m²</option>
+                                <option value="130">130 m²</option>
+                                <option value="150">150 m²</option>
+                                <option value="200">200 m²</option>
+                                <option value="250">250 m²</option>
+                                <option value="300">300 m²</option>
+                                <option value="350">350 m²</option>
+                                <option value="400">400 m²</option>
+                                <option value="500">500 m²</option>
+                                <option value="600">600 m²</option>
+                                <option value="700">700 m²</option>
+                                <option value="800">800 m²</option>
+                                <option value="900">900 m²</option>
+                                <option value="1000">1000 m²</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s12">
+                            <select id="order" name="rooms">
+                                <option value="-house__id" selected>Nýjast</option>
+                                <option value="-house__price">Verð i lækkandi röð</option>
+                                <option value="house__price">Verð i hækkandi röð</option>
+                                <option value="house__address">Heimilisfang i stafrófsröð</option>
+                                <option value="-house__address">Heimilisfang i öfugri stafrófsröð</option>
+                            </select>
                         </div>
                     </div>
                 </div>
-
-                <div class="selectors">
-                    <div class="input-field col s6">
-                        <select id="price_from" name="price">
-                            <option value="" selected>Verð frá</option>
-                            <option value="1000000">1 mkr.</option>
-                            <option value="5000000">5 mkr.</option>
-                            <option value="10000000">10 mkr.</option>
-                            <option value="15000000">15 mkr.</option>
-                            <option value="20000000">20 mkr.</option>
-                            <option value="25000000">25 mkr.</option>
-                            <option value="30000000">30 mkr.</option>
-                            <option value="40000000">40 mkr.</option>
-                            <option value="50000000">50 mkr.</option>
-                            <option value="60000000">60 mkr.</option>
-                            <option value="70000000">70 mkr.</option>
-                            <option value="80000000">80 mkr.</option>
-                            <option value="90000000">90 mkr.</option>
-                            <option value="100000000">100 mkr.</option>
-                        </select>
-                    </div>
-
-                    <div class="input-field col s6">
-                        <select id="price_to" name="rooms">
-                            <option value="" selected>Verð til</option>
-                            <option value="1000000">1 mkr.</option>
-                            <option value="5000000">5 mkr.</option>
-                            <option value="10000000">10 mkr.</option>
-                            <option value="15000000">15 mkr.</option>
-                            <option value="20000000">20 mkr.</option>
-                            <option value="25000000">25 mkr.</option>
-                            <option value="30000000">30 mkr.</option>
-                            <option value="40000000">40 mkr.</option>
-                            <option value="50000000">50 mkr.</option>
-                            <option value="60000000">60 mkr.</option>
-                            <option value="70000000">70 mkr.</option>
-                            <option value="80000000">80 mkr.</option>
-                            <option value="90000000">90 mkr.</option>
-                            <option value="100000000">100 mkr.</option>
-                        </select>
-                    </div>
-
-                    <div class="input-field col s6">
-                        <select id="size_from" name="price">
-                            <option value="" selected>Stærð frá</option>
-                            <option value="0">0 m²</option>
-                            <option value="40">40 m²</option>
-                            <option value="60">60 m²</option>
-                            <option value="70">70 m²</option>
-                            <option value="80">80 m²</option>
-                            <option value="90">90 m²</option>
-                            <option value="100">100 m²</option>
-                            <option value="115">115 m²</option>
-                            <option value="130">130 m²</option>
-                            <option value="150">150 m²</option>
-                            <option value="200">200 m²</option>
-                            <option value="250">250 m²</option>
-                            <option value="300">300 m²</option>
-                            <option value="350">350 m²</option>
-                            <option value="400">400 m²</option>
-                            <option value="500">500 m²</option>
-                            <option value="600">600 m²</option>
-                            <option value="700">700 m²</option>
-                            <option value="800">800 m²</option>
-                            <option value="900">900 m²</option>
-                            <option value="1000">1000 m²</option>
-                        </select>
-
-                    </div>
-                    <div class="input-field col s6">
-                        <select id="size_to" name="rooms">
-                            <option value="" selected>Stærð til</option>
-                            <option value="0">0 m²</option>
-                            <option value="40">40 m²</option>
-                            <option value="60">60 m²</option>
-                            <option value="70">70 m²</option>
-                            <option value="80">80 m²</option>
-                            <option value="90">90 m²</option>
-                            <option value="100">100 m²</option>
-                            <option value="115">115 m²</option>
-                            <option value="130">130 m²</option>
-                            <option value="150">150 m²</option>
-                            <option value="200">200 m²</option>
-                            <option value="250">250 m²</option>
-                            <option value="300">300 m²</option>
-                            <option value="350">350 m²</option>
-                            <option value="400">400 m²</option>
-                            <option value="500">500 m²</option>
-                            <option value="600">600 m²</option>
-                            <option value="700">700 m²</option>
-                            <option value="800">800 m²</option>
-                            <option value="900">900 m²</option>
-                            <option value="1000">1000 m²</option>
-                        </select>
-                    </div>
-                    <div class="input-field col s12">
-                        <select id="order" name="rooms">
-                            <option value="-house__id" selected>Nýjast</option>
-                            <option value="-house__price">Verð i lækkandi röð</option>
-                            <option value="house__price">Verð i hækkandi röð</option>
-                            <option value="house__address">Heimilisfang i stafrófsröð</option>
-                            <option value="-house__address">Heimilisfang i öfugri stafrófsröð</option>
-                        </select>
-                    </div>
-
-                </div>
-                <button id="submit_button" class=" btn waves-effect blue darken-3" type="submit" name="action">Hefja leit
-                    <i class="material-icons right">send</i>
-                </button>
-                <br>
-                <br>
             </div>
         </div>
 
-        <div class="housess col l9 m12 s12">
-        <div class="input-field col s12">
-            <input placeholder="Leitaðu að húsi eftir nafni" id="first_name" type="text" class="validate">
-        </div>
-            {% if houses %}
-                {% for house in houses %}
-                    {% include 'house/single_house.html' with house=house fav=fav %}
-                {% endfor %}
-            {% else %}
-                <h3 class="red-text center">
-                    Engin hús til staðar
-                    <br>
-                    <i style="font-size: 2em" class="center material-icons">error</i>
-                </h3>
-            {% endif %}
+        <div class="col l9 m12 s12">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">search</i>
+                <input type="text" id="autocomplete-input" class="autocomplete sia" autocomplete="off">
+                <label for="autocomplete-input">Leitaðu að húsi eftir nafni</label>
+            </div>
+            <div class="housess">
+                {% if houses %}
+                    {% for house in houses %}
+                        {% include 'house/single_house.html' with house=house fav=fav %}
+                    {% endfor %}
+                {% else %}
+                    <h3 class="red-text center">
+                        Engin hús til staðar
+                        <br>
+                        <i style="font-size: 2em" class="center material-icons">error</i>
+                    </h3>
+                {% endif %}
+            </div>
         </div>
 
     </div>

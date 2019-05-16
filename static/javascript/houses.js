@@ -39,6 +39,7 @@ $(document).on('click', '#fav_button', (e) =>{
         }
     )
 });
+
 $(document).ready(function() {
 
     const from_to_param = (name) => {
@@ -57,7 +58,6 @@ $(document).ready(function() {
 
         return url
     };
-
 
     const checkbox_url_param = (selector, name) => {
         const is_selected = $(selector).is(":checked");
@@ -99,6 +99,9 @@ $(document).ready(function() {
                 url += `&order=${selected_order}`
             }
 
+        const search = $(`input.autocomplete`);
+        const search_param = $(search).val();
+            url += `&search=${search_param}`
         });
 
         url += from_to_param('price');
@@ -112,7 +115,8 @@ $(document).ready(function() {
 
         return url
     };
-    $('#submit_button').on('click', function(e) {
+
+    $('input, select').on('change', function(e) {
         const url = url_builder();
         e.preventDefault();
         $.ajax({
@@ -127,8 +131,7 @@ $(document).ready(function() {
                         Engar niðurstöður fundust við þessar upplýsingar
                         <br>
                         <i style="font-size: 2em" class="center material-icons">error</i>
-                    </h3>
-                                                `);
+                    </h3>`);
                 }
                 else{
                     newHtml = resp.data.map(d => {

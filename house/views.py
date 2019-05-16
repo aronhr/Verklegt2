@@ -58,6 +58,7 @@ def index(request):
         new_building_list = true_or_false('new_building', request)
         extra_entrance_list = true_or_false('entrance', request)
         order = request.GET.get('order')
+        search = request.GET.get('search')
 
         db_houses = HouseInfo.objects.filter(
             rooms__in=room_list,
@@ -73,6 +74,7 @@ def index(request):
             house__price__lte=price_to,
             size__gte=size_from,
             size__lte=size_to,
+            house__address__icontains=search
         ).order_by(order)
 
         houses = []
