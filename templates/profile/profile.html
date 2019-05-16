@@ -1,20 +1,67 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% block content %}
-    <div class="container">
-        <div class="row buttons">
-            <div class="col offset-l3 offset-m3 offset-s3 l6 s6 m6">
-                <img class="responsive-img circle" src="{{ user.profile.profile_pic }}" alt="{{ user.first_name }} {{ user.last_name }}">
-                <h2 class="center">{{ user.first_name }} {{ user.last_name }}</h2>
-                <br>
-                {{ user.profile.phone }}
-                <br>
-                {{ user.email }}
-                <br>
-                {{ user.profile.dob }}
-                <br>
-                {{ user.profile.address }}
+    <div style="margin-top: 5em" class="row">
+        <div class="center col l6 m8 s12 offset-m2 offset-l3">
+            <div class="card">
+                <div class="card-image">
+                    <img class="responsive-img circle" src="{{ user.profile.profile_pic }}" alt="{{ user.first_name }} {{ user.last_name }}">
+                    <div>
+                        <div class="card-content">
+                            <div class="gray info">
+                                <h4> {{ user.first_name }} {{ user.last_name }}</h4>
+                                <br>
+                                Símanúmer: {{ user.profile.phone }}
+                                <br>
+                                <hr>
+                                Netfang: {{ user.email }}
+                                <br>
+                                <hr>
+                                {{ user.profile.dob }}
+                                <br>
+                                <hr>
+                                Heimilisfang: {{ user.profile.address }}
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="col l6 m8 s12 offset-m2 offset-l3">
+            <ul class="collection">
+                {% if houses %}
+                    {% for house in houses %}
+                        <li class="collection-item avatar">
+                            <a href="/house/{{ house.id }}">
+                                <img src="{{ house.houseimage_set.first.image }}" alt="{{ house.address }} {{ house.street_nr }}" class="circle">
+                                <span class="title"><strong>{{ house.address }} {{ house.street_nr }}</strong></span>
+                                <p>
+                                    {{ house.houseinfo_set.first.description }}
+                                    <br>
+                                    {{ house.price|intcomma }} kr.
+                                    <br>
+                                    {{ house.houseinfo_set.first.size|intcomma }} m²
+                                </p>
+                                {% if del == 'True' %}
+                                    <a href="{% url 'profile-delete-wish' house.id %}" class="secondary-content black-text"><i class="material-icons">turned_in</i></a>
+                                {% endif %}
+                                {% if onhold %}
+                                    <a href="{% url 'profile-approve-submission' id %}" class="secondary-content right"><i class="material-icons">check</i></a>
+                                    <a href="{% url 'profile-decline-submission' id %}" class="secondary-content right" style="margin-top: 2em"><i class="material-icons">close</i></a>
+                                {% endif %}
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <h3 class="red-text center">
+                        Þessi notandi hefur engin hús á sölu.
+                        <br>
+                        <br>
+                        <i style="font-size: 2em" class="center material-icons">error</i>
+                    </h3>
+                {% endif %}
+            </ul>
         </div>
     </div>
 {% endblock %}

@@ -49,8 +49,10 @@ def index(request):
 
 def profile_id(request, id):
     profile = get_object_or_404(User, pk=id)
+    houses = House.objects.filter(seller=profile)
     return render(request, 'profile/profile.html', {
-        'user': profile
+        'user': profile,
+        'houses': houses
     })
 
 
