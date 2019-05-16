@@ -300,7 +300,7 @@ def edit_props(request, id):
         else:
             form = PropCreateForm(instance=house)
             info = CreateHouseInfo(instance=house_info)
-        return render(request, 'profile/sell_property.html', {
+        return render(request, 'profile/editProps.html', {
             'houseForm': form,
             'houseInfo': info,
         })
