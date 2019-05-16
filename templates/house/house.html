@@ -17,13 +17,11 @@
             </a>
             <br>
         </div>
-        <div class="slider">
-            <ul class="slides">
-                {% for image in house.houseimage_set.all %}
-                    <li>
-                        <a href="#{{ image.id }}"><img src="{{ image }}" alt="{{ image.id }}"></a>
-                    </li>
-                {% endfor %}
+        <div class="center">
+            <ul class="">
+                <li>
+                    <img class="responsive-img" src="{{ house.houseimage_set.all.first }}" alt="{{ image.id }}">
+                </li>
             </ul>
         </div>
 
@@ -128,7 +126,7 @@
                 <div class="card">
                     <div class="card-image">
                         <a href="{% url 'profile-id' house.seller.id %}">
-                            <img id="PhotoOfSeller" src="{{ house.seller.profile.profile_pic }}" alt="{{ house.seller.first_name }} {{ house.seller.last_name }}">
+                            <img class="responsive-img" id="PhotoOfSeller" src="{{ house.seller.profile.profile_pic }}" alt="{{ house.seller.first_name }} {{ house.seller.last_name }}">
                         </a>
                     </div>
                     <div class="card-content" style="word-wrap: break-word">
@@ -145,6 +143,7 @@
                 </div>
             </div>
         </div>
+
         <div class="row" id="BottumsToBuyAndDeleteRealestay">
             {% if user.is_authenticated and house.user == user or user.is_superuser %}
                 <button data-target="modal1" class="btn modal-trigger red darken-4 left">Eyða húsi</button>
@@ -161,6 +160,15 @@
             {% if house.seller != user %}
                 <a href="{% url 'profile-buy-property' house.id %}" style="margin-right: 0.7em" class="btn green darken-4 right">Setja inn tilboð</a>
             {% endif %}
+        </div>
+        <div class="row">
+
+            {% for image in house.houseimage_set.all %}
+                <div class="col l6">
+
+                    <img class="responsive-img" src="{{ image }}" alt="{{ image.id }}">
+                </div>
+            {% endfor %}
         </div>
     </div>
     <script src="{% static 'javascript/houses.js' %}"></script>
