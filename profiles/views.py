@@ -127,7 +127,7 @@ def history(request):
 
 @login_required
 def offers_seller(request):
-    offers = Offers.objects.filter(seller=request.user)
+    offers = Offers.objects.filter(seller=request.user, state=False)
     for x in offers:
         x.seen = True
         x.save()
@@ -149,31 +149,39 @@ def offers_buyer(request):
 @login_required
 def view_offer(request, id):
     my_offer = get_object_or_404(Offers, pk=id)
-    house = get_object_or_404(House, pk=my_offer.house.id)
-    buyer = get_object_or_404(User, pk=my_offer.user.id)
-    profile = get_object_or_404(Profile, user=my_offer.user.id)
+    if request.user != my_offer.seller:
+        return redirect('profile-offers-seller')
     return render(request, 'profile/offer_by_id.html', {
-        'house': house,
-        'my_offer': my_offer,
-        'buyer': buyer,
-        'buyer_profile': profile
+        'my_offer': my_offer
     })
+
+
+def mark_all_offers(id):
+    offers = Offers.objects.filter(house=id)
+    for x in offers:
+        x.state = True
+        x.save()
 
 
 @login_required
 def approve_offer(request, id):
     my_offer = get_object_or_404(Offers, pk=id)
-    house = get_object_or_404(House, pk=my_offer.house.id)
-    my_offer.delete()  # Eyða tilboði þegar því hefur verið hafnað samþykkt
-    # house.delete()  # Eyða húsi þegar tilboð hefur verið samþykkt
+    if request.user == my_offer.seller:
+        house = get_object_or_404(House, pk=my_offer.house.id)
+        house.on_sale = False
+        house.save()
+        my_offer.accepted = True
+        my_offer.save()
+        mark_all_offers(house.id)   # Offer skráð í 'deleted' state
     return redirect('profile-offers-seller')
 
 
 @login_required
 def decline_offer(request, id):
     my_offer = get_object_or_404(Offers, pk=id)
-    house = get_object_or_404(House, pk=my_offer.house.id)
-    my_offer.delete()  # Eyða tilboði þegar því hefur verið hafnað
+    if request.user == my_offer.seller:
+        my_offer.state = True   # Offer skráð í 'deleted' state
+        my_offer.save()
     return redirect('profile-offers-seller')
 
 

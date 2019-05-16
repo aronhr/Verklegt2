@@ -19,31 +19,31 @@
                     <div class="col s12">
                         <div class="row" id="PracticalInfo">
                             <div class="col l6 m12 s12">
-                                <img style="width: 100%" src="{{ house.houseimage_set.first }}" alt="{{ house.address }} {{ house.street_nr }}">
+                                <img style="width: 100%" src="{{ my_offer.house.houseimage_set.first }}" alt="{{ my_offer.house.address }} {{ my_offer.house.street_nr }}">
                             </div>
                             <div class="col s6">
                                 <table class="float-right">
                                     <tbody>
                                     <tr>
                                         <th>Fasteignamat</th>
-                                        <td class="right-align">{{ house.price|intcomma }}</td>
+                                        <td class="right-align">{{ my_offer.house.price|intcomma }}</td>
                                     </tr>
                                     <tr>
                                         <th>Herbergi</th>
-                                        <td class="right-align">{{ house.houseinfo_set.first.rooms }}</td>
+                                        <td class="right-align">{{ my_offer.house.houseinfo_set.first.rooms }}</td>
                                     </tr>
                                     <tr>
                                         <th>Byggt</th>
-                                        <td class="right-align">{{ house.houseinfo_set.first.buildyear }}</td>
+                                        <td class="right-align">{{ my_offer.house.houseinfo_set.first.buildyear }}</td>
                                     </tr>
 
                                     <tr>
                                         <th>Fermetrar</th>
-                                        <td class="right-align">{{ house.houseinfo_set.first.size|intcomma }}</td>
+                                        <td class="right-align">{{ my_offer.house.houseinfo_set.first.size|intcomma }}</td>
                                     </tr>
                                     <tr>
                                         <th>Skráð</th>
-                                        <td class="right-align">{{ house.sellingdate }}</td>
+                                        <td class="right-align">{{ my_offer.house.sellingdate }}</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -56,7 +56,7 @@
                     <div class="col s12">
                         <div class="row" id="PracticalInfo">
                             <div class="col l6 m12 s12">
-                                <img style="width: 100%" src="{{ house.houseimage_set.first }}" alt="">
+                                <img style="width: 100%" src="{{ my_offer.house.houseimage_set.first }}" alt="">
                             </div>
                             <div class="col s6">
                                 <table class="float-right">
@@ -67,23 +67,19 @@
                                     </tr>
                                     <tr>
                                         <th>Kaupandi</th>
-                                        <td class="right-align">{{ my_offer.user }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Seljadni</th>
-                                        <td class="right-align">{{ buyer.first_name }} {{ buyer.last_name }}</td>
+                                        <td class="right-align">{{ my_offer.user.first_name }} {{ my_offer.user.last_name }}</td>
                                     </tr>
                                     <tr>
                                         <th>Kennitala</th>
-                                        <td class="right-align">{{ buyer_profile.kt }}</td>
+                                        <td class="right-align">{{ my_offer.user.profile.kt }}</td>
                                     </tr>
                                     <tr>
-                                        <th>E-mail</th>
-                                        <td class="right-align">{{ buyer.email }}</td>
+                                        <th>Netfang</th>
+                                        <td class="right-align">{{ my_offer.user.email }}</td>
                                     </tr>
                                     <tr>
                                         <th>Sími</th>
-                                        <td class="right-align">{{ buyer_profile.phone }}</td>
+                                        <td class="right-align">{{ my_offer.user.profile.phone }}</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -97,26 +93,26 @@
                     <div class="col s12">
                         <div class="row" id="PracticalInfo">
                             <div class="col l6 m12 s12">
-                                <img style="width: 100%" class="responsive-img" src="{{ house.houseimage_set.first }}" alt="">
+                                <img style="width: 100%" class="responsive-img" src="{{ my_offer.house.houseimage_set.first }}" alt="">
                             </div>
                             <div class="col s6">
                                 <table class="float-right">
                                     <tbody>
                                     <tr>
                                         <th>Fasteignamat</th>
-                                        <td class="right-align">{{ house.price|intcomma }}</td>
+                                        <td class="right-align">{{ my_offer.house.price|intcomma }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Tilboðsuppgæð</th>
-                                        <td class="right-align">{{ my_offer.price }}</td>
+                                        <th>Tilboðsupphæð</th>
+                                        <td class="right-align">{{ my_offer.price|intcomma }}</td>
                                     </tr>
                                     <tr>
                                         <th>Kaupandi</th>
-                                        <td class="right-align">{{ buyer.first_name }} {{ buyer.last_name }}</td>
+                                        <td class="right-align">{{ my_offer.user.first_name }} {{ my_offer.user.last_name }}</td>
                                     </tr>
                                     <tr>
                                         <th>Seljandi</th>
-                                        <td class="right-align">{{ house.seller.first_name}} {{ house.seller.last_name }}</td>
+                                        <td class="right-align">{{ my_offer.seller.first_name}} {{ my_offer.seller.last_name }}</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -127,16 +123,16 @@
                     </div>
                     <div id="accept" class="modal">
                         <div class="modal-content">
-                            <h4>Ertu viss um að samþykja tilboð?</h4>
+                            <h4>Ertu viss um að samþykkja tilboðið?</h4>
                             <p>
                                 <a class="modal-close waves-effect btn red darken-4" >Loka</a>
-                                <a class="btn modal-trigger modal-close waves-effect btn green darken-2" href="{% url 'profile-approve-offer' my_offer.id %}">Samþyggja</a>
+                                <a class="btn modal-trigger modal-close waves-effect btn green darken-2" href="{% url 'profile-approve-offer' my_offer.id %}">Samþykkja</a>
                             </p>
                         </div>
                     </div>
                     <div id="refuse" class="modal">
                         <div class="modal-content">
-                            <h4>Ertu viss um að hafna tilboð?</h4>
+                            <h4>Ertu viss um að hafna tilboðinu?</h4>
                             <p>
                                 <a class="modal-close waves-effect btn red darken-4" >Loka</a>
                                 <a class="btn modal-trigger modal-close waves-effect btn green darken-2" href="{% url 'profile-decline-offer' my_offer.id %}">Hafna</a>

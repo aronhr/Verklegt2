@@ -76,5 +76,6 @@ class Offers(models.Model):
     date = models.DateTimeField(auto_now_add=True, blank=True)
     state = models.BooleanField(default=False)
     seen = models.BooleanField(default=False)
+    accepted = models.BooleanField(default=False)
 
 
