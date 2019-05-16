@@ -12,6 +12,7 @@ from django.http import JsonResponse
 
 @login_required
 def index(request):
+    offer = Offers.objects.filter(seller=request.user, seen=False)
     profile = Profile.objects.filter(user=request.user).first()
     user = User.objects.filter(id=profile.user.id).first()
     bank = UserBankInfo.objects.filter(user=request.user).first()
@@ -43,7 +44,8 @@ def index(request):
         'form': form,
         'userform': userform,
         'bankform': bankfrom,
-        'profile': profile
+        'profile': profile,
+        'offer': offer
     })
 
 
@@ -126,6 +128,9 @@ def history(request):
 @login_required
 def offers_seller(request):
     offers = Offers.objects.filter(seller=request.user)
+    for x in offers:
+        x.seen = True
+        x.save()
     return render(request, 'profile/offers.html', {
         'seller': 'seller',
         'houses': offers
