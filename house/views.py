@@ -80,7 +80,7 @@ def index(request):
         houses = []
         for x in db_houses:
             first_image = x.house.houseimage_set.first()
-            image_src = "https://lh3.googleusercontent.com/uRXfIlcQBu-0hRfBHXcvWrDZjYu640sZL2JxQ3TJ4o1hAijbnXsS9zkJr9ZGjByp_Udei2XG=w640-h400-e365"
+            image_src = "http://clipart-library.com/images/di9X5z94T.png"
             if first_image is not None:
                 image_src = first_image.image
             houses.append({
@@ -93,6 +93,7 @@ def index(request):
                 'type': x.type.type,
                 'rooms': x.rooms,
                 'size': x.size,
+                'year': x.buildyear,
                 'sellingdate': x.house.sellingdate,
                 'garage': x.garage,
                 'favorate': x.house.id in fav
