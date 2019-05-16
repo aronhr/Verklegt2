@@ -15,7 +15,7 @@ class PropCreateForm(ModelForm):
 
 
 class CreateHouseInfo(ModelForm):
-    description = forms.CharField(required=True, label="Lýsing", help_text='Sláðu inn lýsingu')
+    description = forms.CharField(widget=forms.Textarea(attrs={'class': 'materialize-textarea', ' data-length': 1500}), required=True, label="Lýsing", help_text='Sláðu inn lýsingu')
     rooms = forms.IntegerField(required=True, label="Herbergi", help_text='Sláðu inn fjölda herbergja')
     buildyear = forms.IntegerField(required=True, label="Byggingaár", help_text='Sláðu inn ár sem fasteignin var byggð')
     size = forms.IntegerField(required=True, label='Stærð', help_text='Sláðu inn stærð í fermetrum')

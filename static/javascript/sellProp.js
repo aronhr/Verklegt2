@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+    $('textarea').characterCounter();
     $('select').formSelect();
     $('.tabs').tabs();
     $('.forward').on('click', function () {
