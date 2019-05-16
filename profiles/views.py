@@ -183,6 +183,7 @@ def decline_offer(request, id):
     if request.user == my_offer.seller:
         my_offer.state = True   # Offer skráð í 'deleted' state
         my_offer.save()
+        # Send email to buyer
     return redirect('profile-offers-seller')
 
 
