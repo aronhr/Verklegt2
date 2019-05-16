@@ -43,6 +43,22 @@
                                     <th>Skráð</th>
                                     <td class="right-align">{{ house.sellingdate }}</td>
                                 </tr>
+                                <tr>
+                                    <th>Seljandi</th>
+                                    <td>
+                                        <div class="container right" style="word-wrap: break-word">
+                                            <a href="{% url 'profile-id' house.seller.id %}">
+                                                <div class="left-align turnacate" id="PhoneNrAndEmail">
+                                                    <div><h6 class="valign-wrapper">{{ house.seller.first_name }} {{ house.seller.last_name }}</h6></div>
+                                                    <hr id="Underline">
+                                                    <div><a href="tel: {{ house.seller.profile.phone }}">Sími: {{ house.seller.profile.phone }}</a></div>
+                                                    <div><a href="mailto: {{ house.seller.email }}">Netfang: {{ house.seller.email }}</a></div>
+                                                    <a href="#"></a>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
