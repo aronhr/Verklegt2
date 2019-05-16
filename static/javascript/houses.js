@@ -93,14 +93,14 @@ $(document).ready(function() {
                 url += `&types=${selected_types}`
             }
 
-        const elem = $(`#order option:selected`);
-        const selected_order = $(elem).val();
+            const elem = $(`#order option:selected`);
+            const selected_order = $(elem).val();
             if (selected_order !== '') {
                 url += `&order=${selected_order}`
             }
 
-        const search = $(`input.autocomplete`);
-        const search_param = $(search).val();
+            const search = $(`input.autocomplete`);
+            const search_param = $(search).val();
             url += `&search=${search_param}`
         });
 
@@ -135,6 +135,12 @@ $(document).ready(function() {
                 }
                 else{
                     newHtml = resp.data.map(d => {
+                        moment.locale("is"); // Make Momentjs Icelandic
+                        let date = moment(d.sellingdate).format("DD. MMMM YYYY"); // Format date
+                        let icon = 'turned_in_not'; // Bookmark default
+                        if (d.favorate === true) // If House is Bookmarked change Bookmark icon
+                            icon = 'turned_in';
+
                         return `
                             <section>
     <div class="col s12 m6 l4">
@@ -144,19 +150,33 @@ $(document).ready(function() {
             </div>
             <div class= "card-content">
                 <article>
-                    <span class="card-title">${ d.address }<div style="width: 30px!important; margin: 0 auto" class="right">
+                    <span class="card-title"><strong>${ d.address }</strong><div style="width: 30px!important; margin: 0 auto" class="right">
                             <a id="fav_button" data-id="${d.id}" href="#">
-                                <i style="font-size: 1.5em;" class="material-icons">turned_in_not</i>
+                                <i style="font-size: 1.5em;" class="material-icons">${ icon }</i>
                             </a>
                         </div>
                     </span>
-
-                    <small>${ d.p_code } <span class="right">${ d.price  } kr</span></small>
-                    <p class="truncate">${d.desc }</p>
+                    <p><strong>${ d.price } kr</strong></p>
                     <br>
-                    <p>
-                        <b>${d.type }</b> sem að er <b>${d.size }</b> fermetrar og hefur <b>${d.rooms }</b> herbergi</p>
-                    <small>${d.sellingdate }</small>
+                    <div style="margin-bottom: 0px" class="row">
+                        <div class="col s6 m6 l6">
+                            <p>Tegund: <strong>${d.type }</strong></p>
+                        </div>
+                        <div class="col s6 m6 l6">
+                            <p class="right-align">Stærð <strong>${d.size } m²</strong></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div style="margin-bottom: 0px" class="row">
+                        <div class="col s6 m6 l6">
+                            <p>Byggt: <strong>${ d.year }</strong></p>
+                        </div>
+                        <div class="col s6 m6 l6">
+                            <p class="right-align">Herbergi: <strong>${d.rooms }</strong></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <small>${ date }</small>
                 </article>
             </div>
             <div style="height: 75px" class="card-action">
