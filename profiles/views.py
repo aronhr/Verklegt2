@@ -173,6 +173,7 @@ def approve_offer(request, id):
         my_offer.accepted = True
         my_offer.save()
         mark_all_offers(house.id)   # Offer skráð í 'deleted' state
+        # Send email to buyer
     return redirect('profile-offers-seller')
 
 
