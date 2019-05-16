@@ -22,4 +22,4 @@ class Card(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     card_nr = models.CharField(max_length=20)
     exdate = models.CharField(max_length=5)     # mm/yy
-    cvc = models.SmallIntegerField()
+    cvc = models.SmallIntegerField(max_length=3)
