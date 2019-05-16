@@ -12,7 +12,13 @@
             <div class="input-field col s12">
                 {{ element }}
                 <label for="{{ element.id }}">{{ element.label_tag }}</label>
-                {% if element.help_text %}
+                {% if element.errors %}
+                    {% for error in element.errors %}
+                        {% if error %}
+                            <span class="helper-text red-text" data-error="{{ error }}">{{ error }}</span>
+                        {% endif %}
+                    {% endfor %}
+                {% elif element.help_text %}
                     <span class="helper-text" data-error="Þetta lítur ekki út fyrir að vera rétt..">{{ element.help_text }}</span>
                 {% endif %}
             </div>
