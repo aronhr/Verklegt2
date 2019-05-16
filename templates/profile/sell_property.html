@@ -3,6 +3,8 @@
 {% block content %}
     <form method="POST" enctype=multipart/form-data novalidate>
         <div class="container">
+            <h3>Setja nýtt hús á sölu</h3>
+            <hr>
             <div class="col l4 m6 s12 ">
                 <div class="row">
                     <div class="card-tabs">
@@ -13,7 +15,6 @@
                         </ul>
                     </div>
                 </div>
-
                 <div class="card-content grey lighten-4">
                     {% csrf_token %}
                     <div id="s1">
@@ -39,12 +40,21 @@
                             </div>
                         </div>
                         <span class="btn blue darken-4 back_2 left">Til baka</span>
-                        <button type="submit" onsubmit="{% url 'profile-sell-property' %}" class="btn green darken-4 right">Selja</button>
+                        <button data-target="modal1" class="btn modal-trigger green darken-4 right">Selja</button>
+                        <div id="modal1" class="modal">
+                            <div class="modal-content">
+                                <h4>Staðfesting á sölu</h4>
+                                <p>
+                                    <a class="modal-close waves-effect btn red darken-4">Hætta við</a>
+                                    <button type="submit" class="btn green darken-4 right" onsubmit="{% url 'profile-sell-property' %}">Selja</button>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </form>
-    <script src="{% static 'javascript/sellProp.js' %}">
-    </script>
+    <script src="{% static 'javascript/sellProp.js' %}"></script>
+    <script src="{% static 'javascript/buy_house.js' %}"></script>
 {% endblock %}
