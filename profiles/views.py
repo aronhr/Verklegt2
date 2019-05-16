@@ -273,10 +273,37 @@ def remove_admin_id(request, id):
 
 
 @login_required
-def edit_props(request):
-    return render(request, 'profile/editProps.html', {
-        'editProps': 'This is where i edit properties'
-    })
+def edit_props(request, id):
+    house = get_object_or_404(House, pk=id)
+    house_info = get_object_or_404(HouseInfo, house=house.id)
+    if house.seller == request.user or request.user.is_superuser:
+        if request.method == 'POST':
+            form = PropCreateForm(instance=house, data=request.POST)
+            info = CreateHouseInfo(instance=house_info, data=request.POST)
+            if form.is_valid() and info.is_valid():
+                house = form.save(commit=False)
+                house_info = info.save(commit=False)
+                house.seller = request.user
+                house.save()
+                house_info.house = house
+                house_info.save()
+                fs = FileSystemStorage()
+                for key in request.FILES.keys():
+                    for formfile in request.FILES.getlist(key):
+                        house_image = HouseImage()
+                        filename = fs.save(formfile.name, formfile)
+                        house_image.image = fs.url(filename)
+                        house_image.house = house
+                        house_image.save()
+                OnHold(house=house).save()
+                return redirect('house-index')
+        else:
+            form = PropCreateForm(instance=house)
+            info = CreateHouseInfo(instance=house_info)
+        return render(request, 'profile/sell_property.html', {
+            'houseForm': form,
+            'houseInfo': info,
+        })
 
 
 @login_required
