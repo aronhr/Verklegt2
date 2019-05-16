@@ -13,18 +13,18 @@ pip install geopy
 | 5 	 | Notendur geta þrengt leitina með leitarsíum 																				        		|	 x |
 | 6 	 | Notendur geta séð leitarsögu sína 																					                	|	x  |
 | 7 	 | Notandi skráir sig í kerfi 																					                        	|	x  |
-| 8 	 | Notendur geta keypt fasteign á vefsíðunni 																					        	|	   |
+| 8 	 | Notendur geta keypt fasteign á vefsíðunni 																					        	|	 x  |
 | 9 	 | Notandi skráir fasteign í kerfið 																					                	|	x  |
-| 10 	 | Sýna þarf hvar kaupandinn er staddur í kaupferlinum, (kaupyfirlit, staðfesting á kaupi) 													|	   |
-| 11 	 | Fylla þarf inn upplýsingar þegar notandi kaupir fasteign, (kortaupplýsingar, kennitala, ......) 											|	   |
+| 10 	 | Sýna þarf hvar kaupandinn er staddur í kaupferlinum, (kaupyfirlit, staðfesting á kaupi) 													|	 x  |
+| 11 	 | Fylla þarf inn upplýsingar þegar notandi kaupir fasteign, (kortaupplýsingar, kennitala, ......) 											|	 x  |
 | 12 	 | Villumeðhöndlun á innslætti á upplýsingum. 																						        |	 x  |
 | 13 	 | Stjórnandi bætir við öðrum stjórnanda 																						            |	 x  |
 | 14 	 | Notendur eiga að geta eytt þeirri fasteign sem þeir settu inn á vefsíðuna 																|	x  |
 | 15 	 | Stjórnendur eiga að geta eytt fasteign á sölu 																						    |	x  |
-| 16 	 | Notendur geta merkt við fasteignir sem þeir hafa áhuga á 																			    |	   |
+| 16 	 | Notendur geta merkt við fasteignir sem þeir hafa áhuga á 																			    |	 x  |
 | 17 	 | Stjórnendur geta breytt upplýsingum um fasteign 																						    |	   |
 | 18 	 | Notandi getur séð netfang og símanúmer seljanda 																						    |	 x |
 | 19 	 | Stjórnendur eiga að geta eytt notendum 																						            |	 x  |
 | 20 	 | Stjórnendur eiga að geta eytt fasteignum 																						        |	 x  |
-| 21 	 | Auðvelt að fara á milla skrefa í kaupum 																						            |	   |
+| 21 	 | Auðvelt að fara á milla skrefa í kaupum 																						            |	 x  |
 | 22 	 | Stjórnendur þurfa að samþykkja allar fasteignir sem notendur vilja setja inn á síðuna 													|	 x  |

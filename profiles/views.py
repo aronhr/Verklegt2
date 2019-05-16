@@ -309,7 +309,8 @@ def edit_props(request, id):
 @login_required
 def del_property(request, id):
     house = get_object_or_404(House, pk=id)
-    house.delete()
+    if house.seller == request.user or request.user.is_superuser:
+        house.delete()
     return redirect('house-index')
 
 
