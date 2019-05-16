@@ -5,16 +5,17 @@
             <div class="col l4 m6 s12">
                 <div class="container">
                     <h4 class="center">{{ user.first_name }} {{ user.last_name }}</h4>
-                    <img  class="profile-img" src="{{ profile.profile_pic }}" alt="{{ user.first_name }}">
+                    <img class="profile-img" src="{{ profile.profile_pic }}" alt="{{ user.first_name }}">
                     <div class="file-field input-field">
                         <div class="btn blue darken-4">
                             <span>Breyta forsíðumynd</span>
-                            <input type="file" name="myfile" accept=".png,.jpg,.jpeg,.gif">
+                            <input type="file" name="myfile" accept="image/*">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate" type="text">
                         </div>
                     </div>
+                    <button type="submit" class="btn green darken-3">Breyta</button>
                 </div>
             </div>
             <div class="col l4 m6 s12">
