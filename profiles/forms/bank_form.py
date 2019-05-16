@@ -15,7 +15,7 @@ class CreateBankInfo(ModelForm):
 
 
 class CreateUserBankInfo(ModelForm):
-    card_nr = forms.CharField(required=True, label="Korta númer", help_text="Kortanúmer", max_length=16)
+    card_nr = forms.CharField(required=True, label="Korta númer", help_text="Kortanúmer", max_length=20)
     exdate = forms.CharField(required=True, label="Útrennslu dagur", help_text="MM/YY", max_length=5)
     cvc = forms.IntegerField(required=True, label="CVC", help_text="CVC")
 
