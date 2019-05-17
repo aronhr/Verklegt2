@@ -36,4 +36,4 @@ class CreateHouseInfo(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(CreateHouseInfo, self).__init__(*args, **kwargs)
-        self.fields['type'].label = "Gerð"
+        self.fields['type'].label = "Tegund"
