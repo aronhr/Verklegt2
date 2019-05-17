@@ -290,6 +290,8 @@ def del_property(request, id):
 @login_required
 def buy_property(request, id):
     house = get_object_or_404(House, pk=id)
+    if house.seller == request.user:
+        return redirect('house-details', id)
     if request.method == 'POST':
         form = OfferForm(data=request.POST)
         card_info = CreateUserBankInfo(data=request.POST)

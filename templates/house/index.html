@@ -8,7 +8,7 @@
                     <div class="dropdowns">
                         <div class="input-field col s12">
                             <select id="types" name="types" multiple>
-                                <option value="" disabled selected>Týpa</option>
+                                <option value="" disabled selected>Gerð</option>
                                 {% for type in types %}
                                     <option value="{{ type.id }}">{{ type }}</option>
                                 {% endfor %}
@@ -18,11 +18,9 @@
                         <div class="input-field col s12">
                             <select id="postal_codes" name="postal_codes" multiple>
                                 <option value="" disabled selected>Póstnúmer</option>
-                                <optgroup label="Reykjavik t.d">
-                                    {% for town in towns %}
-                                        <option value="{{ town.id }}">{{ town.id }} - {{ town.town }}</option>
-                                    {% endfor %}
-                                </optgroup>
+                                {% for town in towns %}
+                                    <option value="{{ town.id }}">{{ town.id }} - {{ town.town }}</option>
+                                {% endfor %}
                             </select>
                         </div>
 
@@ -54,7 +52,7 @@
                                 <p>
                                     <label>
                                         <input id="extra_apart" type="checkbox"/>
-                                        <span class="black-text">Auka húsnæði</span>
+                                        <span class="black-text">Auka íbúð</span>
                                     </label>
                                 </p>
                             </div>
