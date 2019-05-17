@@ -287,15 +287,6 @@ def edit_props(request, id):
                 house.save()
                 house_info.house = house
                 house_info.save()
-                fs = FileSystemStorage()
-                for key in request.FILES.keys():
-                    for formfile in request.FILES.getlist(key):
-                        house_image = HouseImage()
-                        filename = fs.save(formfile.name, formfile)
-                        house_image.image = fs.url(filename)
-                        house_image.house = house
-                        house_image.save()
-                OnHold(house=house).save()
                 return redirect('house-index')
         else:
             form = PropCreateForm(instance=house)
