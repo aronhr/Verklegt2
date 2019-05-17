@@ -1,13 +1,12 @@
 $(document).ready(function(){
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
     $('.modal').modal();
     $('#modal2').modal('open');
     $('#tilbod').on('click', () => {
         var price = $('#id_price').val();
-        console.log(price);
-        var model = $('#price_modal');
-        console.log(model.innerHTML);
-        model.html = price;
-        console.log()
+        $('#price_modal').html(numberWithCommas(price));
     })
 });
 

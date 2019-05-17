@@ -11,7 +11,7 @@
                     <h3 class="left">{{ house.address }}{{ house.street_nr }}</h3>
                 </div>
                 <div>
-                    <h3 class="right">{{ house.price|intcomma }}.ISK</h3>
+                    <h3 class="right">{{ house.price|intcomma }} kr.</h3>
                 </div>
                 <div class="col s12"><hr style="height: 3px; background-color: black; border: 0">
                     <div class="row" id="PracticalInfo">
@@ -88,7 +88,8 @@
                                     <div id="modal1" class="modal">
                                         <div class="modal-content">
                                             <h4>Staðfesting á tilboði</h4>
-                                            <h6 id="price_modal">Þitt tilboð:</h6>
+                                            <h6>Verð: {{ house.price|intcomma }} kr.</h6>
+                                            <h6>Þitt tilboð: <span id="price_modal"></span> kr.</h6>
                                             <p>
                                                 <a class="modal-close waves-effect btn red darken-4">Hætta við</a>
                                                 <button type="submit" id="confirm_button" data-target="modal2" class="btn modal-trigger modal-close waves-effect btn green darken-2" href="#modal2" onsubmit="{% url 'profile-buy-property' house.id %}">Senda tilboð</button>
