@@ -11,11 +11,7 @@ $(document).ready(function(){
         $('#price_modal').html(numberWithCommas(price));
     });
 
-    $(document).keydown(function (event) {
-        if(event.keyCode == 13){
-            $('#modal1').modal('open');
-        }
-    });
+
 
 
 });
