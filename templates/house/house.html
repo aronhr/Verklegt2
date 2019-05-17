@@ -145,7 +145,7 @@
         </div>
 
         <div class="row" id="BottumsToBuyAndDeleteRealestay">
-            {% if user.is_authenticated and house.user == user or user.is_superuser %}
+            {% if house.seller == user or user.is_superuser %}
                 <button style="margin-left: 1em" data-target="modal1" class="btn modal-trigger red darken-4 left">Eyða húsi</button>
                 <div id="modal1" class="modal">
                     <div class="modal-content">
