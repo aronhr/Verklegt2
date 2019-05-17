@@ -51,7 +51,6 @@ def index(request):
         if 'size_to' in request.GET:
             size_to = request.GET.get('size_to')
 
-
         garage_list = true_or_false('garage', request)
         lift_list = true_or_false('elevator', request)
         extra_apart_list = true_or_false('extra_apartment', request)
@@ -111,7 +110,7 @@ def index(request):
         'houses': houses,
         'house_info': HouseInfo.objects.all(),
         'types': HouseType.objects.all(),
-        'towns': PostalCodes.objects.all(),
+        'towns': PostalCodes.objects.all().order_by('id'),
         'rooms': [],
         'fav': fav,
         'offer': offer
