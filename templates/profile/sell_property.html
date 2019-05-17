@@ -4,8 +4,8 @@
     <form method="POST" enctype=multipart/form-data novalidate>
         <div class="row">
             <div class="col l6 m8 s12 offset-m2 offset-l3">
-              <h3>Setja nýtt hús á sölu</h3>
-            <hr>
+                <h3>Setja nýtt hús á sölu</h3>
+                <hr>
                 <div class="card-tabs">
                     <ul class="tabs tabs-fixed-width">
                         <li class="tab col s4"><a id="1" class="active white black-text" href="#s1">Almennar upplýsingar</a></li>
@@ -44,11 +44,9 @@
                             </div>
                             <div class="row">
                                 <span style="margin-left: 1em" class="btn blue darken-4 back_2 left">Til baka</span>
-                                <button style="margin-right: 1em" type="submit" onsubmit="{% url 'profile-sell-property' %}" class="btn green darken-4 right">Selja</button>
+                                <button style="margin-right: 1em" type="submit" onsubmit="{% url 'profile-sell-property' %}" data-target="modal1" class="btn green darken-4 right">Selja</button>
                             </div>
                         </div>
-                        <span class="btn blue darken-4 back_2 left">Til baka</span>
-                        <button data-target="modal1" class="btn modal-trigger green darken-4 right">Selja</button>
                         <div id="modal1" class="modal">
                             <div class="modal-content">
                                 <h4>Staðfesting á sölu</h4>
