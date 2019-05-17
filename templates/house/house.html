@@ -146,7 +146,7 @@
 
         <div class="row" id="BottumsToBuyAndDeleteRealestay">
             {% if user.is_authenticated and house.user == user or user.is_superuser %}
-                <button data-target="modal1" class="btn modal-trigger red darken-4 left">Eyða húsi</button>
+                <button style="margin-left: 1em" data-target="modal1" class="btn modal-trigger red darken-4 left">Eyða húsi</button>
                 <div id="modal1" class="modal">
                     <div class="modal-content">
                         <h4>Ertu viss um að eyða þessu húsi?</h4>
@@ -156,10 +156,15 @@
                         </p>
                     </div>
                 </div>
+                <a href="{% url 'profile-edit-properties' house.id %}">
+                    <button style="margin-right: 1em" data-target="modal1" class="btn grey darken-1 right">Breyta fasteign</button>
+                </a>
             {% endif %}
             {% if house.seller != user %}
                 <a href="{% url 'profile-buy-property' house.id %}" style="margin-right: 0.7em" class="btn green darken-4 right">Setja inn tilboð</a>
             {% endif %}
+
+
         </div>
         <div class="row">
 

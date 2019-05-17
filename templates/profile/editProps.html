@@ -1,7 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-    <h1>{{ editProps }}</h1>
-
+    <div class="row">
+        <form method="POST">
+            {% csrf_token %}
+            <h3 style="text-align: center">Breyta fasteign</h3>
+            <div class="col l6 m8 s12 offset-m2 offset-l3">
+                <div style="padding-bottom: 30px">
+                    <div class="col s12 card grey lighten-3">
+                        {% include 'profile/include_templates/forms.html' with form=houseForm %}
+                        {% include 'profile/include_templates/forms.html' with form=houseInfo %}
+                        <input style="margin-bottom: 25px" type="submit" value="Breyta" class="right btn green darken-4">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+    <script>
+    $(document).ready(function(){
+    $('select').formSelect();
+  });
+    </script>
 {% endblock %}
