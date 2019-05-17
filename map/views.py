@@ -6,7 +6,7 @@ geolocator = Nominatim(user_agent="my-application", format_string="%s, Iceland")
 
 def index(request):
     geo = {"houses": []}
-    for house in House.objects.all():
+    for house in House.objects.filter(on_sale=True):
         try:
             location = geolocator.geocode(house.address + " " + house.street_nr + ", " + str(house.p_code))
             geo["houses"].append({'id': house.id, 'geo': {'lat': location.latitude, 'lng': location.longitude},
