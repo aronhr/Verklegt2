@@ -1,10 +1,10 @@
-<a href="{% url 'profile-history' %}"><button class="waves-effect waves-light row col l12 m12 s12 btn blue darken-4">Leitarsaga</button></a>
-<a href="{% url 'profile-myProps' %}"><button class="waves-effect waves-light row col l12 m12 s12  btn blue darken-4">Mínar fasteignir</button></a>
-<a href="{% url 'profile-offers-seller' %}"><button class="waves-effect waves-light row col l12 m12 s12 btn {% if offer %} red {% else %} blue darken-4 {% endif %}">Tilboð í mínar fasteignir</button></a>
-<a href="{% url 'profile-offers-buyer' %}"><button class="waves-effect waves-light row col l12 m12 s12 btn blue darken-4">Mín tilboð</button></a>
+<a href="{% url 'profile-history' %}"><button class="waves-effect waves-light row col l12 m12 s12 btn blue darken-4"><i class="material-icons right">history</i>Leitarsaga</button></a>
+<a href="{% url 'profile-myProps' %}"><button class="waves-effect waves-light row col l12 m12 s12  btn blue darken-4"><i class="material-icons right">work</i>Mínar fasteignir</button></a>
+<a href="{% url 'profile-offers-seller' %}"><button class="waves-effect waves-light row col l12 m12 s12 btn {% if offer %} red {% else %} blue darken-4 {% endif %}"><i class="material-icons right">attach_money</i>Tilboð í mínar fasteignir</button></a>
+<a href="{% url 'profile-offers-buyer' %}"><button class="waves-effect waves-light row col l12 m12 s12 btn blue darken-4"><i class="material-icons right">local_offer</i>Mín tilboð</button></a>
 {% if user.is_superuser %}
-    <a href="{% url 'profile-review-properties-submissions' %}"><button class="waves-effect waves-light row col l12 m12 s12 btn blue darken-4">Óstaðfestar fasteignir</button></a>
-    <a href="{% url 'profile-delete-user' %}"><button class="waves-effect waves-light row col l12 m12 s12  btn blue darken-4">Fjarlægja notenda</button></a>
-    <a href="{% url 'profile-add-admin' %}"><button class="waves-effect waves-light row col l12 m12 s12  btn blue darken-4">Bæta við stjórnenda</button></a>
-    <a href="{% url 'profile-remove-admin' %}"><button class="waves-effect waves-light row col l12 m12 s12  btn blue darken-4">Fjarlægja stjórnenda</button></a>
+    <a href="{% url 'profile-review-properties-submissions' %}"><button class="waves-effect waves-light row col l12 m12 s12 btn blue darken-4"><i class="material-icons right">do_not_disturb</i>Óstaðfestar fasteignir</button></a>
+    <a href="{% url 'profile-delete-user' %}"><button class="waves-effect waves-light row col l12 m12 s12  btn blue darken-4"><i class="material-icons right">remove_circle</i>Fjarlægja notenda</button></a>
+    <a href="{% url 'profile-add-admin' %}"><button class="waves-effect waves-light row col l12 m12 s12  btn blue darken-4"><i class="material-icons right">add_box</i>Bæta við stjórnenda</button></a>
+    <a href="{% url 'profile-remove-admin' %}"><button class="waves-effect waves-light row col l12 m12 s12  btn blue darken-4"><i class="material-icons right">remove_shopping_cart</i>Fjarlægja stjórnenda</button></a>
 {% endif %}

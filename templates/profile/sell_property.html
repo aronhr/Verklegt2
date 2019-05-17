@@ -2,44 +2,49 @@
 {% load static %}
 {% block content %}
     <form method="POST" enctype=multipart/form-data novalidate>
-        <div class="container">
-            <div class="col l4 m6 s12 ">
-                <div class="row">
-                    <div class="card-tabs">
-                        <ul class="tabs tabs-fixed-width">
-                            <li class="tab col s4"><a id="1" class="active white black-text" href="#s1">Almennar upplýsingar</a></li>
-                            <li class="tab col s4"><a id="2" class="white black-text" href="#s2">Nánari upplýsingar</a></li>
-                            <li class="tab col s4"><a id="3" class="white black-text" href="#s3">Myndir</a></li>
-                        </ul>
-                    </div>
+        <div class="row">
+            <div class="col l6 m8 s12 offset-m2 offset-l3">
+                <div class="card-tabs">
+                    <ul class="tabs tabs-fixed-width">
+                        <li class="tab col s4"><a id="1" class="active white black-text" href="#s1">Almennar upplýsingar</a></li>
+                        <li class="tab col s4"><a id="2" class="white black-text" href="#s2">Nánari upplýsingar</a></li>
+                        <li class="tab col s4"><a id="3" class="white black-text" href="#s3">Myndir</a></li>
+                    </ul>
                 </div>
-
-                <div class="card-content grey lighten-4">
-                    {% csrf_token %}
-                    <div id="s1">
-                        <h2 style="padding-top: 10px" class="center">Almennar upplýsingar</h2>
-                        {% include 'profile/include_templates/forms.html' with form=houseForm %}
-                        <h3 class="btn blue darken-4 forward right">Áfram</h3>
-                    </div>
-                    <div id="s2">
-                        <h2 style="padding-top: 10px" class="center">Nánari upplýsingar</h2>
-                        {% include 'profile/include_templates/forms.html' with form=houseInfo %}
-                        <h3 class="btn blue darken-4 back left">Til baka</h3>
-                        <h3 class="btn blue darken-4 forward_2 right">Áfram</h3>
-                    </div>
-                    <div id="s3">
-                        <h2 style="padding-top: 10px" class="center">Myndir</h2>
-                        <div class="file-field input-field">
-                            <div class="btn blue darken-4">
-                                <span>Myndir</span>
-                                <input type="file" name="myfile" multiple accept=".png,.jpeg,.jpg,.gif">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col l6 m8 s12 offset-m2 offset-l3">
+                <div style="padding-bottom: 30px">
+                    <div class="col s12 card grey lighten-3">
+                        {% csrf_token %}
+                        <div id="s1">
+                            <h2 style="padding-top: 10px" class="center">Almennar upplýsingar</h2>
+                            {% include 'profile/include_templates/forms.html' with form=houseForm %}
+                            <h3 class="btn blue darken-4 forward right">Áfram</h3>
+                        </div>
+                        <div id="s2">
+                            <h2 style="padding-top: 10px" class="center">Nánari upplýsingar</h2>
+                            {% include 'profile/include_templates/forms.html' with form=houseInfo %}
+                            <h3 class="btn blue darken-4 back left">Til baka</h3>
+                            <h3 class="btn blue darken-4 forward_2 right">Áfram</h3>
+                        </div>
+                        <div id="s3">
+                            <h2 style="padding-top: 10px" class="center">Myndir</h2>
+                            <div class="file-field input-field">
+                                <div class="btn blue darken-4">
+                                    <span>Myndir</span>
+                                    <input type="file" name="myfile" multiple accept=".png,.jpeg,.jpg,.gif">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" placeholder="Settu inn eina eða fleiri skrár">
+                                </div>
                             </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" placeholder="Settu inn eina eða fleiri skrár">
+                            <div class="row">
+                                <span style="margin-left: 1em" class="btn blue darken-4 back_2 left">Til baka</span>
+                                <button style="margin-right: 1em" type="submit" onsubmit="{% url 'profile-sell-property' %}" class="btn green darken-4 right">Selja</button>
                             </div>
                         </div>
-                        <span class="btn blue darken-4 back_2 left">Til baka</span>
-                        <button type="submit" onsubmit="{% url 'profile-sell-property' %}" class="btn green darken-4 right">Selja</button>
                     </div>
                 </div>
             </div>
