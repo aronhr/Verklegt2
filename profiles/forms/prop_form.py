@@ -3,7 +3,6 @@ from house.models import House, HouseInfo, HouseImage, PostalCodes
 from django import forms
 
 
-
 class PropCreateForm(ModelForm):
     address = forms.CharField(required=True, label='Heimilisfang', help_text='Sláðu inn heimilisfang án húsnúmers')
     street_nr = forms.CharField(required=True, label='Húsnúmer', help_text='Sláðu inn húsnúmer')
