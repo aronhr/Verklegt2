@@ -18,11 +18,9 @@
                         <div class="input-field col s12">
                             <select id="postal_codes" name="postal_codes" multiple>
                                 <option value="" disabled selected>Póstnúmer</option>
-                                <optgroup label="Reykjavik t.d">
-                                    {% for town in towns %}
-                                        <option value="{{ town.id }}">{{ town.id }} - {{ town.town }}</option>
-                                    {% endfor %}
-                                </optgroup>
+                                {% for town in towns %}
+                                    <option value="{{ town.id }}">{{ town.id }} - {{ town.town }}</option>
+                                {% endfor %}
                             </select>
                         </div>
 

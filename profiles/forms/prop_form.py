@@ -1,6 +1,7 @@
 from django.forms import ModelForm
-from house.models import House, HouseInfo, HouseImage
+from house.models import House, HouseInfo, HouseImage, PostalCodes
 from django import forms
+
 
 
 class PropCreateForm(ModelForm):
@@ -12,6 +13,10 @@ class PropCreateForm(ModelForm):
     class Meta:
         model = House
         exclude = ['id', 'seller', 'on_sale', 'sellingdate']
+
+    def __init__(self, *args, **kwargs):
+        super(PropCreateForm, self).__init__(*args, **kwargs)
+        self.fields['p_code'].queryset = PostalCodes.objects.order_by('id')
 
 
 class CreateHouseInfo(ModelForm):
