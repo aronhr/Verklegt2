@@ -4,7 +4,7 @@ from django import forms
 
 
 class PropCreateForm(ModelForm):
-    address = forms.CharField(required=True, label='Heimilisfang', help_text='Sláðu inn heimilisfang án húsnúmers')
+    address = forms.CharField(required=True, label='Götuheiti', help_text='Sláðu inn götuheiti án húsnúmers')
     street_nr = forms.CharField(required=True, label='Húsnúmer', help_text='Sláðu inn húsnúmer')
     price = forms.IntegerField(required=True, label='Verð á húsnæði', help_text='Sláðu inn verð á húsnæði')
     p_code = forms.Select()
