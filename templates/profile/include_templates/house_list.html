@@ -10,7 +10,7 @@
                                 <img src="{{ prop.house.houseimage_set.first.image }}" alt="{{ prop.house.address }} {{ prop.house.street_nr }}" class="circle">
                                 <span class="title"><strong>{{ prop.house.address }} {{ prop.house.street_nr }}</strong></span>
                                 <p>
-                                    {{ prop.house.houseinfo_set.first.description }}
+                                    <div class="truncate">{{ prop.house.houseinfo_set.first.description }}</div>
                                     <br>
                                     {{ prop.house.price|intcomma }} kr.
                                     <br>
