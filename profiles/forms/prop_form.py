@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from house.models import House, HouseInfo, HouseImage, PostalCodes
+from house.models import House, HouseInfo, PostalCodes
 from django import forms
 
 
