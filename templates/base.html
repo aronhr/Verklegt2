@@ -32,6 +32,7 @@
         }
     });
 </script>
+<div class="navbar-fixed">
 <nav class="nav-wrapper blue darken-4">
     <a href="/" class="brand-logo"><img width="75" src="{% static 'images/logo.png' %}" alt="Logo"></a>
     <a href="#" class="sidenav-trigger" data-target="mobile-nav">
@@ -54,6 +55,7 @@
         {% endif %}
     </ul>
 </nav>
+</div>
 
 <ul id="mobile-nav" class="sidenav">
     <li><a href="{% url 'house-index' %}">H-FASTEIGNIR</a></li>
