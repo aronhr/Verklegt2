@@ -12,9 +12,9 @@
                                 <img src="{{ prop.house.houseimage_set.first.image }}" alt="{{ prop.house.address }} {{ prop.house.street_nr }}" class="circle">
                                 <span class="title"><strong>{{ prop.house.address }} {{ prop.house.street_nr }}</strong></span>
                                 <p>
-                                    Fasteignamat: <strong>{{ prop.house.price|intcomma }} kr.</strong>
+                                    Verð: <strong>{{ prop.house.price|intcomma }} kr.</strong>
                                     <br>
-                                    Mögulegur kaupandi: {{ prop.user.first_name }} {{ prop.user.last_name }}
+                                    Tilboðsgjafi: {{ prop.user.first_name }} {{ prop.user.last_name }}
                                     <br>
                                     Sími: {{ prop.user.profile.phone }}
                                     <br>
@@ -45,7 +45,7 @@
                                                         <td class="right-align">{{ prop.user.first_name }} {{ prop.user.last_name }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Seljadni</th>
+                                                        <th>Seljandi</th>
                                                         <td class="right-align">{{ prop.seller.first_name }} {{ prop.seller.last_name }}</td>
                                                     </tr>
                                                     <tr>

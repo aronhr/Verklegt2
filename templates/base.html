@@ -43,7 +43,7 @@
         <li><a href="{% url 'profile-wishList' %}">Óskalisti</a></li>
         {% if user.is_authenticated %}
 
-            <li><a href="{% url 'profile-index' %}">Prófíll
+            <li><a href="{% url 'profile-index' %}">Mín síða
                 {% if offer %}
                     <span class="new badge red"></span>
                 {% endif %}
@@ -73,6 +73,7 @@
 
     {% endblock %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
     <script>
         $('form').validate();
     </script>

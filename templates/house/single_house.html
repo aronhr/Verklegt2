@@ -24,26 +24,26 @@
                             {% endif %}
                         </div>
                     </span>
-
-                    <p class="truncate"><strong>{{ house.house.price|intcomma  }} kr</strong></p>
+                    <p><strong>{{ house.house.price|intcomma  }} kr</strong></p>
                     <br>
                     <div style="margin-bottom: 0px" class="row">
-                        <div class="col s6">
+                        <div class="col s6 m6 l6">
                             <p>Tegund: <strong>{{house.house.houseinfo_set.first.type }}</strong></p>
                         </div>
-                        <div class="col s6">
+                        <div class="col s6 m6 l6">
                             <p class="right-align">Stærð <strong>{{house.house.houseinfo_set.first.size }} m²</strong></p>
                         </div>
                     </div>
                     <hr>
                     <div style="margin-bottom: 0px" class="row">
-                        <div class="col s12">
-                            <p>Herbergi: <strong>{{house.house.houseinfo_set.first.rooms }}</strong></p>
+                        <div class="col s6 m6 l6">
+                            <p>Byggt: <strong>{{house.house.houseinfo_set.first.buildyear }}</strong></p>
                         </div>
-
+                        <div class="col s6 m6 l6">
+                            <p class="right-align">Herbergi: <strong>{{house.house.houseinfo_set.first.rooms }}</strong></p>
+                        </div>
                     </div>
                     <hr>
-
                     <small>{{house.house.sellingdate }}</small>
                 </article>
             </div>
